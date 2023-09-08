@@ -35,7 +35,7 @@ export default class GameScene extends Phaser.Scene {
 
     }
     create() {
-        // console.log("buttons", this.buttons.continueBtn);
+        console.log("buttons", this.buttons.continueBtn);
         this.cameras.main.setZoom(0.6);
 
         this.ShowBg();
