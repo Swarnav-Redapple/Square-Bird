@@ -101,8 +101,21 @@ class Platform {
         collider_Twelve.body.allowGravity = false;
         this.bottomContainer_Three.add(collider_Twelve);
 
-        let collider_Thirteen = this.scene.add.image(bottomPlatformThree.x - bottomPlatformThree.width / 2.485, bottomPlatformThree.y + bottomPlatformThree.height / 4.51, 'onepixel').setScale(88 * scaleFactorX, 625 * scaleFactorY).setAlpha(0.5);
+        let collider_Thirteen = this.scene.physics.add.image(bottomPlatformThree.x - bottomPlatformThree.width / 2.35, bottomPlatformThree.y + bottomPlatformThree.height / 4.6, 'onepixel').setScale(163 * scaleFactorX, 920 * scaleFactorY).setAlpha(0.5);
+        collider_Thirteen.body.allowGravity = false;
+        this.bottomContainer_Three.add(collider_Thirteen);
 
+        let collider_Fourteen = this.scene.physics.add.image(bottomPlatformThree.x - bottomPlatformThree.width / 3.59, bottomPlatformThree.y - bottomPlatformThree.height / 14.5, 'onepixel').setScale(495 * scaleFactorX, 920).setAlpha(0.5);
+        collider_Fourteen.body.allowGravity = false;
+        this.bottomContainer_Three.add(collider_Fourteen);
+
+        let collider_Fifteen = this.scene.physics.add.image(bottomPlatformThree.x - bottomPlatformThree.width / 10.62, bottomPlatformThree.y + bottomPlatformThree.height / 4.6, 'onepixel').setScale(336 * scaleFactorX, 920).setAlpha(0.5);
+        collider_Fifteen.body.allowGravity = false;
+        this.bottomContainer_Three.add(collider_Fifteen);
+
+        let collider_Sixteen = this.scene.add.image(bottomPlatformThree.x + bottomPlatformThree.width / 26.62, bottomPlatformThree.y + bottomPlatformThree.height / 4.6, 'onepixel').setScale(236 * scaleFactorX, 920).setAlpha(0.5);
+        // collider_Fifteen.body.allowGravity = false;
+        // this.bottomContainer_Three.add(collider_Fifteen);
         // let bottomPlatformFour = this.scene.physics.add.image(bottomPlatformThree.x + bottomPlatformThree.width / 2 + 1090, 1700, 'bottomFloor_Four');
         // bottomPlatformFour.body.allowGravity = false;
         // this.bottomPlatformArray.push(bottomPlatformOne, bottomPlatformTwo, bottomPlatformThree, bottomPlatformFour);
