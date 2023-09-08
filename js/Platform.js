@@ -114,7 +114,7 @@ class Platform {
         this.bottomContainer_Three.add(collider_Fifteen);
 
         let collider_Sixteen = this.scene.add.image(bottomPlatformThree.x + bottomPlatformThree.width / 26.62, bottomPlatformThree.y + bottomPlatformThree.height / 4.6, 'onepixel').setScale(236 * scaleFactorX, 920).setAlpha(0.5);
-        console.log("mevan");
+        console.log("mevan2");
         // collider_Fifteen.body.allowGravity = false;
         // this.bottomContainer_Three.add(collider_Fifteen);
         // let bottomPlatformFour = this.scene.physics.add.image(bottomPlatformThree.x + bottomPlatformThree.width / 2 + 1090, 1700, 'bottomFloor_Four');
