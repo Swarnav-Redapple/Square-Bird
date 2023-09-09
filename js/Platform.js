@@ -94,7 +94,7 @@ class Platform {
 
         // let bottomPlatformThree = this.scene.add.image(bottomPlatformTwo.x + bottomPlatformTwo.width + 800, 1700, 'bottomFloor_Three');
         this.bottomContainer_Three = this.scene.add.container(0, 0);
-        let bottomPlatformThree = this.scene.add.image(2000, 1470, 'bottomFloor_Three');
+        let bottomPlatformThree = this.scene.add.image(1000, 1470, 'bottomFloor_Three');
         this.bottomContainer_Three.add(bottomPlatformThree);
 
         let collider_Twelve = this.scene.physics.add.image(bottomPlatformThree.x - bottomPlatformThree.width / 2.083, bottomPlatformThree.y + bottomPlatformThree.height / 4.51, 'onepixel').setScale(85 * scaleFactorX, 625 * scaleFactorY).setAlpha(0.5);
@@ -113,7 +113,13 @@ class Platform {
         collider_Fifteen.body.allowGravity = false;
         this.bottomContainer_Three.add(collider_Fifteen);
 
-        let collider_Sixteen = this.scene.add.image(bottomPlatformThree.x + bottomPlatformThree.width / 26.62, bottomPlatformThree.y + bottomPlatformThree.height / 4.6, 'onepixel').setScale(236 * scaleFactorX, 920).setAlpha(0.5);
+        let collider_Sixteen = this.scene.physics.add.image(bottomPlatformThree.x + bottomPlatformThree.width / 18, bottomPlatformThree.y + bottomPlatformThree.height / 9.6, 'onepixel').setScale(335 * scaleFactorX, 200 * scaleFactorX).setAlpha(0.5);
+        collider_Sixteen.body.allowGravity = false;
+        this.bottomContainer_Three.add(collider_Sixteen);
+
+        let collider_Seventeen = this.scene.physics.add.image(bottomPlatformThree.x + bottomPlatformThree.width / 4.88, bottomPlatformThree.y + bottomPlatformThree.height / 24.6, 'onepixel').setScale(335 * scaleFactorX, 290 * scaleFactorX).setAlpha(0.5);
+        collider_Seventeen.body.allowGravity = false;
+        this.bottomContainer_Three.add(collider_Seventeen);
         console.log("mevan2");
         // collider_Fifteen.body.allowGravity = false;
         // this.bottomContainer_Three.add(collider_Fifteen);
