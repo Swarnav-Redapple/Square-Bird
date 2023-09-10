@@ -76,12 +76,7 @@ export default class GameScene extends Phaser.Scene {
 
         // this.platform.sideCollider.setVelocity(7, 0);
     }
-    MoveColliders() {
-        if (this.isDown && !isPaused && !this.isGameOver) {
-            console.log("move the platfirms");
 
-        }
-    }
 
     MovePlatform() {
         if (!isPaused && !this.isGameOver) {
