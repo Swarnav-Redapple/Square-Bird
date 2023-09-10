@@ -85,8 +85,8 @@ export default class GameScene extends Phaser.Scene {
     MovePlatform() {
         if (!isPaused && !this.isGameOver) {
             this.platform.MoveBottomPlatform();
-            this.platform.MoveTopPlatform();
-            this.platform.MoveCollisionBoxes();
+            // this.platform.MoveTopPlatform();
+            // this.platform.MoveCollisionBoxes();
             // this.platform.tilePositionX += 7;
             // if (this.distanceCounter == 10) {
             //     this.distanceCounter = 0;
@@ -285,7 +285,7 @@ export default class GameScene extends Phaser.Scene {
     }
     update() {
         // this.MoveBg();
-        // this.MovePlatform();
+        this.MovePlatform();
         // this.UpdateObstaclePosition();
         // this.OverlapCondition();
 
