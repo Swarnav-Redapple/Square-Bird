@@ -41,6 +41,7 @@ export default class GameScene extends Phaser.Scene {
         this.ShowBg();
         // // this.ShowDistanceCovered();
         this.ShowPlatform();
+        this.MoveColliders();
         // this.ShowGameUI();
         // this.CreateBird();
         // this.MovePlayer();
@@ -92,6 +93,9 @@ export default class GameScene extends Phaser.Scene {
             //     this.distanceCounter = 0;
             //     this.platform.tilePositionX += 7 * 1.5;
         }
+    }
+    MoveColliders() {
+        this.platform.MoveColliders();
     }
     ShowGameUI() {
         this.gameUI.CreateGameScene();
