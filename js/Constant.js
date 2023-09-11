@@ -1,3 +1,4 @@
+let scaleFactor;
 let scaleFactorX;
 let scaleFactorY;
 let game;

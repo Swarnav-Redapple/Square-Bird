@@ -67,8 +67,8 @@ window.onload = function () {
                     }
                 ]
             },
-            width: 2000,
-            height: 1920,
+            width: 1080,
+            height: 1920
         };
     }
 
@@ -80,8 +80,9 @@ window.onload = function () {
     }
 
     else {
-        scaleFactorX = config.width / 1080;
-        scaleFactorY = config.height / 1920;
+        // scaleFactorX = config.width / 1080;
+        // scaleFactorY = config.height / 1920;
+        scaleFactor = config.width / 1080;
     }
 
     window.focus();
