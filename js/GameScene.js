@@ -37,7 +37,7 @@ export default class GameScene extends Phaser.Scene {
     create() {
         console.log("buttons", this.buttons.continueBtn);
         console.log('CanvasWidth',)
-        // this.cameras.main.setZoom(0.4);
+        this.cameras.main.setZoom(0.4);
 
         this.ShowBg();
         // // this.ShowDistanceCovered();
@@ -91,8 +91,12 @@ export default class GameScene extends Phaser.Scene {
             //     this.platform.tilePositionX += 7 * 1.5;
         }
     }
+
     MoveColliders() {
         this.platform.MoveColliders();
+    }
+    RepositionPlatform() {
+        this.platform.RepositionPlatform();
     }
     ShowGameUI() {
         console.log("interactive");
@@ -291,6 +295,7 @@ export default class GameScene extends Phaser.Scene {
     }
     update() {
         // this.MoveBg();
+        this.RepositionPlatform();
         // this.MovePlatform();
         // this.UpdateObstaclePosition();
         // this.OverlapCondition();
