@@ -32,6 +32,7 @@ class Platform {
         this.posThree = null;
         this.numberOfColliders = 11;
         this.index = null;
+        this.contain = null;
     }
     CreateTutorialPlatform() {
         let tutorialPlatform = this.scene.make.tilemap({ key: 'platformInstruction', tileWidth: 154, tileHeight: 154 });
@@ -46,11 +47,32 @@ class Platform {
     }
     CreateBottomPlatform() {
         console.log("Platform making");
+        this.contain = this.scene.add.container(0, 0);
+        // this.contain.setSize(10, 10);
+        this.scene.physics.world.enable(this.contain);
+
         this.obstacle = this.scene.physics.add.image(950, 950, 'onepixel').setScale(130).setDepth(0).setFrictionX(0);
         this.obstacle.body.allowGravity = false;
         this.obstacle.body.immovable = true;
+        this.contain.add(this.obstacle);
+        this.contain.body.allowGravity = false;
         // this.platformLastIndex = this.numberOfBottomPlatforms - 1;
         // this.index = this.numberOfColliders - 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         this.bottomContainer_One = this.scene.add.container(0, 0);
 
         let bottomPlatformOne = this.scene.add.image(300, 1470, 'bottomFloor_One');
@@ -237,7 +259,10 @@ class Platform {
         // this.bottomContainer_Two.body.setVelocityX(-270);
         // this.bottomContainer_Three.body.setVelocityX(-270);
         // this.bottomContainer_Four.body.setVelocityX(-270);
-        this.obstacle.body.setVelocityX(-270)
+
+
+        this.contain.body.setVelocityX(-1);
+        this.obstacle.body.setVelocityX(-270);
         // for (let i = 0; i < this.colliderArray.length; i++) {
         //     this.colliderArray[i].body.setVelocityX(100);
         // }
@@ -257,12 +282,6 @@ class Platform {
         //         this.bottomAllArray_Three[i][j].setVelocityX(-470);
         //     }
         // }
-    }
-    MoveColliders() {
-        // this.arrayBottomColliders.forEach((elems) => {
-        //     // console.log("elems", elems);
-        //     elems.setVelocityX(-470);
-        // });
     }
     RepositionPlatform() {
         // if()
