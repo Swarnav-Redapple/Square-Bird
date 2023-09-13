@@ -32,18 +32,19 @@ export default class GameScene extends Phaser.Scene {
         // this.count = 0;
         this.isGameOver = false;
         this.popUp = new PopUp(this);
+        this.isStartCheck = false;
 
     }
     create() {
         console.log("buttons", this.buttons.continueBtn);
         console.log('CanvasWidth',)
-        this.cameras.main.setZoom(0.4);
+        // this.cameras.main.setZoom(0.09);
 
         this.ShowBg();
         // // this.ShowDistanceCovered();
         this.ShowPlatform();
         this.MovePlatform();
-        this.MoveColliders();
+        // this.MoveColliders();
         this.ShowGameUI();
         this.CreateBird();
         // this.MovePlayer();
@@ -110,32 +111,45 @@ export default class GameScene extends Phaser.Scene {
             // this.platform.MoveCollisionBoxes();
             // this.player.player.setVelocityX(12);
             // this.physics.add.collider(this.player.player, this.platform.bottomPlatformArray, this.BirdOnTouchingPlatform, null, this);
-            this.physics.add.collider(this.player.player, this.platform.arrayBottomColliders, this.BirdOnCollidingColliders, null, this);
+            this.physics.add.collider(this.player.player, this.platform.colliderArray, this.BirdOnTouchingPlatform, null, this);
+            this.physics.add.collider(this.player.player, this.platform.obstacle, this.BirdOnTouching, null, this);
             this.physics.add.collider(this.player.player, this.cubesArray, this.BirdOnTouchingCubes, null, this);
             // this.physics.add.collider(this.player.player, this.platform.bottomPlatformArray, this.XYZ, null, this);
         }
     }
+    BirdOnTouching() {
+        if (this.player.player.body.touching.right) {
+            console.log("Dead");
+        }
+    }
     BirdOnTouchingPlatform(_bird, _platform) {
         // console.log("quwfuhq;whifqh;owef");
-        if (this.player.player.body.touching.down) {
+        if (this.player.player.body.blocked.right) {
             // this.player.player.setVelocityX(7);
             // this.physics.world.setFPS(60);
             // _bird.setStatic(true);
+            // console.log("Touchh");
             this.arrayBirdPos.push(this.player.player.x);
             this.arrayBirdPos.push(this.player.player.y + 20);
             this.isDown = true;
+            console.log(this.isDown);
+            this.isStartCheck = true;
             // this.player.player.body.setVelocityX(1);
             // console.log("Down");
             // let abc = this.player.player.body.onWall(true);
             // console.log(abc);
 
         }
-        if (this.player.player.body.blocked.right) {
+        // if (this.isStartCheck) {
+        //     this.isStartCheck = false;
+        //     this.MovePlatform();
+        // }
+        if (this.player.player.body.touching.right) {
+            this.isGameOver = true;
+            _bird.setVelocityX(0);
+            // this.popUp.CreatePopUp();
             // this.player.player.setVelocityY(1);
         }
-        // if (this.player.player.velocityX == 0) {
-        //     this.isGameOver = true;
-        // }
     }
     MovePlayer() {
 
@@ -294,7 +308,7 @@ export default class GameScene extends Phaser.Scene {
         }
     }
     update() {
-        // this.MoveBg();
+        this.MoveBg();
         this.RepositionPlatform();
         // this.MovePlatform();
         // this.UpdateObstaclePosition();
