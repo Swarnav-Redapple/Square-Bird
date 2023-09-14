@@ -118,13 +118,16 @@ export default class GameScene extends Phaser.Scene {
         }
     }
     BirdOnTouching() {
-        if (this.player.player.body.touching.right) {
-            console.log("Dead");
-        }
+        this.platform.contain.body.onCollide = true;
+        // console.log(this.platform.contain.body.onCollide);
+        // if (this.player.player.body.blocked.right) {
+        //     console.log("Dead");
+        // }
+        this.player.player.body.setVelocityX(-270);
     }
     BirdOnTouchingPlatform(_bird, _platform) {
         // console.log("quwfuhq;whifqh;owef");
-        if (this.player.player.body.blocked.right) {
+        if (this.player.player.body.touching.down) {
             // this.player.player.setVelocityX(7);
             // this.physics.world.setFPS(60);
             // _bird.setStatic(true);
@@ -144,12 +147,13 @@ export default class GameScene extends Phaser.Scene {
         //     this.isStartCheck = false;
         //     this.MovePlatform();
         // }
-        if (this.player.player.body.touching.right) {
-            this.isGameOver = true;
-            _bird.setVelocityX(0);
-            // this.popUp.CreatePopUp();
-            // this.player.player.setVelocityY(1);
-        }
+        // if (this.player.player.body.touching.right) {
+        //     this.isGameOver = true;
+        //     _bird.setVelocityX(0);
+        //     // this.popUp.CreatePopUp();
+        //     // this.player.player.setVelocityY(1);
+        // }
+        // this.player.player.body.setVelocityX(-270);
     }
     MovePlayer() {
 

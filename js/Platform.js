@@ -48,13 +48,14 @@ class Platform {
     CreateBottomPlatform() {
         console.log("Platform making");
         this.contain = this.scene.add.container(0, 0);
-        // this.contain.setSize(10, 10);
-        this.scene.physics.world.enable(this.contain);
 
         this.obstacle = this.scene.physics.add.image(950, 950, 'onepixel').setScale(130).setDepth(0).setFrictionX(0);
         this.obstacle.body.allowGravity = false;
         this.obstacle.body.immovable = true;
         this.contain.add(this.obstacle);
+        this.contain.setSize(this.obstacle.width, this.obstacle.height);
+        this.scene.physics.world.enable(this.contain);
+
         this.contain.body.allowGravity = false;
         // this.platformLastIndex = this.numberOfBottomPlatforms - 1;
         // this.index = this.numberOfColliders - 1;
@@ -261,8 +262,10 @@ class Platform {
         // this.bottomContainer_Four.body.setVelocityX(-270);
 
 
-        this.contain.body.setVelocityX(-1);
-        this.obstacle.body.setVelocityX(-270);
+        this.contain.body.setVelocityX(-270);
+        console.log("this.contain", this.contain);
+        console.log("body vel", this.contain.body.velocity);
+        // this.obstacle.body.setVelocityX(-270);
         // for (let i = 0; i < this.colliderArray.length; i++) {
         //     this.colliderArray[i].body.setVelocityX(100);
         // }
