@@ -95,6 +95,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.setPath('assets/spines/');
         this.load.spine('penguin', 'Penguin Character.json', 'Penguin Character.atlas');
         this.load.spine('cube', 'Ice_Cube.json', 'Ice_Cube.atlas');
+        // this.load.image()
         this.load.start();
     }
     LoadProgress(percentage) {

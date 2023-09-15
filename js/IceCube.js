@@ -5,13 +5,13 @@ class IceCube {
     }
     CreateIceCubes() {
         // this.cubes = this.scene.add.spine(0, 0, 'cube').setScale(0.2 * scaleFactor, 0.2 * scaleFactor);
-        this.cubes = this.scene.add.physics.image(0, 0, 'cubes').setScale(0.2 * scaleFactor, 0.2 * scaleFactor);
+        this.cubes = this.scene.physics.add.image(0, 0, 'cubes').setScale(0.2 * scaleFactor, 0.2 * scaleFactor);
         //.setStatic(true).setIgnoreGravity(false);
         // this.cubes.body.setVelocity(-70, 0);
         // this.cubes.play('Ice_02', false, 1);
         this.scene.tweens.add({
             targets: this.cubes,
-            scale: 0.5,
+            scale: 1.2,
             duration: 80,
         });
         // this.cubes.on('complete', () => {
@@ -22,8 +22,8 @@ class IceCube {
         // });
 
 
-        // this.cubes.body.allowGravity = true;
-        // this.cubes.body.immovable = true;
+        this.cubes.body.allowGravity = true;
+        this.cubes.body.immovable = true;
         this.cubes.isCollide = 'false';
     }
 }

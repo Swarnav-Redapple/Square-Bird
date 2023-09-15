@@ -45,20 +45,98 @@ class Platform {
         let boxPlatformTileset = boxPlatform.addTilesetImage('platform_In_Box', 'platform');
         let layer = boxPlatform.createLayer('BoxLayer', boxPlatformTileset, 65, 55);
     }
-    CreateBottomPlatform() {
-        console.log("Platform making");
-        let bottomPlatformOne = this.scene.add.image(300, 1470, 'bottomFloor_One');
-        const data = [400, 100,
-            200, 278,
-            340, 430,
-            550, 80];
-        // const data = [100, 200, 300, 400, 700, 900, 500];
-        let shape = this.scene.add.polygon(-768, 1917, data);
-        shape.setStrokeStyle(2, 0xffffff);
+    CreatePlatform() {
+
+        let platform = this.scene.make.tilemap({ key: 'platform_map', tileWidth: 154, tileHeight: 154 });
+        let platformTileset = platform.addTilesetImage('GamePlatformTiles', 'platform');
+        this.bottomLayer = platform.createLayer('BottomLayer', platformTileset, 0, 0);
+        // console.log("bottomLayer", bottomLayer);
+
+        // bottomLayer.setCollisionByProperty({ collides: true });
+        // this.sideCollider = platform.createFromObjects('SideColliders');
+        // this.sideCollider.forEach(colls => {
+        //     //     //     //     // colls.setOrigin(0.1);
+        //     this.scene.physics.add.existing(colls);
+        //     colls.body.allowGravity = false;
+        //     //     //     // colls.body.setBounce(0);
+        // });
+        // this.sideCollider.refresh();
+        // platform.setCollisionBetween(0, 13);
+
+        // console.log(this.bottomLayer);
+        // let toplayer = platform.createLayer('TopLayer', platformTileset, 0, 0);
+        this.bottomLayer.setCollisionBetween(0, 13);
+        // // thisideCollider.setCollisionBetween(1, 9);
+        // toplayer.setCollisionBetween(0, 12);
+        // this.bottomPlatformArray.push(bottomLayer);
+        // this.topPlatformArray.push(toplayer);
+
+        // this.platformArray.push(bottomMidLayer);SSSSSS
+        // console.log("layer", layer);
+    }
+    CreateBottomPlatformXXX() {
+        // let blockOne = 
+        // console.log("Platform making");
+        // // const bottom_floor_01 = this.scene.add.image(300, 1470, "bottomFloor_One");
+        // // bottom_floor_01.setInteractive(new Phaser.Geom.Polygon("-2.956447115246533 311.73594117319067 768.1943317386604 306.7832535692446 768.1943317386604 158.42989867851384 1225.6171759850808 152.24850889139998 1225.6171759850808 0.8044591071118248 1531.5959704472136 0.8044591071118248 1534.6866653407706 158.42989867851384 1679.9493253379446 161.52059357207054 1683.0400202315013 615.8527429249343 2149.734949158593 612.7620480313772 2151 923 0 923"), Phaser.Geom.Polygon.Contains);
+        // // bottom_floor_01.setOrigin(0, 0);
+
+        // // // bottom_floor
+        // // this.scene.add.image(-1942, -1430, "bottomFloor_One");
+        // let bottomPlatformOne = this.scene.add.image(300, 1470, 'bottomFloor_One');
+        // const shape = new Phaser.Geom.Polygon([-2.956447115246533, 311.73594117319067, 768.1943317386604, 306.7832535692446, 768.1943317386604, 158.42989867851384, 1225.6171759850808, 152.24850889139998, 1225.6171759850808, 0.8044591071118248, 1531.5959704472136, 0.8044591071118248, 1534.6866653407706, 158.42989867851384, 1679.9493253379446, 161.52059357207054, 1683.0400202315013, 615.8527429249343, 2149.734949158593, 612.7620480313772, 2151, 923, 0, 923]);
+        // // const data = [100, 200, 300, 400, 700, 900, 500];
+        // this.graphics = this.scene.add.graphics({ x: bottomPlatformOne.x - bottomPlatformOne.displayOriginX, y: bottomPlatformOne.y - bottomPlatformOne.displayOriginY });
+        // this.scene.physics.world.enable(this.graphics);
+        // this.graphics.lineStyle(2, 0x00aa00);
+
+        // this.graphics.beginPath();
+
+        // this.graphics.moveTo(shape.points[0].x, shape.points[0].y);
+
+        // for (let i = 1; i < shape.points.length; i++) {
+        //     this.graphics.lineTo(shape.points[i].x, shape.points[i].y);
+        // }
+
+        // this.graphics.closePath();
+        // this.graphics.strokePath();
+        // this.scene.physics.world.enable(this.graphics);
+        // this.graphics.body.allowGravity = false;
+        // this.graphics.body.immovable = false;
 
 
+        // console.log(this.graphics);
 
-        console.log(shape);
+        // let bottomPlatformTwo = this.scene.add.image(300, -550, 'bottomFloor_One');
+        // const shapeTwo = new Phaser.Geom.Polygon([-2.956447115246533, 311.73594117319067, 768.1943317386604, 306.7832535692446, 768.1943317386604, 158.42989867851384, 1225.6171759850808, 152.24850889139998, 1225.6171759850808, 0.8044591071118248, 1531.5959704472136, 0.8044591071118248, 1534.6866653407706, 158.42989867851384, 1679.9493253379446, 161.52059357207054, 1683.0400202315013, 615.8527429249343, 2149.734949158593, 612.7620480313772, 2151, 923, 0, 923]);
+        // // const data = [100, 200, 300, 400, 700, 900, 500];
+        // this.graphicsTwo = this.scene.add.graphics({ x: bottomPlatformTwo.x - bottomPlatformTwo.displayOriginX, y: bottomPlatformTwo.y - bottomPlatformTwo.displayOriginY });
+        // this.scene.physics.world.enable(this.graphicsTwo);
+        // this.graphicsTwo.lineStyle(2, 0x00aa00);
+
+        // this.graphicsTwo.beginPath();
+
+        // this.graphicsTwo.moveTo(shapeTwo.points[0].x, shapeTwo.points[0].y);
+
+        // for (let i = 1; i < shapeTwo.points.length; i++) {
+        //     this.graphicsTwo.lineTo(shapeTwo.points[i].x, shapeTwo.points[i].y);
+        // }
+
+        // this.graphicsTwo.closePath();
+        // this.graphicsTwo.strokePath();
+        // // this.scene.physics.world.enable(this.graphicsTwo);
+        // // this.graphicsTwo.body.allowGravity = false;
+        // this.graphicsTwo.body.immovable = false;
+        // this.scene.physics.add.collider(this.graphics, this.graphicsTwo, () => {
+        //     console.log("coll");
+        //     this.graphics.body.blocked.down = true;
+        //     this.graphicsTwo.body.blocked.up = true;
+        //     this.graphics.body.setVelocityX(0);
+        // })
+        // bottom_floor_01.setInteractive(new Phaser.Geom.Polygon("-2.956447115246533 311.73594117319067 768.1943317386604 306.7832535692446 768.1943317386604 158.42989867851384 1225.6171759850808 152.24850889139998 1225.6171759850808 0.8044591071118248 1531.5959704472136 0.8044591071118248 1534.6866653407706 158.42989867851384 1679.9493253379446 161.52059357207054 1683.0400202315013 615.8527429249343 2149.734949158593 612.7620480313772 2151 923 0 923"), Phaser.Geom.Polygon.Contains);
+        // bottom_floor_01.setOrigin(0, 0);
+
+        // console.log(shape);
         // const graphics = this.scene.add.graphics({ x: bottomPlatformOne.x - bottomPlatformOne.displayOriginX, y: bottomPlatformOne.y - bottomPlatformOne.displayOriginY });
         // // this.physics.world.enable(graphics);
         // graphics.lineStyle(2, 0xffffff);
@@ -69,17 +147,17 @@ class Platform {
 
         // for (let i = 1; i < shape.points.length; i++) {
         //     graphics.lineTo(shape.points[i].x, shape.points[i].y);
-        // }
-        this.contain = this.scene.add.container(0, 0);
+        // // }
+        // this.contain = this.scene.add.container(0, 0);
 
-        this.obstacle = this.scene.physics.add.image(950, 950, 'onepixel').setScale(130).setDepth(0).setFrictionX(0);
-        this.obstacle.body.allowGravity = false;
-        this.obstacle.body.immovable = true;
-        this.contain.add(this.obstacle);
-        this.contain.setSize(this.obstacle.width, this.obstacle.height);
-        this.scene.physics.world.enable(this.contain);
+        // this.obstacle = this.scene.physics.add.image(950, 950, 'onepixel').setScale(130).setDepth(0).setFrictionX(0);
+        // this.obstacle.body.allowGravity = false;
+        // this.obstacle.body.immovable = true;
+        // this.contain.add(this.obstacle);
+        // this.contain.setSize(this.obstacle.width, this.obstacle.height);
+        // this.scene.physics.world.enable(this.contain);
 
-        this.contain.body.allowGravity = false;
+        // this.contain.body.allowGravity = false;
         // this.platformLastIndex = this.numberOfBottomPlatforms - 1;
         // this.index = this.numberOfColliders - 1;
 
@@ -406,35 +484,7 @@ class Platform {
     }
 
 
-    CreatePlatformXXX() {
 
-        let platform = this.scene.make.tilemap({ key: 'platform_map', tileWidth: 154, tileHeight: 154 });
-        let platformTileset = platform.addTilesetImage('GamePlatformTiles', 'platform');
-        let bottomLayer = platform.createLayer('BottomLayer', platformTileset, 0, 0);
-        console.log("bottomLayer", bottomLayer);
-
-        // bottomLayer.setCollisionByProperty({ collides: true });
-        this.sideCollider = platform.createFromObjects('SideColliders');
-        this.sideCollider.forEach(colls => {
-            //     //     //     // colls.setOrigin(0.1);
-            this.scene.physics.add.existing(colls);
-            colls.body.allowGravity = false;
-            //     //     // colls.body.setBounce(0);
-        });
-        // this.sideCollider.refresh();
-        // platform.setCollisionBetween(0, 13);
-
-        // console.log(this.bottomLayer);
-        let toplayer = platform.createLayer('TopLayer', platformTileset, 0, 0);
-        bottomLayer.setCollisionBetween(0, 13);
-        // thisideCollider.setCollisionBetween(1, 9);
-        toplayer.setCollisionBetween(0, 12);
-        this.bottomPlatformArray.push(bottomLayer);
-        this.topPlatformArray.push(toplayer);
-
-        // this.platformArray.push(bottomMidLayer);SSSSSS
-        // console.log("layer", layer);
-    }
     CreateMidPlatformXXX() {
         let midPlatform = this.scene.make.tilemap({ key: 'mid_bottom_platform', tileWidth: 154, tileHeight: 154 });
         let platformTileset = midPlatform.addTilesetImage('MidPlatform', 'platform');

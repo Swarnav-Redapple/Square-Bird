@@ -11,6 +11,7 @@ class Player {
         this.scene.physics.add.existing(this.player);
         this.player.body.allowGravity = true;
         this.player.body.immovable = false;
+        this.player.body.setVelocityX(70);
         this.player.play('Idle', true);
         // this.scene.time.addEvent({
         //     delay: 1000,
