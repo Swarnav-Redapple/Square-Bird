@@ -47,6 +47,29 @@ class Platform {
     }
     CreateBottomPlatform() {
         console.log("Platform making");
+        let bottomPlatformOne = this.scene.add.image(300, 1470, 'bottomFloor_One');
+        const data = [400, 100,
+            200, 278,
+            340, 430,
+            550, 80];
+        // const data = [100, 200, 300, 400, 700, 900, 500];
+        let shape = this.scene.add.polygon(-768, 1917, data);
+        shape.setStrokeStyle(2, 0xffffff);
+
+
+
+        console.log(shape);
+        // const graphics = this.scene.add.graphics({ x: bottomPlatformOne.x - bottomPlatformOne.displayOriginX, y: bottomPlatformOne.y - bottomPlatformOne.displayOriginY });
+        // // this.physics.world.enable(graphics);
+        // graphics.lineStyle(2, 0xffffff);
+
+        // graphics.beginPath();
+
+        // graphics.moveTo(shape.points[0].x, shape.points[0].y);
+
+        // for (let i = 1; i < shape.points.length; i++) {
+        //     graphics.lineTo(shape.points[i].x, shape.points[i].y);
+        // }
         this.contain = this.scene.add.container(0, 0);
 
         this.obstacle = this.scene.physics.add.image(950, 950, 'onepixel').setScale(130).setDepth(0).setFrictionX(0);
@@ -74,173 +97,173 @@ class Platform {
 
 
 
-        this.bottomContainer_One = this.scene.add.container(0, 0);
+        // this.bottomContainer_One = this.scene.add.container(0, 0);
 
-        let bottomPlatformOne = this.scene.add.image(300, 1470, 'bottomFloor_One');
+
         // let bottomPlatformOne = this.scene.add.image(500, 500, 'bottomFloor_One');
         // this.bottomPlatformArray_One.push(bottomPlatformOne);
-        this.bottomContainer_One.setSize(10, 10);
-        this.scene.physics.world.enable(this.bottomContainer_One);
-        // // this.bottomContainer_One.setPosition(bottomPlatformOne.x, bottomPlatformOne.y);
+        // this.bottomContainer_One.setSize(10, 10);
+        // this.scene.physics.world.enable(this.bottomContainer_One);
+        // // // this.bottomContainer_One.setPosition(bottomPlatformOne.x, bottomPlatformOne.y);
 
-        this.bottomContainer_One.add(bottomPlatformOne);
-        this.bottomContainer_One.body.allowGravity = false;
+        // this.bottomContainer_One.add(bottomPlatformOne);
+        // this.bottomContainer_One.body.allowGravity = false;
 
-        let collider_One = this.scene.physics.add.image(-390, 1630, 'onepixel').setScale(780 * scaleFactor, 620 * scaleFactor).setAlpha(0.5);
-        collider_One.body.allowGravity = false;
-        collider_One.body.immovable = true;
-        // // console.log('cont', this.bottomContainer_One.x, collider_One.x)
-        this.colliderArray.push(collider_One);
-        this.bottomContainer_One.add(collider_One);
+        // let collider_One = this.scene.physics.add.image(-390, 1630, 'onepixel').setScale(780 * scaleFactor, 620 * scaleFactor).setAlpha(0.5);
+        // collider_One.body.allowGravity = false;
+        // collider_One.body.immovable = true;
+        // // // console.log('cont', this.bottomContainer_One.x, collider_One.x)
+        // this.colliderArray.push(collider_One);
+        // this.bottomContainer_One.add(collider_One);
 
-        let collider_Two = this.scene.physics.add.image(223, 1664, 'onepixel').setScale(450 * scaleFactor, 990 * scaleFactor).setAlpha(0.5);
-        collider_Two.body.allowGravity = false;
-        collider_Two.body.immovable = true;
-        this.colliderArray.push(collider_Two);
-        this.bottomContainer_One.add(collider_Two);
+        // let collider_Two = this.scene.physics.add.image(223, 1664, 'onepixel').setScale(450 * scaleFactor, 990 * scaleFactor).setAlpha(0.5);
+        // collider_Two.body.allowGravity = false;
+        // collider_Two.body.immovable = true;
+        // this.colliderArray.push(collider_Two);
+        // this.bottomContainer_One.add(collider_Two);
 
-        let collider_Three = this.scene.physics.add.image(605, 1508, 'onepixel').setScale(300 * scaleFactor, 990 * scaleFactor).setAlpha(0.5);
-        collider_Three.body.allowGravity = false;
-        collider_Three.body.immovable = true;
-        this.colliderArray.push(collider_Three);
-        this.bottomContainer_One.add(collider_Three);
+        // let collider_Three = this.scene.physics.add.image(605, 1508, 'onepixel').setScale(300 * scaleFactor, 990 * scaleFactor).setAlpha(0.5);
+        // collider_Three.body.allowGravity = false;
+        // collider_Three.body.immovable = true;
+        // this.colliderArray.push(collider_Three);
+        // this.bottomContainer_One.add(collider_Three);
 
-        let collider_Four = this.scene.physics.add.image(835, 1605, 'onepixel').setScale(156 * scaleFactor, 880 * scaleFactor).setAlpha(0.5);
-        collider_Four.body.allowGravity = false;
-        collider_Four.body.immovable = true;
-        this.colliderArray.push(collider_Four);
-        this.bottomContainer_One.add(collider_Four);
-        // console.log("container", this.bottomContainer_One.list);
+        // let collider_Four = this.scene.physics.add.image(835, 1605, 'onepixel').setScale(156 * scaleFactor, 880 * scaleFactor).setAlpha(0.5);
+        // collider_Four.body.allowGravity = false;
+        // collider_Four.body.immovable = true;
+        // this.colliderArray.push(collider_Four);
+        // this.bottomContainer_One.add(collider_Four);
+        // // console.log("container", this.bottomContainer_One.list);
 
-        this.bottomContainer_Two = this.scene.add.container(0, 0);
-        let bottomPlatformTwo = this.scene.add.image(300 + bottomPlatformOne.width + 220, 1703, 'bottomFloor_Two');
-        this.bottomContainer_Two.setSize(10, 10);
-        this.scene.physics.world.enable(this.bottomContainer_Two);
-        this.bottomContainer_Two.add(bottomPlatformTwo);
-        this.bottomContainer_Two.body.allowGravity = false;
+        // this.bottomContainer_Two = this.scene.add.container(0, 0);
+        // let bottomPlatformTwo = this.scene.add.image(300 + bottomPlatformOne.width + 220, 1703, 'bottomFloor_Two');
+        // this.bottomContainer_Two.setSize(10, 10);
+        // this.scene.physics.world.enable(this.bottomContainer_Two);
+        // this.bottomContainer_Two.add(bottomPlatformTwo);
+        // this.bottomContainer_Two.body.allowGravity = false;
 
-        let collider_Five = this.scene.physics.add.image(1214, 1778, 'onepixel').setScale(595 * scaleFactor, 300 * scaleFactor).setAlpha(0.5);
-        collider_Five.body.allowGravity = false;
-        collider_Five.body.immovable = true;
-        this.colliderArray.push(collider_Five);
-        this.bottomContainer_Two.add(collider_Five);
+        // let collider_Five = this.scene.physics.add.image(1214, 1778, 'onepixel').setScale(595 * scaleFactor, 300 * scaleFactor).setAlpha(0.5);
+        // collider_Five.body.allowGravity = false;
+        // collider_Five.body.immovable = true;
+        // this.colliderArray.push(collider_Five);
+        // this.bottomContainer_Two.add(collider_Five);
 
-        let collider_Six = this.scene.physics.add.image(1745, bottomPlatformTwo.y + bottomPlatformTwo.height / 16.2, 'onepixel').setScale(462 * scaleFactor, 1200 * scaleFactor).setAlpha(0.5);
-        collider_Six.body.allowGravity = false;
-        collider_Six.body.immovable = true;
-        this.colliderArray.push(collider_Six);
-        this.bottomContainer_Two.add(collider_Six);
+        // let collider_Six = this.scene.physics.add.image(1745, bottomPlatformTwo.y + bottomPlatformTwo.height / 16.2, 'onepixel').setScale(462 * scaleFactor, 1200 * scaleFactor).setAlpha(0.5);
+        // collider_Six.body.allowGravity = false;
+        // collider_Six.body.immovable = true;
+        // this.colliderArray.push(collider_Six);
+        // this.bottomContainer_Two.add(collider_Six);
 
-        let collider_Seven = this.scene.physics.add.image(2050, bottomPlatformTwo.y + bottomPlatformTwo.height / 16.2, 'onepixel').setScale(155 * scaleFactor, 900 * scaleFactor).setAlpha(0.5);
-        collider_Seven.body.allowGravity = false;
-        collider_Seven.body.immovable = true;
-        this.colliderArray.push(collider_Seven);
-        this.bottomContainer_Two.add(collider_Seven);
+        // let collider_Seven = this.scene.physics.add.image(2050, bottomPlatformTwo.y + bottomPlatformTwo.height / 16.2, 'onepixel').setScale(155 * scaleFactor, 900 * scaleFactor).setAlpha(0.5);
+        // collider_Seven.body.allowGravity = false;
+        // collider_Seven.body.immovable = true;
+        // this.colliderArray.push(collider_Seven);
+        // this.bottomContainer_Two.add(collider_Seven);
 
-        let collider_Eight = this.scene.physics.add.image(2440, bottomPlatformTwo.y + bottomPlatformTwo.height / 15.1, 'onepixel').setScale(625 * scaleFactor, 600 * scaleFactor).setAlpha(0.5);
-        collider_Eight.body.allowGravity = false;
-        collider_Eight.body.immovable = true;
-        this.colliderArray.push(collider_Eight);
-        this.bottomContainer_Two.add(collider_Eight);
+        // let collider_Eight = this.scene.physics.add.image(2440, bottomPlatformTwo.y + bottomPlatformTwo.height / 15.1, 'onepixel').setScale(625 * scaleFactor, 600 * scaleFactor).setAlpha(0.5);
+        // collider_Eight.body.allowGravity = false;
+        // collider_Eight.body.immovable = true;
+        // this.colliderArray.push(collider_Eight);
+        // this.bottomContainer_Two.add(collider_Eight);
 
-        let collider_Nine = this.scene.physics.add.image(2982, bottomPlatformTwo.y + bottomPlatformTwo.height / 25, 'onepixel').setScale(460 * scaleFactor, 850 * scaleFactor).setAlpha(0.5);
-        collider_Nine.body.allowGravity = false;
-        collider_Nine.body.immovable = true;
-        this.colliderArray.push(collider_Nine);
-        this.bottomContainer_Two.add(collider_Nine);
+        // let collider_Nine = this.scene.physics.add.image(2982, bottomPlatformTwo.y + bottomPlatformTwo.height / 25, 'onepixel').setScale(460 * scaleFactor, 850 * scaleFactor).setAlpha(0.5);
+        // collider_Nine.body.allowGravity = false;
+        // collider_Nine.body.immovable = true;
+        // this.colliderArray.push(collider_Nine);
+        // this.bottomContainer_Two.add(collider_Nine);
 
-        let collider_Ten = this.scene.physics.add.image(3442, bottomPlatformTwo.y - bottomPlatformTwo.height / 9.6, 'onepixel').setScale(450 * scaleFactor, 850 * scaleFactor).setAlpha(0.5);
-        collider_Ten.body.allowGravity = false;
-        collider_Ten.body.immovable = true;
-        this.colliderArray.push(collider_Ten);
-        this.bottomContainer_Two.add(collider_Ten);
+        // let collider_Ten = this.scene.physics.add.image(3442, bottomPlatformTwo.y - bottomPlatformTwo.height / 9.6, 'onepixel').setScale(450 * scaleFactor, 850 * scaleFactor).setAlpha(0.5);
+        // collider_Ten.body.allowGravity = false;
+        // collider_Ten.body.immovable = true;
+        // this.colliderArray.push(collider_Ten);
+        // this.bottomContainer_Two.add(collider_Ten);
 
-        let collider_Eleven = this.scene.physics.add.image(3825, bottomPlatformTwo.y + bottomPlatformTwo.height / 4.3, 'onepixel').setScale(310 * scaleFactor, 650 * scaleFactor).setAlpha(0.5);
-        collider_Eleven.body.allowGravity = false;
-        collider_Eleven.body.immovable = true;
-        this.colliderArray.push(collider_Eleven);
-        this.bottomContainer_Two.add(collider_Eleven);
+        // let collider_Eleven = this.scene.physics.add.image(3825, bottomPlatformTwo.y + bottomPlatformTwo.height / 4.3, 'onepixel').setScale(310 * scaleFactor, 650 * scaleFactor).setAlpha(0.5);
+        // collider_Eleven.body.allowGravity = false;
+        // collider_Eleven.body.immovable = true;
+        // this.colliderArray.push(collider_Eleven);
+        // this.bottomContainer_Two.add(collider_Eleven);
 
-        this.bottomContainer_Three = this.scene.add.container(0, 0);
-        let bottomPlatformThree = this.scene.add.image(bottomPlatformTwo.x + bottomPlatformTwo.width + 800, 1700, 'bottomFloor_Three');
-        this.bottomContainer_Three.setSize(10, 10);
-        this.scene.physics.world.enable(this.bottomContainer_Three);
-        this.bottomContainer_Three.add(bottomPlatformThree);
-        this.bottomContainer_Three.body.allowGravity = false;
+        // this.bottomContainer_Three = this.scene.add.container(0, 0);
+        // let bottomPlatformThree = this.scene.add.image(bottomPlatformTwo.x + bottomPlatformTwo.width + 800, 1700, 'bottomFloor_Three');
+        // this.bottomContainer_Three.setSize(10, 10);
+        // this.scene.physics.world.enable(this.bottomContainer_Three);
+        // this.bottomContainer_Three.add(bottomPlatformThree);
+        // this.bottomContainer_Three.body.allowGravity = false;
 
-        let collider_Twelve = this.scene.physics.add.image(4100, bottomPlatformThree.y + bottomPlatformThree.height / 4.51, 'onepixel').setScale(150 * scaleFactor, 625 * scaleFactor).setAlpha(0.5);
-        collider_Twelve.body.allowGravity = false;
-        collider_Twelve.body.immovable = true;
-        this.colliderArray.push(collider_Twelve);
-        this.bottomContainer_Three.add(collider_Twelve);
+        // let collider_Twelve = this.scene.physics.add.image(4100, bottomPlatformThree.y + bottomPlatformThree.height / 4.51, 'onepixel').setScale(150 * scaleFactor, 625 * scaleFactor).setAlpha(0.5);
+        // collider_Twelve.body.allowGravity = false;
+        // collider_Twelve.body.immovable = true;
+        // this.colliderArray.push(collider_Twelve);
+        // this.bottomContainer_Three.add(collider_Twelve);
 
-        let collider_Thirteen = this.scene.physics.add.image(4313, bottomPlatformThree.y + bottomPlatformThree.height / 4.6, 'onepixel').setScale(300 * scaleFactor, 920 * scaleFactor).setAlpha(0.5);
-        collider_Thirteen.body.allowGravity = false;
-        collider_Thirteen.body.immovable = true;
-        this.colliderArray.push(collider_Thirteen);
-        this.bottomContainer_Three.add(collider_Thirteen);
+        // let collider_Thirteen = this.scene.physics.add.image(4313, bottomPlatformThree.y + bottomPlatformThree.height / 4.6, 'onepixel').setScale(300 * scaleFactor, 920 * scaleFactor).setAlpha(0.5);
+        // collider_Thirteen.body.allowGravity = false;
+        // collider_Thirteen.body.immovable = true;
+        // this.colliderArray.push(collider_Thirteen);
+        // this.bottomContainer_Three.add(collider_Thirteen);
 
-        let collider_Fourteen = this.scene.physics.add.image(4935, bottomPlatformThree.y - bottomPlatformThree.height / 14.5, 'onepixel').setScale(918 * scaleFactor, 920 * scaleFactor).setAlpha(0.5);
-        collider_Fourteen.body.allowGravity = false;
-        collider_Fourteen.body.immovable = true;
-        this.colliderArray.push(collider_Fourteen);
-        this.bottomContainer_Three.add(collider_Fourteen);
+        // let collider_Fourteen = this.scene.physics.add.image(4935, bottomPlatformThree.y - bottomPlatformThree.height / 14.5, 'onepixel').setScale(918 * scaleFactor, 920 * scaleFactor).setAlpha(0.5);
+        // collider_Fourteen.body.allowGravity = false;
+        // collider_Fourteen.body.immovable = true;
+        // this.colliderArray.push(collider_Fourteen);
+        // this.bottomContainer_Three.add(collider_Fourteen);
 
-        let collider_Fifteen = this.scene.physics.add.image(5700, bottomPlatformThree.y + bottomPlatformThree.height / 4.6, 'onepixel').setScale(612 * scaleFactor, 920 * scaleFactor).setAlpha(0.5);
-        collider_Fifteen.body.allowGravity = false;
-        collider_Fifteen.body.immovable = true;
-        this.colliderArray.push(collider_Fifteen);
-        this.bottomContainer_Three.add(collider_Fifteen);
+        // let collider_Fifteen = this.scene.physics.add.image(5700, bottomPlatformThree.y + bottomPlatformThree.height / 4.6, 'onepixel').setScale(612 * scaleFactor, 920 * scaleFactor).setAlpha(0.5);
+        // collider_Fifteen.body.allowGravity = false;
+        // collider_Fifteen.body.immovable = true;
+        // this.colliderArray.push(collider_Fifteen);
+        // this.bottomContainer_Three.add(collider_Fifteen);
 
-        let collider_Sixteen = this.scene.physics.add.image(6330, bottomPlatformThree.y + bottomPlatformThree.height / 37, 'onepixel').setScale(631 * scaleFactor, 200 * scaleFactor).setAlpha(0.5);
-        collider_Sixteen.body.allowGravity = false;
-        collider_Sixteen.body.immovable = true;
-        this.colliderArray.push(collider_Sixteen);
-        this.bottomContainer_Three.add(collider_Sixteen);
+        // let collider_Sixteen = this.scene.physics.add.image(6330, bottomPlatformThree.y + bottomPlatformThree.height / 37, 'onepixel').setScale(631 * scaleFactor, 200 * scaleFactor).setAlpha(0.5);
+        // collider_Sixteen.body.allowGravity = false;
+        // collider_Sixteen.body.immovable = true;
+        // this.colliderArray.push(collider_Sixteen);
+        // this.bottomContainer_Three.add(collider_Sixteen);
 
-        let collider_Seventeen = this.scene.physics.add.image(6937, bottomPlatformThree.y - bottomPlatformThree.height / 12.9, 'onepixel').setScale(612 * scaleFactor, 290 * scaleFactor).setAlpha(0.5);
-        collider_Seventeen.body.allowGravity = false;
-        collider_Seventeen.body.immovable = true;
-        this.colliderArray.push(collider_Seventeen);
-        this.bottomContainer_Three.add(collider_Seventeen);
+        // let collider_Seventeen = this.scene.physics.add.image(6937, bottomPlatformThree.y - bottomPlatformThree.height / 12.9, 'onepixel').setScale(612 * scaleFactor, 290 * scaleFactor).setAlpha(0.5);
+        // collider_Seventeen.body.allowGravity = false;
+        // collider_Seventeen.body.immovable = true;
+        // this.colliderArray.push(collider_Seventeen);
+        // this.bottomContainer_Three.add(collider_Seventeen);
 
-        let collider_Eighteen = this.scene.physics.add.image(7703, bottomPlatformThree.y - bottomPlatformThree.height / 7.6, 'onepixel').setScale(910 * scaleFactor, 480 * scaleFactor).setAlpha(0.5);
-        collider_Eighteen.body.allowGravity = false;
-        collider_Eighteen.body.immovable = true;
-        this.colliderArray.push(collider_Eighteen);
-        this.bottomContainer_Three.add(collider_Eighteen);
+        // let collider_Eighteen = this.scene.physics.add.image(7703, bottomPlatformThree.y - bottomPlatformThree.height / 7.6, 'onepixel').setScale(910 * scaleFactor, 480 * scaleFactor).setAlpha(0.5);
+        // collider_Eighteen.body.allowGravity = false;
+        // collider_Eighteen.body.immovable = true;
+        // this.colliderArray.push(collider_Eighteen);
+        // this.bottomContainer_Three.add(collider_Eighteen);
 
-        this.bottomContainer_Four = this.scene.add.container(0, 0);
-        let bottomPlatformFour = this.scene.add.image(bottomPlatformThree.x + bottomPlatformThree.width - 1050, 1703, 'bottomFloor_Four');
-        this.bottomContainer_Four.setSize(10, 10);
-        this.scene.physics.world.enable(this.bottomContainer_Four);
-        this.bottomContainer_Four.add(bottomPlatformFour);
-        this.bottomContainer_Four.body.allowGravity = false;
+        // this.bottomContainer_Four = this.scene.add.container(0, 0);
+        // let bottomPlatformFour = this.scene.add.image(bottomPlatformThree.x + bottomPlatformThree.width - 1050, 1703, 'bottomFloor_Four');
+        // this.bottomContainer_Four.setSize(10, 10);
+        // this.scene.physics.world.enable(this.bottomContainer_Four);
+        // this.bottomContainer_Four.add(bottomPlatformFour);
+        // this.bottomContainer_Four.body.allowGravity = false;
 
-        let collider_Nineteen = this.scene.physics.add.image(8738, bottomPlatformFour.y + bottomPlatformFour.height / 3.55, 'onepixel').setScale(770 * scaleFactor, 440 * scaleFactor).setAlpha(0.5);
-        collider_Nineteen.body.allowGravity = false;
-        collider_Nineteen.body.immovable = true;
-        this.colliderArray.push(collider_Nineteen);
-        this.bottomContainer_Four.add(collider_Nineteen);
+        // let collider_Nineteen = this.scene.physics.add.image(8738, bottomPlatformFour.y + bottomPlatformFour.height / 3.55, 'onepixel').setScale(770 * scaleFactor, 440 * scaleFactor).setAlpha(0.5);
+        // collider_Nineteen.body.allowGravity = false;
+        // collider_Nineteen.body.immovable = true;
+        // this.colliderArray.push(collider_Nineteen);
+        // this.bottomContainer_Four.add(collider_Nineteen);
 
-        let collider_Twentieth = this.scene.physics.add.image(9200, bottomPlatformFour.y + bottomPlatformFour.height / 7.4, 'onepixel').setScale(150 * scaleFactor, 440 * scaleFactor).setAlpha(0.5);
-        collider_Twentieth.body.allowGravity = false;
-        collider_Twentieth.body.immovable = true;
-        this.colliderArray.push(collider_Twentieth);
-        this.bottomContainer_Four.add(collider_Twentieth);
+        // let collider_Twentieth = this.scene.physics.add.image(9200, bottomPlatformFour.y + bottomPlatformFour.height / 7.4, 'onepixel').setScale(150 * scaleFactor, 440 * scaleFactor).setAlpha(0.5);
+        // collider_Twentieth.body.allowGravity = false;
+        // collider_Twentieth.body.immovable = true;
+        // this.colliderArray.push(collider_Twentieth);
+        // this.bottomContainer_Four.add(collider_Twentieth);
 
 
-        let collider_TwentyOne = this.scene.physics.add.image(collider_Twentieth.x + bottomPlatformFour.width / 7.5, bottomPlatformFour.y - bottomPlatformFour.height / 150, 'onepixel').setScale(300 * scaleFactor, 440 * scaleFactor).setAlpha(0.5);
-        collider_TwentyOne.body.allowGravity = false;
-        collider_TwentyOne.body.immovable = true;
-        this.colliderArray.push(collider_TwentyOne);
-        this.bottomContainer_Four.add(collider_TwentyOne);
+        // let collider_TwentyOne = this.scene.physics.add.image(collider_Twentieth.x + bottomPlatformFour.width / 7.5, bottomPlatformFour.y - bottomPlatformFour.height / 150, 'onepixel').setScale(300 * scaleFactor, 440 * scaleFactor).setAlpha(0.5);
+        // collider_TwentyOne.body.allowGravity = false;
+        // collider_TwentyOne.body.immovable = true;
+        // this.colliderArray.push(collider_TwentyOne);
+        // this.bottomContainer_Four.add(collider_TwentyOne);
 
-        let collider_Twentytwo = this.scene.physics.add.image(collider_TwentyOne.x + bottomPlatformFour.width / 4.4, collider_TwentyOne.y - bottomPlatformFour.height / 3.5, 'onepixel').setScale(456 * scaleFactor, 440 * scaleFactor).setAlpha(0.5);
-        collider_Twentytwo.body.allowGravity = false;
-        collider_Twentytwo.body.immovable = true;
-        this.colliderArray.push(collider_Twentytwo);
-        this.bottomContainer_Four.add(collider_Twentytwo);
+        // let collider_Twentytwo = this.scene.physics.add.image(collider_TwentyOne.x + bottomPlatformFour.width / 4.4, collider_TwentyOne.y - bottomPlatformFour.height / 3.5, 'onepixel').setScale(456 * scaleFactor, 440 * scaleFactor).setAlpha(0.5);
+        // collider_Twentytwo.body.allowGravity = false;
+        // collider_Twentytwo.body.immovable = true;
+        // this.colliderArray.push(collider_Twentytwo);
+        // this.bottomContainer_Four.add(collider_Twentytwo);
 
         // let collider_Twentythree = this.scene.physics.add.image(collider_Twentytwo.x + bottomPlatformFour.width / 12.3, bottomPlatformFour.y - bottomPlatformFour.height / 150, 'onepixel').setScale(300 * scaleFactor, 440 * scaleFactor).setAlpha(0.5);
         // collider_Twentytwo.body.allowGravity = false;

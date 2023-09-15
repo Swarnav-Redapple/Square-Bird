@@ -38,12 +38,18 @@ export default class GameScene extends Phaser.Scene {
     create() {
         console.log("buttons", this.buttons.continueBtn);
         console.log('CanvasWidth',)
-        // this.cameras.main.setZoom(0.09);
-
+        this.cameras.main.setZoom(0.4);
+        this.input.on('pointerdown', function (pointer) {
+            if (pointer.leftButtonDown()) {
+                // text.setText("Left Pressed!");
+                console.log("X:" + Math.floor(pointer.worldX));
+                console.log("Y:" + Math.floor(pointer.worldY));
+            }
+        });
         this.ShowBg();
         // // this.ShowDistanceCovered();
         this.ShowPlatform();
-        this.MovePlatform();
+        // this.MovePlatform();
         // this.MoveColliders();
         this.ShowGameUI();
         this.CreateBird();
@@ -123,7 +129,7 @@ export default class GameScene extends Phaser.Scene {
         // if (this.player.player.body.blocked.right) {
         //     console.log("Dead");
         // }
-        this.player.player.body.setVelocityX(-270);
+        // this.player.player.body.setVelocityX(-270);
     }
     BirdOnTouchingPlatform(_bird, _platform) {
         // console.log("quwfuhq;whifqh;owef");
@@ -313,7 +319,7 @@ export default class GameScene extends Phaser.Scene {
     }
     update() {
         this.MoveBg();
-        this.RepositionPlatform();
+        // this.RepositionPlatform();
         // this.MovePlatform();
         // this.UpdateObstaclePosition();
         // this.OverlapCondition();
