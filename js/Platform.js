@@ -47,6 +47,9 @@ class Platform {
     }
     CreatePlatform() {
 
+    }
+    CreatePlatformXXX() {
+
         let platform = this.scene.make.tilemap({ key: 'platform_map', tileWidth: 154, tileHeight: 154 });
         let platformTileset = platform.addTilesetImage('GamePlatformTiles', 'platform');
         this.bottomLayer = platform.createLayer('BottomLayer', platformTileset, 0, 0);

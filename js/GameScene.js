@@ -1,4 +1,5 @@
 import Background from "./Background.js";
+import AlignGrid from "./AlignGrid.js";
 import Player from "./Player.js";
 import Platform from "./Platform.js";
 import GameUI from "./GameUI.js";
@@ -16,6 +17,7 @@ export default class GameScene extends Phaser.Scene {
         this.gameUI = new GameUI(this);
         this.buttons = new Buttons(this);
         this.iceCube = new IceCube(this);
+
         this.bg;
         this.distText;
         this.distance = 0;
@@ -37,23 +39,30 @@ export default class GameScene extends Phaser.Scene {
 
     }
     create() {
-        console.log("buttons", this.buttons.continueBtn);
-        console.log('CanvasWidth',)
-        // this.cameras.main.setZoom(0.4);
-        // this.input.on('pointerdown', function (pointer) {
-        //     if (pointer.leftButtonDown()) {
-        //         // text.setText("Left Pressed!");
-        //         console.log("X:" + Math.floor(pointer.worldX));
-        //         console.log("Y:" + Math.floor(pointer.worldY));
-        //     }
-        // });
-        this.ShowBg();
-        // // this.ShowDistanceCovered();
-        this.ShowPlatform();
-        // this.MovePlatform();
-        // this.MoveColliders();
-        this.ShowGameUI();
-        this.CreateBird();
+        let gridConfig = {
+            'scene': this,
+            'cols': 5,
+            'rows': 5
+        }
+        this.alignGrid = new AlignGrid(gridConfig);
+        this.alignGrid.show();
+        // console.log("buttons", this.buttons.continueBtn);
+        // console.log('CanvasWidth',)
+        // // this.cameras.main.setZoom(0.4);
+        // // this.input.on('pointerdown', function (pointer) {
+        // //     if (pointer.leftButtonDown()) {
+        // //         // text.setText("Left Pressed!");
+        // //         console.log("X:" + Math.floor(pointer.worldX));
+        // //         console.log("Y:" + Math.floor(pointer.worldY));
+        // //     }
+        // // });
+        // this.ShowBg();
+        // // // this.ShowDistanceCovered();
+        // this.ShowPlatform();
+        // // this.MovePlatform();
+        // // this.MoveColliders();
+        // this.ShowGameUI();
+        // this.CreateBird();
         // this.MovePlayer();
         // this.CreatePlatformLiner();
         // this.InteractiveCanvas();
