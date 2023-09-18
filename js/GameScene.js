@@ -41,11 +41,14 @@ export default class GameScene extends Phaser.Scene {
     create() {
         let gridConfig = {
             'scene': this,
-            'cols': 5,
-            'rows': 5
+            'cols': 70,
+            'rows': 12
         }
         this.alignGrid = new AlignGrid(gridConfig);
-        this.alignGrid.show();
+        // this.alignGrid.show();
+        this.alignGrid.showNumbers();
+        // let center = this.add.image(0, 0, 'center');
+        // this.alignGrid.placeAtIndex(77, center);
         // console.log("buttons", this.buttons.continueBtn);
         // console.log('CanvasWidth',)
         // // this.cameras.main.setZoom(0.4);
@@ -58,7 +61,7 @@ export default class GameScene extends Phaser.Scene {
         // // });
         // this.ShowBg();
         // // // this.ShowDistanceCovered();
-        // this.ShowPlatform();
+        this.ShowPlatform();
         // // this.MovePlatform();
         // // this.MoveColliders();
         // this.ShowGameUI();
@@ -85,6 +88,7 @@ export default class GameScene extends Phaser.Scene {
         this.distText = this.add.text(800, 50, "Distance : " + this.distance, { fontFamily: 'Arial', fontSize: 45, fill: '#FFFFFF', align: 'Center' });
     }
     ShowPlatform() {
+        console.log("platform");
         // this.platform = this.add.tileSprite(960, 1050, 1920, 72, "platform", 1).setScale(1);
         // this.physics.world.enable(this.platform);
         // this.platform.body.allowGravity = false;
@@ -127,8 +131,10 @@ export default class GameScene extends Phaser.Scene {
             // this.player.player.setVisible(false);
             // this.platform.MoveCollisionBoxes();
             // this.player.player.setVelocityX();
-            this.physics.add.collider(this.player.player, this.platform.bottomPlatformArray, this.BirdOnTouchingPlatform, null, this);
-            this.physics.add.collider(this.player.player, this.platform.bottomLayer, this.BirdOnTouchingPlatform, null, this);
+            // this.physics.add.collider(this.player.player, this.platform.bottomPlatformArray, this.BirdOnTouchingPlatform, null, this);
+            this.physics.add.collider(this.player.player, this.platform.topArray);
+            this.physics.add.collider(this.player.player, this.platform.center2);
+            // this.physics.add.collider(this.player.player, this.platform.bottomLayer, this.BirdOnTouchingPlatform, null, this);
             // this.physics.add.collider(this.player, this.platform.graphics, this.BirdOnTouching, null, this);
             // this.physics.add.collider(this.player.player, this.cubesArray, this.BirdOnTouchingCubes, null, this);
             // this.physics.add.collider(this.player.player, this.platform.bottomPlatformArray, this.XYZ, null, this);
@@ -151,7 +157,7 @@ export default class GameScene extends Phaser.Scene {
         // console.log("Touchh");
         this.player.player.body.setVelocityX(70);
         this.arrayBirdPos.push(this.player.player.x);
-        this.arrayBirdPos.push(this.player.player.y - 55);
+        this.arrayBirdPos.push(this.player.player.y + 20);
         this.isDown = true;
         // console.log(this.isDown);
         this.isStartCheck = true;

@@ -16,7 +16,7 @@ window.onload = function () {
         config = {
             type: Phaser.AUTO,
             parent: 'square_bird',
-            backgroundColor: '#34568b',
+            // backgroundColor: '#34568b',
             scale: {
                 mode: Phaser.Scale.FIT,
                 autoCenter: Phaser.Scale.CENTER_BOTH,
@@ -45,7 +45,7 @@ window.onload = function () {
         config = {
             type: Phaser.AUTO,
             parent: 'square_bird',
-            backgroundColor: '#34568b',
+            // backgroundColor: '#34568b',
             scale: {
                 mode: Phaser.Scale.FIT,
                 autoCenter: Phaser.Scale.CENTER_BOTH,
@@ -67,7 +67,7 @@ window.onload = function () {
                     }
                 ]
             },
-            width: 1080,
+            width: 5000,
             height: 1920
         };
     }
