@@ -37,6 +37,7 @@ class Platform {
         this.index = null;
         this.contain = null;
         this.centerArray = [];
+        this.leftArray = [];
         this.ptA = [];
     }
     CreateTutorialPlatform() {
@@ -55,8 +56,16 @@ class Platform {
             let center = this.scene.add.image(0, 0, 'center');
             this.centerArray.push(center);
         }
-        this.left_side = this.scene.add.image(0, 0, 'left_side');
+        for (let i = 0; i < 10; i++) {
+            let left_side = this.scene.add.image(0, 0, 'left_side');
+            this.leftArray.push(left_side);
+        }
+        // this.left_side = this.scene.add.image(0, 0, 'left_side');
+        this.right_side = this.scene.add.image(0, 0, 'right_side');
         this.left_corner_small = this.scene.add.image(0, 0, 'left_corner_small');
+        this.right_corner_small = this.scene.add.image(0, 0, 'right_corner_small');
+        this.top = this.scene.add.image(0, 0, 'top');
+        this.top_One = this.scene.add.image(0, 0, 'top');
     }
     CreatePlatform() {
         this.AddingPlatformTiles();
@@ -87,13 +96,30 @@ class Platform {
         this.scene.alignGrid.placeAtIndex(794, this.centerArray[24]);
         this.scene.alignGrid.placeAtIndex(795, this.centerArray[25]);
         this.scene.alignGrid.placeAtIndex(796, this.centerArray[26]);
-        this.scene.alignGrid.placeAtIndex(797, this.left_side);
-        this.scene.alignGrid.placeAtIndex(705, this.left_corner_small);
+        this.scene.alignGrid.placeAtIndex(797, this.leftArray[0]);
+        this.scene.alignGrid.placeAtIndex(710, this.left_corner_small);
         this.scene.alignGrid.placeAtIndex(700, this.centerArray[27]);
         this.scene.alignGrid.placeAtIndex(701, this.centerArray[28]);
         this.scene.alignGrid.placeAtIndex(702, this.centerArray[29]);
         this.scene.alignGrid.placeAtIndex(703, this.centerArray[30]);
         this.scene.alignGrid.placeAtIndex(704, this.centerArray[31]);
+        this.scene.alignGrid.placeAtIndex(711, this.top);
+        this.scene.alignGrid.placeAtIndex(712, this.top_One);
+        this.scene.alignGrid.placeAtIndex(713, this.right_corner_small);
+        this.scene.alignGrid.placeAtIndex(643, this.right_side);
+        this.scene.alignGrid.placeAtIndex(640, this.leftArray[1]);
+        this.scene.alignGrid.placeAtIndex(630, this.centerArray[32]);
+        this.scene.alignGrid.placeAtIndex(631, this.centerArray[33]);
+        this.scene.alignGrid.placeAtIndex(632, this.centerArray[34]);
+        this.scene.alignGrid.placeAtIndex(633, this.centerArray[35]);
+        this.scene.alignGrid.placeAtIndex(634, this.centerArray[36]);
+        this.scene.alignGrid.placeAtIndex(634, this.centerArray[37]);
+        this.scene.alignGrid.placeAtIndex(705, this.centerArray[38]);
+        this.scene.alignGrid.placeAtIndex(706, this.centerArray[39]);
+        this.scene.alignGrid.placeAtIndex(707, this.centerArray[40]);
+        this.scene.alignGrid.placeAtIndex(708, this.centerArray[41]);
+        this.scene.alignGrid.placeAtIndex(709, this.centerArray[42]);
+        this.scene.alignGrid.placeAtIndex(570, this.leftArray[2]);
         // this.scene.alignGrid.placeAtIndex()
         // for (let i = 0; i < 101; i++) {
         //     let center = this.scene.add.image(0, 0, 'center');
