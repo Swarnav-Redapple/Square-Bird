@@ -38,7 +38,15 @@ class Platform {
         this.contain = null;
         this.centerArray = [];
         this.leftArray = [];
-        this.ptA = [];
+        this.rightArray = [];
+        this.topArray = [];
+        this.leftCornerTopArray = [];
+        this.rightCornerTopArray = [];
+        this.leftCornerSmallArray = [];
+        this.rightCornerSmallArray = [];
+        this.topPosArray = [770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 799, 710, 700, 701, 702, 703, 704, 711, 712, 713, 643, 640, 630, 631, 632, 633, 634, 705, 706, 707, 708, 709, 570, 560, 561, 562, 563, 500, 429, 499, 429, 428, 498, 497, 496, 495, 565, 635, 636, 637, 638, 639, 566, 567, 568, 569, 573, 504, 574, 434, 364, 365, 366, 437, 436, 508, 507, 509, 510, 511, 512, 442, 443, 444, 375, 445, 428, 376, 377, 447, 517, 588, 589, 659, 729, 587, 797, 798, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 405, 505, 506, 513, 514, 515, 516, 435, 446];
+        this.key = ["top"];
+        // this.ptA = [];
     }
     CreateTutorialPlatform() {
         let tutorialPlatform = this.scene.make.tilemap({ key: 'platformInstruction', tileWidth: 154, tileHeight: 154 });
@@ -52,74 +60,403 @@ class Platform {
         let layer = boxPlatform.createLayer('BoxLayer', boxPlatformTileset, 65, 55);
     }
     AddingPlatformTiles() {
-        for (let i = 0; i < 101; i++) {
-            let center = this.scene.add.image(0, 0, 'center');
+        for (let i = 0; i < 200; i++) {
+            let center = this.scene.physics.add.image(0, 0, 'center');
+            center.body.allowGravity = false;
+            center.body.immovable = false;
             this.centerArray.push(center);
         }
         for (let i = 0; i < 10; i++) {
-            let left_side = this.scene.add.image(0, 0, 'left_side');
+            let left_side = this.scene.physics.add.image(0, 0, 'left_side');
+            left_side.body.allowGravity = false;
+            left_side.body.immovable = false;
             this.leftArray.push(left_side);
         }
-        // this.left_side = this.scene.add.image(0, 0, 'left_side');
-        this.right_side = this.scene.add.image(0, 0, 'right_side');
-        this.left_corner_small = this.scene.add.image(0, 0, 'left_corner_small');
-        this.right_corner_small = this.scene.add.image(0, 0, 'right_corner_small');
-        this.top = this.scene.add.image(0, 0, 'top');
-        this.top_One = this.scene.add.image(0, 0, 'top');
+        for (let i = 0; i < 100; i++) {
+            let right_side = this.scene.physics.add.image(0, 0, 'right_side');
+            right_side.body.allowGravity = false;
+            right_side.body.immovable = false;
+            this.rightArray.push(right_side);
+        }
+        for (let i = 0; i < 100; i++) {
+            let left_corner_small = this.scene.physics.add.image(0, 0, 'left_corner_small');
+            left_corner_small.body.allowGravity = false;
+            left_corner_small.body.immovable = false;
+            this.leftCornerSmallArray.push(left_corner_small);
+        }
+        for (let i = 0; i < 100; i++) {
+            let right_corner_small = this.scene.physics.add.image(0, 0, 'right_corner_small');
+            right_corner_small.body.allowGravity = false;
+            right_corner_small.body.immovable = false;
+            this.rightCornerSmallArray.push(right_corner_small);
+        }
+        for (let i = 0; i < 100; i++) {
+            let top = this.scene.physics.add.image(0, 0, 'top');
+            top.body.allowGravity = false;
+            top.body.immovable = false;
+            this.topArray.push(top);
+        }
+        for (let i = 0; i < 100; i++) {
+            let left_corner_top = this.scene.physics.add.image(0, 0, 'left_corner_top');
+            left_corner_top.body.allowGravity = false;
+            left_corner_top.body.immovable = false;
+            this.leftCornerTopArray.push(left_corner_top);
+        }
+        for (let i = 0; i < 100; i++) {
+            let right_corner_top = this.scene.physics.add.image(0, 0, 'right_corner_top');
+            right_corner_top.body.allowGravity = false;
+            right_corner_top.body.immovable = false;
+            this.rightCornerTopArray.push(right_corner_top);
+        }
     }
     CreatePlatform() {
         this.AddingPlatformTiles();
-        this.scene.alignGrid.placeAtIndex(770, this.centerArray[0]);
-        this.scene.alignGrid.placeAtIndex(771, this.centerArray[1]);
-        this.scene.alignGrid.placeAtIndex(772, this.centerArray[2])
-        this.scene.alignGrid.placeAtIndex(773, this.centerArray[3])
-        this.scene.alignGrid.placeAtIndex(774, this.centerArray[4])
-        this.scene.alignGrid.placeAtIndex(775, this.centerArray[5])
-        this.scene.alignGrid.placeAtIndex(776, this.centerArray[6])
-        this.scene.alignGrid.placeAtIndex(777, this.centerArray[7])
-        this.scene.alignGrid.placeAtIndex(778, this.centerArray[8])
-        this.scene.alignGrid.placeAtIndex(779, this.centerArray[9])
-        this.scene.alignGrid.placeAtIndex(780, this.centerArray[10])
-        this.scene.alignGrid.placeAtIndex(781, this.centerArray[11])
-        this.scene.alignGrid.placeAtIndex(782, this.centerArray[12])
-        this.scene.alignGrid.placeAtIndex(783, this.centerArray[13])
-        this.scene.alignGrid.placeAtIndex(784, this.centerArray[14])
-        this.scene.alignGrid.placeAtIndex(785, this.centerArray[15])
-        this.scene.alignGrid.placeAtIndex(786, this.centerArray[16])
-        this.scene.alignGrid.placeAtIndex(787, this.centerArray[17])
-        this.scene.alignGrid.placeAtIndex(788, this.centerArray[18]);
-        this.scene.alignGrid.placeAtIndex(789, this.centerArray[19]);
-        this.scene.alignGrid.placeAtIndex(790, this.centerArray[20]);
-        this.scene.alignGrid.placeAtIndex(791, this.centerArray[21]);
-        this.scene.alignGrid.placeAtIndex(792, this.centerArray[22]);
-        this.scene.alignGrid.placeAtIndex(793, this.centerArray[23]);
-        this.scene.alignGrid.placeAtIndex(794, this.centerArray[24]);
-        this.scene.alignGrid.placeAtIndex(795, this.centerArray[25]);
-        this.scene.alignGrid.placeAtIndex(796, this.centerArray[26]);
-        this.scene.alignGrid.placeAtIndex(797, this.leftArray[0]);
-        this.scene.alignGrid.placeAtIndex(710, this.left_corner_small);
-        this.scene.alignGrid.placeAtIndex(700, this.centerArray[27]);
-        this.scene.alignGrid.placeAtIndex(701, this.centerArray[28]);
-        this.scene.alignGrid.placeAtIndex(702, this.centerArray[29]);
-        this.scene.alignGrid.placeAtIndex(703, this.centerArray[30]);
-        this.scene.alignGrid.placeAtIndex(704, this.centerArray[31]);
-        this.scene.alignGrid.placeAtIndex(711, this.top);
-        this.scene.alignGrid.placeAtIndex(712, this.top_One);
-        this.scene.alignGrid.placeAtIndex(713, this.right_corner_small);
-        this.scene.alignGrid.placeAtIndex(643, this.right_side);
-        this.scene.alignGrid.placeAtIndex(640, this.leftArray[1]);
-        this.scene.alignGrid.placeAtIndex(630, this.centerArray[32]);
-        this.scene.alignGrid.placeAtIndex(631, this.centerArray[33]);
-        this.scene.alignGrid.placeAtIndex(632, this.centerArray[34]);
-        this.scene.alignGrid.placeAtIndex(633, this.centerArray[35]);
-        this.scene.alignGrid.placeAtIndex(634, this.centerArray[36]);
-        this.scene.alignGrid.placeAtIndex(634, this.centerArray[37]);
-        this.scene.alignGrid.placeAtIndex(705, this.centerArray[38]);
-        this.scene.alignGrid.placeAtIndex(706, this.centerArray[39]);
-        this.scene.alignGrid.placeAtIndex(707, this.centerArray[40]);
-        this.scene.alignGrid.placeAtIndex(708, this.centerArray[41]);
-        this.scene.alignGrid.placeAtIndex(709, this.centerArray[42]);
-        this.scene.alignGrid.placeAtIndex(570, this.leftArray[2]);
+        for (let i = 0; i < this.topPosArray.length; i++) {
+            // console.log(this.topPosArray[i]);
+            if (this.topPosArray[i] == 560) {
+                let i = 560;
+                // let k = 496;
+                for (let i = 560; i < 565; i++) {
+                    console.log(i);
+                    this.scene.alignGrid.placeAtIndex(i, this.scene.add.image(0, 0, this.key[0]));
+                    // this.scene.alignGrid.placeAtIndex(k, this.scene.add.image(0, 0, this.key[0]));
+                }
+                // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.topArray[0]);
+            }
+            if (this.topPosArray[i] == 565) {
+                this.scene.alignGrid.placeAtIndex((this.topPosArray[i]), this.rightCornerSmallArray[0])
+            }
+            if (this.topPosArray[i] == 495) {
+                this.scene.alignGrid.placeAtIndex((this.topPosArray[i]), this.rightCornerTopArray[0]);
+            }
+            if (this.topPosArray[i] == 496) {
+                let i = 496;
+                for (let i = 496; i < 498; i++) {
+                    console.log("iwngohwig");
+                    this.scene.alignGrid.placeAtIndex(i, this.scene.add.image(0, 0, this.key[0]));
+                }
+            }
+            else {
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.centerArray[i]);
+            }
+            // console.log(this.topPosArray[i]);
+        }
+        // [770, 771]
+        // this.scene.alignGrid.placeAtIndex(770, this.centerArray[0]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(771, this.centerArray[1]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(772, this.centerArray[2]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(773, this.centerArray[3]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(774, this.centerArray[4]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(775, this.centerArray[5]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(776, this.centerArray[6]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(777, this.centerArray[7]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(778, this.centerArray[8]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(779, this.centerArray[9]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(780, this.centerArray[10]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(781, this.centerArray[11]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(782, this.centerArray[12]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(783, this.centerArray[13]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(784, this.centerArray[14]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(785, this.centerArray[15]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(786, this.centerArray[16]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(787, this.centerArray[17]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(788, this.centerArray[18]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(789, this.centerArray[19]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(790, this.centerArray[20]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(791, this.centerArray[21]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(792, this.centerArray[22]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(793, this.centerArray[23]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(794, this.centerArray[24]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(795, this.centerArray[25]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(796, this.centerArray[26]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(799, this.leftArray[0]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(710, this.leftCornerSmallArray[0]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(700, this.centerArray[27]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(701, this.centerArray[28]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(702, this.centerArray[29]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(703, this.centerArray[30]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(704, this.centerArray[31]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(711, this.topArray[0]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(712, this.topArray[1]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(713, this.rightCornerSmallArray[0]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(643, this.rightArray[0]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(640, this.leftArray[1]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(630, this.centerArray[32]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(631, this.centerArray[33]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(632, this.centerArray[34]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(633, this.centerArray[35]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(634, this.centerArray[36]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(634, this.centerArray[37]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(705, this.centerArray[38]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(706, this.centerArray[39]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(707, this.centerArray[40]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(708, this.centerArray[41]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(709, this.centerArray[42]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(570, this.leftArray[2]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(560, this.topArray[3]);
+        // this.platformArray.push(this.centerArray[0]);
+        // // this.scene.alignGrid.placeAtIndex(561, this.topArray[4]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(562, this.topArray[5]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(563, this.topArray[6]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(564, this.topArray[7]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(500, this.leftCornerTopArray[0]);
+        // this.platformArray.push(this.centerArray[0]);
+        // // this.scene.alignGrid.placeAtIndex(429, this.leftArray[3]);
+        // this.scene.alignGrid.placeAtIndex(499, this.leftCornerSmallArray[1]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(429, this.leftCornerTopArray[1]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(428, this.rightCornerTopArray[0]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(498, this.rightCornerSmallArray[1]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(497, this.topArray[8]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(496, this.topArray[9]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(495, this.rightCornerTopArray[1]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(565, this.rightCornerSmallArray[2]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(635, this.centerArray[43]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(636, this.centerArray[44]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(637, this.centerArray[45]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(638, this.centerArray[46]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(639, this.centerArray[47]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(566, this.centerArray[48]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(567, this.centerArray[49]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(568, this.centerArray[50]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(569, this.centerArray[51]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(573, this.rightCornerTopArray[2]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(504, this.rightArray[1]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(574, this.rightCornerSmallArray[3]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(434, this.rightArray[2]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(364, this.rightCornerTopArray[3]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(365, this.topArray[10]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(366, this.leftCornerTopArray[2]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(437, this.leftCornerTopArray[4]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(436, this.leftCornerSmallArray[2]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(508, this.topArray[11]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(507, this.leftCornerSmallArray[3]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(509, this.topArray[12]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(510, this.topArray[13]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(511, this.topArray[14]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(512, this.rightCornerSmallArray[4]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(442, this.rightCornerTopArray[5]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(443, this.topArray[15]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(444, this.topArray[16]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(375, this.rightCornerTopArray[6]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(445, this.rightCornerSmallArray[5]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(428, this.rightCornerTopArray[0]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(376, this.topArray[17]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(377, this.leftCornerTopArray[5]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(447, this.leftArray[3]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(517, this.leftArray[4]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(588, this.topArray[18]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(589, this.leftCornerTopArray[6]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(659, this.leftArray[5]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(729, this.leftArray[6]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(587, this.leftCornerSmallArray[4]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(797, this.centerArray[52]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(798, this.centerArray[53]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(714, this.centerArray[54]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(715, this.centerArray[55]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(716, this.centerArray[56]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(717, this.centerArray[57]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(718, this.centerArray[58]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(719, this.centerArray[59]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(720, this.centerArray[60]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(721, this.centerArray[61]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(722, this.centerArray[62]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(723, this.centerArray[64]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(724, this.centerArray[65]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(725, this.centerArray[66]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(726, this.centerArray[67]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(727, this.centerArray[68]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(728, this.centerArray[69]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(644, this.centerArray[70]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(645, this.centerArray[71]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(646, this.centerArray[72]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(647, this.centerArray[73]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(648, this.centerArray[74]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(649, this.centerArray[75]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(650, this.centerArray[76]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(651, this.centerArray[77]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(652, this.centerArray[78]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(653, this.centerArray[79]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(654, this.centerArray[80]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(655, this.centerArray[81]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(656, this.centerArray[82]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(657, this.centerArray[83]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(658, this.centerArray[84]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(575, this.centerArray[85]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(576, this.centerArray[86]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(577, this.centerArray[87]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(578, this.centerArray[88]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(579, this.centerArray[89]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(580, this.centerArray[90]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(581, this.centerArray[91]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(582, this.centerArray[92]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(583, this.centerArray[93]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(584, this.centerArray[94]);
+        // this.platformArray.push(this.centerArray[0]);
+        // this.scene.alignGrid.placeAtIndex(585, this.centerArray[95]);
+        // this.platformArray.push(this.centerArray[96]);
+        // this.scene.alignGrid.placeAtIndex(586, this.centerArray[96]);
+        // this.platformArray.push(this.centerArray[96]);
+        // this.scene.alignGrid.placeAtIndex(405, this.centerArray[97]);
+        // this.platformArray.push(this.centerArray[97]);
+        // this.scene.alignGrid.placeAtIndex(505, this.centerArray[98]);
+        // this.platformArray.push(this.centerArray[98]);
+        // this.scene.alignGrid.placeAtIndex(506, this.centerArray[99]);
+        // this.platformArray.push(this.centerArray[99]);
+        // this.scene.alignGrid.placeAtIndex(513, this.centerArray[100]);
+        // this.platformArray.push(this.centerArray[100]);
+        // this.scene.alignGrid.placeAtIndex(514, this.centerArray[101]);
+        // this.platformArray.push(this.centerArray[101]);
+        // this.scene.alignGrid.placeAtIndex(515, this.centerArray[102]);
+        // this.platformArray.push(this.centerArray[102]);
+        // this.scene.alignGrid.placeAtIndex(516, this.centerArray[103]);
+        // this.platformArray.push(this.centerArray[103]);
+        // this.scene.alignGrid.placeAtIndex(435, this.centerArray[104]);
+        // this.platformArray.push(this.centerArray[104]);
+        // this.scene.alignGrid.placeAtIndex(446, this.centerArray[105]);
+        // this.platformArray.push(this.centerArray[105]);
         // this.scene.alignGrid.placeAtIndex()
         // for (let i = 0; i < 101; i++) {
         //     let center = this.scene.add.image(0, 0, 'center');
