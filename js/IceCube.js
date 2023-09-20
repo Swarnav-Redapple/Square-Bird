@@ -23,7 +23,7 @@ class IceCube {
 
 
         this.cubes.body.allowGravity = true;
-        this.cubes.body.immovable = true;
+        // this.cubes.body.immovable = f;
         this.cubes.isCollide = 'false';
     }
 }
