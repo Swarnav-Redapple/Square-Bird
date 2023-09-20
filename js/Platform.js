@@ -45,7 +45,7 @@ class Platform {
         this.leftCornerSmallArray = [];
         this.rightCornerSmallArray = [];
         this.topPosArray = [770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 799, 710, 700, 701, 702, 703, 704, 711, 712, 713, 643, 640, 630, 631, 632, 633, 634, 705, 706, 707, 708, 709, 570, 560, 561, 562, 563, 500, 429, 499, 429, 428, 498, 497, 496, 495, 565, 635, 636, 637, 638, 639, 566, 567, 568, 569, 573, 504, 574, 434, 364, 365, 366, 437, 436, 508, 507, 509, 510, 511, 512, 442, 443, 444, 375, 445, 428, 376, 377, 447, 517, 588, 589, 659, 729, 587, 797, 798, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 405, 505, 506, 513, 514, 515, 516, 435, 446];
-        this.key = ["top"];
+        this.key = ["top", "right_corner_top", "left_corner_top", "right_side", "left_side", "left_corner_small", "right_corner_small", "center"];
         // this.ptA = [];
     }
     CreateTutorialPlatform() {
@@ -117,27 +117,29 @@ class Platform {
                 let i = 560;
                 // let k = 496;
                 for (let i = 560; i < 565; i++) {
-                    console.log(i);
+                    // console.log(i);
                     this.scene.alignGrid.placeAtIndex(i, this.scene.add.image(0, 0, this.key[0]));
                     // this.scene.alignGrid.placeAtIndex(k, this.scene.add.image(0, 0, this.key[0]));
                 }
                 // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.topArray[0]);
             }
             if (this.topPosArray[i] == 565) {
-                this.scene.alignGrid.placeAtIndex((this.topPosArray[i]), this.rightCornerSmallArray[0])
+                this.scene.alignGrid.placeAtIndex(i, this.scene.add.image(0, 0, this.key[6]));
+                console.log(this.topPosArray[i]);
+                console.log(this.key[6]);
             }
             if (this.topPosArray[i] == 495) {
-                this.scene.alignGrid.placeAtIndex((this.topPosArray[i]), this.rightCornerTopArray[0]);
+                this.scene.alignGrid.placeAtIndex((this.topPosArray[i]), this.scene.add.image(0, 0, this.key[1]));
             }
             if (this.topPosArray[i] == 496) {
                 let i = 496;
                 for (let i = 496; i < 498; i++) {
-                    console.log("iwngohwig");
+                    // console.log("iwngohwig");
                     this.scene.alignGrid.placeAtIndex(i, this.scene.add.image(0, 0, this.key[0]));
                 }
             }
             else {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.centerArray[i]);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[7]));
             }
             // console.log(this.topPosArray[i]);
         }
