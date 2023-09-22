@@ -10,11 +10,15 @@ class Player {
         this.player.setSize(this.player.width - 5, this.player.height, true);
         this.player.setOffset(102, 48);
         this.scene.physics.add.existing(this.player);
-        this.player.body.allowGravity = true;
+        this.player.body.allowGravity = false;
         this.player.body.immovable = false;
         // this.player.body.setVelocityX(70);
 
         this.player.play('Idle', true);
+        // this.scene.tweens.add({
+        //     targets: this.player,
+        //     x: 580,
+        // });
         // this.player.play('Idle', true);
 
         // this.scene.time.addEvent({

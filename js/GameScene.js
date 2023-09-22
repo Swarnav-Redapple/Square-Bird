@@ -36,6 +36,7 @@ export default class GameScene extends Phaser.Scene {
         this.popUp = new PopUp(this);
         this.isStartCheck = false;
         this.isCollid = false;
+        this.container = null;
 
     }
     create() {
@@ -45,9 +46,14 @@ export default class GameScene extends Phaser.Scene {
             'rows': 12
         }
         this.alignGrid = new AlignGrid(gridConfig);
+        // this.alignGrid.setInteractive({ draggable: true });
+
+        // this.alignGrid.on('drag', (pointer, dragX, dragY) => this.alignGrid.setPosition(dragX, dragY));
+        // // this.alignGrid.set
         // this.alignGrid.show();
-        // this.alignGrid.showNumbers();
-        console.log("this.platform.lowerPlatformArray", this.platform.lowerPlatformArray);
+        // this.cameras.main.setSize(100, 150);
+        this.alignGrid.showNumbers();
+        // console.log("this.platform.lowerPlatformArray", this.platform.lowerPlatformArray);
         // let center = this.add.image(0, 0, 'center');
         // this.alignGrid.placeAtIndex(77, center);
         // console.log("buttons", this.buttons.continueBtn);
@@ -60,12 +66,12 @@ export default class GameScene extends Phaser.Scene {
         // //         console.log("Y:" + Math.floor(pointer.worldY));
         // //     }
         // // });
-        this.ShowBg();
+        // this.ShowBg();
         // // // this.ShowDistanceCovered();
         this.ShowPlatform();
         // this.MovePlatform();
         // // this.MoveColliders();
-        this.ShowGameUI();
+        // this.ShowGameUI();
         // this.cubes = this.scene.physics.add.image(480, 960, 'cubes').setScale(0.2 * scaleFactor, 0.2 * scaleFactor);
         this.CreateBird();
         // this.MovePlayer();
@@ -74,17 +80,26 @@ export default class GameScene extends Phaser.Scene {
         // game.events.on('xyz', this.ABC, this);
         // this.CreateObstacles();
         // this.MovingObstacles();
+
     }
     ShowBg() {
         this.bg.CreateGameBG();
     }
     MoveBg() {
+        // console.log("1Here");
         if (this.isDown && !isPaused && !this.isGameOver) {
-            this.bg.gameBg.tilePositionX += 3;
-            // if (this.distanceCounter == 10) {
-            //     this.distanceCounter = 0;
-            //     this.bg.tilePositionX += 6 * 1.5;
+            this.bg.gameBg.tilePositionX += 6;
+            // for (let i = 0; i < this.bg.arrayBg.length; i++) {
+            // console.log("2Here");
+            // if (this.cameras.x = 500) {
+            //     console.log("Here");
+            //     this.cameras.x = 10;
         }
+        // }
+        // if (this.distanceCounter == 10) {
+        //     this.distanceCounter = 0;
+        //     this.bg.tilePositionX += 6 * 1.5;
+        // }
     }
     ShowDistanceCovered() {
         this.distText = this.add.text(800, 50, "Distance : " + this.distance, { fontFamily: 'Arial', fontSize: 45, fill: '#FFFFFF', align: 'Center' });
@@ -104,15 +119,15 @@ export default class GameScene extends Phaser.Scene {
 
 
     MovePlatform() {
-        if (this.isDown && !isPaused && !this.isGameOver) {
-            this.platform.MovePlatform();
-            // this.platform.MoveTopPlatform();
-            // this.platform.MoveCollisionBoxes();
-            // this.platform.tilePositionX += 7;
-            // if (this.distanceCounter == 10) {
-            //     this.distanceCounter = 0;
-            //     this.platform.tilePositionX += 7 * 1.5;
-        }
+        // if (this.isDown && !isPaused && !this.isGameOver) {
+        this.platform.MovePlatform();
+        // this.platform.MoveTopPlatform();
+        // this.platform.MoveCollisionBoxes();
+        // this.platform.tilePositionX += 7;
+        // if (this.distanceCounter == 10) {
+        //     this.distanceCounter = 0;
+        //     this.platform.tilePositionX += 7 * 1.5;
+        // }
     }
 
     MoveColliders() {
@@ -130,12 +145,13 @@ export default class GameScene extends Phaser.Scene {
     CreateBird() {
         // if (!isPaused) {
         this.player.CreatePlayer();
-        this.player.player.body.setVelocityX(120);
+        this.player.player.body.setVelocityX(140);
+        this.cameras.main.startFollow(this.player.player, true);
         // this.player.player.setVisible(false);
         // this.platform.MoveCollisionBoxes();
         // this.player.player.setVelocityX();
         // this.physics.add.collider(this.player.player, this.platform.bottomPlatformArray, this.BirdOnTouchingPlatform, null, this);
-        this.physics.add.collider(this.player.player, this.platform.lowerPlatformArray, this.BirdOnTouchingPlatform, null, this);
+        // this.physics.add.collider(this.player.player, this.platform.lowerPlatformArray, this.BirdOnTouchingPlatform, null, this);
         // this.physics.add.collider(this.player.player, this.platform.center2);
         // this.physics.add.collider(this.player.player, this.platform.bottomLayer, this.BirdOnTouchingPlatform, null, this);
         // this.physics.add.collider(this.player, this.platform.graphics, this.BirdOnTouching, null, this);
@@ -382,8 +398,26 @@ export default class GameScene extends Phaser.Scene {
         }
     }
     update() {
-        this.MoveBg();
-        this.RepositionPlatform();
+        if (this.player.player.x >= 6000) {
+            this.player.player.body.setVelocityX(0);
+        }
+
+        // if (this.game.input.activePointer.isDown) {
+        //     if (this.game.origDragPoint) {
+        //         // move the camera by the amount the mouse has moved since last update
+        //         this.cameras.x += this.game.origDragPoint.x - this.game.input.activePointer.position.x;
+        //         this.cameras.y += this.game.origDragPoint.y - this.game.input.activePointer.position.y;
+        //     }
+        //     // set new drag origin to current position
+        //     this.game.origDragPoint = this.game.input.activePointer.position.clone();
+        // }
+        // else {
+        //     this.game.origDragPoint = null;
+        // }
+        // this.MoveBg();
+        const cam = this.cameras.main;
+        cam.scrollX += 4;
+        // this.RepositionPlatform();
         // console.log('player', this.player.player.body.velocity.x);
         // this.MovePlatform();
         // if (this.isCollid) {
