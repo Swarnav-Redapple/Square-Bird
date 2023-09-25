@@ -158,7 +158,7 @@ class Platform {
                 this.lowerPlatformArrayTwo.push(right_side);
                 this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], right_side);
             }
-            else if (this.topPosArray_Two[i] == 461 || this.topPosArray_Two[i] == 547 || this.topPosArray_Two[i] == 617) {
+            else if (this.topPosArray_Two[i] == 461 || this.topPosArray_Two[i] == 547 || this.topPosArray_Two[i] == 617 || this.topPosArray_Two[i] == 687 || this.topPosArray_Two[i] == 757 || this.topPosArray_Two[i] == 827) {
                 let left_side = this.scene.physics.add.image(0, 0, this.key[4]);
                 left_side.body.allowGravity = false;
                 left_side.body.immovable = true;

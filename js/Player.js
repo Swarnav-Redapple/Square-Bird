@@ -10,7 +10,7 @@ class Player {
         this.player.setSize(this.player.width - 5, this.player.height, true);
         this.player.setOffset(102, 48);
         this.scene.physics.add.existing(this.player);
-        this.player.body.allowGravity = false;
+        this.player.body.allowGravity = true;
         this.player.body.immovable = false;
         // this.player.body.setVelocityX(70);
 

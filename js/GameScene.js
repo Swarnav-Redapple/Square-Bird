@@ -46,32 +46,12 @@ export default class GameScene extends Phaser.Scene {
             'rows': 12
         }
         this.alignGrid = new AlignGrid(gridConfig);
-        // this.alignGrid.setInteractive({ draggable: true });
-
-        // this.alignGrid.on('drag', (pointer, dragX, dragY) => this.alignGrid.setPosition(dragX, dragY));
-        // // this.alignGrid.set
-        // this.alignGrid.show();
-        // this.cameras.main.setSize(100, 150);
-        this.alignGrid.showNumbers();
-        // console.log("this.platform.lowerPlatformArray", this.platform.lowerPlatformArray);
-        // let center = this.add.image(0, 0, 'center');
-        // this.alignGrid.placeAtIndex(77, center);
-        // console.log("buttons", this.buttons.continueBtn);
-        // console.log('CanvasWidth',)
-        // // this.cameras.main.setZoom(0.4);
-        // // this.input.on('pointerdown', function (pointer) {
-        // //     if (pointer.leftButtonDown()) {
-        // //         // text.setText("Left Pressed!");
-        // //         console.log("X:" + Math.floor(pointer.worldX));
-        // //         console.log("Y:" + Math.floor(pointer.worldY));
-        // //     }
-        // // });
-        // this.ShowBg();
+        this.ShowBg();
         // // // this.ShowDistanceCovered();
         this.ShowPlatform();
-        // this.MovePlatform();
+        this.MovePlatform();
         // // this.MoveColliders();
-        // this.ShowGameUI();
+        this.ShowGameUI();
         // this.cubes = this.scene.physics.add.image(480, 960, 'cubes').setScale(0.2 * scaleFactor, 0.2 * scaleFactor);
         this.CreateBird();
         // this.MovePlayer();
@@ -145,13 +125,14 @@ export default class GameScene extends Phaser.Scene {
     CreateBird() {
         // if (!isPaused) {
         this.player.CreatePlayer();
-        this.player.player.body.setVelocityX(140);
-        this.cameras.main.startFollow(this.player.player, true);
+        // this.player.player.body.setVelocityX(140);
+        // this.cameras.main.startFollow(this.player.player, true);
         // this.player.player.setVisible(false);
         // this.platform.MoveCollisionBoxes();
         // this.player.player.setVelocityX();
         // this.physics.add.collider(this.player.player, this.platform.bottomPlatformArray, this.BirdOnTouchingPlatform, null, this);
-        // this.physics.add.collider(this.player.player, this.platform.lowerPlatformArray, this.BirdOnTouchingPlatform, null, this);
+        this.physics.add.collider(this.player.player, this.platform.lowerPlatformArray, this.BirdOnTouchingPlatform, null, this);
+        this.physics.add.collider(this.player.player, this.platform.lowerPlatformArrayTwo, this.BirdOnTouchingPlatform, null, this);
         // this.physics.add.collider(this.player.player, this.platform.center2);
         // this.physics.add.collider(this.player.player, this.platform.bottomLayer, this.BirdOnTouchingPlatform, null, this);
         // this.physics.add.collider(this.player, this.platform.graphics, this.BirdOnTouching, null, this);
@@ -161,7 +142,7 @@ export default class GameScene extends Phaser.Scene {
     }
     BirdOnTouching() {
         if (this.player.player.body.touching.right) {
-            this.player.player.body.setVelocityX(0);
+            // this.player.player.body.setVelocityX(0);
         }
         else if (this.player.player.body.touching.down) {
 
@@ -176,13 +157,16 @@ export default class GameScene extends Phaser.Scene {
     BirdOnTouchingPlatform(_bird, _platform) {
         // console.log("quwfuhq;whifqh;owef");
         if (_bird.body.touching.down) {
+            console.log("making cubes");
             _bird.body.setVelocityX(200);
             // this.physics.world.setFPS(60);
             // _bird.setStatic(true);
             // console.log("Touchh");
             // this.player.player.body.setVelocityX(70);
-            this.arrayBirdPos.push(this.player.player.x);
-            this.arrayBirdPos.push(this.player.player.y - 220);
+            this.arrayBirdPos.push(_bird.x);
+            this.arrayBirdPos.push(_bird.y - 105);
+            // console.log("block height", _platform.height);
+            console.log(_bird.y - _bird.height);
             this.isDown = true;
             // console.log(this.isDown);
             this.isStartCheck = true;
@@ -251,12 +235,15 @@ export default class GameScene extends Phaser.Scene {
         // console.log("Cring cubes");
         // console.log("advasv");
         if (this.isDown && !this.isGameOver) {
+            // this.cameras.main.setZoom(0.7);
             // let iceCube = this.physics.add.image(this.arrayBirdPos[0], this.arrayBirdPos[1], 'cube');
             this.iceCube.CreateIceCubes();
             // this.isCollid = true;
             // console.log(this.iceCube.cubes);
             this.iceCube.cubes.setPosition(this.arrayBirdPos[0], this.arrayBirdPos[1]);
-            this.iceCube.cubes.body.setVelocityX(200);
+            this.arrayBirdPos = [];
+            console.log("cubes height", this.iceCube.cubes);
+            // this.iceCube.cubes.body.setVelocityX(200);
 
             // this.iceCube.cubes.body.setVelocityX(12);
             // this.physics.add.collider(this.iceCube.cubes, this.platform.bottomPlatformArray);
@@ -267,6 +254,7 @@ export default class GameScene extends Phaser.Scene {
             // this.physics.add.collider(this.cubesArray, this.player.player, this.Colls, null, this);
             this.physics.add.collider(this.cubesArray, this.cubesArray, this.CubesOnTouchingCubes, null, this);
             this.physics.add.collider(this.cubesArray, this.platform.lowerPlatformArray, this.CubesOnCollsionWithPlatform, null, this);
+            this.physics.add.collider(this.cubesArray, this.platform.lowerPlatformArrayTwo, this.CubesOnCollsionWithPlatform, null, this);
 
             // this.physics.add.collider(this.cubesArray, this.platform.bottomLayer, this.CubesOnCollsionWithPlatform, null, this);
             this.PositioningCubes();
@@ -340,13 +328,14 @@ export default class GameScene extends Phaser.Scene {
         this.RepositioningPlayerAndCubes();
     }
     RepositioningPlayerAndCubes() {
-        this.arrayCubesPos[0] = this.iceCube.cubes.x //+ 8;
-        this.arrayCubesPos[1] = this.iceCube.cubes.y - 120;
-        this.arrayBirdPos = [];
-        this.player.player.setPosition(this.arrayCubesPos[0], this.arrayCubesPos[1]);
-        this.arrayCubesPos = [];
-        this.arrayBirdPos.push(this.player.player.x);
-        this.arrayBirdPos.push(this.player.player.y - 220);
+        console.log("RepositioningPlayerAndCubes");
+        // this.arrayCubesPos[0] = this.iceCube.cubes.x //+ 8;
+        // this.arrayCubesPos[1] = (this.iceCube.cubes.y - 20);
+        // this.arrayBirdPos = [];
+        // this.player.player.setPosition(this.arrayCubesPos[0], this.arrayCubesPos[1]);
+        // this.arrayCubesPos = [];
+        // this.arrayBirdPos.push(this.player.player.x);
+        // this.arrayBirdPos.push(this.player.player.y - this.player.player.height);
         // this.physics.add.collider(this.cubesArray, this.platform.bottomPlatformArray, this.CubesOnCollsionWithPlatform, null, this);
 
     }
@@ -370,6 +359,9 @@ export default class GameScene extends Phaser.Scene {
         //     }
         // });
         if (_cube.body.touching.right) {
+            this.arrayBirdPos = [];
+            this.arrayBirdPos.push(this.player.player.x);
+            this.arrayBirdPos.push(this.player.player.y - 15);
             if (_cube.x <= -100) {
                 // console.log("Shift");
                 _cube.setVisible(false);
@@ -398,9 +390,9 @@ export default class GameScene extends Phaser.Scene {
         }
     }
     update() {
-        if (this.player.player.x >= 6000) {
-            this.player.player.body.setVelocityX(0);
-        }
+        // if (this.player.player.x >= 6000) {
+        //     this.player.player.body.setVelocityX(0);
+        // }
 
         // if (this.game.input.activePointer.isDown) {
         //     if (this.game.origDragPoint) {
@@ -415,9 +407,9 @@ export default class GameScene extends Phaser.Scene {
         //     this.game.origDragPoint = null;
         // }
         // this.MoveBg();
-        const cam = this.cameras.main;
-        cam.scrollX += 4;
-        // this.RepositionPlatform();
+        // const cam = this.cameras.main;
+        // cam.scrollX += 4;
+        this.RepositionPlatform();
         // console.log('player', this.player.player.body.velocity.x);
         // this.MovePlatform();
         // if (this.isCollid) {
