@@ -40,19 +40,21 @@ export default class GameScene extends Phaser.Scene {
 
     }
     create() {
+        // this.cameras.main.setZoom(0.5);
         let gridConfig = {
             'scene': this,
             'cols': 70,
             'rows': 12
         }
         this.alignGrid = new AlignGrid(gridConfig);
-        this.ShowBg();
-        // // // this.ShowDistanceCovered();
+        this.alignGrid.showNumbers();
+        // this.ShowBg();
+        // // // // this.ShowDistanceCovered();
         this.ShowPlatform();
-        this.MovePlatform();
-        // // this.MoveColliders();
-        this.ShowGameUI();
-        // this.cubes = this.scene.physics.add.image(480, 960, 'cubes').setScale(0.2 * scaleFactor, 0.2 * scaleFactor);
+        // this.MovePlatform();
+        // // // this.MoveColliders();
+        // this.ShowGameUI();
+        // // this.cubes = this.scene.physics.add.image(480, 960, 'cubes').setScale(0.2 * scaleFactor, 0.2 * scaleFactor);
         this.CreateBird();
         // this.MovePlayer();
         // this.CreatePlatformLiner();
@@ -125,14 +127,14 @@ export default class GameScene extends Phaser.Scene {
     CreateBird() {
         // if (!isPaused) {
         this.player.CreatePlayer();
-        // this.player.player.body.setVelocityX(140);
-        // this.cameras.main.startFollow(this.player.player, true);
+        this.player.player.body.setVelocityX(440);
+        this.cameras.main.startFollow(this.player.player, true);
         // this.player.player.setVisible(false);
         // this.platform.MoveCollisionBoxes();
         // this.player.player.setVelocityX();
         // this.physics.add.collider(this.player.player, this.platform.bottomPlatformArray, this.BirdOnTouchingPlatform, null, this);
-        this.physics.add.collider(this.player.player, this.platform.lowerPlatformArray, this.BirdOnTouchingPlatform, null, this);
-        this.physics.add.collider(this.player.player, this.platform.lowerPlatformArrayTwo, this.BirdOnTouchingPlatform, null, this);
+        // this.physics.add.collider(this.player.player, this.platform.lowerPlatformArray, this.BirdOnTouchingPlatform, null, this);
+        // this.physics.add.collider(this.player.player, this.platform.lowerPlatformArrayTwo, this.BirdOnTouchingPlatform, null, this);
         // this.physics.add.collider(this.player.player, this.platform.center2);
         // this.physics.add.collider(this.player.player, this.platform.bottomLayer, this.BirdOnTouchingPlatform, null, this);
         // this.physics.add.collider(this.player, this.platform.graphics, this.BirdOnTouching, null, this);
@@ -157,16 +159,18 @@ export default class GameScene extends Phaser.Scene {
     BirdOnTouchingPlatform(_bird, _platform) {
         // console.log("quwfuhq;whifqh;owef");
         if (_bird.body.touching.down) {
-            console.log("making cubes");
+            // console.log("making cubes");
             _bird.body.setVelocityX(200);
             // this.physics.world.setFPS(60);
             // _bird.setStatic(true);
             // console.log("Touchh");
             // this.player.player.body.setVelocityX(70);
-            this.arrayBirdPos.push(_bird.x);
-            this.arrayBirdPos.push(_bird.y - 105);
+            // this.arrayBirdPos = [];
+            // this.arrayBirdPos.push(_bird.x);
+            // this.arrayBirdPos.push(_bird.y - 145);
+            // console.log("pos we get", _bird.x, _bird.y - 145);
             // console.log("block height", _platform.height);
-            console.log(_bird.y - _bird.height);
+            // console.log(_bird.y - _bird.height);
             this.isDown = true;
             // console.log(this.isDown);
             this.isStartCheck = true;
@@ -178,7 +182,7 @@ export default class GameScene extends Phaser.Scene {
 
         if (_bird.body.touching.right && _bird.isCollide == "false") {
             _bird.isCollide = "true";
-            console.log("bird", _bird);
+            // console.log("bird", _bird);
             _bird.play('Die', false, 1);
             _bird.body.setVelocityX(0);
             // this.platform.lowerPlatformArray.forEach(tiles => {
@@ -190,8 +194,8 @@ export default class GameScene extends Phaser.Scene {
             //     this.player.player.play('Idle', true);
             // })
             _bird.on('complete', () => {
-                this.isGameOver = true;
-                this.GameOver();
+                // this.isGameOver = true;
+                // this.GameOver();
             })
 
         }
@@ -240,9 +244,11 @@ export default class GameScene extends Phaser.Scene {
             this.iceCube.CreateIceCubes();
             // this.isCollid = true;
             // console.log(this.iceCube.cubes);
-            this.iceCube.cubes.setPosition(this.arrayBirdPos[0], this.arrayBirdPos[1]);
-            this.arrayBirdPos = [];
-            console.log("cubes height", this.iceCube.cubes);
+            // this.iceCube.cubes.setPosition(this.arrayBirdPos[0], this.arrayBirdPos[1]);
+            this.iceCube.cubes.setPosition(this.player.player.x - 20, this.player.player.y - 135);
+            // this.arrayBirdPos = [];
+            // console.log("cubes pos", this.iceCube.cubes.x, this.iceCube.cubes.y);
+            // console.log("cubes height", this.iceCube.cubes);
             // this.iceCube.cubes.body.setVelocityX(200);
 
             // this.iceCube.cubes.body.setVelocityX(12);
@@ -358,10 +364,14 @@ export default class GameScene extends Phaser.Scene {
         //         b1.stop();
         //     }
         // });
+        if (_cube.body.touching.down) {
+            _cube.body.setVelocity(0, 0);
+
+        }
         if (_cube.body.touching.right) {
-            this.arrayBirdPos = [];
-            this.arrayBirdPos.push(this.player.player.x);
-            this.arrayBirdPos.push(this.player.player.y - 15);
+            // this.arrayBirdPos = [];
+            // this.arrayBirdPos.push(this.player.player.x);
+            // this.arrayBirdPos.push(this.player.player.y - 15);
             if (_cube.x <= -100) {
                 // console.log("Shift");
                 _cube.setVisible(false);
@@ -373,11 +383,11 @@ export default class GameScene extends Phaser.Scene {
                 _cube.isCollide = true;
                 // console.log("isCollide");
             }
-            _cube.body.setVelocityX(0);
+            // _cube.body.setVelocityX(0);
         }
-        this.arrayBirdPos = [];
-        this.arrayBirdPos.push(this.player.player.x - 8);
-        this.arrayBirdPos.push(this.player.player.y - 20);
+        // this.arrayBirdPos = [];
+        // this.arrayBirdPos.push(this.player.player.x - 8);
+        // this.arrayBirdPos.push(this.player.player.y - 20);
     }
     // BirdOnCollisionWithPlatform) {
 
@@ -390,9 +400,9 @@ export default class GameScene extends Phaser.Scene {
         }
     }
     update() {
-        // if (this.player.player.x >= 6000) {
-        //     this.player.player.body.setVelocityX(0);
-        // }
+        if (this.player.player.x >= 8000) {
+            this.player.player.body.setVelocityX(0);
+        }
 
         // if (this.game.input.activePointer.isDown) {
         //     if (this.game.origDragPoint) {

@@ -11,7 +11,7 @@ class AlignGrid {
         //     config.cols = 3;
         // }
         if (!config.width) {
-            config.width = 10800;
+            config.width = 10900;
         }
         if (!config.height) {
             config.height = 1920;
