@@ -36,23 +36,30 @@ class Platform {
         this.numberOfColliders = 11;
         this.index = null;
         this.contain = null;
-        this.centerArray = [];
-        this.leftArray = [];
-        this.rightArray = [];
-        this.topArray = [];
-        this.leftCornerTopArray = [];
-        this.rightCornerTopArray = [];
-        this.leftCornerSmallArray = [];
-        this.rightCornerSmallArray = [];
+        // this.centerArray = [];
+        // this.leftArray = [];
+        // this.rightArray = [];
+        // this.topArray = [];
+        // this.leftCornerTopArray = [];
+        // this.rightCornerTopArray = [];
+        // this.leftCornerSmallArray = [];
+        // this.rightCornerSmallArray = [];
+        this.topPlatformArray = [];
+        this.topPlatformArrayTwo = [];
         this.lowerPlatformArray = [];
         this.lowerPlatformArrayTwo = [];
-        this.topPosArray = [770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 799, 800, 710, 700, 701, 702, 703, 704, 711, 712, 713, 643, 640, 630, 631, 632, 633, 634, 705, 706, 707, 708, 709, 570, 560, 561, 562, 563, 564, 500, 429, 499, 429, 428, 498, 497, 496, 495, 565, 635, 636, 637, 638, 639, 566, 567, 568, 569, 573, 504, 574, 434, 364, 365, 366, 437, 436, 508, 507, 509, 510, 511, 512, 443, 444, 448, 445, 428, 376, 377, 378, 447, 517, 588, 589, 590, 659, 729, 587, 797, 798, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 730, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 660, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 505, 506, 513, 514, 515, 516, 518, 435, 446];
+        this.lowerPlatformArrayThree = [];
+        this.bottomPosArray = [770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 799, 800, 710, 700, 701, 702, 703, 704, 711, 712, 713, 643, 640, 630, 631, 632, 633, 634, 705, 706, 707, 708, 709, 570, 560, 561, 562, 563, 564, 500, 429, 499, 429, 428, 498, 497, 496, 495, 565, 635, 636, 637, 638, 639, 566, 567, 568, 569, 573, 504, 574, 434, 364, 365, 366, 437, 436, 508, 507, 509, 510, 511, 512, 443, 444, 448, 445, 428, 376, 377, 378, 447, 517, 588, 589, 590, 659, 729, 587, 797, 798, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 730, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 660, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 505, 506, 513, 514, 515, 516, 518, 435, 446];
 
-        this.topPosArray_Two = [802, 732, 662, 592, 593, 524, 525, 456, 386, 387, 388, 389, 390, 391, 461, 531, 532, 533, 534, 604, 605, 606, 607, 608, 538, 539, 540, 541, 542, 472, 473, 474, 475, 476, 477, 547, 617, 687, 757, 827, 663, 783, 803, 594, 664, 734, 804, 595, 665, 735, 805, 526, 596, 666, 736, 806, 457, 527, 597, 667, 737, 807, 458, 528, 598, 668, 738, 808, 459, 529, 599, 669, 739, 809, 460, 530, 600, 670, 740, 810, 601, 671, 741, 811, 602, 672, 742, 812, 603, 673, 743, 813, 674, 744, 814, 675, 745, 815, 676, 746, 816, 677, 747, 817, 678, 748, 818, 609, 679, 749, 819, 610, 680, 750, 820, 611, 681, 751, 822, 733, 821, 612, 682, 752, 543, 613, 683, 753, 823, 544, 814, 604, 754, 824, 545, 615, 605, 755, 825, 546, 616, 606, 756, 826, 614, 684, 685, 686];
+        this.bottomPosArray_Two = [802, 732, 662, 592, 593, 524, 525, 456, 386, 387, 388, 389, 390, 391, 461, 531, 532, 533, 534, 604, 605, 606, 607, 608, 538, 539, 540, 541, 542, 472, 473, 474, 475, 476, 477, 547, 617, 687, 757, 827, 663, 783, 803, 594, 664, 734, 804, 595, 665, 735, 805, 526, 596, 666, 736, 806, 457, 527, 597, 667, 737, 807, 458, 528, 598, 668, 738, 808, 459, 529, 599, 669, 739, 809, 460, 530, 600, 670, 740, 810, 601, 671, 741, 811, 602, 672, 742, 812, 603, 673, 743, 813, 674, 744, 814, 675, 745, 815, 676, 746, 816, 677, 747, 817, 678, 748, 818, 609, 679, 749, 819, 610, 680, 750, 820, 611, 681, 751, 822, 733, 821, 612, 682, 752, 543, 613, 683, 753, 823, 544, 814, 604, 754, 824, 545, 615, 605, 755, 825, 546, 616, 606, 756, 826, 614, 684, 685, 686];
 
-        this.topPosArray_Three = [830, 760, 690, 691, 692, 693, 694, 695, 625, 555, 556, 486, 487, 488, 418, 419, 489, 557, 558, 559, 626, 627, 628, 629, 696, 697, 698, 699, 761, 762, 763, 764, 765, 766, 767, 768, 769, 831, 832, 833, 834, 835, 836, 837, 838, 839];
+        this.bottomPosArray_Three = [830, 760, 690, 691, 692, 693, 694, 695, 625, 555, 556, 486, 487, 488, 418, 419, 489, 557, 558, 559, 626, 627, 628, 629, 696, 697, 698, 699, 761, 762, 763, 764, 765, 766, 767, 768, 769, 831, 832, 833, 834, 835, 836, 837, 838, 839];
 
-        this.key = ["top", "right_corner_top", "left_corner_top", "right_side", "left_side", "left_corner_small", "right_corner_small", "center"];
+        this.topPosArray = [0, 70, 71, 141, 142, 143, 144, 74, 4, 5, 6, 7, 8, 9, 79, 80, 81, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 92, 162, 163, 164, 165, 166, 96, 26, 27, 28, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 177, 178, 179, 487, 488, 418, 419, 180, 181, 182, 183, 253, 254, 255, 256, 257, 258, 259, 260, 190, 120, 121, 122, 192, 193, 194, 195, 196, 197, 127, 57]
+
+        this.topPosArray_Two = [59, 129, 130, 131, 132, 133, 134, 192, 204, 274, 276, 206, 275, 139, 69, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 135, 136, 137, 138, 205];
+
+        this.key = ["top", "right_corner_top", "left_corner_top", "right_side", "left_side", "left_corner_small", "right_corner_small", "center", "right_corner_down", "left_corner_down", "bottom", "left_corner_small_top", "right_corner_small_top"];
         // this.ptA = [];
     }
     CreateTutorialPlatform() {
@@ -66,165 +73,277 @@ class Platform {
         let boxPlatformTileset = boxPlatform.addTilesetImage('platform_In_Box', 'platform');
         let layer = boxPlatform.createLayer('BoxLayer', boxPlatformTileset, 65, 55);
     }
-
-    CreatePlatform() {
-        // this.AddingPlatformTiles();
+    CreateTopPlatform() {
         for (let i = 0; i < this.topPosArray.length; i++) {
-            // console.log(this.topPosArray[i]);
-            if ((this.topPosArray[i] >= 560 && this.topPosArray[i] <= 564) || (this.topPosArray[i] >= 508 && this.topPosArray[i] <= 512) || (this.topPosArray[i] == 377) || (this.topPosArray[i] == 589) || (this.topPosArray[i] >= 496 && this.topPosArray[i] <= 497) || (this.topPosArray[i] == 711 || this.topPosArray[i] == 712) || (this.topPosArray[i] == 444 || this.topPosArray[i] == 445) || this.topPosArray[i] == 365) {
+            if (this.topPosArray[i] == 0 || this.topPosArray[i] == 92) {
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[3]));
+            }
+            else if (this.topPosArray[i] == 74 || this.topPosArray[i] == 96 || this.topPosArray[i] == 190) {
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[4]));
+            }
+            else if (this.topPosArray[i] == 70 || this.topPosArray[i] == 141 || this.topPosArray[i] == 79 || this.topPosArray[i] == 162 || this.topPosArray[i] == 98 || this.topPosArray[i] == 177 || this.topPosArray[i] == 253 || this.topPosArray[i] == 192) {
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[8]));
+            }
+            else if (this.topPosArray[i] == 144 || this.topPosArray[i] == 81 || this.topPosArray[i] == 166 || this.topPosArray[i] == 260) {
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[9]));
+            }
+            else if (this.topPosArray[i] == 142 || this.topPosArray[i] == 143 || (this.topPosArray[i] >= 5 && this.topPosArray[i] <= 8) || this.topPosArray[i] == 80 || (this.topPosArray[i] >= 12 && this.topPosArray[i] <= 21) || (this.topPosArray[i] >= 163 && this.topPosArray[i] <= 165) || this.topPosArray[i] == 27 || (this.topPosArray[i] >= 99 && this.topPosArray[i] <= 106) || (this.topPosArray[i] >= 178 && this.topPosArray[i] <= 182) || (this.topPosArray[i] >= 254 && this.topPosArray[i] <= 259) || this.topPosArray[i] == 121) {
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[10]));
+            }
+            else if (this.topPosArray[i] == 4 || this.topPosArray[i] == 11 || this.topPosArray[i] == 26 || this.topPosArray[i] == 120) {
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[11]));
+            }
+            else if (this.topPosArray[i] == 71 || this.topPosArray[i] == 9 || this.topPosArray[i] == 22 || this.topPosArray[i] == 28 || this.topPosArray[i] == 107 || this.topPosArray[i] == 183 || this.topPosArray[i] == 122) {
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[12]));
+            }
+            else {
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[7]));
+            }
+        }
+        for (let i = 0; i < this.topPosArray_Two.length; i++) {
+            if (this.topPosArray_Two[i] == 59 || this.topPosArray_Two[i] == 204) {
+                let right_side = this.scene.physics.add.image(0, 0, this.key[3]);
+                right_side.body.allowGravity = false;
+                right_side.body.immovable = true;
+                this.topPlatformArrayTwo.push(right_side);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], right_side);
+            }
+            else if (this.topPosArray_Two[i] == 206 || this.topPosArray_Two[i] == 69) {
+                let left_side = this.scene.physics.add.image(0, 0, this.key[4]);
+                left_side.body.allowGravity = false;
+                left_side.body.immovable = true;
+                this.topPlatformArrayTwo.push(left_side);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], left_side);
+            }
+            else if (this.topPosArray_Two[i] == 129 || this.topPosArray_Two[i] == 274) {
+                let right_corner_down = this.scene.physics.add.image(0, 0, this.key[8]);
+                right_corner_down.body.allowGravity = false;
+                right_corner_down.body.immovable = true;
+                this.topPlatformArrayTwo.push(right_corner_down);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], right_corner_down);
+            }
+            else if (this.topPosArray_Two[i] == 276 || this.topPosArray_Two[i] == 139) {
+                let left_corner_down = this.scene.physics.add.image(0, 0, this.key[9]);
+                left_corner_down.body.allowGravity = false;
+                left_corner_down.body.immovable = true;
+                this.topPlatformArrayTwo.push(left_corner_down);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], left_corner_down);
+            }
+            else if ((this.topPosArray_Two[i] >= 130 && this.topPosArray_Two[i] <= 133) || this.topPosArray_Two[i] == 275 || this.topPosArray_Two[i] == 276 || (this.topPosArray_Two[i] >= 137 && this.topPosArray_Two[i] <= 138)) {
+                let bottom = this.scene.physics.add.image(0, 0, this.key[10]);
+                bottom.body.allowGravity = false;
+                bottom.body.immovable = true;
+                this.topPlatformArrayTwo.push(bottom);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], bottom);
+            }
+            else if (this.topPosArray_Two[i] == 136) {
+                let left_corner_small_top = this.scene.physics.add.image(0, 0, this.key[11]);
+                left_corner_small_top.body.allowGravity = false;
+                left_corner_small_top.body.immovable = true;
+                this.topPlatformArrayTwo.push(left_corner_small_top);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], left_corner_small_top);
+            }
+            else if (this.topPosArray_Two[i] == 134) {
+                let right_corner_small_top = this.scene.physics.add.image(0, 0, this.key[12]);
+                right_corner_small_top.body.allowGravity = false;
+                right_corner_small_top.body.immovable = true;
+                this.topPlatformArrayTwo.push(right_corner_small_top);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], right_corner_small_top);
+            }
+            else {
+                let center = this.scene.physics.add.image(0, 0, this.key[7]);
+                center.body.allowGravity = false;
+                center.body.immovable = true;
+                this.topPlatformArrayTwo.push(center);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], center);
+            }
+        }
+    }
+
+    CreateBottomPlatform() {
+        // this.AddingPlatformTiles();
+        for (let i = 0; i < this.bottomPosArray.length; i++) {
+            // console.log(this.bottomPosArray[i]);
+            if ((this.bottomPosArray[i] >= 560 && this.bottomPosArray[i] <= 564) || (this.bottomPosArray[i] >= 508 && this.bottomPosArray[i] <= 512) || (this.bottomPosArray[i] == 377) || (this.bottomPosArray[i] == 589) || (this.bottomPosArray[i] >= 496 && this.bottomPosArray[i] <= 497) || (this.bottomPosArray[i] == 711 || this.bottomPosArray[i] == 712) || (this.bottomPosArray[i] == 444 || this.bottomPosArray[i] == 445) || this.bottomPosArray[i] == 365) {
                 // console.log("i", i);
                 let top = this.scene.physics.add.image(0, 0, this.key[0]);
                 top.body.allowGravity = false;
                 top.body.immovable = true;
                 this.lowerPlatformArray.push(top);
-                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], top);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray[i], top);
             }
-            else if (this.topPosArray[i] == 495 || this.topPosArray[i] == 428 || this.topPosArray[i] == 573 || this.topPosArray[i] == 443 || this.topPosArray[i] == 364 || this.topPosArray[i] == 376) {
+            else if (this.bottomPosArray[i] == 495 || this.bottomPosArray[i] == 428 || this.bottomPosArray[i] == 573 || this.bottomPosArray[i] == 443 || this.bottomPosArray[i] == 364 || this.bottomPosArray[i] == 376) {
                 let right_corner_top = this.scene.physics.add.image(0, 0, this.key[1]);
                 right_corner_top.body.allowGravity = false;
                 right_corner_top.body.immovable = true;
                 this.lowerPlatformArray.push(right_corner_top);
-                this.scene.alignGrid.placeAtIndex((this.topPosArray[i]), right_corner_top);
+                this.scene.alignGrid.placeAtIndex((this.bottomPosArray[i]), right_corner_top);
             }
-            else if (this.topPosArray[i] == 429 || this.topPosArray[i] == 500 || this.topPosArray[i] == 366 || this.topPosArray[i] == 378 || this.topPosArray[i] == 590 || this.topPosArray[i] == 437) {
+            else if (this.bottomPosArray[i] == 429 || this.bottomPosArray[i] == 500 || this.bottomPosArray[i] == 366 || this.bottomPosArray[i] == 378 || this.bottomPosArray[i] == 590 || this.bottomPosArray[i] == 437) {
                 let left_corner_top = this.scene.physics.add.image(0, 0, this.key[2]);
                 left_corner_top.body.allowGravity = false;
                 left_corner_top.body.immovable = true;
                 this.lowerPlatformArray.push(left_corner_top);
-                this.scene.alignGrid.placeAtIndex((this.topPosArray[i]), left_corner_top);
+                this.scene.alignGrid.placeAtIndex((this.bottomPosArray[i]), left_corner_top);
             }
-            else if (this.topPosArray[i] == 643 || this.topPosArray[i] == 504 || this.topPosArray[i] == 434) {
+            else if (this.bottomPosArray[i] == 643 || this.bottomPosArray[i] == 504 || this.bottomPosArray[i] == 434) {
                 let right_side = this.scene.physics.add.image(0, 0, this.key[3]);
                 right_side.body.allowGravity = false;
                 right_side.body.immovable = true;
                 this.lowerPlatformArray.push(right_side);
-                this.scene.alignGrid.placeAtIndex((this.topPosArray[i]), right_side);
+                this.scene.alignGrid.placeAtIndex((this.bottomPosArray[i]), right_side);
             }
-            else if (this.topPosArray[i] == 570 || this.topPosArray[i] == 640 || this.topPosArray[i] == 448 || this.topPosArray[i] == 518 || this.topPosArray[i] == 660 || this.topPosArray[i] == 730 || this.topPosArray[i] == 800) {
+            else if (this.bottomPosArray[i] == 570 || this.bottomPosArray[i] == 640 || this.bottomPosArray[i] == 448 || this.bottomPosArray[i] == 518 || this.bottomPosArray[i] == 660 || this.bottomPosArray[i] == 730 || this.bottomPosArray[i] == 800) {
                 let left_side = this.scene.physics.add.image(0, 0, this.key[4]);
                 left_side.body.allowGravity = false;
                 left_side.body.immovable = true;
                 this.lowerPlatformArray.push(left_side);
-                this.scene.alignGrid.placeAtIndex((this.topPosArray[i]), left_side);
+                this.scene.alignGrid.placeAtIndex((this.bottomPosArray[i]), left_side);
             }
-            else if (this.topPosArray[i] == 499 || this.topPosArray[i] == 710 || this.topPosArray[i] == 436 || this.topPosArray[i] == 507 || this.topPosArray[i] == 588) {
+            else if (this.bottomPosArray[i] == 499 || this.bottomPosArray[i] == 710 || this.bottomPosArray[i] == 436 || this.bottomPosArray[i] == 507 || this.bottomPosArray[i] == 588) {
                 let left_corner_small = this.scene.physics.add.image(0, 0, this.key[5]);
                 left_corner_small.body.allowGravity = false;
                 left_corner_small.body.immovable = true;
                 this.lowerPlatformArray.push(left_corner_small);
-                this.scene.alignGrid.placeAtIndex((this.topPosArray[i]), left_corner_small);
+                this.scene.alignGrid.placeAtIndex((this.bottomPosArray[i]), left_corner_small);
             }
-            else if (this.topPosArray[i] == 565 || this.topPosArray[i] == 498 || this.topPosArray[i] == 713 || this.topPosArray[i] == 574 || this.topPosArray[i] == 513 || this.topPosArray[i] == 446) {
+            else if (this.bottomPosArray[i] == 565 || this.bottomPosArray[i] == 498 || this.bottomPosArray[i] == 713 || this.bottomPosArray[i] == 574 || this.bottomPosArray[i] == 513 || this.bottomPosArray[i] == 446) {
                 let right_corner_small = this.scene.physics.add.image(0, 0, this.key[6]);
                 right_corner_small.body.allowGravity = false;
                 right_corner_small.body.immovable = true;
                 this.lowerPlatformArray.push(right_corner_small);
-                this.scene.alignGrid.placeAtIndex((this.topPosArray[i]), right_corner_small);
+                this.scene.alignGrid.placeAtIndex((this.bottomPosArray[i]), right_corner_small);
             }
             else {
                 let center = this.scene.physics.add.image(0, 0, this.key[7]);
                 center.body.allowGravity = false;
                 center.body.immovable = true;
                 this.lowerPlatformArray.push(center);
-                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], center);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray[i], center);
             }
         }
 
-        for (let i = 0; i < this.topPosArray_Two.length; i++) {
+        for (let i = 0; i < this.bottomPosArray_Two.length; i++) {
             // console.log("stud");
-            if (this.topPosArray_Two[i] == 593 || this.topPosArray_Two[i] == 525 || (this.topPosArray_Two[i] >= 387 && this.topPosArray_Two[i] <= 390) || (this.topPosArray_Two[i] >= 532 && this.topPosArray_Two[i] <= 533) || (this.topPosArray_Two[i] >= 605 && this.topPosArray_Two[i] <= 607) || (this.topPosArray_Two[i] >= 539 && this.topPosArray_Two[i] <= 541) || (this.topPosArray_Two[i] >= 473 && this.topPosArray_Two[i] <= 476)) {
+            if (this.bottomPosArray_Two[i] == 593 || this.bottomPosArray_Two[i] == 525 || (this.bottomPosArray_Two[i] >= 387 && this.bottomPosArray_Two[i] <= 390) || (this.bottomPosArray_Two[i] >= 532 && this.bottomPosArray_Two[i] <= 533) || (this.bottomPosArray_Two[i] >= 605 && this.bottomPosArray_Two[i] <= 607) || (this.bottomPosArray_Two[i] >= 539 && this.bottomPosArray_Two[i] <= 541) || (this.bottomPosArray_Two[i] >= 473 && this.bottomPosArray_Two[i] <= 476)) {
                 let top = this.scene.physics.add.image(0, 0, this.key[0]);
                 top.body.allowGravity = false;
                 top.body.immovable = true;
                 this.lowerPlatformArrayTwo.push(top);
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], top);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Two[i], top);
             }
-            else if (this.topPosArray_Two[i] == 592 || this.topPosArray_Two[i] == 524 || this.topPosArray_Two[i] == 386 || this.topPosArray_Two[i] == 538 || this.topPosArray_Two[i] == 472) {
+            else if (this.bottomPosArray_Two[i] == 592 || this.bottomPosArray_Two[i] == 524 || this.bottomPosArray_Two[i] == 386 || this.bottomPosArray_Two[i] == 538 || this.bottomPosArray_Two[i] == 472) {
                 let right_corner_top = this.scene.physics.add.image(0, 0, this.key[1]);
                 right_corner_top.body.allowGravity = false;
                 right_corner_top.body.immovable = true;
                 this.lowerPlatformArrayTwo.push(right_corner_top);
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], right_corner_top);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Two[i], right_corner_top);
             }
-            else if (this.topPosArray_Two[i] == 391 || this.topPosArray_Two[i] == 534 || this.topPosArray_Two[i] == 477) {
+            else if (this.bottomPosArray_Two[i] == 391 || this.bottomPosArray_Two[i] == 534 || this.bottomPosArray_Two[i] == 477) {
                 let left_corner_top = this.scene.physics.add.image(0, 0, this.key[2]);
                 left_corner_top.body.allowGravity = false;
                 left_corner_top.body.immovable = true;
                 this.lowerPlatformArrayTwo.push(left_corner_top);
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], left_corner_top);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Two[i], left_corner_top);
             }
-            else if (this.topPosArray_Two[i] == 802 || this.topPosArray_Two[i] == 732 || this.topPosArray_Two[i] == 662 || this.topPosArray_Two[i] == 456) {
+            else if (this.bottomPosArray_Two[i] == 802 || this.bottomPosArray_Two[i] == 732 || this.bottomPosArray_Two[i] == 662 || this.bottomPosArray_Two[i] == 456) {
                 let right_side = this.scene.physics.add.image(0, 0, this.key[3]);
                 right_side.body.allowGravity = false;
                 right_side.body.immovable = true;
                 this.lowerPlatformArrayTwo.push(right_side);
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], right_side);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Two[i], right_side);
             }
-            else if (this.topPosArray_Two[i] == 461 || this.topPosArray_Two[i] == 547 || this.topPosArray_Two[i] == 617 || this.topPosArray_Two[i] == 687 || this.topPosArray_Two[i] == 757 || this.topPosArray_Two[i] == 827) {
+            else if (this.bottomPosArray_Two[i] == 461 || this.bottomPosArray_Two[i] == 547 || this.bottomPosArray_Two[i] == 617 || this.bottomPosArray_Two[i] == 687 || this.bottomPosArray_Two[i] == 757 || this.bottomPosArray_Two[i] == 827) {
                 let left_side = this.scene.physics.add.image(0, 0, this.key[4]);
                 left_side.body.allowGravity = false;
                 left_side.body.immovable = true;
                 this.lowerPlatformArrayTwo.push(left_side);
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], left_side);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Two[i], left_side);
             }
-            else if (this.topPosArray_Two[i] == 391 || this.topPosArray_Two[i] == 531 || this.topPosArray_Two[i] == 604) {
+            else if (this.bottomPosArray_Two[i] == 391 || this.bottomPosArray_Two[i] == 531 || this.bottomPosArray_Two[i] == 604) {
                 let left_corner_small = this.scene.physics.add.image(0, 0, this.key[5]);
                 left_corner_small.body.allowGravity = false;
                 left_corner_small.body.immovable = true;
                 this.lowerPlatformArrayTwo.push(left_corner_small);
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], left_corner_small);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Two[i], left_corner_small);
             }
-            else if (this.topPosArray_Two[i] == 594 || this.topPosArray_Two[i] == 526 || this.topPosArray_Two[i] == 608 || this.topPosArray_Two[i] == 542) {
+            else if (this.bottomPosArray_Two[i] == 594 || this.bottomPosArray_Two[i] == 526 || this.bottomPosArray_Two[i] == 608 || this.bottomPosArray_Two[i] == 542) {
                 let right_corner_small = this.scene.physics.add.image(0, 0, this.key[6]);
                 right_corner_small.body.allowGravity = false;
                 right_corner_small.body.immovable = true;
                 this.lowerPlatformArrayTwo.push(right_corner_small);
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], right_corner_small);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Two[i], right_corner_small);
             }
-            // else if (this.topPosArray_Two[i] == 524) {
-            //     this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], this.scene.add.image(0, 0, this.key[6]));
-            //     }
             else {
                 let center = this.scene.physics.add.image(0, 0, this.key[7]);
                 center.body.allowGravity = false;
                 center.body.immovable = true;
                 this.lowerPlatformArrayTwo.push(center);
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], center);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Two[i], center);
             }
         }
-        for (let i = 0; i < this.topPosArray_Three.length; i++) {
-            if (this.topPosArray_Three[i] == 830 || this.topPosArray_Three[i] == 760) {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Three[i], this.scene.add.image(0, 0, this.key[3]));
+        for (let i = 0; i < this.bottomPosArray_Three.length; i++) {
+            if ((this.bottomPosArray_Three[i] >= 691 && this.bottomPosArray_Three[i] <= 694) || this.bottomPosArray_Three[i] == 487) {
+                let top = this.scene.physics.add.image(0, 0, this.key[0]);
+                top.body.allowGravity = false;
+                top.body.immovable = true;
+                this.lowerPlatformArrayThree.push(top);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Three[i], top);
             }
-            else if (this.topPosArray_Three[i] == 489 || this.topPosArray_Three[i] == 559 || this.topPosArray_Three[i] == 629 || this.topPosArray_Three[i] == 699 || this.topPosArray_Three[i] == 769 || this.topPosArray_Three[i] == 839) {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Three[i], this.scene.add.image(0, 0, this.key[4]));
+            else if (this.bottomPosArray_Three[i] == 690 || this.bottomPosArray_Three[i] == 555 || this.bottomPosArray_Three[i] == 486 || this.bottomPosArray_Three[i] == 418) {
+                let right_corner_top = this.scene.physics.add.image(0, 0, this.key[1]);
+                right_corner_top.body.allowGravity = false;
+                right_corner_top.body.immovable = true;
+                this.lowerPlatformArrayThree.push(right_corner_top);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Three[i], right_corner_top);
             }
-            else if (this.topPosArray_Three[i] == 690 || this.topPosArray_Three[i] == 555 || this.topPosArray_Three[i] == 486 || this.topPosArray_Three[i] == 418) {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Three[i], this.scene.add.image(0, 0, this.key[1]));
+            else if (this.bottomPosArray_Three[i] == 419) {
+                let left_corner_top = this.scene.physics.add.image(0, 0, this.key[2]);
+                left_corner_top.body.allowGravity = false;
+                left_corner_top.body.immovable = true;
+                this.lowerPlatformArrayThree.push(left_corner_top);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Three[i], left_corner_top);
             }
-            else if ((this.topPosArray_Three[i] >= 690 && this.topPosArray_Three[i] <= 694) || this.topPosArray_Three[i] == 487) {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Three[i], this.scene.add.image(0, 0, this.key[0]));
+            else if (this.bottomPosArray_Three[i] == 830 || this.bottomPosArray_Three[i] == 760 || this.bottomPosArray_Three[i] == 625) {
+                let right_side = this.scene.physics.add.image(0, 0, this.key[3]);
+                right_side.body.allowGravity = false;
+                right_side.body.immovable = true;
+                this.lowerPlatformArrayThree.push(right_side);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Three[i], right_side);
             }
-            else if (this.topPosArray_Three[i] == 695 || this.topPosArray_Three[i] == 556 || this.topPosArray_Three[i] == 488) {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Three[i], this.scene.add.image(0, 0, this.key[6]));
+            else if (this.bottomPosArray_Three[i] == 489 || this.bottomPosArray_Three[i] == 559 || this.bottomPosArray_Three[i] == 629 || this.bottomPosArray_Three[i] == 699 || this.bottomPosArray_Three[i] == 769 || this.bottomPosArray_Three[i] == 839) {
+                let left_side = this.scene.physics.add.image(0, 0, this.key[4]);
+                left_side.body.allowGravity = false;
+                left_side.body.immovable = true;
+                this.lowerPlatformArrayThree.push(left_side);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Three[i], left_side);
             }
-            else if (this.topPosArray_Three[i] == 625) {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Three[i], this.scene.add.image(0, 0, this.key[3]));
-            }
-            else if (this.topPosArray_Three[i] == 419) {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Three[i], this.scene.add.image(0, 0, this.key[2]));
+            else if (this.bottomPosArray_Three[i] == 695 || this.bottomPosArray_Three[i] == 556 || this.bottomPosArray_Three[i] == 488) {
+                let right_corner_small = this.scene.physics.add.image(0, 0, this.key[6]);
+                right_corner_small.body.allowGravity = false;
+                right_corner_small.body.immovable = true;
+                this.lowerPlatformArrayThree.push(right_corner_small);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Three[i], right_corner_small);
             }
             else {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Three[i], this.scene.add.image(0, 0, this.key[7]));
+                let center = this.scene.physics.add.image(0, 0, this.key[7]);
+                center.body.allowGravity = false;
+                center.body.immovable = true;
+                this.lowerPlatformArrayThree.push(center);
+                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Three[i], center);
             }
         }
 
     }
+
     MovePlatform() {
         this.lowerPlatformArray.forEach(tiles => {
             tiles.body.setVelocityX(-200);
         });
         this.lowerPlatformArrayTwo.forEach(tiles => {
+            tiles.body.setVelocityX(-200);
+        });
+        this.lowerPlatformArrayThree.forEach(tiles => {
             tiles.body.setVelocityX(-200);
         });
     }
@@ -234,13 +353,19 @@ class Platform {
 
             if (this.lowerPlatformArray[i].x <= -4000) {
                 // console.log("iwhdofihw");
-                this.lowerPlatformArray[i].x = 5060;
+                this.lowerPlatformArray[i].x = 7096;
             }
         }
         for (let i = 0; i < this.lowerPlatformArrayTwo.length; i++) {
             if (this.lowerPlatformArrayTwo[i].x <= -4000) {
-                console.log("iwhdofihw");
-                this.lowerPlatformArrayTwo[i].x = 5060;
+                // console.log("iwhdofihw");
+                this.lowerPlatformArrayTwo[i].x = 7096;
+            }
+        }
+        for (let i = 0; i < this.lowerPlatformArrayThree.length; i++) {
+            if (this.lowerPlatformArrayThree[i].x <= -4000) {
+                // console.log("iwhdofihw");
+                this.lowerPlatformArrayThree[i].x = 7096;
             }
         }
     }
@@ -323,318 +448,11 @@ class Platform {
         // this.platformArray.push(bottomMidLayer);SSSSSS
         // console.log("layer", layer);
     }
-    CreateBottomPlatformXXX() {
-        // let blockOne = 
-        // console.log("Platform making");
-        // // const bottom_floor_01 = this.scene.add.image(300, 1470, "bottomFloor_One");
-        // // bottom_floor_01.setInteractive(new Phaser.Geom.Polygon("-2.956447115246533 311.73594117319067 768.1943317386604 306.7832535692446 768.1943317386604 158.42989867851384 1225.6171759850808 152.24850889139998 1225.6171759850808 0.8044591071118248 1531.5959704472136 0.8044591071118248 1534.6866653407706 158.42989867851384 1679.9493253379446 161.52059357207054 1683.0400202315013 615.8527429249343 2149.734949158593 612.7620480313772 2151 923 0 923"), Phaser.Geom.Polygon.Contains);
-        // // bottom_floor_01.setOrigin(0, 0);
-
-        // // // bottom_floor
-        // // this.scene.add.image(-1942, -1430, "bottomFloor_One");
-        // let bottomPlatformOne = this.scene.add.image(300, 1470, 'bottomFloor_One');
-        // const shape = new Phaser.Geom.Polygon([-2.956447115246533, 311.73594117319067, 768.1943317386604, 306.7832535692446, 768.1943317386604, 158.42989867851384, 1225.6171759850808, 152.24850889139998, 1225.6171759850808, 0.8044591071118248, 1531.5959704472136, 0.8044591071118248, 1534.6866653407706, 158.42989867851384, 1679.9493253379446, 161.52059357207054, 1683.0400202315013, 615.8527429249343, 2149.734949158593, 612.7620480313772, 2151, 923, 0, 923]);
-        // // const data = [100, 200, 300, 400, 700, 900, 500];
-        // this.graphics = this.scene.add.graphics({ x: bottomPlatformOne.x - bottomPlatformOne.displayOriginX, y: bottomPlatformOne.y - bottomPlatformOne.displayOriginY });
-        // this.scene.physics.world.enable(this.graphics);
-        // this.graphics.lineStyle(2, 0x00aa00);
-
-        // this.graphics.beginPath();
-
-        // this.graphics.moveTo(shape.points[0].x, shape.points[0].y);
-
-        // for (let i = 1; i < shape.points.length; i++) {
-        //     this.graphics.lineTo(shape.points[i].x, shape.points[i].y);
-        // }
-
-        // this.graphics.closePath();
-        // this.graphics.strokePath();
-        // this.scene.physics.world.enable(this.graphics);
-        // this.graphics.body.allowGravity = false;
-        // this.graphics.body.immovable = false;
-
-
-        // console.log(this.graphics);
-
-        // let bottomPlatformTwo = this.scene.add.image(300, -550, 'bottomFloor_One');
-        // const shapeTwo = new Phaser.Geom.Polygon([-2.956447115246533, 311.73594117319067, 768.1943317386604, 306.7832535692446, 768.1943317386604, 158.42989867851384, 1225.6171759850808, 152.24850889139998, 1225.6171759850808, 0.8044591071118248, 1531.5959704472136, 0.8044591071118248, 1534.6866653407706, 158.42989867851384, 1679.9493253379446, 161.52059357207054, 1683.0400202315013, 615.8527429249343, 2149.734949158593, 612.7620480313772, 2151, 923, 0, 923]);
-        // // const data = [100, 200, 300, 400, 700, 900, 500];
-        // this.graphicsTwo = this.scene.add.graphics({ x: bottomPlatformTwo.x - bottomPlatformTwo.displayOriginX, y: bottomPlatformTwo.y - bottomPlatformTwo.displayOriginY });
-        // this.scene.physics.world.enable(this.graphicsTwo);
-        // this.graphicsTwo.lineStyle(2, 0x00aa00);
-
-        // this.graphicsTwo.beginPath();
-
-        // this.graphicsTwo.moveTo(shapeTwo.points[0].x, shapeTwo.points[0].y);
-
-        // for (let i = 1; i < shapeTwo.points.length; i++) {
-        //     this.graphicsTwo.lineTo(shapeTwo.points[i].x, shapeTwo.points[i].y);
-        // }
-
-        // this.graphicsTwo.closePath();
-        // this.graphicsTwo.strokePath();
-        // // this.scene.physics.world.enable(this.graphicsTwo);
-        // // this.graphicsTwo.body.allowGravity = false;
-        // this.graphicsTwo.body.immovable = false;
-        // this.scene.physics.add.collider(this.graphics, this.graphicsTwo, () => {
-        //     console.log("coll");
-        //     this.graphics.body.blocked.down = true;
-        //     this.graphicsTwo.body.blocked.up = true;
-        //     this.graphics.body.setVelocityX(0);
-        // })
-        // bottom_floor_01.setInteractive(new Phaser.Geom.Polygon("-2.956447115246533 311.73594117319067 768.1943317386604 306.7832535692446 768.1943317386604 158.42989867851384 1225.6171759850808 152.24850889139998 1225.6171759850808 0.8044591071118248 1531.5959704472136 0.8044591071118248 1534.6866653407706 158.42989867851384 1679.9493253379446 161.52059357207054 1683.0400202315013 615.8527429249343 2149.734949158593 612.7620480313772 2151 923 0 923"), Phaser.Geom.Polygon.Contains);
-        // bottom_floor_01.setOrigin(0, 0);
-
-        // console.log(shape);
-        // const graphics = this.scene.add.graphics({ x: bottomPlatformOne.x - bottomPlatformOne.displayOriginX, y: bottomPlatformOne.y - bottomPlatformOne.displayOriginY });
-        // // this.physics.world.enable(graphics);
-        // graphics.lineStyle(2, 0xffffff);
-
-        // graphics.beginPath();
-
-        // graphics.moveTo(shape.points[0].x, shape.points[0].y);
-
-        // for (let i = 1; i < shape.points.length; i++) {
-        //     graphics.lineTo(shape.points[i].x, shape.points[i].y);
-        // // }
-        // this.contain = this.scene.add.container(0, 0);
-
-        // this.obstacle = this.scene.physics.add.image(950, 950, 'onepixel').setScale(130).setDepth(0).setFrictionX(0);
-        // this.obstacle.body.allowGravity = false;
-        // this.obstacle.body.immovable = true;
-        // this.contain.add(this.obstacle);
-        // this.contain.setSize(this.obstacle.width, this.obstacle.height);
-        // this.scene.physics.world.enable(this.contain);
-
-        // this.contain.body.allowGravity = false;
-        // this.platformLastIndex = this.numberOfBottomPlatforms - 1;
-        // this.index = this.numberOfColliders - 1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // this.bottomContainer_One = this.scene.add.container(0, 0);
-
-
-        // let bottomPlatformOne = this.scene.add.image(500, 500, 'bottomFloor_One');
-        // this.bottomPlatformArray_One.push(bottomPlatformOne);
-        // this.bottomContainer_One.setSize(10, 10);
-        // this.scene.physics.world.enable(this.bottomContainer_One);
-        // // // this.bottomContainer_One.setPosition(bottomPlatformOne.x, bottomPlatformOne.y);
-
-        // this.bottomContainer_One.add(bottomPlatformOne);
-        // this.bottomContainer_One.body.allowGravity = false;
-
-        // let collider_One = this.scene.physics.add.image(-390, 1630, 'onepixel').setScale(780 * scaleFactor, 620 * scaleFactor).setAlpha(0.5);
-        // collider_One.body.allowGravity = false;
-        // collider_One.body.immovable = true;
-        // // // console.log('cont', this.bottomContainer_One.x, collider_One.x)
-        // this.colliderArray.push(collider_One);
-        // this.bottomContainer_One.add(collider_One);
-
-        // let collider_Two = this.scene.physics.add.image(223, 1664, 'onepixel').setScale(450 * scaleFactor, 990 * scaleFactor).setAlpha(0.5);
-        // collider_Two.body.allowGravity = false;
-        // collider_Two.body.immovable = true;
-        // this.colliderArray.push(collider_Two);
-        // this.bottomContainer_One.add(collider_Two);
-
-        // let collider_Three = this.scene.physics.add.image(605, 1508, 'onepixel').setScale(300 * scaleFactor, 990 * scaleFactor).setAlpha(0.5);
-        // collider_Three.body.allowGravity = false;
-        // collider_Three.body.immovable = true;
-        // this.colliderArray.push(collider_Three);
-        // this.bottomContainer_One.add(collider_Three);
-
-        // let collider_Four = this.scene.physics.add.image(835, 1605, 'onepixel').setScale(156 * scaleFactor, 880 * scaleFactor).setAlpha(0.5);
-        // collider_Four.body.allowGravity = false;
-        // collider_Four.body.immovable = true;
-        // this.colliderArray.push(collider_Four);
-        // this.bottomContainer_One.add(collider_Four);
-        // // console.log("container", this.bottomContainer_One.list);
-
-        // this.bottomContainer_Two = this.scene.add.container(0, 0);
-        // let bottomPlatformTwo = this.scene.add.image(300 + bottomPlatformOne.width + 220, 1703, 'bottomFloor_Two');
-        // this.bottomContainer_Two.setSize(10, 10);
-        // this.scene.physics.world.enable(this.bottomContainer_Two);
-        // this.bottomContainer_Two.add(bottomPlatformTwo);
-        // this.bottomContainer_Two.body.allowGravity = false;
-
-        // let collider_Five = this.scene.physics.add.image(1214, 1778, 'onepixel').setScale(595 * scaleFactor, 300 * scaleFactor).setAlpha(0.5);
-        // collider_Five.body.allowGravity = false;
-        // collider_Five.body.immovable = true;
-        // this.colliderArray.push(collider_Five);
-        // this.bottomContainer_Two.add(collider_Five);
-
-        // let collider_Six = this.scene.physics.add.image(1745, bottomPlatformTwo.y + bottomPlatformTwo.height / 16.2, 'onepixel').setScale(462 * scaleFactor, 1200 * scaleFactor).setAlpha(0.5);
-        // collider_Six.body.allowGravity = false;
-        // collider_Six.body.immovable = true;
-        // this.colliderArray.push(collider_Six);
-        // this.bottomContainer_Two.add(collider_Six);
-
-        // let collider_Seven = this.scene.physics.add.image(2050, bottomPlatformTwo.y + bottomPlatformTwo.height / 16.2, 'onepixel').setScale(155 * scaleFactor, 900 * scaleFactor).setAlpha(0.5);
-        // collider_Seven.body.allowGravity = false;
-        // collider_Seven.body.immovable = true;
-        // this.colliderArray.push(collider_Seven);
-        // this.bottomContainer_Two.add(collider_Seven);
-
-        // let collider_Eight = this.scene.physics.add.image(2440, bottomPlatformTwo.y + bottomPlatformTwo.height / 15.1, 'onepixel').setScale(625 * scaleFactor, 600 * scaleFactor).setAlpha(0.5);
-        // collider_Eight.body.allowGravity = false;
-        // collider_Eight.body.immovable = true;
-        // this.colliderArray.push(collider_Eight);
-        // this.bottomContainer_Two.add(collider_Eight);
-
-        // let collider_Nine = this.scene.physics.add.image(2982, bottomPlatformTwo.y + bottomPlatformTwo.height / 25, 'onepixel').setScale(460 * scaleFactor, 850 * scaleFactor).setAlpha(0.5);
-        // collider_Nine.body.allowGravity = false;
-        // collider_Nine.body.immovable = true;
-        // this.colliderArray.push(collider_Nine);
-        // this.bottomContainer_Two.add(collider_Nine);
-
-        // let collider_Ten = this.scene.physics.add.image(3442, bottomPlatformTwo.y - bottomPlatformTwo.height / 9.6, 'onepixel').setScale(450 * scaleFactor, 850 * scaleFactor).setAlpha(0.5);
-        // collider_Ten.body.allowGravity = false;
-        // collider_Ten.body.immovable = true;
-        // this.colliderArray.push(collider_Ten);
-        // this.bottomContainer_Two.add(collider_Ten);
-
-        // let collider_Eleven = this.scene.physics.add.image(3825, bottomPlatformTwo.y + bottomPlatformTwo.height / 4.3, 'onepixel').setScale(310 * scaleFactor, 650 * scaleFactor).setAlpha(0.5);
-        // collider_Eleven.body.allowGravity = false;
-        // collider_Eleven.body.immovable = true;
-        // this.colliderArray.push(collider_Eleven);
-        // this.bottomContainer_Two.add(collider_Eleven);
-
-        // this.bottomContainer_Three = this.scene.add.container(0, 0);
-        // let bottomPlatformThree = this.scene.add.image(bottomPlatformTwo.x + bottomPlatformTwo.width + 800, 1700, 'bottomFloor_Three');
-        // this.bottomContainer_Three.setSize(10, 10);
-        // this.scene.physics.world.enable(this.bottomContainer_Three);
-        // this.bottomContainer_Three.add(bottomPlatformThree);
-        // this.bottomContainer_Three.body.allowGravity = false;
-
-        // let collider_Twelve = this.scene.physics.add.image(4100, bottomPlatformThree.y + bottomPlatformThree.height / 4.51, 'onepixel').setScale(150 * scaleFactor, 625 * scaleFactor).setAlpha(0.5);
-        // collider_Twelve.body.allowGravity = false;
-        // collider_Twelve.body.immovable = true;
-        // this.colliderArray.push(collider_Twelve);
-        // this.bottomContainer_Three.add(collider_Twelve);
-
-        // let collider_Thirteen = this.scene.physics.add.image(4313, bottomPlatformThree.y + bottomPlatformThree.height / 4.6, 'onepixel').setScale(300 * scaleFactor, 920 * scaleFactor).setAlpha(0.5);
-        // collider_Thirteen.body.allowGravity = false;
-        // collider_Thirteen.body.immovable = true;
-        // this.colliderArray.push(collider_Thirteen);
-        // this.bottomContainer_Three.add(collider_Thirteen);
-
-        // let collider_Fourteen = this.scene.physics.add.image(4935, bottomPlatformThree.y - bottomPlatformThree.height / 14.5, 'onepixel').setScale(918 * scaleFactor, 920 * scaleFactor).setAlpha(0.5);
-        // collider_Fourteen.body.allowGravity = false;
-        // collider_Fourteen.body.immovable = true;
-        // this.colliderArray.push(collider_Fourteen);
-        // this.bottomContainer_Three.add(collider_Fourteen);
-
-        // let collider_Fifteen = this.scene.physics.add.image(5700, bottomPlatformThree.y + bottomPlatformThree.height / 4.6, 'onepixel').setScale(612 * scaleFactor, 920 * scaleFactor).setAlpha(0.5);
-        // collider_Fifteen.body.allowGravity = false;
-        // collider_Fifteen.body.immovable = true;
-        // this.colliderArray.push(collider_Fifteen);
-        // this.bottomContainer_Three.add(collider_Fifteen);
-
-        // let collider_Sixteen = this.scene.physics.add.image(6330, bottomPlatformThree.y + bottomPlatformThree.height / 37, 'onepixel').setScale(631 * scaleFactor, 200 * scaleFactor).setAlpha(0.5);
-        // collider_Sixteen.body.allowGravity = false;
-        // collider_Sixteen.body.immovable = true;
-        // this.colliderArray.push(collider_Sixteen);
-        // this.bottomContainer_Three.add(collider_Sixteen);
-
-        // let collider_Seventeen = this.scene.physics.add.image(6937, bottomPlatformThree.y - bottomPlatformThree.height / 12.9, 'onepixel').setScale(612 * scaleFactor, 290 * scaleFactor).setAlpha(0.5);
-        // collider_Seventeen.body.allowGravity = false;
-        // collider_Seventeen.body.immovable = true;
-        // this.colliderArray.push(collider_Seventeen);
-        // this.bottomContainer_Three.add(collider_Seventeen);
-
-        // let collider_Eighteen = this.scene.physics.add.image(7703, bottomPlatformThree.y - bottomPlatformThree.height / 7.6, 'onepixel').setScale(910 * scaleFactor, 480 * scaleFactor).setAlpha(0.5);
-        // collider_Eighteen.body.allowGravity = false;
-        // collider_Eighteen.body.immovable = true;
-        // this.colliderArray.push(collider_Eighteen);
-        // this.bottomContainer_Three.add(collider_Eighteen);
-
-        // this.bottomContainer_Four = this.scene.add.container(0, 0);
-        // let bottomPlatformFour = this.scene.add.image(bottomPlatformThree.x + bottomPlatformThree.width - 1050, 1703, 'bottomFloor_Four');
-        // this.bottomContainer_Four.setSize(10, 10);
-        // this.scene.physics.world.enable(this.bottomContainer_Four);
-        // this.bottomContainer_Four.add(bottomPlatformFour);
-        // this.bottomContainer_Four.body.allowGravity = false;
-
-        // let collider_Nineteen = this.scene.physics.add.image(8738, bottomPlatformFour.y + bottomPlatformFour.height / 3.55, 'onepixel').setScale(770 * scaleFactor, 440 * scaleFactor).setAlpha(0.5);
-        // collider_Nineteen.body.allowGravity = false;
-        // collider_Nineteen.body.immovable = true;
-        // this.colliderArray.push(collider_Nineteen);
-        // this.bottomContainer_Four.add(collider_Nineteen);
-
-        // let collider_Twentieth = this.scene.physics.add.image(9200, bottomPlatformFour.y + bottomPlatformFour.height / 7.4, 'onepixel').setScale(150 * scaleFactor, 440 * scaleFactor).setAlpha(0.5);
-        // collider_Twentieth.body.allowGravity = false;
-        // collider_Twentieth.body.immovable = true;
-        // this.colliderArray.push(collider_Twentieth);
-        // this.bottomContainer_Four.add(collider_Twentieth);
-
-
-        // let collider_TwentyOne = this.scene.physics.add.image(collider_Twentieth.x + bottomPlatformFour.width / 7.5, bottomPlatformFour.y - bottomPlatformFour.height / 150, 'onepixel').setScale(300 * scaleFactor, 440 * scaleFactor).setAlpha(0.5);
-        // collider_TwentyOne.body.allowGravity = false;
-        // collider_TwentyOne.body.immovable = true;
-        // this.colliderArray.push(collider_TwentyOne);
-        // this.bottomContainer_Four.add(collider_TwentyOne);
-
-        // let collider_Twentytwo = this.scene.physics.add.image(collider_TwentyOne.x + bottomPlatformFour.width / 4.4, collider_TwentyOne.y - bottomPlatformFour.height / 3.5, 'onepixel').setScale(456 * scaleFactor, 440 * scaleFactor).setAlpha(0.5);
-        // collider_Twentytwo.body.allowGravity = false;
-        // collider_Twentytwo.body.immovable = true;
-        // this.colliderArray.push(collider_Twentytwo);
-        // this.bottomContainer_Four.add(collider_Twentytwo);
-
-        // let collider_Twentythree = this.scene.physics.add.image(collider_Twentytwo.x + bottomPlatformFour.width / 12.3, bottomPlatformFour.y - bottomPlatformFour.height / 150, 'onepixel').setScale(300 * scaleFactor, 440 * scaleFactor).setAlpha(0.5);
-        // collider_Twentytwo.body.allowGravity = false;
-        // this.colliderArray_Three.push(collider_Twentythree);
-        // this.bottomAllArray_Three.push(this.bottomPlatformArray_Three, this.colliderArray_Three);
-        // console.log(this.bottomAllArray_Three);
-        // console.log('colliderpos', bottomPlatformOne.x - bottomPlatformOne.width / 3.1, bottomPlatformFour.x - bottomPlatformFour.width / 3.7)
-        // // collider_Fifteen.body.allowGravity = false;
-        // this.bottomContainer_Three.add(collider_Fifteen);
-        // let bottomPlatformFour = this.scene.physics.add.image(bottomPlatformThree.x + botomPlatformThree.width / 2 + 1090, 1700, 'bottomFloor_Four');
-        // bottomPlatformFour.body.allowGravity = false;
-        // this.bottomPlatformArray.push(bottomPlatformOne, bottomPlatformTwo, bottomPlatformThree, bottomPlatformFour);
-        // console.log(" this.bottomPlatformArray", this.bottomPlatformArray);
-    }
     MoveBottomPlatform() {
-        // this.bottomContainer_One.body.setVelocityX(-270);
-        // this.bottomContainer_Two.body.setVelocityX(-270);
-        // this.bottomContainer_Three.body.setVelocityX(-270);
-        // this.bottomContainer_Four.body.setVelocityX(-270);
-
-
         this.contain.body.setVelocityX(-270);
         console.log("this.contain", this.contain);
         console.log("body vel", this.contain.body.velocity);
-        // this.obstacle.body.setVelocityX(-270);
-        // for (let i = 0; i < this.colliderArray.length; i++) {
-        //     this.colliderArray[i].body.setVelocityX(100);
-        // }
-        // for (let i = 0; i < this.bottomAllArray_One.length; i++) {
-        //     for (let j = 0; j < this.bottomAllArray_One[i].length; j++) {
-        //         this.bottomAllArray_One[i][j].setVelocityX(-470);
-        //     }
-        //     // this.arrayBottomPlatform[i].setVelocityX(-470);
-        // }
-        // for (let i = 0; i < this.bottomAllArray_Two.length; i++) {
-        //     for (let j = 0; j < this.bottomAllArray_Two[i].length; j++) {
-        //         this.bottomAllArray_Two[i][j].setVelocityX(-470);
-        //     }
-        // }
-        // for (let i = 0; i < this.bottomAllArray_Three.length; i++) {
-        //     for (let j = 0; j < this.bottomAllArray_Three[i].length; j++) {
-        //         this.bottomAllArray_Three[i][j].setVelocityX(-470);
-        //     }
-        // }
+
     }
     RepositionPlatform() {
         // if()
@@ -658,82 +476,10 @@ class Platform {
         if (this.bottomContainer_Four.x <= -10200) {
             this.bottomContainer_Four.x = this.bottomContainer_Three.list[0].x - 5200;
         }
-
-        // console.log(distanceBetweenPlatforms, distanceBetwwenColliders, distanceBetweenPlatforms + distanceBetwwenColliders);
-
-        // for (let i = 0; i < this.bottomAllArray_One.length; i++) {
-        //     for (let j = 0; j < this.bottomAllArray_One[i].length; j++) {
-        //         if (this.bottomAllArray_One[i][j].x <= -8000) {
-        //             this.bottomAllArray_One[i][j].x = this.bottomPlatformArray_Three[0].x +
-        //                 this.bottomPlatformArray_Three[0].width + 1000;
-        //         }
-        //     }
-        // for (let i = 0; i < this.colliderArray_One.length; i++) {
-        //     if (this.colliderArray_One[i].x <= -8000) {
-        //         if (i == 0) {
-        //             this.colliderArray_One[i].x = this.bottomPlatformArray_One[0].x +
-        //                 this.bottomPlatformArray_One[0].width + 1000;
-        //         }
-        //         else {
-        //             this.colliderArray_One[i].x = this.colliderArray_One[this.index].x +
-        //                 this.colliderArray_One[this.index].width;
-        //         }
-        //     }
-        // }
     }
-    // }
-
-    //     for (let i = 0; i < this.bottomAllArray_One.length; i++) {
-    //         for (let j = 0; j < this.bottomAllArray_One[i].length; j++) {
-    //             if (this.bottomAllArray_One[i][j].x <= -8000) {
-    //                 this.bottomAllArray_One[i][j].x = this.bottomPlatformArray_Three[0].x +
-    //                     this.bottomPlatformArray_Three[0].width + (j * 500);
-    //             }
-    //         }
-    //     }
-    // }
-
-    // let distanceBetwwenColliders = (this.bottomPlatformArray_Three[0].x - this.bottomPlatformArray_Three[0].width / 3.7) - (this.bottomPlatformArray_One[0].x - this.bottomPlatformArray_One[0].width / 3.1);
-    // let distanceBetweenPlatforms = (this.bottomPlatformArray_One[0].x - this.bottomPlatformArray_One[0].width / 3.7) - (-8000);
-    // let totalDistance = (-8000) + distanceBetwwenColliders + distanceBetweenPlatforms
-    // console.log("rep");
-    // this.bottomAllArray_One[i][j].x = this.bottomPlatformArray_Three[0].x + this.bottomPlatformArray_Three[0].width + 1000;
-    // console.log(i, j);
-    // this.colliderArray_One[j].x += totalDistance + (j * 20);
-    // console.log('colliderX', this.colliderArray_One[j].x)
-    // }
-
-    // this.colliderArray_One, this.bottomPlatformArray_One
-    // console.log(" this.arrayBottomPlatform", this.arrayBottomPlatform);
-    // for (let i = 0; i < this.arrayBottomPlatform.length; i++) {
-    //     if (this.arrayBottomPlatform[i].x <= -8000) {
-    //         console.log("reposition");
-    //         if (i == 1) {
-    //             this.arrayBottomPlatform[i].x = this.arrayBottomPlatform[this.platformLastIndex].x + this.arrayBottomPlatform[this.platformLastIndex].width + 5;
-    //         }
-    //         else {
-    //             this.arrayBottomPlatform[i].x = this.arrayBottomPlatform[this.platformLastIndex].x + this.arrayBottomPlatform[this.platformLastIndex].width + 1000;
-    //             this.platformLastIndex = i;
-    //         }
-    //     }
-    // }
-
     RepositionCollidersXXX() {
-        // for (let i = 0; i < this.arrayBottomColliders.length; i++) {
-        //     if (this.arrayBottomColliders[i].x <= -8000) {
-        //         console.log("reposition");
-        //         this.arrayBottomColliders[i].x = this.arrayBottomColliders[this.platformLastIndex].x + this.arrayBottomPlatform[this.platformLastIndex].width + 5;
-        //         this.platformLastIndex = i;
-        //     }
-        // }
-
-
-
 
     }
-
-
-
     CreateMidPlatformXXX() {
         let midPlatform = this.scene.make.tilemap({ key: 'mid_bottom_platform', tileWidth: 154, tileHeight: 154 });
         let platformTileset = midPlatform.addTilesetImage('MidPlatform', 'platform');

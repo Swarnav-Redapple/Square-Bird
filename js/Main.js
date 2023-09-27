@@ -69,7 +69,7 @@ window.onload = function () {
                     }
                 ]
             },
-            width: 6000,
+            width: 4000,
             height: 1920
         };
     }
