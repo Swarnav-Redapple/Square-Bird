@@ -5,3 +5,4 @@ let game;
 let isMobile;
 let isPaused;
 let isResumed;
+let platformCanMove = false;

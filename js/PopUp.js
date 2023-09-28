@@ -6,6 +6,13 @@ class PopUp {
         this.overlay = new Overlay(this.scene);
         this.buttons = new Buttons(this.scene);
     }
+    CreateSettingsPopUp() {
+        // this.buttons.settingsBtn.on('pointerup', () => {
+        this.overlay.CreateOverlay();
+        let settingsTxt = this.scene.add.text(game.config.width / 6, game.config.height / 5.7, 'SETTINGS', { fontFamily: 'PoetsenOne-Regular', fontSize: 110, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
+        settingsTxt.setShadow(10, 15, '#000000', 0, true, true);
+        // });
+    }
     CreatePausePopUp() {
         this.overlay.CreateOverlay();
         this.gamePausedTxt = this.scene.add.text(game.config.width / 6, game.config.height / 5.7, 'GAME PAUSED !', { fontFamily: 'PoetsenOne-Regular', fontSize: 110, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
@@ -16,14 +23,14 @@ class PopUp {
         //     this.RemovePausePopUp();
         // }
     }
-    RemovePausePopUp() {
-        console.log("game resumed", this.buttons.continueBtn);
-        this.buttons.InteractiveContinueButton();
-        this.buttons.continueBtn.destroy();
-        this.buttons.backBtn.destroy();
-        this.overlay.overlay.destroy();
-        this.gamePausedTxt.destroy();
-    }
+    // RemovePausePopUp() {
+    //     console.log("game resumed", this.buttons.continueBtn);
+    //     this.buttons.InteractiveContinueButton();
+    //     this.buttons.continueBtn.destroy();
+    //     this.buttons.backBtn.destroy();
+    //     this.overlay.overlay.destroy();
+    //     this.gamePausedTxt.destroy();
+    // }
     CreateGameOverPopUp() {
         this.overlay.CreateOverlay();
         this.overlay.overlay.setInteractive({ useHandCursor: true });

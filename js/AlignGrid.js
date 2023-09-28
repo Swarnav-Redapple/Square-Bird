@@ -35,7 +35,8 @@ class AlignGrid {
         //ch cell height is the scene height divided the number of rows
         this.ch = this.h / this.rows;
         this.graphics = this.scene.add.graphics();
-        this.graphics.lineStyle(0.000000001, 0xff0000, a);
+        this.graphics.lineStyle(0.000000001, a);
+        // 0xff0000
         //
         //
         //this.graphics.beginPath();

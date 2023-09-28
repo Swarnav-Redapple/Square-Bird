@@ -1,10 +1,12 @@
 import PreloadScene from './PreloadScene.js';
 import TutorialScene from './TutorialScene.js';
 import GameScene from './GameScene.js';
+import PausedScene from './PausedScene.js'
 
 let preloadScene = new PreloadScene();
 let tutorialScene = new TutorialScene();
 let gameScene = new GameScene();
+let pausedScene = new PausedScene();
 
 window.onload = function () {
 
@@ -92,6 +94,7 @@ window.onload = function () {
     game.scene.add('PreloadScene', preloadScene);
     game.scene.add('TutorialScene', tutorialScene);
     game.scene.add('GameScene', gameScene);
+    game.scene.add('PausedScene', pausedScene);
 
     if (isMobile && window.innerHeight < window.innerWidth) {
     } else {

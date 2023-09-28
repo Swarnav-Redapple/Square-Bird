@@ -11,17 +11,22 @@ class Buttons {
     }
     CreateButtons() {
         this.playBtn = this.scene.add.image(game.config.width / 2, game.config.height / 1.43, 'playButton').setInteractive({ useHandCursor: true });
-        this.settingsBtn = this.scene.add.image(game.config.width / 3.2, game.config.height / 1.08, 'settingsButton');
+        this.settingsBtn = this.scene.add.image(game.config.width / 3.2, game.config.height / 1.08, 'settingsButton').setInteractive({ useHandCursor: true });
         this.homeBtn = this.scene.add.image(game.config.width / 2, game.config.height / 1.08, 'homeButton');
         this.achievementBtn = this.scene.add.image(game.config.width / 1.45, game.config.height / 1.08, 'achievementButton');
         this.pauseBtn = this.scene.add.image(0, 0, 'pauseButton').setVisible(false).setInteractive({ useHandCursor: true });
     }
     CreatePausePopupButtons() {
+        console.log("Paused");
         this.continueBtn = this.scene.add.image(game.config.width / 2, game.config.height / 2, 'continueButton').setInteractive({ useHandCursor: true });
-        this.continueBtn.on('pointerup', this.InteractiveContinueButton, this);
+        // this.continueBtn.on('pointerup', () => {
+        //     this.scene.scene.resume();
+        // });
         this.backBtn = this.scene.add.image(game.config.width / 2, game.config.height / 1.48, 'backButton').setInteractive({ useHandCursor: true });
         this.backBtn.on('pointerup', () => {
+            // isPaused = false;
             this.scene.scene.stop();
+            this.scene.scene.stop('GameScene');
             this.scene.scene.start('TutorialScene');
         });
         // setTimeout(() => {

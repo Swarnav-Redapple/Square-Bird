@@ -103,19 +103,12 @@ export default class GameScene extends Phaser.Scene {
 
 
     MovePlatform() {
-        // if (this.isDown && !isPaused && !this.isGameOver) {
         this.platform.MovePlatform();
-        // this.platform.MoveTopPlatform();
-        // this.platform.MoveCollisionBoxes();
-        // this.platform.tilePositionX += 7;
-        // if (this.distanceCounter == 10) {
-        //     this.distanceCounter = 0;
-        //     this.platform.tilePositionX += 7 * 1.5;
-        // }
     }
-
-    MoveColliders() {
-        this.platform.MoveColliders();
+    PausePlatformMovement() {
+        if (isPaused) {
+            this.platform.platformSpeed = 0;
+        }
     }
     RepositionPlatform() {
         this.platform.RepositioningPlatform();
@@ -152,15 +145,17 @@ export default class GameScene extends Phaser.Scene {
         }
     }
     BirdOnTouchingLowerPlatform(_bird, _platform) {
+        // if (!isPaused) {
         if (_bird.body.touching.down) {
             // console.log("making cubes");
             _bird.body.setVelocityX(180);
             this.isDown = true;
-            this.isStartCheck = true;
+            // this.isStartCheck = true;
+            platformCanMove = true;
         }
 
-        if (this.isStartCheck) {
-            this.isStartCheck = false;
+        if (platformCanMove) {
+            platformCanMove = false;
             this.MovePlatform();
         }
 
@@ -179,7 +174,7 @@ export default class GameScene extends Phaser.Scene {
         // if (_platform.body.touching.up) {
         if (_bird.isCollide == "false") {
             _bird.isCollide = "true";
-            this.cameras.main.shake(185, 0.026);
+            this.cameras.main.shake(185, 0.02);
             console.log("Top Collision");
             _bird.play('Die', false, 1);
             _bird.body.setVelocity(0, 0);
@@ -336,32 +331,31 @@ export default class GameScene extends Phaser.Scene {
         //         b1.stop();
         //     }
         // });
-        if (_cube.body.touching.down) {
+        if (_cube.x <= -150) {
+            // console.log("Shift");
+            _cube.setVisible(false);
+            this.cubesArray.shift();
+            _cube.destroy();
+        }
+        else if (_cube.body.touching.down) {
             _cube.body.setVelocity(0, 0);
             // _cube.body.allowGravity = false;
 
         }
-        if (_cube.body.touching.right) {
-            // this.arrayBirdPos = [];
-            // this.arrayBirdPos.push(this.player.player.x);
-            // this.arrayBirdPos.push(this.player.player.y - 15);
-            if (_cube.x <= -100) {
-                // console.log("Shift");
-                _cube.setVisible(false);
-                this.cubesArray.shift();
-            }
-            if (_cube.isCollide == "false") {
-                // _cube.body.setVelocityX(0);
-                this.cameras.main.shake(185, 0.026);
-                _cube.isCollide = true;
-                // console.log("isCollide");
-            }
-            // _cube.body.setVelocityX(0);
-        }
         // this.arrayBirdPos = [];
-        // this.arrayBirdPos.push(this.player.player.x - 8);
-        // this.arrayBirdPos.push(this.player.player.y - 20);
+        // this.arrayBirdPos.push(this.player.player.x);
+        // this.arrayBirdPos.push(this.player.player.y - 15);
+        else if (_cube.body.touching.right && _cube.isCollide == "false") {
+            // _cube.body.setVelocityX(0);
+            this.cameras.main.shake(185, 0.02);
+            _cube.isCollide = true;
+            console.log("isCollide");
+        }
+        // _cube.body.setVelocityX(0);
     }
+    // this.arrayBirdPos = [];
+    // this.arrayBirdPos.push(this.player.player.x - 8);
+    // this.arrayBirdPos.push(this.player.player.y - 20);
     // BirdOnCollisionWithPlatform) {
 
     // }
@@ -377,6 +371,7 @@ export default class GameScene extends Phaser.Scene {
         //     this.player.player.body.setVelocityX(0);
         // }
         this.MoveBg();
+        // this.PausePlatformMovement();
         this.RepositionPlatform();
         // console.log('player', this.player.player.body.velocity.x);
         // this.MovePlatform();
