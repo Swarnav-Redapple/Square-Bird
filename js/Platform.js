@@ -55,9 +55,10 @@ class Platform {
 
         this.bottomPosArray_Three = [830, 760, 690, 691, 692, 693, 694, 695, 625, 555, 556, 486, 487, 488, 418, 419, 489, 557, 558, 559, 626, 627, 628, 629, 696, 697, 698, 699, 761, 762, 763, 764, 765, 766, 767, 768, 769, 831, 832, 833, 834, 835, 836, 837, 838, 839];
 
-        this.topPosArray = [0, 70, 71, 141, 142, 143, 144, 74, 4, 5, 6, 7, 8, 9, 79, 80, 81, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 92, 162, 163, 164, 165, 166, 96, 26, 27, 28, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 177, 178, 179, 487, 488, 418, 419, 180, 181, 182, 183, 253, 254, 255, 256, 257, 258, 259, 260, 190, 120, 121, 122, 192, 193, 194, 195, 196, 197, 127, 57]
+        this.topPosArray = [0, 70, 71, 141, 142, 143, 144, 74, 4, 5, 6, 7, 8, 9, 79, 80, 81, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 92, 162, 163, 164, 165, 166, 96, 26, 27, 28, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 177, 178, 179, 487, 488, 418, 419, 180, 181, 182, 183, 253, 254, 255, 256, 257, 258, 259, 260, 190, 120, 121, 122, 192, 193, 194, 195, 196, 197, 127, 57, 126, 56, 55, 125, 124, 54, 53, 123, 50, 51, 52, 49, 119, 189, 48, 118, 188, 47, 117, 187, 46, 116, 186, 45, 115, 185, 44, 114, 184, 43, 113, 42, 112, 41, 111, 40, 110, 39, 109, 38, 108, 29, 30, 31, 32, 33, 34, 35, 36, 37, 23, 24, 25, 93, 94, 95, 1, 2, 3, 10, 72, 73];
 
-        this.topPosArray_Two = [59, 129, 130, 131, 132, 133, 134, 192, 204, 274, 276, 206, 275, 139, 69, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 135, 136, 137, 138, 205];
+
+        this.topPosArray_Two = [59, 129, 130, 131, 132, 133, 134, 204, 274, 276, 206, 275, 139, 69, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 135, 136, 137, 138, 205];
 
         this.key = ["top", "right_corner_top", "left_corner_top", "right_side", "left_side", "left_corner_small", "right_corner_small", "center", "right_corner_down", "left_corner_down", "bottom", "left_corner_small_top", "right_corner_small_top"];
         // this.ptA = [];
@@ -76,28 +77,67 @@ class Platform {
     CreateTopPlatform() {
         for (let i = 0; i < this.topPosArray.length; i++) {
             if (this.topPosArray[i] == 0 || this.topPosArray[i] == 92) {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[3]));
+                let right_side = this.scene.physics.add.image(0, 0, this.key[3]);
+                right_side.body.allowGravity = false;
+                right_side.body.immovable = true;
+                this.topPlatformArray.push(right_side);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], right_side);
             }
-            else if (this.topPosArray[i] == 74 || this.topPosArray[i] == 96 || this.topPosArray[i] == 190) {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[4]));
+            else if (this.topPosArray[i] == 74 || this.topPosArray[i] == 96 || this.topPosArray[i] == 190 || this.topPosArray[i] == 127 || this.topPosArray[i] == 57) {
+                let left_side = this.scene.physics.add.image(0, 0, this.key[4]);
+                left_side.body.allowGravity = false;
+                left_side.body.immovable = true;
+                this.topPlatformArray.push(left_side);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], left_side);
+                // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[4]));
             }
             else if (this.topPosArray[i] == 70 || this.topPosArray[i] == 141 || this.topPosArray[i] == 79 || this.topPosArray[i] == 162 || this.topPosArray[i] == 98 || this.topPosArray[i] == 177 || this.topPosArray[i] == 253 || this.topPosArray[i] == 192) {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[8]));
+                let right_corner_down = this.scene.physics.add.image(0, 0, this.key[8]);
+                right_corner_down.body.allowGravity = false;
+                right_corner_down.body.immovable = true;
+                this.topPlatformArray.push(right_corner_down);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], right_corner_down);
+                // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[8]));
             }
-            else if (this.topPosArray[i] == 144 || this.topPosArray[i] == 81 || this.topPosArray[i] == 166 || this.topPosArray[i] == 260) {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[9]));
+            else if (this.topPosArray[i] == 144 || this.topPosArray[i] == 81 || this.topPosArray[i] == 166 || this.topPosArray[i] == 260 || this.topPosArray[i] == 197) {
+                let left_corner_down = this.scene.physics.add.image(0, 0, this.key[9]);
+                left_corner_down.body.allowGravity = false;
+                left_corner_down.body.immovable = true;
+                this.topPlatformArray.push(left_corner_down);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], left_corner_down);
+                // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[9]));
             }
-            else if (this.topPosArray[i] == 142 || this.topPosArray[i] == 143 || (this.topPosArray[i] >= 5 && this.topPosArray[i] <= 8) || this.topPosArray[i] == 80 || (this.topPosArray[i] >= 12 && this.topPosArray[i] <= 21) || (this.topPosArray[i] >= 163 && this.topPosArray[i] <= 165) || this.topPosArray[i] == 27 || (this.topPosArray[i] >= 99 && this.topPosArray[i] <= 106) || (this.topPosArray[i] >= 178 && this.topPosArray[i] <= 182) || (this.topPosArray[i] >= 254 && this.topPosArray[i] <= 259) || this.topPosArray[i] == 121) {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[10]));
+            else if (this.topPosArray[i] == 142 || this.topPosArray[i] == 143 || (this.topPosArray[i] >= 5 && this.topPosArray[i] <= 8) || this.topPosArray[i] == 80 || (this.topPosArray[i] >= 12 && this.topPosArray[i] <= 21) || (this.topPosArray[i] >= 163 && this.topPosArray[i] <= 165) || this.topPosArray[i] == 27 || (this.topPosArray[i] >= 99 && this.topPosArray[i] <= 106) || (this.topPosArray[i] >= 178 && this.topPosArray[i] <= 182) || (this.topPosArray[i] >= 254 && this.topPosArray[i] <= 259) || this.topPosArray[i] == 121 || (this.topPosArray[i] >= 193 && this.topPosArray[i] <= 196)) {
+                let bottom = this.scene.physics.add.image(0, 0, this.key[10]);
+                bottom.body.allowGravity = false;
+                bottom.body.immovable = true;
+                this.topPlatformArray.push(bottom);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], bottom);
+                // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[10]));
             }
             else if (this.topPosArray[i] == 4 || this.topPosArray[i] == 11 || this.topPosArray[i] == 26 || this.topPosArray[i] == 120) {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[11]));
+                let left_corner_small_top = this.scene.physics.add.image(0, 0, this.key[11]);
+                left_corner_small_top.body.allowGravity = false;
+                left_corner_small_top.body.immovable = true;
+                this.topPlatformArray.push(left_corner_small_top);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], left_corner_small_top);
+                // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[11]));
             }
             else if (this.topPosArray[i] == 71 || this.topPosArray[i] == 9 || this.topPosArray[i] == 22 || this.topPosArray[i] == 28 || this.topPosArray[i] == 107 || this.topPosArray[i] == 183 || this.topPosArray[i] == 122) {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[12]));
+                let right_corner_small_top = this.scene.physics.add.image(0, 0, this.key[12]);
+                right_corner_small_top.body.allowGravity = false;
+                right_corner_small_top.body.immovable = true;
+                this.topPlatformArray.push(right_corner_small_top);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], right_corner_small_top);
+                // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[12]));
             }
             else {
-                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[7]));
+                let center = this.scene.physics.add.image(0, 0, this.key[7]);
+                center.body.allowGravity = false;
+                center.body.immovable = true;
+                this.topPlatformArray.push(center);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], center);
+                // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[7]));
             }
         }
         for (let i = 0; i < this.topPosArray_Two.length; i++) {
@@ -346,6 +386,13 @@ class Platform {
         this.lowerPlatformArrayThree.forEach(tiles => {
             tiles.body.setVelocityX(-200);
         });
+        this.topPlatformArray.forEach(tiles => {
+            // tiles.setSize(500, 500);
+            tiles.body.setVelocityX(-200);
+        });
+        this.topPlatformArrayTwo.forEach(tiles => {
+            tiles.body.setVelocityX(-200);
+        });
     }
     RepositioningPlatform() {
         // console.log("iwhdofihw");
@@ -366,6 +413,18 @@ class Platform {
             if (this.lowerPlatformArrayThree[i].x <= -4000) {
                 // console.log("iwhdofihw");
                 this.lowerPlatformArrayThree[i].x = 7096;
+            }
+        }
+        for (let i = 0; i < this.topPlatformArray.length; i++) {
+            if (this.topPlatformArray[i].x <= -4000) {
+                // console.log("iwhdofihw");
+                this.topPlatformArray[i].x = 7096;
+            }
+        }
+        for (let i = 0; i < this.topPlatformArrayTwo.length; i++) {
+            if (this.topPlatformArrayTwo[i].x <= -4000) {
+                // console.log("iwhdofihw");
+                this.topPlatformArrayTwo[i].x = 7096;
             }
         }
     }

@@ -1,0 +1,505 @@
+{
+    "skeleton": {
+        "hash": "+g05+6L4470",
+        "spine": "4.1.21",
+        "x": -1349.04,
+        "y": 265.79,
+        "width": 2680.99,
+        "height": 1104.51,
+        "images": "../Image/",
+        "audio": "D:/Spine/Penguin/Spine_File"
+    },
+    "bones": [
+        {
+            "name": "root",
+            "scaleX": 4.5,
+            "scaleY": 4.5
+        },
+        {
+            "name": "Effects_01",
+            "parent": "root",
+            "x": 108.63,
+            "y": 149.8,
+            "scaleX": 0.9091,
+            "scaleY": 0.9091
+        },
+        {
+            "name": "Effects_02",
+            "parent": "root",
+            "x": -112.43,
+            "y": 149.8,
+            "scaleX": -0.9091,
+            "scaleY": 0.9091
+        }
+    ],
+    "slots": [
+        {
+            "name": "Smoke_00000",
+            "bone": "Effects_01",
+            "attachment": "Smoke_00009"
+        },
+        {
+            "name": "Smoke_00001",
+            "bone": "Effects_02",
+            "attachment": "Smoke_00009"
+        }
+    ],
+    "skins": [
+        {
+            "name": "default",
+            "attachments": {
+                "Smoke_00000": {
+                    "Smoke_00000": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00001": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00002": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00003": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00004": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00005": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00006": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00007": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00008": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00009": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00010": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00011": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00012": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00013": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00014": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00015": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00016": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00017": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00018": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00019": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00020": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00021": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00022": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00023": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    }
+                },
+                "Smoke_00001": {
+                    "Smoke_00000": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00001": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00002": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00003": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00004": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00005": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00006": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00007": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00008": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00009": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00010": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_000010": {
+                        "path": "Smoke_00000",
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00011": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00012": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00013": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00014": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00015": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00016": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00017": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00018": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00019": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00020": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00021": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00022": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    },
+                    "Smoke_00023": {
+                        "x": -33.9,
+                        "y": 35.19,
+                        "width": 480,
+                        "height": 270
+                    }
+                }
+            }
+        }
+    ],
+    "animations": {
+        "Smoke": {
+            "slots": {
+                "Smoke_00000": {
+                    "rgba": [
+                        {
+                            "color": "ffffff00"
+                        },
+                        {
+                            "time": 0.0333,
+                            "color": "fffffffe",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.3667,
+                            "color": "fffffffe"
+                        },
+                        {
+                            "time": 0.4,
+                            "color": "ffffff00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "name": "Smoke_00007"
+                        },
+                        {
+                            "time": 0.0333,
+                            "name": "Smoke_00008"
+                        },
+                        {
+                            "time": 0.0667,
+                            "name": "Smoke_00010"
+                        },
+                        {
+                            "time": 0.1,
+                            "name": "Smoke_00012"
+                        },
+                        {
+                            "time": 0.1333,
+                            "name": "Smoke_00013"
+                        },
+                        {
+                            "time": 0.1667,
+                            "name": "Smoke_00015"
+                        },
+                        {
+                            "time": 0.2,
+                            "name": "Smoke_00016"
+                        },
+                        {
+                            "time": 0.2333,
+                            "name": "Smoke_00017"
+                        },
+                        {
+                            "time": 0.2667,
+                            "name": "Smoke_00018"
+                        },
+                        {
+                            "time": 0.3,
+                            "name": "Smoke_00020"
+                        },
+                        {
+                            "time": 0.3333,
+                            "name": "Smoke_00021"
+                        }
+                    ]
+                },
+                "Smoke_00001": {
+                    "rgba": [
+                        {
+                            "color": "ffffff00"
+                        },
+                        {
+                            "time": 0.0333,
+                            "color": "fffffffe",
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.3667,
+                            "color": "fffffffe"
+                        },
+                        {
+                            "time": 0.4,
+                            "color": "ffffff00"
+                        }
+                    ],
+                    "attachment": [
+                        {
+                            "name": "Smoke_00007"
+                        },
+                        {
+                            "time": 0.0333,
+                            "name": "Smoke_00008"
+                        },
+                        {
+                            "time": 0.0667,
+                            "name": "Smoke_00010"
+                        },
+                        {
+                            "time": 0.1,
+                            "name": "Smoke_00012"
+                        },
+                        {
+                            "time": 0.1333,
+                            "name": "Smoke_00013"
+                        },
+                        {
+                            "time": 0.1667,
+                            "name": "Smoke_00015"
+                        },
+                        {
+                            "time": 0.2,
+                            "name": "Smoke_00016"
+                        },
+                        {
+                            "time": 0.2333,
+                            "name": "Smoke_00017"
+                        },
+                        {
+                            "time": 0.2667,
+                            "name": "Smoke_00018"
+                        },
+                        {
+                            "time": 0.3,
+                            "name": "Smoke_00020"
+                        },
+                        {
+                            "time": 0.3333,
+                            "name": "Smoke_00021"
+                        }
+                    ]
+                }
+            },
+            "bones": {
+                "Effects_02": {
+                    "translate": [
+                        {
+                            "y": -83.16
+                        }
+                    ]
+                },
+                "Effects_01": {
+                    "translate": [
+                        {
+                            "y": -83.16
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

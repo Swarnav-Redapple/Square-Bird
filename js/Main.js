@@ -25,7 +25,7 @@ window.onload = function () {
                 default: 'arcade',
                 arcade: {
                     gravity: { y: 1800 },
-                    debug: true,
+                    // debug: true,
                     // debugBodyColor: 0x000000,
                 },
             },
@@ -56,7 +56,7 @@ window.onload = function () {
                 arcade: {
                     gravity: { y: 1800 },
                     // tileBias: 154,
-                    debug: true,
+                    // debug: true,
                     // debugBodyColor: 0x000000,
                 },
             },
@@ -69,7 +69,7 @@ window.onload = function () {
                     }
                 ]
             },
-            width: 4000,
+            width: 1080,
             height: 1920
         };
     }
