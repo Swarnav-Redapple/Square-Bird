@@ -16,7 +16,7 @@ class AlignGrid {
         if (!config.height) {
             config.height = 1920;
         }
-        console.log(game.config.width);
+        // console.log(game.config.width);
         this.h = config.height;
         this.w = config.width;
         this.rows = config.rows;
@@ -27,7 +27,7 @@ class AlignGrid {
         //ch cell height is the scene height divided the number of rows
         this.ch = this.h / this.rows;
 
-        console.log(this.scene);
+        // console.log(this.scene);
 
     }
     show(a = 100) {
@@ -35,7 +35,7 @@ class AlignGrid {
         //ch cell height is the scene height divided the number of rows
         this.ch = this.h / this.rows;
         this.graphics = this.scene.add.graphics();
-        this.graphics.lineStyle(0.000000001, a);
+        this.graphics.lineStyle(0.00000001, a);
         // 0xff0000
         //
         //

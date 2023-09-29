@@ -4,16 +4,35 @@ export default class PausedScene extends Phaser.Scene {
         super('PausedScene');
     }
     init() {
+        // console.log("scene.key", data.sceneKeyManager);
         this.popUp = new PopUp(this);
     }
-    create() {
-        this.ShowPausePopup();
+    create(data) {
+        if (data.key == '0') {
+            this.ShowPausePopup();
+        }
+        else {
+            this.ShowSettingsPopUp(data.sceneKeyManager);
+        }
     }
     ShowPausePopup() {
         this.popUp.CreatePausePopUp();
         this.popUp.buttons.continueBtn.on('pointerup', () => {
             this.scene.stop();
             this.scene.resume('GameScene');
+        });
+        this.popUp.buttons.backBtn.on('pointerup', () => {
+            // isPaused = false;
+            this.scene.stop();
+            this.scene.stop('GameScene');
+            this.scene.start('TutorialScene');
+        });
+    }
+    ShowSettingsPopUp(_sceneKey) {
+        this.popUp.CreateSettingsPopUp();
+        this.popUp.buttons.closedBtn.on('pointerup', () => {
+            this.scene.stop();
+            this.scene.resume(_sceneKey);
         });
     }
     update() {

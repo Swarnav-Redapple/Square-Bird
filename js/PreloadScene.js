@@ -37,9 +37,9 @@ export default class PreloadScene extends Phaser.Scene {
     LoadFonts() {
         let propNames = Object.getOwnPropertyNames(this.fonts);
         propNames.forEach((fontName, index) => {
-            console.log("Here");
+            // console.log("Here");
             let isLast = index >= propNames.length - 1;
-            console.log("Here");
+            // console.log("Here");
             this.fonts[fontName] = new FontFaceObserver(fontName);
             this.fonts[fontName].load().then(this.FontLoadSuccess.bind(this, fontName, isLast), this.FontLoadError.bind(this, fontName));
         });
@@ -47,7 +47,7 @@ export default class PreloadScene extends Phaser.Scene {
 
     FontLoadSuccess(fontName, isLast) {
         if (isLast) {
-            console.log('this.load')
+            // console.log('this.load')
             this.LoadAssets();
         }
     };
@@ -65,6 +65,9 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image('continueButton', 'Continue_button.png');
         this.load.image('backButton', 'Back_to_menu_button.png');
         this.load.image('pauseButton', 'Pause_button.png');
+        this.load.image('closedButton', 'Close_button.png');
+        this.load.spritesheet('music_btns', 'Music button spritesheet.png', { frameWidth: 169, frameHeight: 169 });
+        this.load.spritesheet('sound_btns', 'sound button spritesheet.png', { frameWidth: 169, frameHeight: 169 });
         this.load.image('tutorial_bg', 'Tutorial_bg.jpg');
         this.load.image('game_bg', 'GameBG.jpg');
         this.load.image('overlay', 'Overlay_box.png');
@@ -103,6 +106,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image('tutorial_overlay', 'Overlay_box.png');
         this.load.image('instruction_box', 'Instruction_box.png');
         this.load.image('gameOver_box', 'game_over_box_bar.png');
+        this.load.image('settings_box', 'Gameover_box_pannel.png');
         this.load.image("gameOver_player", "pengiun_gameover.png");
         this.load.image('onepixel', 'onepixel.png');
         this.load.setPath('assets/spines/');

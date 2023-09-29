@@ -17,26 +17,16 @@ export default class GameScene extends Phaser.Scene {
         this.gameUI = new GameUI(this);
         this.buttons = new Buttons(this);
         this.iceCube = new IceCube(this);
+        this.popUp = new PopUp(this);
 
-        this.bg;
         this.distText;
         this.distance = 0;
         this.distanceCounter = 0;
-        this.platform;
-        this.pLiner;
-        this.bird;
         this.isDown = false;
-        this.arrayBirdPos = [];
-        this.arrayCubesPos = [];
-        this.obstacleArray = [];
-        this.ObsVel = 400;
         this.cubesArray = [];
         // this.count = 0;
         this.isGameOver = false;
-        this.popUp = new PopUp(this);
-        this.isStartCheck = false;
-        this.isCollid = false;
-        this.container = null;
+        this.platformCanMove = false;
 
     }
     create() {
@@ -49,66 +39,34 @@ export default class GameScene extends Phaser.Scene {
         this.alignGrid = new AlignGrid(gridConfig);
         // this.alignGrid.showNumbers();
         this.ShowBg();
-        // // // // this.ShowDistanceCovered();
         this.ShowPlatform();
-        // this.MovePlatform();
-        // // // this.MoveColliders();
         this.ShowGameUI();
-        // // this.cubes = this.scene.physics.add.image(480, 960, 'cubes').setScale(0.2 * scaleFactor, 0.2 * scaleFactor);
         this.CreateBird();
-        // this.MovePlayer();
-        // this.CreatePlatformLiner();
-        // this.InteractiveCanvas();
-        // game.events.on('xyz', this.ABC, this);
-        // this.CreateObstacles();
-        // this.MovingObstacles();
-
+        // this.ShowDistanceCovered();
     }
+
     ShowBg() {
         this.bg.CreateGameBG();
     }
+
     MoveBg() {
         // console.log("1Here");
-        if (this.isDown && !isPaused && !this.isGameOver) {
-            // this.bg.gameBg.tilePositionX += 6;
+        if (this.isDown && !this.isGameOver) {
             this.bg.MoveGameBG();
-            // for (let i = 0; i < this.bg.arrayBg.length; i++) {
-            // console.log("2Here");
-            // if (this.cameras.x = 500) {
-            //     console.log("Here");
-            //     this.cameras.x = 10;
         }
-        // }
-        // if (this.distanceCounter == 10) {
-        //     this.distanceCounter = 0;
-        //     this.bg.tilePositionX += 6 * 1.5;
-        // }
     }
+
     ShowDistanceCovered() {
         this.distText = this.add.text(800, 50, "Distance : " + this.distance, { fontFamily: 'Arial', fontSize: 45, fill: '#FFFFFF', align: 'Center' });
     }
+
     ShowPlatform() {
-        // console.log("platform");
-        // this.platform = this.add.tileSprite(960, 1050, 1920, 72, "platform", 1).setScale(1);
-        // this.physics.world.enable(this.platform);
-        // this.platform.body.allowGravity = false;
-        // this.platform.body.immovable = true;
         this.platform.CreateTopPlatform();
         this.platform.CreateBottomPlatform();
-        // this.platform.MoveBottomPlatform();
-        // this.platform.CreateMidPlatform();
-
-        // this.platform.sideCollider.setVelocity(7, 0);
     }
-
 
     MovePlatform() {
         this.platform.MovePlatform();
-    }
-    PausePlatformMovement() {
-        if (isPaused) {
-            this.platform.platformSpeed = 0;
-        }
     }
     RepositionPlatform() {
         this.platform.RepositioningPlatform();
@@ -120,7 +78,6 @@ export default class GameScene extends Phaser.Scene {
         this.gameUI.overlay.controlOverlay.on('pointerup', this.ShowCubes, this);
     }
     CreateBird() {
-        // if (!isPaused) {
         this.player.CreatePlayer();
         // this.player.player.body.setVelocityX(440);
         // this.cameras.main.startFollow(this.player.player, true);
@@ -136,26 +93,17 @@ export default class GameScene extends Phaser.Scene {
         this.physics.add.overlap(this.player.player, this.platform.topPlatformArray, this.BirdOnTouchingTopPlatform, null, this);
         this.physics.add.overlap(this.player.player, this.platform.topPlatformArrayTwo, this.BirdOnTouchingTopPlatform, null, this);
     }
-    BirdOnTouching() {
-        if (this.player.player.body.touching.right) {
-            // this.player.player.body.setVelocityX(0);
-        }
-        else if (this.player.player.body.touching.down) {
 
-        }
-    }
     BirdOnTouchingLowerPlatform(_bird, _platform) {
-        // if (!isPaused) {
         if (_bird.body.touching.down) {
             // console.log("making cubes");
-            _bird.body.setVelocityX(180);
+            _bird.body.setVelocityX(250);
             this.isDown = true;
-            // this.isStartCheck = true;
-            platformCanMove = true;
+            this.platformCanMove = true;
         }
 
-        if (platformCanMove) {
-            platformCanMove = false;
+        if (this.platformCanMove) {
+            this.platformCanMove = false;
             this.MovePlatform();
         }
 
@@ -175,7 +123,7 @@ export default class GameScene extends Phaser.Scene {
         if (_bird.isCollide == "false") {
             _bird.isCollide = "true";
             this.cameras.main.shake(185, 0.02);
-            console.log("Top Collision");
+            // console.log("Top Collision");
             _bird.play('Die', false, 1);
             _bird.body.setVelocity(0, 0);
 
@@ -185,62 +133,29 @@ export default class GameScene extends Phaser.Scene {
             })
         }
     }
-    // }
-    // BirdOnTouchingCubes() {
-    //     // console.log("Touch cubes");
-    //     this.player.player.body.setVelocityX(1);
-    // }
-    // }
 
     ShowCubes() {
-        // console.log("Cring cubes");
-        // console.log("Cring cubes");
-        // console.log("advasv");
         if (this.isDown && !this.isGameOver) {
-            // this.cameras.main.setZoom(0.7);
-            // let iceCube = this.physics.add.image(this.arrayBirdPos[0], this.arrayBirdPos[1], 'cube');
             this.iceCube.CreateIceCubes();
-            // this.isCollid = true;
-            // console.log(this.iceCube.cubes);
-            // this.iceCube.cubes.setPosition(this.arrayBirdPos[0], this.arrayBirdPos[1]);
             this.iceCube.smoke.setPosition(this.player.player.x - 20, this.player.player.y);
-            this.iceCube.cubes.setPosition(this.player.player.x - 20, this.player.player.y - 135);
-            // this.arrayBirdPos = [];
-            // console.log("cubes pos", this.iceCube.cubes.x, this.iceCube.cubes.y);
-            // console.log("cubes height", this.iceCube.cubes);
-            // this.iceCube.cubes.body.setVelocityX(200);
-
-            // this.iceCube.cubes.body.setVelocityX(12);
-            // this.physics.add.collider(this.iceCube.cubes, this.platform.bottomPlatformArray);
+            this.iceCube.cubes.setPosition(this.player.player.x - 20, this.player.player.y - 115);
             this.cubesArray.push(this.iceCube.cubes);
-            // for (let i = 0; i < this.cubesArray.length; i++) {
-
-            // }
-            // this.physics.add.collider(this.cubesArray, this.player.player, this.Colls, null, this);
 
             //----Cubes with Cubes Colliders-------------------------//
+
             this.physics.add.collider(this.cubesArray, this.cubesArray, this.CubesOnTouchingCubes, null, this);
 
             //----Cubes & Platform Colliders-------------------------//
 
-            this.physics.add.collider(this.cubesArray, this.platform.lowerPlatformArray, this.CubesOnCollsionWithPlatform, null, this);
+            this.physics.add.collider(this.iceCube.cubes, this.platform.lowerPlatformArray, this.CubesOnCollsionWithPlatform, null, this);
 
-            this.physics.add.collider(this.cubesArray, this.platform.lowerPlatformArrayTwo, this.CubesOnCollsionWithPlatform, null, this);
+            this.physics.add.collider(this.iceCube.cubes, this.platform.lowerPlatformArrayTwo, this.CubesOnCollsionWithPlatform, null, this);
 
-            this.physics.add.collider(this.cubesArray, this.platform.lowerPlatformArrayThree, this.CubesOnCollsionWithPlatform, null, this);
+            this.physics.add.collider(this.iceCube.cubes, this.platform.lowerPlatformArrayThree, this.CubesOnCollsionWithPlatform, null, this);
 
-            // this.physics.add.collider(this.cubesArray, this.platform.bottomLayer, this.CubesOnCollsionWithPlatform, null, this);
             this.PositioningCubes();
             // console.log("this.crateArray:", this.crateArray);
         }
-    }
-    Colls(_cubes, _bird) {
-        if (_cubes.body.touching.right) {
-            _cubes.body.setVelocityX(0);
-        }
-        // console.log('colls');
-        // _bird.body.setVelocityX(70);
-        // console.log('jjjjj', this.player.player.body);
     }
     CubesOnTouchingCubes(_cubeOne, _cubeTwo) {
         // console.log('_cubeOne:', _cubeOne, '\n', '_cubeTwo: ', _cubeTwo);
@@ -285,52 +200,10 @@ export default class GameScene extends Phaser.Scene {
                 b1.stop();
             }
         });
-        // this.physics.add.overlap(this.crateArray, this.platform.sideCollider, function (s1, s2) {
-        //     let b1 = s1.body;
-        //     let b2 = s2.body;
-
-        //     if (b1.y > b2.y) {
-        //         b2.y += (b1.top - b2.bottom);
-        //         b2.stop();
-        //     }
-        //     else {
-        //         b1.y += (b2.top - b1.bottom);
-        //         b1.stop();
-        //     }
-        // });
-        this.RepositioningPlayerAndCubes();
+        // this.RepositioningPlayerAndCubes();
     }
-    RepositioningPlayerAndCubes() {
-        console.log("RepositioningPlayerAndCubes");
-        // this.arrayCubesPos[0] = this.iceCube.cubes.x //+ 8;
-        // this.arrayCubesPos[1] = (this.iceCube.cubes.y - 20);
-        // this.arrayBirdPos = [];
-        // this.player.player.setPosition(this.arrayCubesPos[0], this.arrayCubesPos[1]);
-        // this.arrayCubesPos = [];
-        // this.arrayBirdPos.push(this.player.player.x);
-        // this.arrayBirdPos.push(this.player.player.y - this.player.player.height);
-        // this.physics.add.collider(this.cubesArray, this.platform.bottomPlatformArray, this.CubesOnCollsionWithPlatform, null, this);
-
-    }
-
 
     CubesOnCollsionWithPlatform(_cube, _platform) {
-        // console.log("cube", _cube);
-        // console.log("collider", _platform)
-        // console.log("Cubes collision");
-        // this.physics.add.overlap(this.crateArray, this.platform.sideCollider, function (s1, s2) {
-        //     let b1 = s1.body;
-        //     let b2 = s2.body;
-
-        //     if (b1.y > b2.y) {
-        //         b2.y += (b1.top - b2.bottom);
-        //         b2.stop();
-        //     }
-        //     else {
-        //         b1.y += (b2.top - b1.bottom);
-        //         b1.stop();
-        //     }
-        // });
         if (_cube.x <= -150) {
             // console.log("Shift");
             _cube.setVisible(false);
@@ -338,27 +211,19 @@ export default class GameScene extends Phaser.Scene {
             _cube.destroy();
         }
         else if (_cube.body.touching.down) {
-            _cube.body.setVelocity(0, 0);
+            _cube.body.setVelocity(0, 1);
             // _cube.body.allowGravity = false;
 
         }
-        // this.arrayBirdPos = [];
-        // this.arrayBirdPos.push(this.player.player.x);
-        // this.arrayBirdPos.push(this.player.player.y - 15);
         else if (_cube.body.touching.right && _cube.isCollide == "false") {
             // _cube.body.setVelocityX(0);
             this.cameras.main.shake(185, 0.02);
             _cube.isCollide = true;
-            console.log("isCollide");
+            // console.log("isCollide");
         }
         // _cube.body.setVelocityX(0);
     }
-    // this.arrayBirdPos = [];
-    // this.arrayBirdPos.push(this.player.player.x - 8);
-    // this.arrayBirdPos.push(this.player.player.y - 20);
-    // BirdOnCollisionWithPlatform) {
 
-    // }
     GameOver() {
         if (this.isGameOver) {
             this.player.player.destroy();
@@ -366,113 +231,13 @@ export default class GameScene extends Phaser.Scene {
 
         }
     }
+
     update() {
-        // if (this.player.player.x >= 8000) {
+        // if (this.player.player.x >= 2000) {
         //     this.player.player.body.setVelocityX(0);
         // }
         this.MoveBg();
-        // this.PausePlatformMovement();
         this.RepositionPlatform();
-        // console.log('player', this.player.player.body.velocity.x);
-        // this.MovePlatform();
-        // if (this.isCollid) {
-        //     console.log(this.player.player.body.velocity.x);
-        // }
-        // this.RepositionPlatform();
-        // this.MovePlatform();
-        // this.UpdateObstaclePosition();
-        // this.OverlapCondition();
 
     }
 }
-// CreatePlatformLiner() {
-//     this.pLiner = this.add.image(0, 0, 'onepixel').setScale(1920, 100).setAlpha(0);
-// }
-// OverlapCondition() {
-//     if (this.CheckOverlap(this.player.player, this.pLiner)) {
-//         this.isGameOver = true;
-//         for (let i = 0; i < this.obstacleArray.length; i++) {
-//             this.obstacleArray[i].setVelocityX(0);
-//         }
-//         this.player.player.setVelocityX(0);
-//         this.popUp.CreatePopUp();
-//     }
-// }
-// CheckOverlap(_bird, _pLiner) {
-//     let boundsA = _bird.getBounds();
-//     let boundsB = _pLiner.getBounds();
-
-//     return Phaser.Geom.Intersects.RectangleToRectangle(boundsA, boundsB);
-// }
-// CreateObstacles() {
-//     let obstacle = this.physics.add.image(2000, 950, 'onepixel').setScale(130).setDepth(0).setFrictionX(0);
-//     obstacle.body.allowGravity = false;
-//     obstacle.body.immovable = true;
-//     this.obstacleArray.push(obstacle);
-//     let obstacleTwo = this.physics.add.image(2800, 950, 'onepixel').setScale(130).setDepth(0).setFrictionX(0);
-//     obstacleTwo.body.allowGravity = false;
-//     obstacleTwo.body.immovable = true;
-//     let obsTwo = this.physics.add.image(2800, 820, 'onepixel').setScale(130).setDepth(0).setFrictionX(0);
-//     obsTwo.body.allowGravity = false;
-//     obsTwo.body.immovable = true;
-//     this.obstacleArray.push(obstacleTwo);
-//     this.obstacleArray.push(obsTwo);
-//     // console.log("this.crateArray", this.crateArray);
-//     this.physics.add.overlap(this.crateArray, this.crateArray, function (s1, s2) {
-//         let b1 = s1.body;
-//         let b2 = s2.body;
-
-//         if (b1.y > b2.y) {
-//             b2.y += (b1.top - b2.bottom);
-//             b2.stop();
-//         }
-//         else {
-//             b1.y += (b2.top - b1.bottom);
-//             b1.stop();
-//         }
-//     });
-//     this.physics.add.overlap(this.crateArray, this.platform, function (s1, s2) {
-//         let b1 = s1.body;
-//         let b2 = s2.body;
-
-//         if (b1.y > b2.y) {
-//             b2.y += (b1.top - b2.bottom);
-//             b2.stop();
-//         }
-//         else {
-//             b1.y += (b2.top - b1.bottom);
-//             b1.stop();
-//         }
-//     });
-// }
-// MovingObstacles() {
-//     for (let i = 0; i < this.obstacleArray.length; i++) {
-//         this.obstacleArray[i].setVelocityX(-this.ObsVel);
-
-//     }
-// }
-// UpdateObstaclePosition() {
-//     for (let i = 0; i < this.obstacleArray.length; i++) {
-//         if (this.obstacleArray[i].x <= -40) {
-//             this.obstacleArray[i].x = 1920;
-//             this.distance += 1;
-//             this.distanceCounter++;
-//         }
-//     }
-//     if (this.distanceCounter == 10) {
-//         this.distanceCounter = 0;
-//         this.ObsVel = this.ObsVel * 1.5;
-//         for (let i = 0; i < this.obstacleArray.length; i++) {
-//             this.obstacleArray[i].setVelocityX(-this.ObsVel);
-//             // console.log("Enter distace 10+");
-//             // console.log("this.ObsVel" + this.ObsVel);
-//             // console.log("obstacleArray[i].x" + this.obstacleArray[i].x);
-//         }
-//     }
-//     this.distText.setText("Distance :" + this.distance);
-// }
-
-
-
-
-

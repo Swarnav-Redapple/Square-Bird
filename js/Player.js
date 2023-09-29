@@ -5,7 +5,7 @@ class Player {
     }
     CreatePlayer() {
         // this.player = this.scene.physics.add.image(480, 960, 'player').setDepth(0)  //.setIgnoreGravity(false);
-        this.player = this.scene.add.spine(480, 960, 'penguin').setScale(0.2 * scaleFactor, 0.2 * scaleFactor).setDepth(2);
+        this.player = this.scene.add.spine(480, 960, 'penguin').setScale(0.17 * scaleFactor).setDepth(2);
         this.player.isCollide = "false";
         this.player.setSize(this.player.width - 5, this.player.height, true);
         this.player.setOffset(102, 48);

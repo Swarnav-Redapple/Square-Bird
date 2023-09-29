@@ -8,6 +8,9 @@ class Buttons {
         this.pauseBtn = null;
         this.continueBtn = null;
         this.backBtn = null;
+        this.closedBtn = null;
+        this.soundBtn = null;
+        this.musicBtn = null;
     }
     CreateButtons() {
         this.playBtn = this.scene.add.image(game.config.width / 2, game.config.height / 1.43, 'playButton').setInteractive({ useHandCursor: true });
@@ -17,33 +20,45 @@ class Buttons {
         this.pauseBtn = this.scene.add.image(0, 0, 'pauseButton').setVisible(false).setInteractive({ useHandCursor: true });
     }
     CreatePausePopupButtons() {
-        console.log("Paused");
+        // console.log("Paused");
         this.continueBtn = this.scene.add.image(game.config.width / 2, game.config.height / 2, 'continueButton').setInteractive({ useHandCursor: true });
-        // this.continueBtn.on('pointerup', () => {
-        //     this.scene.scene.resume();
-        // });
-        this.backBtn = this.scene.add.image(game.config.width / 2, game.config.height / 1.48, 'backButton').setInteractive({ useHandCursor: true });
-        this.backBtn.on('pointerup', () => {
-            // isPaused = false;
-            this.scene.scene.stop();
-            this.scene.scene.stop('GameScene');
-            this.scene.scene.start('TutorialScene');
-        });
-        // setTimeout(() => {
-        // this.scene.game.events.emit('xyz');
-        // }, 1000);
 
+        this.backBtn = this.scene.add.image(game.config.width / 2, game.config.height / 1.48, 'backButton').setInteractive({ useHandCursor: true });
+
+    }
+    CreateSettingsPopupButtons() {
+        let sound_toggleCounter = 0;
+        let music_toggleCounter = 0;
+
+        this.closedBtn = this.scene.add.sprite(game.config.width / 1.07, game.config.height / 2.5, 'closedButton').setInteractive({ useHandCursor: true });
+
+        this.soundBtn = this.scene.add.sprite(game.config.width / 2.7, game.config.height / 1.77, 'sound_btns').setInteractive({ useHandCursor: true });
+        this.soundBtn.on('pointerup', () => {
+            sound_toggleCounter++;
+            if (sound_toggleCounter % 2 == 0) {
+                this.soundBtn.setFrame(0);
+            }
+            else {
+                this.soundBtn.setFrame(1);
+            }
+        });
+
+        this.musicBtn = this.scene.add.sprite(game.config.width / 1.5, game.config.height / 1.77, 'music_btns').setInteractive({ useHandCursor: true });
+        this.musicBtn.on('pointerup', () => {
+            music_toggleCounter++;
+            if (music_toggleCounter % 2 == 0) {
+                this.musicBtn.setFrame(0);
+            }
+            else {
+                this.musicBtn.setFrame(1);
+            }
+        });
     }
     InteractivePlayButton() {
         this.playBtn.on('pointerup', () => {
             this.scene.scene.stop();
             this.scene.scene.start('GameScene');
         });
-    }
-    InteractiveContinueButton() {
-        console.log("game paused");
-        isPaused = false;
-        isResumed = true;
     }
 }
 export default Buttons;

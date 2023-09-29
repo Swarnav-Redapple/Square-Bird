@@ -9,8 +9,10 @@ class PopUp {
     CreateSettingsPopUp() {
         // this.buttons.settingsBtn.on('pointerup', () => {
         this.overlay.CreateOverlay();
-        let settingsTxt = this.scene.add.text(game.config.width / 6, game.config.height / 5.7, 'SETTINGS', { fontFamily: 'PoetsenOne-Regular', fontSize: 110, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
+        let settingsBox = this.scene.add.image(game.config.width / 2, game.config.height / 1.9, 'settings_box');
+        let settingsTxt = this.scene.add.text(game.config.width / 3.4, game.config.height / 2.5, 'SETTINGS', { fontFamily: 'PoetsenOne-Regular', fontSize: 110, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
         settingsTxt.setShadow(10, 15, '#000000', 0, true, true);
+        this.buttons.CreateSettingsPopupButtons();
         // });
     }
     CreatePausePopUp() {
@@ -18,19 +20,7 @@ class PopUp {
         this.gamePausedTxt = this.scene.add.text(game.config.width / 6, game.config.height / 5.7, 'GAME PAUSED !', { fontFamily: 'PoetsenOne-Regular', fontSize: 110, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
         this.gamePausedTxt.setShadow(10, 15, '#000000', 0, true, true);
         this.buttons.CreatePausePopupButtons();
-        // game.events.emit('xyz')
-        // if (isResumed) {
-        //     this.RemovePausePopUp();
-        // }
     }
-    // RemovePausePopUp() {
-    //     console.log("game resumed", this.buttons.continueBtn);
-    //     this.buttons.InteractiveContinueButton();
-    //     this.buttons.continueBtn.destroy();
-    //     this.buttons.backBtn.destroy();
-    //     this.overlay.overlay.destroy();
-    //     this.gamePausedTxt.destroy();
-    // }
     CreateGameOverPopUp() {
         this.overlay.CreateOverlay();
         this.overlay.overlay.setInteractive({ useHandCursor: true });

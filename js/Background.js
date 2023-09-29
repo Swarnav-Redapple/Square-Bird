@@ -12,7 +12,7 @@ class Background {
         this.gameBg = this.scene.add.tileSprite(Math.round(game.config.width / 2), Math.round(game.config.height / 2), Math.round(game.config.width), Math.round(game.config.height), 'game_bg');
     }
     MoveGameBG() {
-        this.gameBg.tilePositionX += 4;
+        this.gameBg.tilePositionX += 5;
     }
 }
 export default Background;
