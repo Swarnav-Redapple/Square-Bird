@@ -75,9 +75,9 @@ export default class GameScene extends Phaser.Scene {
         // console.log("interactive");
         this.gameUI.CreateGameScene();
         // console.log(this.gameUI.overlay.controlOverlay);
-        setTimeout(() => {
-            this.gameUI.overlay.controlOverlay.on('pointerup', this.ShowCubes, this);
-        }, 450);
+        // setTimeout(() => {
+        this.gameUI.overlay.controlOverlay.on('pointerup', this.ShowCubes, this);
+        // }, 470);
 
     }
     CreateBird() {
@@ -100,7 +100,7 @@ export default class GameScene extends Phaser.Scene {
     BirdOnTouchingLowerPlatform(_bird, _platform) {
         if (_bird.body.touching.down) {
             // console.log("making cubes");
-            _bird.body.setVelocityX(250);
+            _bird.body.setVelocity(250, 0);
             this.isDown = true;
             this.platformCanMove = true;
         }
@@ -140,7 +140,7 @@ export default class GameScene extends Phaser.Scene {
     ShowCubes() {
         if (this.isDown && !this.isGameOver) {
             this.iceCube.CreateIceCubes();
-            this.iceCube.cubes.setGravityY(500);
+            // this.iceCube.cubes.setGravityY(10);
             this.iceCube.smoke.setPosition(this.player.player.x - 20, this.player.player.y);
             this.iceCube.cubes.setPosition(this.player.player.x - 20, this.player.player.y - 115);
             this.cubesArray.push(this.iceCube.cubes);
@@ -152,10 +152,13 @@ export default class GameScene extends Phaser.Scene {
             //----Cubes & Platform Colliders-------------------------//
 
             this.physics.add.collider(this.iceCube.cubes, this.platform.lowerPlatformArray, this.CubesOnCollsionWithPlatform, null, this);
+            // this.physics.add.overlap(this.iceCube.cubes, this.platform.lowerPlatformArray, this.CubesOnOverlappingPlatform, null, this);
 
             this.physics.add.collider(this.iceCube.cubes, this.platform.lowerPlatformArrayTwo, this.CubesOnCollsionWithPlatform, null, this);
+            // this.physics.add.overlap(this.iceCube.cubes, this.platform.lowerPlatformArrayTwo, this.CubesOnOverlappingPlatform, null, this);
 
             this.physics.add.collider(this.iceCube.cubes, this.platform.lowerPlatformArrayThree, this.CubesOnCollsionWithPlatform, null, this);
+            // this.physics.add.overlap(this.iceCube.cubes, this.platform.lowerPlatformArrayThree, this.CubesOnOverlappingPlatform, null, this);
 
             this.PositioningCubes();
             // console.log("this.crateArray:", this.crateArray);
@@ -215,8 +218,9 @@ export default class GameScene extends Phaser.Scene {
             _cube.destroy();
         }
         else if (_cube.body.touching.down) {
-            _cube.body.setVelocity(0, 1);
-            // _cube.body.allowGravity = false;
+            _cube.body.setVelocity(0, 0);
+            //     // _cube.body.allowGravity = false;
+            //     // _cube.body.immovable = true;
 
         }
         else if (_cube.body.touching.right && _cube.isCollide == "false") {
@@ -227,6 +231,12 @@ export default class GameScene extends Phaser.Scene {
         }
         // _cube.body.setVelocityX(0);
     }
+
+    // CubesOnOverlappingPlatform(_cube, _platform) {
+    //     if (_cube.body.touching.right) {
+
+    //     }
+    // }
 
     GameOver() {
         if (this.isGameOver) {
@@ -239,6 +249,9 @@ export default class GameScene extends Phaser.Scene {
     update() {
         // if (this.player.player.x >= 2000) {
         //     this.player.player.body.setVelocityX(0);
+        // }
+        // if (this.isDown) {
+        //     this.player.player.x += 4;
         // }
         this.MoveBg();
         this.RepositionPlatform();
