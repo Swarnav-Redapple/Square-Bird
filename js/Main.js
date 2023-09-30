@@ -26,7 +26,7 @@ window.onload = function () {
             physics: {
                 default: 'arcade',
                 arcade: {
-                    gravity: { y: 1800 },
+                    gravity: { y: 1000 },
                     // debug: true,
                     // debugBodyColor: 0x000000,
                 },
@@ -56,7 +56,7 @@ window.onload = function () {
             physics: {
                 default: 'arcade',
                 arcade: {
-                    gravity: { y: 1800 },
+                    gravity: { y: 1000 },
                     // tileBias: 154,
                     // debug: true,
                     // debugBodyColor: 0x000000,

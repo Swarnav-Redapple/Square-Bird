@@ -75,7 +75,10 @@ export default class GameScene extends Phaser.Scene {
         // console.log("interactive");
         this.gameUI.CreateGameScene();
         // console.log(this.gameUI.overlay.controlOverlay);
-        this.gameUI.overlay.controlOverlay.on('pointerup', this.ShowCubes, this);
+        setTimeout(() => {
+            this.gameUI.overlay.controlOverlay.on('pointerup', this.ShowCubes, this);
+        }, 450);
+
     }
     CreateBird() {
         this.player.CreatePlayer();
@@ -137,6 +140,7 @@ export default class GameScene extends Phaser.Scene {
     ShowCubes() {
         if (this.isDown && !this.isGameOver) {
             this.iceCube.CreateIceCubes();
+            this.iceCube.cubes.setGravityY(500);
             this.iceCube.smoke.setPosition(this.player.player.x - 20, this.player.player.y);
             this.iceCube.cubes.setPosition(this.player.player.x - 20, this.player.player.y - 115);
             this.cubesArray.push(this.iceCube.cubes);
