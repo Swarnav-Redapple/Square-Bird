@@ -142,7 +142,7 @@ export default class GameScene extends Phaser.Scene {
             this.iceCube.CreateIceCubes();
             // this.iceCube.cubes.setGravityY(10);
             this.iceCube.smoke.setPosition(this.player.player.x - 20, this.player.player.y);
-            this.iceCube.cubes.setPosition(this.player.player.x - 20, this.player.player.y - 115);
+            this.iceCube.cubes.setPosition(this.player.player.x, this.player.player.y - 115);
             this.cubesArray.push(this.iceCube.cubes);
 
             //----Cubes with Cubes Colliders-------------------------//
