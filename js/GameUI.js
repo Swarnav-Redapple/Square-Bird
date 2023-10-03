@@ -23,6 +23,12 @@ class GameUI {
             this.scene.scene.pause();
             this.scene.scene.launch('PausedScene', { key: '1', sceneKeyManager: sceneKey });
         });
+        let introAnim = this.scene.add.spine(game.config.width / 3, game.config.height / 1.8, 'cube').setScale(0.17 * scaleFactor);
+        introAnim.play('Ice_Cube', true);
+        introAnim.timeScale = 0.5;
+        let pointerAnim = this.scene.add.spine(game.config.width / 1.5, game.config.height / 1.6, 'pointer');
+        pointerAnim.play('Pointer', true);
+        pointerAnim.timeScale = 1.5;
         this.buttons.InteractivePlayButton();
     }
     CreateGameScene() {

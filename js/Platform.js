@@ -207,7 +207,7 @@ class Platform {
             // console.log(this.bottomPosArray[i]);
             if ((this.bottomPosArray[i] >= 560 && this.bottomPosArray[i] <= 567) || this.bottomPosArray[i] == 499 || (this.bottomPosArray[i] >= 508 && this.bottomPosArray[i] <= 512) || (this.bottomPosArray[i] == 377) || (this.bottomPosArray[i] == 589) || (this.bottomPosArray[i] == 711 || this.bottomPosArray[i] == 712) || (this.bottomPosArray[i] == 444 || this.bottomPosArray[i] == 445) || this.bottomPosArray[i] == 365) {
                 // console.log("i", i);
-                let top = this.scene.physics.add.image(0, 0, this.key[0]).setScale(1.05 * scaleFactor).setMass(50);
+                let top = this.scene.physics.add.image(0, 0, this.key[0]).setScale(1.05 * scaleFactor)//.setMass(50);
                 top
                 top.body.allowGravity = false;
                 top.body.immovable = true;
@@ -216,10 +216,13 @@ class Platform {
             }
             else if (this.bottomPosArray[i] == 498 || this.bottomPosArray[i] == 573 || this.bottomPosArray[i] == 443 || this.bottomPosArray[i] == 364 || this.bottomPosArray[i] == 376) {
                 let right_corner_top = this.scene.physics.add.image(0, 0, this.key[1]).setScale(1.05 * scaleFactor);
+                // let overlapper = this.scene.add.image(0, 0, 'onepixel').setScale(50, 154).setOrigin(-1, 0.5);
+
                 right_corner_top.body.allowGravity = false;
                 right_corner_top.body.immovable = true;
                 this.lowerPlatformArray.push(right_corner_top);
                 this.scene.alignGrid.placeAtIndex((this.bottomPosArray[i]), right_corner_top);
+                // this.scene.alignGrid.placeAtIndex(497, overlapper);
             }
             else if (this.bottomPosArray[i] == 429 || this.bottomPosArray[i] == 500 || this.bottomPosArray[i] == 366 || this.bottomPosArray[i] == 378 || this.bottomPosArray[i] == 590 || this.bottomPosArray[i] == 437) {
                 let left_corner_top = this.scene.physics.add.image(0, 0, this.key[2]).setScale(1.05 * scaleFactor);
@@ -399,8 +402,9 @@ class Platform {
     RepositioningPlatform() {
         // console.log("iwhdofihw");
         for (let i = 0; i < this.lowerPlatformArray.length; i++) {
-
+            platformDetect = this.lowerPlatformArray[i];
             if (this.lowerPlatformArray[i].x <= -4000) {
+
                 // console.log("iwhdofihw");
                 this.lowerPlatformArray[i].x = 7096;
             }

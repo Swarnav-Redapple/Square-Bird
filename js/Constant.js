@@ -4,3 +4,4 @@ let scaleFactorY;
 let game;
 let isMobile;
 let settingsPopup;
+let platformDetect;
