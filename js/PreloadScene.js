@@ -56,8 +56,9 @@ export default class PreloadScene extends Phaser.Scene {
     LoadAssets() {
         this.load.on('progress', this.LoadProgress, this);
         this.load.on('complete', this.OnComplete, { scene: this.scene });
+
         this.load.setPath('assets/images/');
-        this.load.image('title', 'Title_art.png');
+        this.load.image('title_intro', 'Title_art.png');
         this.load.image('playButton', 'Play_button.png');
         this.load.image('homeButton', 'Home_button.png');
         this.load.image('settingsButton', 'Settings_button.png');
@@ -85,14 +86,6 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image('bottom', '02_Bottom.png');
         this.load.image('right_corner_small', '10_Right_corner_small.png');
         this.load.image('center', '05_Center.png');
-        this.load.image('bottomFloor_One', 'Bottom_floor_01.png');
-        this.load.image('bottomFloor_Two', 'Bottom_floor_02.png');
-        this.load.image('bottomFloor_Three', 'Bottom_floor_03.png');
-        this.load.image('bottomFloor_Four', 'Bottom_floor_04.png');
-        this.load.image('topFloor_One', 'Upper_floor_01.png');
-        this.load.image('topFloor_Two', 'Upper_floor_02.png');
-        this.load.image('topFloor_Three', 'Upper_floor_03.png');
-        this.load.image('topFloor_Four', 'Upper_floor_04.png');
         this.load.image('obstacle_One', 'Obstracle_01.png');
         this.load.image('obstacle_Two', 'Obstracle_02.png');
         this.load.image('obstacle_Three', 'Obstracle_03.png');
@@ -109,12 +102,18 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image('settings_box', 'Gameover_box_pannel.png');
         this.load.image("gameOver_player", "pengiun_gameover.png");
         this.load.image('onepixel', 'onepixel.png');
+
         this.load.setPath('assets/spines/');
         this.load.spine('penguin', 'Penguin Character.json', 'Penguin Character.atlas');
-        this.load.spine('cube', 'Ice_Cube.json', 'Ice_Cube.atlas');
+        this.load.spine('intro', 'Intro.json', 'Intro.atlas');
         this.load.spine('smoke', 'Smoke.json', 'Smoke.atlas');
         this.load.spine('pointer', 'skeleton.json', 'skeleton.atlas');
-        // this.load.image()
+
+        this.load.setPath('assets/audio/');
+        this.load.audio('bg_audio', 'background.mp3');
+        this.load.audio('create_audio', 'creation.mp3');
+        this.load.audio('drop_audio', 'ground_drop.mp3');
+        this.load.audio('hit_audio', 'hit.mp3');
         this.load.start();
     }
     LoadProgress(percentage) {

@@ -1,4 +1,5 @@
 import Background from "./Background.js";
+import { AudioManager } from "./AudioManager.js";
 import AlignGrid from "./AlignGrid.js";
 import Player from "./Player.js";
 import Platform from "./Platform.js";
@@ -40,15 +41,22 @@ export default class GameScene extends Phaser.Scene {
         }
         this.alignGrid = new AlignGrid(gridConfig);
         // this.alignGrid.showNumbers();
-        console.log(platformDetect);
+        // console.log(platformDetect);
+        this.AddAudio();
         this.ShowBg();
         this.ShowPlatform();
+
         this.ShowGameUI();
         this.CreateBird();
         // console.log(this.scene.scene.children);
         // this.ShowDistanceCovered();
     }
-
+    AddAudio() {
+        AudioManager.CreateAudio();
+    }
+    PlayBgAudio() {
+        AudioManager.PlayBGAudio();
+    }
     ShowBg() {
         this.bg.CreateGameBG();
     }
@@ -59,7 +67,6 @@ export default class GameScene extends Phaser.Scene {
             this.bg.MoveGameBG();
         }
     }
-
     ShowDistanceCovered() {
         this.distText = this.add.text(800, 50, "Distance : " + this.distance, { fontFamily: 'Arial', fontSize: 45, fill: '#FFFFFF', align: 'Center' });
     }
@@ -70,6 +77,7 @@ export default class GameScene extends Phaser.Scene {
     }
 
     MovePlatform() {
+
         this.platform.MovePlatform();
     }
     RepositionPlatform() {
@@ -87,6 +95,8 @@ export default class GameScene extends Phaser.Scene {
     CreateBird() {
         // this.gameObjContainer = this.add.container();
         this.player.CreatePlayer();
+        this.PlayBgAudio();
+        // this.SafeDistanceCheck();
         // this.gameObjContainer.add(this.player.player);
         // this.gameObjContainer.setSize(this.player.player.width, this.player.player.height);
         // this.physics.add.existing(this.gameObjContainer);
@@ -109,6 +119,7 @@ export default class GameScene extends Phaser.Scene {
         if (_bird.body.touching.down) {
             // console.log("making cubes");
             _bird.body.setVelocity(260, 0);
+            AudioManager.PlayDropAudio();
             this.isDown = true;
             this.platformCanMove = true;
         }
@@ -121,6 +132,7 @@ export default class GameScene extends Phaser.Scene {
         if (_bird.body.touching.right && _bird.isCollide == "false") {
             _bird.isCollide = "true";
             // console.log("bird", _bird);
+            AudioManager.PlayHitAudio();
             _bird.play('Die', false, 1);
             _bird.body.setVelocityX(0);
             this.isGameOver = true;
@@ -134,10 +146,10 @@ export default class GameScene extends Phaser.Scene {
         if (_bird.isCollide == "false") {
             _bird.isCollide = "true";
             this.cameras.main.shake(185, 0.02);
+            AudioManager.PlayHitAudio();
             // console.log("Top Collision");
             _bird.play('Die', false, 1);
             _bird.body.setVelocity(0, 0);
-
             this.isGameOver = true;
             _bird.on('complete', () => {
                 this.GameOver();
@@ -154,6 +166,10 @@ export default class GameScene extends Phaser.Scene {
         // this.platform.lowerPlatformArray
         for (let i = 0; i < this.platform.lowerPlatformArray.length; i++) {
             safeDist = Math.abs(this.player.player.x, this.platform.lowerPlatformArray[i].x);
+            console.log('platform data ', this.platform.lowerPlatformArray[i], this.platform.lowerPlatformArray.length);
+            // if (this.platform.lowerPlatformArray[i].data.list.platform == 'pOne') {
+            //     console.log('safe', safeDist);
+            // }
             if (safeDist < 350) {
                 console.log("Notify Me!");
             }
@@ -193,6 +209,7 @@ export default class GameScene extends Phaser.Scene {
     ShowCubes() {
         if (this.isDown && !this.isGameOver) {
             // this.clickCounter = 0;
+            AudioManager.PlayCubeCreateAudio();
             this.iceCube.CreateIceCubes();
             // this.iceCube.cubes.setGravityY(10);
             this.iceCube.smoke.setPosition(this.player.player.x - 20, this.player.player.y);
@@ -315,6 +332,7 @@ export default class GameScene extends Phaser.Scene {
 
     GameOver() {
         if (this.isGameOver) {
+            AudioManager.StopBGAudio();
             this.player.player.destroy();
             this.popUp.CreateGameOverPopUp();
 
@@ -327,11 +345,6 @@ export default class GameScene extends Phaser.Scene {
         // }
         // if (this.isDown) {
         //     this.player.player.x += 4;
-        // }
-        let dist = Phaser.Math.Distance.BetweenPoints(this.player.player.x, this.platform.lowerPlatformArray);
-        if (dist < 30) {
-            console.log("Notice Me!");
-        }
         this.MoveBg();
         this.RepositionPlatform();
 

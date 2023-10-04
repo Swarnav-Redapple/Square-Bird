@@ -15,8 +15,8 @@ class Buttons {
     CreateButtons() {
         this.playBtn = this.scene.add.image(game.config.width / 2, game.config.height / 1.43, 'playButton').setInteractive({ useHandCursor: true });
         this.settingsBtn = this.scene.add.image(game.config.width / 3.2, game.config.height / 1.08, 'settingsButton').setInteractive({ useHandCursor: true });
-        this.homeBtn = this.scene.add.image(game.config.width / 2, game.config.height / 1.08, 'homeButton');
-        this.achievementBtn = this.scene.add.image(game.config.width / 1.45, game.config.height / 1.08, 'achievementButton');
+        // this.homeBtn = this.scene.add.image(game.config.width / 2, game.config.height / 1.08, 'homeButton');
+        this.homeBtn = this.scene.add.image(game.config.width / 1.45, game.config.height / 1.08, 'homeButton');
         this.pauseBtn = this.scene.add.image(0, 0, 'pauseButton').setVisible(false).setInteractive({ useHandCursor: true });
     }
     CreatePausePopupButtons() {
