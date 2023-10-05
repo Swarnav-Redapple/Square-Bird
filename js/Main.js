@@ -27,7 +27,7 @@ window.onload = function () {
                 default: 'arcade',
                 arcade: {
                     gravity: { y: 5200 },
-                    // debug: true,
+                    debug: true,
                     fps: 220,
                     // OVERLAP_BIAS: 8,
                     // debugBodyColor: 0x000000,
@@ -60,7 +60,7 @@ window.onload = function () {
                 arcade: {
                     gravity: { y: 5200 },
                     // tileBias: 154,
-                    // debug: true,
+                    debug: true,
                     fps: 220,
                     // timestep: 1 / 120,
                     // OVERLAP_BIAS: 80000,

@@ -2,16 +2,28 @@ class Player {
     constructor(scene) {
         this.scene = scene;
         this.player = null;
+        this.gameObjContainer = null;
     }
     CreatePlayer() {
         // this.player = this.scene.physics.add.image(480, 960, 'player').setDepth(0)  //.setIgnoreGravity(false);
-        this.player = this.scene.add.spine(480, 960, 'penguin').setScale(0.17 * scaleFactor).setDepth(2);
+        this.gameObjContainer = this.scene.add.container();
+        this.player = this.scene.add.spine(0, 0, 'penguin')//.setScale(0.17 * scaleFactor).setDepth(2)
         this.player.isCollide = "false";
-        this.player.setSize(this.player.width - 5, this.player.height, true);
-        this.player.setOffset(102, 48);
-        this.scene.physics.add.existing(this.player);
-        this.player.body.allowGravity = true;
-        this.player.body.immovable = false;
+        this.gameObjContainer.add(this.player);
+        this.gameObjContainer.setPosition(480, 960);
+        let dp = this.player.displayWidth;
+        let dh = this.player.displayHeight;
+        this.gameObjContainer.setSize(dp, dh);
+        this.scene.physics.add.existing(this.gameObjContainer);
+        // this.gameObjContainer.setOrigin(0.5, 1);
+        // this.gameObjContainer.setOffset(102, 48);
+        this.gameObjContainer.body.allowGravity = true;
+        this.gameObjContainer.body.immovable = false;
+        // this.player.setSize(this.player.width - 5, this.player.height, true);
+        // this.player.setOffset(102, 48);
+        // this.scene.physics.add.existing(this.player);
+        // this.player.body.allowGravity = true;
+        // this.player.body.immovable = false;
         // this.player.body.setVelocityX(70);
 
         this.player.play('Idle', true);

@@ -207,7 +207,7 @@ class Platform {
             // console.log(this.bottomPosArray[i]);
             if ((this.bottomPosArray[i] >= 560 && this.bottomPosArray[i] <= 567) || this.bottomPosArray[i] == 499 || (this.bottomPosArray[i] >= 508 && this.bottomPosArray[i] <= 512) || (this.bottomPosArray[i] == 377) || (this.bottomPosArray[i] == 589) || (this.bottomPosArray[i] == 711 || this.bottomPosArray[i] == 712) || (this.bottomPosArray[i] == 444 || this.bottomPosArray[i] == 445) || this.bottomPosArray[i] == 365) {
                 // console.log("i", i);
-                let top = this.scene.physics.add.image(0, 0, this.key[0]).setScale(1.05 * scaleFactor)//.setMass(50);
+                let top = this.scene.physics.add.image(0, 0, this.key[0])//.setScale(1.05 * scaleFactor)//.setMass(50);
                 // top.setData({ platform: i });
                 top.body.allowGravity = false;
                 top.body.immovable = true;
@@ -384,12 +384,15 @@ class Platform {
     MovePlatform() {
         this.lowerPlatformArray.forEach(tiles => {
             tiles.body.setVelocityX(-this.platformSpeed);
+            tiles.num = '1';
         });
         this.lowerPlatformArrayTwo.forEach(tiles => {
             tiles.body.setVelocityX(-this.platformSpeed);
+            tiles.num = '2';
         });
         this.lowerPlatformArrayThree.forEach(tiles => {
             tiles.body.setVelocityX(-this.platformSpeed);
+            tiles.num = '3';
         });
         this.topPlatformArray.forEach(tiles => {
             // tiles.setSize(500, 500);
