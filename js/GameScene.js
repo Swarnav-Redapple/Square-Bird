@@ -38,7 +38,7 @@ export default class GameScene extends Phaser.Scene {
         // this.load.sprite('tutorial_bg', 'Tutorial_bg.jpg');
     }
     create() {
-        // this.cameras.main.setZoom(0.5);
+        // this.cameras.main.setZoom(0.2);
         let gridConfig = {
             'scene': this,
             'cols': 70,
@@ -60,7 +60,7 @@ export default class GameScene extends Phaser.Scene {
         AudioManager.PlayBGAudio();
     }
     ShowBg() {
-        this.bg.CreateTutorialBG();
+        this.bg.CreateGameBG();
     }
 
     MoveBg() {
@@ -113,14 +113,14 @@ export default class GameScene extends Phaser.Scene {
 
         //-----Bird & Lower Platform Colliders-------------------------//
 
-        this.physics.add.collider(this.player.gameObjContainer, this.platform.lowerPlatformArray, this.BirdOnTouchingLowerPlatform, null, this);
-        this.physics.add.collider(this.player.gameObjContainer, this.platform.lowerPlatformArrayTwo, this.BirdOnTouchingLowerPlatform, null, this);
-        this.physics.add.collider(this.player.gameObjContainer, this.platform.lowerPlatformArrayThree, this.BirdOnTouchingLowerPlatform, null, this);
+        this.physics.add.collider(this.player.player, this.platform.lowerPlatformArray, this.BirdOnTouchingLowerPlatform, null, this);
+        this.physics.add.collider(this.player.player, this.platform.lowerPlatformArrayTwo, this.BirdOnTouchingLowerPlatform, null, this);
+        this.physics.add.collider(this.player.player, this.platform.lowerPlatformArrayThree, this.BirdOnTouchingLowerPlatform, null, this);
 
         //-----Bird & Top Platform Colliders-------------------------//
 
-        this.physics.add.overlap(this.player.gameObjContainer, this.platform.topPlatformArray, this.BirdOnTouchingTopPlatform, null, this);
-        this.physics.add.overlap(this.player.gameObjContainer, this.platform.topPlatformArrayTwo, this.BirdOnTouchingTopPlatform, null, this);
+        this.physics.add.overlap(this.player.player, this.platform.topPlatformArray, this.BirdOnTouchingTopPlatform, null, this);
+        this.physics.add.overlap(this.player.player, this.platform.topPlatformArrayTwo, this.BirdOnTouchingTopPlatform, null, this);
     }
 
     BirdOnTouchingLowerPlatform(_bird, _platform) {
@@ -239,7 +239,7 @@ export default class GameScene extends Phaser.Scene {
 
             //----Cubes with Cubes Colliders-------------------------//
 
-            this.physics.add.collider(this.cubesArray, this.player.gameObjContainer, this.CubesOnCollidingPlayer, null, this);
+            this.physics.add.collider(this.cubesArray, this.player.player, this.CubesOnCollidingPlayer, null, this);
 
 
             //----Cubes with Cubes Colliders-------------------------//
@@ -364,8 +364,8 @@ export default class GameScene extends Phaser.Scene {
         // }
         // if (this.isDown) {
         //     this.player.player.x += 4;
-        // this.MoveBg();
-        this.RepositionPlatform();
+        this.MoveBg();
+        // this.RepositionPlatform();
 
     }
 }

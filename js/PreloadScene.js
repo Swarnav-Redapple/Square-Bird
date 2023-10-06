@@ -70,7 +70,16 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.spritesheet('music_btns', 'Music button spritesheet.png', { frameWidth: 169, frameHeight: 169 });
         this.load.spritesheet('sound_btns', 'sound button spritesheet.png', { frameWidth: 169, frameHeight: 169 });
         this.load.image('tutorial_bg', 'Tutorial_bg.jpg');
-        this.load.image('game_bg', 'GameBG.jpg');
+        this.load.image('bgOne', 'bg_one.png');
+        this.load.image('bgTwo', 'bg_two.png');
+        this.load.image('bgThree', 'bg_three.png');
+        this.load.image('bgFour', 'bg_four.png');
+        this.load.image('cloud_one', 'cloud_one.png');
+        this.load.image('cloud_two', 'cloud_two.png');
+        this.load.image('cloud_three', 'cloud_three.png');
+        this.load.image('cloud_four', 'cloud_four.png');
+        this.load.image('cloud_five', 'cloud_five.png');
+        this.load.image('cloud_six', 'cloud_six.png');
         this.load.image('overlay', 'Overlay_box.png');
         this.load.image('instruction_box', 'Instruction_box.png');
         this.load.image('right_corner_top', '06_Right_corner_top.png');
@@ -108,6 +117,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.spine('intro', 'Intro.json', 'Intro.atlas');
         this.load.spine('smoke', 'Smoke.json', 'Smoke.atlas');
         this.load.spine('pointer', 'skeleton.json', 'skeleton.atlas');
+        // this.load.spine('thor', 'Thor_Animation.json', 'Thor_Animation.atlas');
 
         this.load.setPath('assets/audio/');
         this.load.audio('bg_audio', 'background.mp3');

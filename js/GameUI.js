@@ -27,13 +27,14 @@ class GameUI {
             this.scene.scene.launch('PausedScene', { key: '1', sceneKeyManager: sceneKey });
         });
         this.pointerAnim = this.scene.add.spine(game.config.width / 1.5, game.config.height / 1.6, 'pointer');
-        this.introAnim = this.scene.add.spine(game.config.width / 3, game.config.height / 1.8, 'intro').setScale(0.17 * scaleFactor).setVisible(false);
+        this.introAnim = this.scene.add.spine(game.config.width / 3, game.config.height / 1.79, 'intro').setVisible(false).setScale(0.17 * scaleFactor);
+
         this.PointerAnimation();
 
         // this.introAnim.play('Double_Jump', true);
 
 
-        let instructionTxt = this.scene.add.text(game.config.width / 3, game.config.height / 3.8, 'HOLD OR TAP TO \n FORM ICE CUBE', { fontFamily: 'PoetsenOne-Regular', fontSize: 50, fill: '#340158', align: 'Center', lineSpacing: 10 });
+        let instructionTxt = this.scene.add.text(game.config.width / 3.1, game.config.height / 3.75, 'HOLD OR TAP TO \n FORM ICE CUBE', { fontFamily: 'PoetsenOne-Regular', fontSize: 50, fill: '#340158', align: 'Center', lineSpacing: 10 });
         this.buttons.InteractivePlayButton();
     }
     PointerAnimation() {

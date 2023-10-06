@@ -27,7 +27,7 @@ window.onload = function () {
                 default: 'arcade',
                 arcade: {
                     gravity: { y: 5200 },
-                    debug: true,
+                    // debug: true,
                     fps: 220,
                     // OVERLAP_BIAS: 8,
                     // debugBodyColor: 0x000000,
@@ -87,6 +87,7 @@ window.onload = function () {
     if (isMobile) {
         scaleFactorX = config.width / 1080;
         scaleFactorY = config.height / 1920;
+        scaleFactor = config.width / 1080;
     }
 
     else {
