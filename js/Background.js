@@ -25,7 +25,7 @@ class Background {
         let cloudSix = this.scene.add.image(game.config.width / 0.36, game.config.height / 6.4, 'cloud_six');
         this.cloudArray.push(cloudOne, cloudTwo, cloudThree, cloudFour, cloudFive, cloudSix);
         this.lastIndexCloud = this.cloudArray.length - 1;
-        console.log(this.cloudArray);
+        // console.log(this.cloudArray);
     }
     MoveGameBG() {
         // this.gameBg.tilePositionX += 5;

@@ -406,34 +406,34 @@ class Platform {
         // console.log("iwhdofihw");
         for (let i = 0; i < this.lowerPlatformArray.length; i++) {
             platformDetect = this.lowerPlatformArray[i];
-            if (this.lowerPlatformArray[i].x <= -4000) {
+            if (this.lowerPlatformArray[i].x <= -game.config.width / 0.27) {
 
                 // console.log("iwhdofihw");
-                this.lowerPlatformArray[i].x = 7096;
+                this.lowerPlatformArray[i].x = game.config.width / 0.15;
             }
         }
         for (let i = 0; i < this.lowerPlatformArrayTwo.length; i++) {
-            if (this.lowerPlatformArrayTwo[i].x <= -4000) {
+            if (this.lowerPlatformArrayTwo[i].x <= -game.config.width / 0.27) {
                 // console.log("iwhdofihw");
-                this.lowerPlatformArrayTwo[i].x = 7096;
+                this.lowerPlatformArrayTwo[i].x = game.config.width / 0.15;
             }
         }
         for (let i = 0; i < this.lowerPlatformArrayThree.length; i++) {
-            if (this.lowerPlatformArrayThree[i].x <= -4000) {
+            if (this.lowerPlatformArrayThree[i].x <= -game.config.width / 0.27) {
                 // console.log("iwhdofihw");
-                this.lowerPlatformArrayThree[i].x = 7096;
+                this.lowerPlatformArrayThree[i].x = game.config.width / 0.15;
             }
         }
         for (let i = 0; i < this.topPlatformArray.length; i++) {
-            if (this.topPlatformArray[i].x <= -4000) {
+            if (this.topPlatformArray[i].x <= -game.config.width / 0.27) {
                 // console.log("iwhdofihw");
-                this.topPlatformArray[i].x = 7096;
+                this.topPlatformArray[i].x = game.config.width / 0.15;
             }
         }
         for (let i = 0; i < this.topPlatformArrayTwo.length; i++) {
-            if (this.topPlatformArrayTwo[i].x <= -4000) {
+            if (this.topPlatformArrayTwo[i].x <= -game.config.width / 0.27) {
                 // console.log("iwhdofihw");
-                this.topPlatformArrayTwo[i].x = 7096;
+                this.topPlatformArrayTwo[i].x = game.config.width / 0.15;
             }
         }
     }

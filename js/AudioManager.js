@@ -15,6 +15,7 @@ class AudioManager {
     PlayBGAudio() {
         this.bgAudio.play();
         this.bgAudio.loop = true;
+        this.bgAudio.volume = 4;
     }
     StopBGAudio() {
         this.bgAudio.loop = false;
