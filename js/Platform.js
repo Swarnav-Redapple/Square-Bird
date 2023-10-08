@@ -132,14 +132,14 @@ class Platform {
                 this.scene.alignGrid.placeAtIndex(this.topPosArray[i], right_corner_small_top);
                 // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[12]));
             }
-            else {
-                let center = this.scene.physics.add.image(0, 0, this.key[7]).setScale(1.05 * scaleFactor);
-                center.body.allowGravity = false;
-                center.body.immovable = true;
-                this.topPlatformArray.push(center);
-                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], center);
-                // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[7]));
-            }
+            // else {
+            //     let center = this.scene.physics.add.image(0, 0, this.key[7]).setScale(1.05 * scaleFactor);
+            //     center.body.allowGravity = false;
+            //     center.body.immovable = true;
+            //     this.topPlatformArray.push(center);
+            //     this.scene.alignGrid.placeAtIndex(this.topPosArray[i], center);
+            //     // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[7]));
+            // }
         }
         for (let i = 0; i < this.topPosArray_Two.length; i++) {
             if (this.topPosArray_Two[i] == 59) {
@@ -191,13 +191,13 @@ class Platform {
                 this.topPlatformArrayTwo.push(right_corner_small_top);
                 this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], right_corner_small_top);
             }
-            else {
-                let center = this.scene.physics.add.image(0, 0, this.key[7]).setScale(1.05 * scaleFactor);
-                center.body.allowGravity = false;
-                center.body.immovable = true;
-                this.topPlatformArrayTwo.push(center);
-                this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], center);
-            }
+            // else {
+            //     let center = this.scene.physics.add.image(0, 0, this.key[7]).setScale(1.05 * scaleFactor);
+            //     center.body.allowGravity = false;
+            //     center.body.immovable = true;
+            //     this.topPlatformArrayTwo.push(center);
+            //     this.scene.alignGrid.placeAtIndex(this.topPosArray_Two[i], center);
+            // }
         }
     }
 
@@ -259,13 +259,13 @@ class Platform {
                 this.lowerPlatformArray.push(right_corner_small);
                 this.scene.alignGrid.placeAtIndex((this.bottomPosArray[i]), right_corner_small);
             }
-            else {
-                let center = this.scene.physics.add.image(0, 0, this.key[7]).setScale(1.05 * scaleFactor);
-                center.body.allowGravity = false;
-                center.body.immovable = true;
-                this.lowerPlatformArray.push(center);
-                this.scene.alignGrid.placeAtIndex(this.bottomPosArray[i], center);
-            }
+            // else {
+            //     let center = this.scene.physics.add.image(0, 0, this.key[7]).setScale(1.05 * scaleFactor);
+            //     center.body.allowGravity = false;
+            //     center.body.immovable = true;
+            //     this.lowerPlatformArray.push(center);
+            //     this.scene.alignGrid.placeAtIndex(this.bottomPosArray[i], center);
+            // }
         }
 
         for (let i = 0; i < this.bottomPosArray_Two.length; i++) {
@@ -319,13 +319,13 @@ class Platform {
                 this.lowerPlatformArrayTwo.push(right_corner_small);
                 this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Two[i], right_corner_small);
             }
-            else {
-                let center = this.scene.physics.add.image(0, 0, this.key[7]).setScale(1.05 * scaleFactor);;
-                center.body.allowGravity = false;
-                center.body.immovable = true;
-                this.lowerPlatformArrayTwo.push(center);
-                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Two[i], center);
-            }
+            // else {
+            //     let center = this.scene.physics.add.image(0, 0, this.key[7]).setScale(1.05 * scaleFactor);;
+            //     center.body.allowGravity = false;
+            //     center.body.immovable = true;
+            //     this.lowerPlatformArrayTwo.push(center);
+            //     this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Two[i], center);
+            // }
         }
         for (let i = 0; i < this.bottomPosArray_Three.length; i++) {
             if ((this.bottomPosArray_Three[i] >= 691 && this.bottomPosArray_Three[i] <= 694) || this.bottomPosArray_Three[i] == 487) {
@@ -370,13 +370,13 @@ class Platform {
                 this.lowerPlatformArrayThree.push(right_corner_small);
                 this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Three[i], right_corner_small);
             }
-            else {
-                let center = this.scene.physics.add.image(0, 0, this.key[7]).setScale(1.05 * scaleFactor);
-                center.body.allowGravity = false;
-                center.body.immovable = true;
-                this.lowerPlatformArrayThree.push(center);
-                this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Three[i], center);
-            }
+            // else {
+            //     let center = this.scene.physics.add.image(0, 0, this.key[7]).setScale(1.05 * scaleFactor);
+            //     center.body.allowGravity = false;
+            //     center.body.immovable = true;
+            //     this.lowerPlatformArrayThree.push(center);
+            //     this.scene.alignGrid.placeAtIndex(this.bottomPosArray_Three[i], center);
+            // }
         }
 
     }
