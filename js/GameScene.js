@@ -34,6 +34,7 @@ export default class GameScene extends Phaser.Scene {
     }
 
     create() {
+        console.log("New");
         // this.cameras.main.setZoom(0.2);
         let gridConfig = {
             'scene': this,
