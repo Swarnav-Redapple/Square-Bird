@@ -7,10 +7,10 @@ class Player {
     CreatePlayer() {
         // this.player = this.scene.physics.add.image(480, 960, 'player').setDepth(0)  //.setIgnoreGravity(false);
         // this.gameObjContainer = this.scene.add.container();
-        this.player = this.scene.add.spine(game.config.width / 2.25, game.config.height / 2, 'penguin').setScale(0.17 * scaleFactor).setDepth(2);
-        if (isMobile) {
-            this.player.y = game.config.height / 1.8;
-        }
+        this.player = this.scene.add.spine(game.config.width / 2.25, 1000, 'penguin').setScale(0.17 * scaleFactor).setDepth(2);
+        // if (isMobile) {
+        //     this.player.y = game.config.height / 1.8;
+        // }
         this.player.isCollide = "false";
         // this.gameObjContainer.add(this.player);
         // this.gameObjContainer.setPosition(480, 960);
@@ -23,7 +23,7 @@ class Player {
         // this.gameObjContainer.body.allowGravity = true;
         // this.gameObjContainer.body.immovable = false;
         this.player.setSize(this.player.width - game.config.width / 216, this.player.height, true);
-        this.player.setOffset(game.config.width / 10.58, game.config.height / 40);
+        this.player.setOffset(game.config.width / 10.58, 4);
         this.scene.physics.add.existing(this.player);
         this.player.body.allowGravity = true;
         this.player.body.immovable = false;

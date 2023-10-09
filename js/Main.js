@@ -18,6 +18,8 @@ window.onload = function () {
         config = {
             type: Phaser.AUTO,
             parent: 'square_bird',
+            // pixelArt: true,
+            antialias: true,
             // backgroundColor: '#34568b',
             scale: {
                 mode: Phaser.Scale.FIT,
@@ -26,10 +28,11 @@ window.onload = function () {
             physics: {
                 default: 'arcade',
                 arcade: {
-                    gravity: { y: 5200 },
-                    // debug: true,
-                    fps: 240,
-                    // OVERLAP_BIAS: 8,
+                    gravity: { y: 1800 },
+                    debug: true,
+                    fps: 300,
+                    fixedStep: false,
+                    OVERLAP_BIAS: 16,
                     // debugBodyColor: 0x000000,
                 },
             },
@@ -50,6 +53,8 @@ window.onload = function () {
         config = {
             type: Phaser.AUTO,
             parent: 'square_bird',
+            // pixelArt: true,
+            antialias: true,
             // backgroundColor: '#34568b',
             scale: {
                 mode: Phaser.Scale.FIT,
@@ -58,12 +63,13 @@ window.onload = function () {
             physics: {
                 default: 'arcade',
                 arcade: {
-                    gravity: { y: 5200 },
+                    gravity: { y: 1800 },
                     // tileBias: 154,
-                    // debug: true,
-                    fps: 240,
+                    debug: true,
+                    fps: 300,
+                    fixedStep: false,
                     // timestep: 1 / 120,
-                    // OVERLAP_BIAS: 80000,
+                    OVERLAP_BIAS: 32,
                     // forceX: false,
                     // debugBodyColor: 0x000000,
                 },

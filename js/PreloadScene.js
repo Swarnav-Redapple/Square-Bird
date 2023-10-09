@@ -111,6 +111,8 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image('settings_box', 'Gameover_box_pannel.png');
         this.load.image("gameOver_player", "pengiun_gameover.png");
         this.load.image('onepixel', 'onepixel.png');
+        this.load.image('ground', 'ground_tiles.png');
+        this.load.image('ground_cubes', 'platform_cubes.png');
 
         this.load.setPath('assets/spines/');
         this.load.spine('penguin', 'Penguin Character.json', 'Penguin Character.atlas');
