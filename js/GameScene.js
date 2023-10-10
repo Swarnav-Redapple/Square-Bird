@@ -35,7 +35,7 @@ export default class GameScene extends Phaser.Scene {
 
     create() {
         // console.log("New");
-        // this.cameras.main.setZoom(0.2);
+        // this.cameras.main.setZoom(0.09);
         let gridConfig = {
             'scene': this,
             'cols': 70,
@@ -48,6 +48,7 @@ export default class GameScene extends Phaser.Scene {
         this.ShowPlatform();
         this.ShowObstacles();
         this.ShowGameUI();
+
         this.CreateBird();
         // this.ShowDistanceCovered();
     }
@@ -74,22 +75,31 @@ export default class GameScene extends Phaser.Scene {
     ShowPlatform() {
         this.platform.CreateTopPlatform();
         this.platform.CreateBottomPlatform();
-        this.platform.CreateObstacles();
+        // this.platform.CreateObstacles();
 
     }
     ShowObstacles() {
         this.platform.CreateObstacles();
-        this.physics.add.collider(this.platform.lowerPlatformArray, this.platform.obsArray);
-        this.platform.MoveObstacles();
+        // this.platform.CreateNextObstacles();
+        // this.platform.CreateThirdObstacles();
+        // this.platform.CreateFourthObstacles();
+        this.physics.add.collider(this.platform.lowerPlatformArray, this.platform.obsArrayOne);
+        this.physics.add.collider(this.platform.lowerPlatformArray, this.platform.obsArrayTwo);
+        this.physics.add.collider(this.platform.lowerPlatformArray, this.platform.obsArrayThree);
+        this.physics.add.collider(this.platform.lowerPlatformArray, this.platform.obsArrayFour);
+        this.physics.add.collider(this.platform.lowerPlatformArray, this.platform.obsArrayFive);
+        this.physics.add.collider(this.platform.lowerPlatformArray, this.platform.obsArraySix);
+        // this.platform.MoveObstacles();
     }
 
     MovePlatform() {
-
+        this.platform.MoveTopPlatform();
         this.platform.MoveGroundPlatform();
     }
-    RepositionPlatform() {
+    RepositionObstacles() {
         // this.platform.RepositioningPlatform();
         this.platform.RepositionObstacles();
+        this.platform.RepositionTopPlatform();
     }
     ShowGameUI() {
         this.gameUI.CreateGameScene();
@@ -104,7 +114,12 @@ export default class GameScene extends Phaser.Scene {
         //-----Bird & Lower Platform Colliders-----------------------//
 
         this.physics.add.collider(this.player.player, this.platform.lowerPlatformArray, this.BirdOnTouchingLowerPlatform, null, this);
-        this.physics.add.collider(this.player.player, this.platform.obsArray, this.BirdOnTouchingObstacles, null, this);
+        this.physics.add.collider(this.player.player, this.platform.obsArrayOne, this.BirdOnTouchingObstacles, null, this);
+        this.physics.add.collider(this.player.player, this.platform.obsArrayTwo, this.BirdOnTouchingObstacles, null, this);
+        this.physics.add.collider(this.player.player, this.platform.obsArrayThree, this.BirdOnTouchingObstacles, null, this);
+        this.physics.add.collider(this.player.player, this.platform.obsArrayFour, this.BirdOnTouchingObstacles, null, this);
+        this.physics.add.collider(this.player.player, this.platform.obsArrayFive, this.BirdOnTouchingObstacles, null, this);
+        this.physics.add.collider(this.player.player, this.platform.obsArraySix, this.BirdOnTouchingObstacles, null, this);
         // this.physics.add.collider(this.player.player, this.platform.lowerPlatformArrayTwo, this.BirdOnTouchingLowerPlatform, null, this);
         // this.physics.add.collider(this.player.player, this.platform.lowerPlatformArrayThree, this.BirdOnTouchingLowerPlatform, null, this);
 
@@ -218,44 +233,54 @@ export default class GameScene extends Phaser.Scene {
 
     }
     ShowCubes() {
-        if (this.isDown && !this.isGameOver) {
-            // this.clickCounter = 0;
-            AudioManager.PlayCubeCreateAudio();
-            this.iceCube.CreateIceCubes();
-            // this.iceCube.cubes.setGravityY(10);
-            this.iceCube.smoke.setPosition(this.player.player.x - game.config.width / 54, this.player.player.y);
-            this.iceCube.cubes.setPosition(this.player.player.x, this.player.player.y - 115);
-            // this.player.player.add(this.iceCube.cubes);
-            // this.iceCube.cubes.setVelocityX(240);
-            // this.iceCube.cubes.setFrictionX(1);
-            // }
+        // if (this.isDown && !this.isGameOver) {
+        // this.clickCounter = 0;
+        AudioManager.PlayCubeCreateAudio();
+        this.iceCube.CreateIceCubes();
+        // this.iceCube.cubes.setGravityY(10);
+        this.iceCube.smoke.setPosition(this.player.player.x - game.config.width / 54, this.player.player.y);
+        this.iceCube.cubes.setPosition(this.player.player.x, this.player.player.y - 115);
+        // this.iceCube.cubes.setVelocityY(500);
+        // this.iceCube.cubes.setPushable(false);
+        // this.phaser.physics.world.SeparateY(this.iceCube.cubes, this.platform.lowerPlatformArray, true, 8);
+        // this.physics.world.setTimeStep(1 / 300);
+        // this.iceCube.cubes.body.setCcdEnable(true)
+        // this.player.player.add(this.iceCube.cubes);
+        // this.iceCube.cubes.setVelocityX(240);
+        // this.iceCube.cubes.setFrictionX(1);
+        // }
 
-            this.cubesArray.push(this.iceCube.cubes);
+        this.cubesArray.push(this.iceCube.cubes);
 
-            //----Cubes with Player Colliders-------------------------//
+        //----Cubes with Player Colliders-------------------------//
 
-            this.physics.add.collider(this.cubesArray, this.player.player);// this.CubesOnCollidingPlayer, null, this);
+        this.physics.add.collider(this.cubesArray, this.player.player);// this.CubesOnCollidingPlayer, null, this);
 
 
-            //----Cubes with Cubes Colliders-------------------------//
+        //----Cubes with Cubes Colliders-------------------------//
 
-            this.physics.add.collider(this.cubesArray, this.cubesArray);// this.CubesOnTouchingCubes, null, this);
+        this.physics.add.collider(this.cubesArray, this.cubesArray);// this.CubesOnTouchingCubes, null, this);
 
-            //----Cubes & Platform Colliders-------------------------//
+        //----Cubes & Platform Colliders-------------------------//
 
-            this.physics.add.collider(this.iceCube.cubes, this.platform.lowerPlatformArray, this.CubesOnCollsionWithPlatform, null, this);
-            // this.physics.add.overlap(this.iceCube.cubes, this.platform.lowerPlatformArray, this.CubesOnOverlappingPlatform, null, this);
+        this.physics.add.collider(this.iceCube.cubes, this.platform.lowerPlatformArray, this.CubesOnCollsionWithPlatform, null, this);
+        // this.physics.add.overlap(this.iceCube.cubes, this.platform.lowerPlatformArray, this.CubesOnOverlappingPlatform, null, this);
 
-            this.physics.add.collider(this.iceCube.cubes, this.platform.obsArray, this.CubesOnCollsionWithObs, null, this);
-            // this.physics.add.overlap(this.iceCube.cubes, this.platform.lowerPlatformArrayTwo, this.CubesOnOverlappingPlatform, null, this);
+        this.physics.add.collider(this.iceCube.cubes, this.platform.obsArrayOne, this.CubesOnCollsionWithObs, null, this);
+        this.physics.add.collider(this.iceCube.cubes, this.platform.obsArrayTwo, this.CubesOnCollsionWithObs, null, this);
+        this.physics.add.collider(this.iceCube.cubes, this.platform.obsArrayThree, this.CubesOnCollsionWithObs, null, this);
+        this.physics.add.collider(this.iceCube.cubes, this.platform.obsArrayFour, this.CubesOnCollsionWithObs, null, this);
+        this.physics.add.collider(this.iceCube.cubes, this.platform.obsArrayFive, this.CubesOnCollsionWithObs, null, this);
+        this.physics.add.collider(this.iceCube.cubes, this.platform.obsArraySix, this.CubesOnCollsionWithObs, null, this);
+        // this.physics.add.overlap(this.iceCube.cubes, this.platform.lowerPlatformArrayTwo, this.CubesOnOverlappingPlatform, null, this);
 
-            // this.physics.add.collider(this.iceCube.cubes, this.platform.lowerPlatformArrayThree, this.CubesOnCollsionWithPlatform, null, this);
-            // this.physics.add.overlap(this.iceCube.cubes, this.platform.lowerPlatformArrayThree, this.CubesOnOverlappingPlatform, null, this);
+        // this.physics.add.collider(this.iceCube.cubes, this.platform.lowerPlatformArrayThree, this.CubesOnCollsionWithPlatform, null, this);
+        // this.physics.add.overlap(this.iceCube.cubes, this.platform.lowerPlatformArrayThree, this.CubesOnOverlappingPlatform, null, this);
 
-            this.PositioningCubes();
-            // console.log("this.crateArray:", this.crateArray);
-        }
+        this.PositioningCubes();
+        // console.log("this.crateArray:", this.crateArray);
     }
+    // }
 
     PositioningCubes() {
         this.physics.add.overlap(this.cubesArray, this.cubesArray, function (s1, s2) {
@@ -290,16 +315,18 @@ export default class GameScene extends Phaser.Scene {
         // this.RepositioningPlayerAndCubes();
     }
     CubesOnCollsionWithPlatform(_cube, _platform) {
-        // _cube.setBounce(3);
+        // // _cube.setBounce(3);
         this.physics.add.collider(this.iceCube.cubes, this.platform.lowerPlatformArray);
+        // _cube.y = _platform.y - _platform.width - 100;
     }
 
     CubesOnCollsionWithObs(_cube, _obs) {
         if (_cube.x <= -80) {
-            // console.log("Shift");
+
             // _cube.setVisible(false);
             this.cubesArray.shift();
             _cube.destroy();
+            console.log("Shift");
         }
         // else if (_cube.body.touching.down) {
         //     _cube.body.setVelocity(0, 0);
@@ -312,6 +339,8 @@ export default class GameScene extends Phaser.Scene {
 
             this.cameras.main.shake(185, 0.02);
             _cube.isCollide = "true";
+            _cube.body.immovable = false;
+            _cube.setPushable(true);
 
             //     // console.log("isCollide");
         }
@@ -335,7 +364,7 @@ export default class GameScene extends Phaser.Scene {
         //     this.player.player.x += 4;
         this.MoveBg();
         this.MovePlatform();
-        this.RepositionPlatform();
+        this.RepositionObstacles();
 
     }
 }

@@ -14,7 +14,7 @@ class IceCube {
         // this.cubes.play('Ice_02', false, 1);
         this.scene.tweens.add({
             targets: this.cubes,
-            scale: 1.05,
+            scale: 1,
             duration: 80,
         });
         // this.cubes.on('complete', () => {

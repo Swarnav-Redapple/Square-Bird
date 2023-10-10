@@ -50,7 +50,14 @@ class Platform {
         this.obsArray = [];
         this.lowerPlatformArrayTwo = [];
         this.lowerPlatformArrayThree = [];
-        this.platformSpeed = 300;
+        this.platformSpeed = 400;
+        this.obsArrayOne = [];
+        this.obsArrayTwo = [];
+        this.obsArrayThree = [];
+        this.obsArrayFour = [];
+        this.obsArrayFive = [];
+        this.obsArraySix = [];
+
         this.bottomPosArray = [770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 799, 800, 710, 700, 701, 702, 703, 704, 711, 712, 713, 643, 640, 630, 631, 632, 633, 634, 705, 706, 707, 708, 709, 570, 560, 561, 562, 563, 564, 500, 499, 498, 565, 635, 636, 637, 638, 639, 566, 567, 568, 569, 573, 504, 574, 434, 364, 365, 366, 437, 436, 508, 507, 509, 510, 511, 512, 443, 444, 448, 445, 376, 377, 378, 447, 517, 588, 589, 590, 659, 729, 587, 797, 798, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 730, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 660, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 505, 506, 513, 514, 515, 516, 518, 435, 446];
 
         this.bottomPosArray_Two = [802, 732, 662, 592, 593, 524, 525, 456, 386, 387, 388, 389, 390, 391, 461, 531, 532, 533, 534, 604, 605, 606, 607, 608, 538, 539, 540, 541, 542, 472, 473, 474, 475, 476, 477, 547, 617, 687, 757, 827, 663, 783, 803, 594, 664, 734, 804, 595, 665, 735, 805, 526, 596, 666, 736, 806, 457, 527, 597, 667, 737, 807, 458, 528, 598, 668, 738, 808, 459, 529, 599, 669, 739, 809, 460, 530, 600, 670, 740, 810, 601, 671, 741, 811, 602, 672, 742, 812, 603, 673, 743, 813, 674, 744, 814, 675, 745, 815, 676, 746, 816, 677, 747, 817, 678, 748, 818, 609, 679, 749, 819, 610, 680, 750, 820, 611, 681, 751, 822, 733, 821, 612, 682, 752, 543, 613, 683, 753, 823, 544, 814, 604, 754, 824, 545, 615, 605, 755, 825, 546, 616, 606, 756, 826, 614, 684, 685, 686];
@@ -134,14 +141,14 @@ class Platform {
                 this.scene.alignGrid.placeAtIndex(this.topPosArray[i], right_corner_small_top);
                 // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[12]));
             }
-            // else {
-            //     let center = this.scene.physics.add.image(0, 0, this.key[7]).setScale(1.05 * scaleFactor);
-            //     center.body.allowGravity = false;
-            //     center.body.immovable = true;
-            //     this.topPlatformArray.push(center);
-            //     this.scene.alignGrid.placeAtIndex(this.topPosArray[i], center);
-            //     // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[7]));
-            // }
+            else {
+                let center = this.scene.physics.add.image(0, 0, this.key[7]).setScale(1.05 * scaleFactor);
+                center.body.allowGravity = false;
+                center.body.immovable = true;
+                this.topPlatformArray.push(center);
+                this.scene.alignGrid.placeAtIndex(this.topPosArray[i], center);
+                //     // this.scene.alignGrid.placeAtIndex(this.topPosArray[i], this.scene.add.image(0, 0, this.key[7]));
+            }
         }
         for (let i = 0; i < this.topPosArray_Two.length; i++) {
             if (this.topPosArray_Two[i] == 59) {
@@ -204,14 +211,25 @@ class Platform {
     }
     CreateBottomPlatform() {
         for (let i = 0; i < 10; i++) {
-            let ground = this.scene.physics.add.image(-10 + (i * 152), 1920, 'ground');
+            let ground = this.scene.physics.add.image(-10 + (i * 152), 1920, 'ground')//.setScale(1000, 1);
+            // ground.setSize(ground.width * 100, ground.height * 2000);
             ground.body.allowGravity = false;
             ground.body.immovable = true;
+            ground.setPushable(false);
             this.lowerPlatformArray.push(ground);
         }
         this.bottomLastIndex = this.lowerPlatformArray.length - 1;
         console.log(" this.lowerPlatformArray", this.lowerPlatformArray);
 
+    }
+    MoveTopPlatform() {
+        this.topPlatformArray.forEach(tiles => {
+            // tiles.setSize(500, 500);
+            tiles.body.setVelocityX(-this.platformSpeed);
+        });
+        this.topPlatformArrayTwo.forEach(tiles => {
+            tiles.body.setVelocityX(-this.platformSpeed);
+        });
     }
     MoveGroundPlatform() {
         for (let i = 0; i < this.lowerPlatformArray.length; i++) {
@@ -223,31 +241,148 @@ class Platform {
         }
     }
     CreateObstacles() {
-        let obsOne = this.scene.physics.add.image(1200, 1540, 'ground_cubes').setFrictionX(0);
-        let obsTwo = this.scene.physics.add.image(1350, 1540, 'ground_cubes').setFrictionX(0);
-        let obsThree = this.scene.physics.add.image(1500, 1540, 'ground_cubes').setFrictionX(0);
-        let obsFour = this.scene.physics.add.image(1350, obsOne.y - obsOne.width, 'ground_cubes').setFrictionX(0);
-        obsOne.body.allowGravity = false;
-        obsOne.body.immovable = true;
-        obsTwo.body.allowGravity = false;
-        obsTwo.body.immovable = true;
-        obsThree.body.allowGravity = false;
-        obsThree.body.immovable = true;
-        obsFour.body.allowGravity = false;
-        obsFour.body.immovable = true;
-        this.obsArray.push(obsOne, obsTwo, obsThree, obsFour);
-    }
-    MoveObstacles() {
-        this.obsArray.forEach(obs => {
-            obs.setVelocityX(-400);
-        });
+        for (let i = 0; i < 4; i++) {
+            let obsOne = this.scene.physics.add.image(1200 + (i * 152), 1540, 'ground_cubes').setFrictionX(0);
+            obsOne.body.allowGravity = false;
+            obsOne.body.immovable = true;
+            if (i == 3) {
+                obsOne.x = 1200 + 152;
+                obsOne.y = obsOne.y - obsOne.width;
+            }
+            obsOne.setVelocityX(-400);
+            this.obsArrayOne.push(obsOne);
+        }
+        this.obsArray.push(this.obsArrayOne);
+
+        for (let i = 0; i < 8; i++) {
+            let obsTwo = this.scene.physics.add.image(2000 + (i * 152), 1540, 'ground_cubes').setFrictionX(0);
+            obsTwo.body.allowGravity = false;
+            obsTwo.body.immovable = true;
+            if (i >= 4) {
+                obsTwo.y = obsTwo.y - obsTwo.height;
+            }
+            obsTwo.setVelocityX(-400);
+            this.obsArrayTwo.push(obsTwo);
+        }
+        this.obsArray.push(this.obsArrayTwo);
+
+        for (let i = 0; i < 8; i++) {
+            let obsThree = this.scene.physics.add.image(3500 + (i * 152), 1540, 'ground_cubes').setFrictionX(0);
+            obsThree.body.allowGravity = false;
+            obsThree.body.immovable = true;
+            if (i >= 4) {
+                obsThree.x = 3500 + ((i - 4) * 152);
+                obsThree.y = obsThree.y - obsThree.height;
+            }
+            obsThree.setVelocityX(-400);
+            this.obsArrayThree.push(obsThree);
+        }
+        this.obsArray.push(this.obsArrayThree);
+
+        for (let i = 0; i < 4; i++) {
+            let obsFour = this.scene.physics.add.image(4800 + (i * 152), 1540, 'ground_cubes').setFrictionX(0);
+            obsFour.body.allowGravity = false;
+            obsFour.body.immovable = true;
+            if (i == 2) {
+                obsFour.y = obsFour.y - obsFour.height;
+            }
+            else if (i == 3) {
+                obsFour.x = 4800 - 152;
+                obsFour.y = obsFour.y - obsFour.height;
+            }
+            obsFour.setVelocityX(-400);
+            this.obsArrayFour.push(obsFour);
+        }
+        this.obsArray.push(this.obsArrayFour);
+
+        for (let i = 0; i < 8; i++) {
+            let obsFive = this.scene.physics.add.image(5700 + (i * 152), 1540, 'ground_cubes').setFrictionX(0);
+            obsFive.body.allowGravity = false;
+            obsFive.body.immovable = true;
+            if (i >= 2) {
+                obsFive.x = 5700 + ((i - 2) * 152);
+                obsFive.y = obsFive.y - obsFive.height;
+            }
+            if (i >= 4) {
+                obsFive.x = 5700 + ((i - 4) * 152);
+                obsFive.y = obsFive.y - obsFive.height;
+            }
+            if (i >= 6) {
+                obsFive.x = 5700 + ((i - 6) * 152);
+                obsFive.y = obsFive.y - obsFive.height;
+            }
+            obsFive.setVelocityX(-400);
+            this.obsArrayFive.push(obsFive);
+        }
+        this.obsArray.push(this.obsArrayFive);
+
+        //     for (let i = 0; i < 2; i++) {
+        //         let obsSix = this.scene.physics.add.image(2500 + (i * 552), 800, 'ground_cubes').setFrictionX(0);
+        //         obsSix.body.allowGravity = false;
+        //         obsSix.body.immovable = true;
+        //         obsSix.setVelocityX(-400);
+        //         this.obsArraySix.push(obsSix);
+        //     }
+        //     this.obsArray.push(this.obsArrayFive);
+
         this.scene.physics.world.syncToRender = true;
     }
+
+    // MoveObstacles() {
+    //     this.obsArray.forEach(obs => {
+    //         obs.setVelocityX(-400);
+    //     });
+    //     this.scene.physics.world.syncToRender = true;
+    // }
     RepositionObstacles() {
-        for (let i = 0; i < this.obsArray.length; i++) {
-            if (this.obsArray[i].x <= -100) {
-                // console.log("repositioned");
-                this.obsArray[i].x = 1200;
+        for (let i = 0; i < this.obsArrayOne.length; i++) {
+            if (this.obsArrayOne[i].x <= -300) {
+                // console.log("Here");
+                this.obsArrayOne[i].x = 5900;
+            }
+        }
+        for (let i = 0; i < this.obsArrayTwo.length; i++) {
+            if (this.obsArrayTwo[i].x <= -300) {
+                // console.log("Here");
+                this.obsArrayTwo[i].x = 5900;
+            }
+        }
+        for (let i = 0; i < this.obsArrayThree.length; i++) {
+            if (this.obsArrayThree[i].x <= -300) {
+                // console.log("Here");
+                this.obsArrayThree[i].x = 5900;
+            }
+        }
+        for (let i = 0; i < this.obsArrayFour.length; i++) {
+            if (this.obsArrayFour[i].x <= -300) {
+                // console.log("Here");
+                this.obsArrayFour[i].x = 5900;
+            }
+        }
+        for (let i = 0; i < this.obsArrayFive.length; i++) {
+            if (this.obsArrayFive[i].x <= -300) {
+                // console.log("Here");
+                this.obsArrayFive[i].x = 5900;
+            }
+        }
+        // for (let i = 0; i < this.obsArraySix.length; i++) {
+        //     if (this.obsArraySix[i].x <= -800) {
+        //         // console.log("Here");
+        //         this.obsArraySix[i].x = 1200;
+        //     }
+    }
+    // }
+    RepositionTopPlatform() {
+        for (let i = 0; i < this.topPlatformArray.length; i++) {
+            if (this.topPlatformArray[i].x <= -game.config.width / 0.27) {
+                // console.log("iwhdofihw");
+                this.topPlatformArray[i].x = game.config.width / 0.15;
+            }
+        }
+        for (let i = 0; i < this.topPlatformArrayTwo.length; i++) {
+            if (this.topPlatformArrayTwo[i].x <= -game.config.width / 0.27) {
+                // console.log("iwhdofihw");
+                this.topPlatformArrayTwo[i].x = game.config.width / 0.15;
             }
         }
     }
