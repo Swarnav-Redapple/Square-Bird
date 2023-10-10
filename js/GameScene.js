@@ -263,7 +263,7 @@ export default class GameScene extends Phaser.Scene {
 
         //----Cubes & Platform Colliders-------------------------//
 
-        this.physics.add.collider(this.iceCube.cubes, this.platform.lowerPlatformArray, this.CubesOnCollsionWithPlatform, null, this);
+        // this.physics.add.collider(this.iceCube.cubes, this.platform.platform, this.CubesOnCollsionWithPlatform, null, this);
         // this.physics.add.overlap(this.iceCube.cubes, this.platform.lowerPlatformArray, this.CubesOnOverlappingPlatform, null, this);
 
         this.physics.add.collider(this.iceCube.cubes, this.platform.obsArrayOne, this.CubesOnCollsionWithObs, null, this);
@@ -300,6 +300,19 @@ export default class GameScene extends Phaser.Scene {
             }
         });
         this.physics.add.overlap(this.player.player, this.cubesArray, function (s1, s2) {
+            let b1 = s1.body;
+            let b2 = s2.body;
+
+            if (b1.y > b2.y) {
+                b2.y += (b1.top - b2.bottom);
+                b2.stop();
+            }
+            else {
+                b1.y += (b2.top - b1.bottom);
+                b1.stop();
+            }
+        });
+        this.physics.add.overlap(this.cubesArray, this.platform.lowerPlatformArray, function (s1, s2) {
             let b1 = s1.body;
             let b2 = s2.body;
 

@@ -219,7 +219,11 @@ class Platform {
             this.lowerPlatformArray.push(ground);
         }
         this.bottomLastIndex = this.lowerPlatformArray.length - 1;
-        console.log(" this.lowerPlatformArray", this.lowerPlatformArray);
+        // console.log(" this.lowerPlatformArray", this.lowerPlatformArray);
+        // this.platform = this.scene.add.tileSprite(960, 1650, 1920, 72, "ground1", 1).setScale(1);
+        // this.scene.physics.world.enable(this.platform);
+        // this.platform.body.allowGravity = false;
+        // this.platform.body.immovable = true;
 
     }
     MoveTopPlatform() {
@@ -239,7 +243,12 @@ class Platform {
                 this.bottomLastIndex = i;
             }
         }
+        // this.platform.tilePositionX += 7;
+        // if (this.distanceCounter == 10) {
+        //     this.distanceCounter = 0;
+        //     this.platform.tilePositionX += 7 * 1.5;
     }
+
     CreateObstacles() {
         for (let i = 0; i < 4; i++) {
             let obsOne = this.scene.physics.add.image(1200 + (i * 152), 1540, 'ground_cubes').setFrictionX(0);

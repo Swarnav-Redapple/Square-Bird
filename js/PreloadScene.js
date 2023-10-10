@@ -69,7 +69,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image('closedButton', 'Close_button.png');
         this.load.spritesheet('music_btns', 'Music button spritesheet.png', { frameWidth: 169, frameHeight: 169 });
         this.load.spritesheet('sound_btns', 'sound button spritesheet.png', { frameWidth: 169, frameHeight: 169 });
-        // this.load.spritesheet('ground', 'tiles.png', { frameWidth: 64, frameHeight: 64 });
+        this.load.spritesheet('ground1', 'tiles.png', { frameWidth: 64, frameHeight: 64 });
         this.load.image('tutorial_bg', 'Tutorial_bg.jpg');
         this.load.image('bgOne', 'bg_one.png');
         this.load.image('bgTwo', 'bg_two.png');
