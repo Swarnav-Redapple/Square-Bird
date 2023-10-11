@@ -14,9 +14,9 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image('effects', 'Effects.png');
         this.load.image('ice_cube', 'Ice.png');
         this.load.image('rocks', 'Rocks.png');
-        this.load.image('title', 'Title.png')
-        this.load.image('progressLine', 'Loading_bar.png');
-        this.load.image('progressBase', 'Loading_bar_02.png');
+        this.load.image('title', 'title_art.png')
+        this.load.image('progressLine', 'loading_bar.png');
+        this.load.image('progressBase', 'loading_base.png');
     }
     create() {
         let bg = this.add.image(game.config.width / 2, game.config.height / 2, 'bg');
@@ -29,7 +29,7 @@ export default class PreloadScene extends Phaser.Scene {
         let title = this.add.image(game.config.width / 2.02, game.config.height / 3.77, 'title');
         let bird = this.add.image(game.config.width / 1.99, game.config.height / 1.8, 'bird');
         this.progressBase = this.add.image(Math.round(game.config.width / 2), Math.round(game.config.height / 1.08), "progressBase").setOrigin(0.5, 0.5) //.setScale(1 * scaleFactorX, 1 * scaleFactorY);
-        this.progressLine = this.add.image(Math.round(game.config.width / 2), Math.round(game.config.height / 1.08), "progressLine").setOrigin(0.5, 0.5) //.setScale(1.4 * scaleFactorX, 1 * scaleFactorY);
+        this.progressLine = this.add.image(Math.round(game.config.width / 2), Math.round(game.config.height / 1.081), "progressLine").setOrigin(0.5, 0.5) //.setScale(1.4 * scaleFactorX, 1 * scaleFactorY);
         this.progressLine.setCrop(0, 0, 0, this.progressLine.height);
         // this.LoadAssets();
         this.LoadFonts();
@@ -58,7 +58,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.on('complete', this.OnComplete, { scene: this.scene });
 
         this.load.setPath('assets/images/');
-        this.load.image('title_intro', 'Title_art.png');
+        // this.load.image('title_intro', 'Title_art.png');
         this.load.image('playButton', 'Play_button.png');
         this.load.image('homeButton', 'Home_button.png');
         this.load.image('settingsButton', 'Settings_button.png');
@@ -69,7 +69,6 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image('closedButton', 'Close_button.png');
         this.load.spritesheet('music_btns', 'Music button spritesheet.png', { frameWidth: 169, frameHeight: 169 });
         this.load.spritesheet('sound_btns', 'sound button spritesheet.png', { frameWidth: 169, frameHeight: 169 });
-        this.load.spritesheet('ground1', 'tiles.png', { frameWidth: 64, frameHeight: 64 });
         this.load.image('tutorial_bg', 'Tutorial_bg.jpg');
         this.load.image('bgOne', 'bg_one.png');
         this.load.image('bgTwo', 'bg_two.png');
@@ -101,7 +100,6 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image('obstacle_Three', 'Obstracle_03.png');
         this.load.image('platform', 'Platform.png');
         this.load.image('player', 'Penguin.png');
-        this.load.image('birdie', 'bird.png');
         this.load.image('cubes', '14_Ice_cube.png');
         this.load.tilemapTiledJSON('platformInstruction', 'platformTutorial.json');
         this.load.tilemapTiledJSON('platformInBox', 'platformInBox.json');
@@ -115,6 +113,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image('onepixel', 'onepixel.png');
         this.load.image('ground', 'ground_tiles.png');
         this.load.image('ground_cubes', 'platform_cubes.png');
+        this.load.image('sheath', 'protector.png');
 
         this.load.setPath('assets/spines/');
         this.load.spine('penguin', 'Penguin Character.json', 'Penguin Character.atlas');

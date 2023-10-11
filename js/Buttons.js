@@ -13,7 +13,7 @@ class Buttons {
         this.musicBtn = null;
     }
     CreateButtons() {
-        this.playBtn = this.scene.add.image(game.config.width / 2, game.config.height / 1.43, 'playButton').setInteractive({ useHandCursor: true });
+        this.playBtn = this.scene.add.image(game.config.width / 2, game.config.height / 1.23, 'playButton').setInteractive({ useHandCursor: true });
         this.settingsBtn = this.scene.add.image(game.config.width / 3.2, game.config.height / 1.08, 'settingsButton').setInteractive({ useHandCursor: true });
         // this.homeBtn = this.scene.add.image(game.config.width / 2, game.config.height / 1.08, 'homeButton');
         this.homeBtn = this.scene.add.image(game.config.width / 1.45, game.config.height / 1.08, 'homeButton');

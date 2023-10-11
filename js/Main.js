@@ -17,19 +17,19 @@ window.onload = function () {
     if (isMobile) {
         config = {
             type: Phaser.AUTO,
-            parent: 'square_bird',
+            parent: 'super_bird',
             // pixelArt: true,
             antialias: true,
             // backgroundColor: '#34568b',
             scale: {
-                mode: Phaser.Scale.FIT,
+                mode: Phaser.Scale.RESIZE,
                 autoCenter: Phaser.Scale.CENTER_BOTH,
             },
             physics: {
                 default: 'arcade',
                 arcade: {
-                    gravity: { y: 79000 },
-                    debug: true,
+                    gravity: { y: 4000 },
+                    // debug: true,
                     fps: 300,
                     fixedStep: false,
                     OVERLAP_BIAS: 16,
@@ -41,7 +41,7 @@ window.onload = function () {
                     {
                         key: 'SpinePlugin',
                         plugin: window.SpinePlugin,
-                        sceneKey: 'spine'
+                        sceneKey: 'spine',
                     }
                 ]
             },
@@ -52,20 +52,20 @@ window.onload = function () {
     else {
         config = {
             type: Phaser.AUTO,
-            parent: 'square_bird',
+            parent: 'super_bird',
             // pixelArt: true,
             antialias: true,
             // backgroundColor: '#34568b',
             scale: {
-                mode: Phaser.Scale.FIT,
+                mode: Phaser.Scale.RESIZE,
                 autoCenter: Phaser.Scale.CENTER_BOTH,
             },
             physics: {
                 default: 'arcade',
                 arcade: {
-                    gravity: { y: 79000 },
+                    gravity: { y: 4000 },
                     // tileBias: 154,
-                    debug: true,
+                    // debug: true,
                     fps: 300,
                     fixedStep: false,
                     // timestep: 1 / 120,
@@ -79,7 +79,7 @@ window.onload = function () {
                     {
                         key: 'SpinePlugin',
                         plugin: window.SpinePlugin,
-                        sceneKey: 'spine'
+                        sceneKey: 'spine',
                     }
                 ]
             },

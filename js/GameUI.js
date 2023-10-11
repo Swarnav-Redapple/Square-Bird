@@ -20,14 +20,21 @@ class GameUI {
         this.platform.CreateTutorialPlatform();
         this.overlay.CreateOverlay();
         let instructionBox = this.scene.add.image(game.config.width / 2, game.config.height / 2.18, 'instruction_box');
-        let title = this.scene.add.image(game.config.width / 2.02, game.config.height / 9.6, 'title_intro');//.setScale(0.6 * scaleFactor);
+        let title = this.scene.add.image(game.config.width / 2.02, game.config.height / 9.6, 'title');//.setScale(0.6 * scaleFactor);
         this.buttons.CreateButtons();
-        this.buttons.settingsBtn.on('pointerup', () => {
-            this.scene.scene.pause();
-            this.scene.scene.launch('PausedScene', { key: '1', sceneKeyManager: sceneKey });
-        });
+        this.buttons.settingsBtn.setVisible(false);
+        this.buttons.homeBtn.setVisible(false);
+        this.buttons.pauseBtn.setVisible(false);
+        // this.buttons.settingsBtn.on('pointerup', () => {
+        //     this.scene.scene.pause();
+        //     this.scene.scene.launch('PausedScene', { key: '1', sceneKeyManager: sceneKey });
+        // });
         this.pointerAnim = this.scene.add.spine(game.config.width / 1.5, game.config.height / 1.6, 'pointer');
-        this.introAnim = this.scene.add.spine(game.config.width / 3, game.config.height / 1.79, 'intro').setVisible(false).setScale(0.17 * scaleFactor);
+        this.pointerAnim.setColor('0x0096FF');
+        this.introAnim = this.scene.add.spine(game.config.width / 2.2, game.config.height / 1.79, 'intro').setVisible(false).setScale(0.17 * scaleFactor);
+        // if (isMobile) {
+        //     this.introAnim.y = game.config.height / 1.82;
+        // }
 
         this.PointerAnimation();
 
