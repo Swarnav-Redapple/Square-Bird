@@ -2,6 +2,7 @@ import Platform from "./Platform.js";
 import Overlay from "./Overlay.js";
 import Buttons from "./Buttons.js";
 import PopUp from "./PopUp.js";
+import { AudioManager } from "./AudioManager.js";
 class GameUI {
     constructor(scene) {
         this.scene = scene;
@@ -13,35 +14,34 @@ class GameUI {
         this.introAnim = null;
         this.counter = 0;
         this.showPointerAnim = true;
+        this.initialTime = 180;
+        this.timerTxt = null;
+        this.timedEvent = null;
     }
     CreateInstructionScene() {
         // console.log("scene1", this.scene);
         let sceneKey = this.scene;
         this.platform.CreateTutorialPlatform();
         this.overlay.CreateOverlay();
-        let instructionBox = this.scene.add.image(game.config.width / 2, game.config.height / 2.18, 'instruction_box');
-        let title = this.scene.add.image(game.config.width / 2.02, game.config.height / 9.6, 'title');//.setScale(0.6 * scaleFactor);
+        let instructionBox = this.scene.add.image(game.config.width / 2, game.config.height / 1.76, 'instruction_box');
+        let title = this.scene.add.image(game.config.width / 2.02, game.config.height / 5.6, 'title');//.setScale(0.6 * scaleFactor);
         this.buttons.CreateButtons();
-        this.buttons.settingsBtn.setVisible(false);
+        this.buttons.backBtn.setVisible(false);
         this.buttons.homeBtn.setVisible(false);
-        this.buttons.pauseBtn.setVisible(false);
+        // this.buttons.pauseBtn.setVisible(false);
         // this.buttons.settingsBtn.on('pointerup', () => {
         //     this.scene.scene.pause();
         //     this.scene.scene.launch('PausedScene', { key: '1', sceneKeyManager: sceneKey });
         // });
-        this.pointerAnim = this.scene.add.spine(game.config.width / 1.5, game.config.height / 1.6, 'pointer');
+        this.pointerAnim = this.scene.add.spine(game.config.width / 1.5, game.config.height / 1.38, 'pointer');
         this.pointerAnim.setColor('0x0096FF');
-        this.introAnim = this.scene.add.spine(game.config.width / 2.2, game.config.height / 1.79, 'intro').setVisible(false).setScale(0.17 * scaleFactor);
+        this.introAnim = this.scene.add.spine(game.config.width / 2.2, game.config.height / 1.5, 'intro').setVisible(false).setScale(0.17 * scaleFactor);
         // if (isMobile) {
         //     this.introAnim.y = game.config.height / 1.82;
         // }
-
         this.PointerAnimation();
 
-        // this.introAnim.play('Double_Jump', true);
-
-
-        let instructionTxt = this.scene.add.text(game.config.width / 3.1, game.config.height / 3.75, 'HOLD OR TAP TO \n FORM ICE CUBE', { fontFamily: 'PoetsenOne-Regular', fontSize: 50, fill: '#340158', align: 'Center', lineSpacing: 10 });
+        let instructionTxt = this.scene.add.text(game.config.width / 3.1, game.config.height / 2.8, 'HOLD OR TAP TO \n FORM ICE CUBE', { fontFamily: 'PoetsenOne-Regular', fontSize: 50, fill: '#340158', align: 'Center', lineSpacing: 10 });
         this.buttons.InteractivePlayButton();
     }
     PointerAnimation() {
@@ -76,56 +76,13 @@ class GameUI {
             // console.log('else');
             this.introAnim.play('Double_Jump', false, 1);
             this.introAnim.removeAllListeners('complete');
-
-            // this.showPointerAnim = false;
-            // _count += 1;
-            // this.introAnim.play('Single_Jump', false, 1);
-            // this.introAnim.removeAllListeners('complete');
             this.introAnim.on('complete', () => {
                 this.introAnim.setVisible(false);
                 this.PointerAnimation();
             });
-            // this.introAnim.on('complete', () => {
-            //     this.PointerAnimation();
-            // });
         }
-
-
     }
-    // 
 
-    // if (this.introAnim.visible == false) {
-    //     this.introAnim.setVisible(true);
-    // }
-    // if (this.counter == 1) {
-    //     // console.log(_count);
-
-    //     console.log("this.count1", this.counter);
-    //     this.counter -= 1;
-    //     this.introAnim.play('Single_Jump', false, 0);
-    //     this.introAnim.on('complete', (spine) => {
-    //         // setTimeout(() => {
-    //         this.PointerAnimation();
-    //         // }, 500);
-
-
-    //     });
-
-    // }
-    // else if (this.counter % 2 == 1) {
-    //     this.counter -= 1;
-    //     console.log("this.count2", this.counter);
-
-    //     this.introAnim.play('Double_Jump', false, 0);
-
-    //     this.introAnim.on('complete', (spine) => {
-    //         // setTimeout(() => {
-    //         this.PointerAnimation();
-    //         // }, 500);
-
-    //     });
-    // }
-    // }
     CreateGameScene() {
         // console.log("scene2", this.scene);
         let sceneKey = this.scene;
@@ -134,23 +91,74 @@ class GameUI {
         this.buttons.playBtn.setVisible(false);
         this.buttons.homeBtn.setVisible(false);
         // this.buttons.achievementBtn.setVisible(false);
-        this.buttons.settingsBtn.setPosition(game.config.width / 10.2, game.config.height / 17.08);
-        this.buttons.settingsBtn.on('pointerup', () => {
+        this.buttons.backBtn.setPosition(game.config.width / 10.2, game.config.height / 17.08);
+        this.buttons.backBtn.on('pointerup', () => {
             this.scene.scene.pause();
             this.scene.scene.launch('PausedScene', { key: '1', sceneKeyManager: sceneKey });
         });
-        this.buttons.pauseBtn.setPosition(game.config.width / 1.11, game.config.height / 17.08).setVisible(true).setInteractive({ useHandCursor: true });
-        this.buttons.pauseBtn.on('pointerup', () => {
-            // this.popUp.CreatePausePopUp();
-            // // isResumed = false;
-            // isPaused = true;
-            // platformCanMove = false;
-            this.scene.scene.pause();
-            this.scene.scene.launch('PausedScene', { key: '0' });
+        this.buttons.soundBtn.setPosition(game.config.width / 1.11, game.config.height / 17.08).setVisible(true).setInteractive({ useHandCursor: true });
+        if (localStorage.getItem("super_bird_audio_on") == null) {
+            localStorage.setItem("super_bird_audio_on", 1);
+        }
+        if (localStorage.getItem("super_bird_audio_on") == "1") {
+            this.buttons.soundBtn.setFrame(0);
+            AudioManager.PlayBGAudio();
+        }
+        else {
+            this.buttons.soundBtn.setFrame(1);
+            AudioManager.StopBGAudio();
+        }
+        this.buttons.soundBtn.on('pointerup', () => {
+            if (localStorage.getItem("super_bird_audio_on") == "1") {
+                this.buttons.soundBtn.setFrame(1);
+                localStorage.setItem("super_bird_audio_on", 2);
+                AudioManager.StopBGAudio();
+            }
+            else {
+                this.buttons.soundBtn.setFrame(0);
+                localStorage.setItem("super_bird_audio_on", 1);
+                AudioManager.PlayBGAudio();
+            }
         });
-    }
-    CreateGameResumeScene() {
+        let base = this.scene.add.image(game.config.width / 2.01, game.config.height / 16.6, 'score_base');
+        let distIcon = this.scene.add.image(game.config.width / 3.02, game.config.height / 25, 'distance_icon');
+        let stopwatch = this.scene.add.image(game.config.width / 3.14, game.config.height / 11.8, 'stopwatch');
+        this.CreateTimer();
 
+        // distIcon.copyPosition(base);
+        // distIcon.x=distIcon.x
+        // this.buttons.pauseBtn.on('pointerup', () => {
+        //     // this.popUp.CreatePausePopUp();
+        //     // // isResumed = false;
+        //     // isPaused = true;
+        //     // platformCanMove = false;
+        //     this.scene.scene.pause();
+        //     this.scene.scene.launch('PausedScene', { key: '0' });
+        // });
     }
+    CreateTimer() {
+        this.timerTxt = this.scene.add.text(game.config.width / 2.11, game.config.height / 15, this.FormatTime(this.initialTime), { fontFamily: 'PoetsenOne-Regular', fontSize: 60, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
+        this.timedEvent = this.scene.time.addEvent({ delay: 1000, paused: false, callback: this.onEvent, callbackScope: this, loop: true });
+    }
+    FormatTime(seconds) {
+        // Minutes
+        let partInMinutes = Math.floor(seconds / 60);
+        // Seconds
+        let partInSeconds = seconds % 60;
+        // Adds left zeros to minutes
+        partInMinutes = partInMinutes.toString().padStart(2, '0');
+        // Adds left zeros to seconds
+        partInSeconds = partInSeconds.toString().padStart(2, '0');
+        // Returns formated time
+        return `${partInMinutes}:${partInSeconds}`;
+    }
+    onEvent() {
+        this.initialTime -= 1; // One second
+        this.timerTxt.setText(this.FormatTime(this.initialTime));
+        if (this.initialTime == 180) {
+            this.timedEvent.paused = true;
+        }
+    }
+
 }
 export default GameUI;

@@ -1,18 +1,19 @@
 import Overlay from "./Overlay.js";
 import Buttons from "./Buttons.js";
+import { AudioManager } from "./AudioManager.js";
 class PopUp {
     constructor(scene) {
         this.scene = scene;
         this.overlay = new Overlay(this.scene);
         this.buttons = new Buttons(this.scene);
     }
-    CreateSettingsPopUp() {
+    CreateQuitPopUp() {
         // this.buttons.settingsBtn.on('pointerup', () => {
         this.overlay.CreateOverlay();
         let settingsBox = this.scene.add.image(game.config.width / 2, game.config.height / 1.9, 'settings_box');
-        let settingsTxt = this.scene.add.text(game.config.width / 3.4, game.config.height / 2.5, 'SETTINGS', { fontFamily: 'PoetsenOne-Regular', fontSize: 110, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
-        settingsTxt.setShadow(10, 15, '#000000', 0, true, true);
-        this.buttons.CreateSettingsPopupButtons();
+        let quitTxt = this.scene.add.text(game.config.width / 15.4, game.config.height / 2.5, 'DO YOU WANT TO QUIT ?', { fontFamily: 'PoetsenOne-Regular', fontSize: 87, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
+        quitTxt.setShadow(10, 15, '#000000', 0, true, true);
+        this.buttons.CreateQuitPopupButtons();
         // });
     }
     CreatePausePopUp() {
@@ -25,6 +26,7 @@ class PopUp {
         this.overlay.CreateOverlay();
         this.overlay.overlay.setInteractive({ useHandCursor: true });
         this.overlay.overlay.on('pointerup', () => {
+            // localStorage.setItem("super_bird_audio_on", 1);
             this.scene.scene.restart();
         }); //TODO: add restart button functionality
         let gameOverBox = this.scene.add.image(game.config.width / 2, game.config.height / 2, 'gameOver_box');

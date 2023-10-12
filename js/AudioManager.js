@@ -11,24 +11,46 @@ class AudioManager {
         this.cubeCreateAudio = game.sound.add('create_audio');
         this.dropAudio = game.sound.add('drop_audio');
         this.hitAudio = game.sound.add('hit_audio');
+
     }
     PlayBGAudio() {
-        this.bgAudio.play();
-        this.bgAudio.loop = true;
-        this.bgAudio.volume = 4;
+        if (localStorage.getItem("super_bird_audio_on") == null) {
+            localStorage.setItem("super_bird_audio_on", 1);
+        }
+        if (localStorage.getItem("super_bird_audio_on") == "1") {
+            this.bgAudio.play();
+            this.bgAudio.loop = true;
+            this.bgAudio.volume = 4;
+        }
     }
     StopBGAudio() {
         this.bgAudio.loop = false;
         this.bgAudio.stop();
+        // game.sound.stopAll();
     }
     PlayCubeCreateAudio() {
-        this.cubeCreateAudio.play();
+        if (localStorage.getItem("super_bird_audio_on") == null) {
+            localStorage.setItem("super_bird_audio_on", 1);
+        }
+        if (localStorage.getItem("super_bird_audio_on") == "1") {
+            this.cubeCreateAudio.play();
+        }
     }
     PlayDropAudio() {
-        this.dropAudio.play();
+        if (localStorage.getItem("super_bird_audio_on") == null) {
+            localStorage.setItem("super_bird_audio_on", 1);
+        }
+        if (localStorage.getItem("super_bird_audio_on") == "1") {
+            this.dropAudio.play();
+        }
     }
     PlayHitAudio() {
-        this.hitAudio.play();
+        if (localStorage.getItem("super_bird_audio_on") == null) {
+            localStorage.setItem("super_bird_audio_on", 1);
+        }
+        if (localStorage.getItem("super_bird_audio_on") == "1") {
+            this.hitAudio.play();
+        }
     }
 }
 let audio = new AudioManager();

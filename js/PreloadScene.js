@@ -61,12 +61,14 @@ export default class PreloadScene extends Phaser.Scene {
         // this.load.image('title_intro', 'Title_art.png');
         this.load.image('playButton', 'Play_button.png');
         this.load.image('homeButton', 'Home_button.png');
-        this.load.image('settingsButton', 'Settings_button.png');
+        this.load.image('backButton', 'back_button.png');
         this.load.image('achievementButton', 'Achievement_button.png');
         this.load.image('continueButton', 'Continue_button.png');
         this.load.image('backButton', 'Back_to_menu_button.png');
         this.load.image('pauseButton', 'Pause_button.png');
         this.load.image('closedButton', 'Close_button.png');
+        this.load.image('yesButton', 'yes_button.png');
+        this.load.image('noButton', 'no_button.png');
         this.load.spritesheet('music_btns', 'Music button spritesheet.png', { frameWidth: 169, frameHeight: 169 });
         this.load.spritesheet('sound_btns', 'sound button spritesheet.png', { frameWidth: 169, frameHeight: 169 });
         this.load.image('tutorial_bg', 'Tutorial_bg.jpg');
@@ -114,6 +116,9 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image('ground', 'ground_tiles.png');
         this.load.image('ground_cubes', 'platform_cubes.png');
         this.load.image('sheath', 'protector.png');
+        this.load.image('score_base', 'base.png');
+        this.load.image('distance_icon', 'distance_icon.png');
+        this.load.image('stopwatch', 'stopwatch.png');
 
         this.load.setPath('assets/spines/');
         this.load.spine('penguin', 'Penguin Character.json', 'Penguin Character.atlas');

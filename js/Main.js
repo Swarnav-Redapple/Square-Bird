@@ -57,7 +57,7 @@ window.onload = function () {
             antialias: true,
             // backgroundColor: '#34568b',
             scale: {
-                mode: Phaser.Scale.RESIZE,
+                mode: Phaser.Scale.FIT,
                 autoCenter: Phaser.Scale.CENTER_BOTH,
             },
             physics: {

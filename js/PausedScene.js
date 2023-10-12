@@ -12,7 +12,7 @@ export default class PausedScene extends Phaser.Scene {
             this.ShowPausePopup();
         }
         else {
-            this.ShowSettingsPopUp(data.sceneKeyManager);
+            this.ShowQuitPopUp(data.sceneKeyManager);
         }
     }
     ShowPausePopup() {
@@ -28,9 +28,14 @@ export default class PausedScene extends Phaser.Scene {
             this.scene.start('TutorialScene');
         });
     }
-    ShowSettingsPopUp(_sceneKey) {
-        this.popUp.CreateSettingsPopUp();
-        this.popUp.buttons.closedBtn.on('pointerup', () => {
+    ShowQuitPopUp(_sceneKey) {
+        this.popUp.CreateQuitPopUp();
+        this.popUp.buttons.yesBtn.on('pointerup', () => {
+            this.scene.stop();
+            this.scene.stop('GameScene');
+            this.scene.start('TutorialScene');
+        });
+        this.popUp.buttons.noBtn.on('pointerup', () => {
             this.scene.stop();
             this.scene.resume(_sceneKey);
         });

@@ -37,6 +37,7 @@ export default class GameScene extends Phaser.Scene {
     create() {
         // console.log("New");
         // this.cameras.main.setZoom(0.09);
+        // localStorage.setItem("super_bird_audio_on", null);
         let gridConfig = {
             'scene': this,
             'cols': 70,
@@ -157,12 +158,13 @@ export default class GameScene extends Phaser.Scene {
         // if (_platform.body.touching.up) {
         if (_bird.isCollide == "false") {
             _bird.isCollide = "true";
-            this.cameras.main.shake(185, 0.02);
+            // this.cameras.main.shake(185, 0.02);
             AudioManager.PlayHitAudio();
             // console.log("Top Collision");
             _bird.play('Die', false, 1);
             _bird.body.setVelocity(0, 0);
             this.isGameOver = true;
+            this.gameUI.timedEvent.paused = true;
             _bird.on('complete', () => {
                 this.GameOver();
             })
@@ -184,6 +186,7 @@ export default class GameScene extends Phaser.Scene {
             _bird.play('Die', false, 1);
             _bird.body.setVelocityX(0);
             this.isGameOver = true;
+            this.gameUI.timedEvent.paused = true;
             _bird.on('complete', () => {
                 this.GameOver();
             })
@@ -367,18 +370,18 @@ export default class GameScene extends Phaser.Scene {
         else if (_cube.body.touching.right && _cube.isCollide == "false") {
             // console.log("Collided");
 
-            this.cameras.main.shake(185, 0.02);
+            // this.cameras.main.shake(185, 0.02);
             _cube.isCollide = "true";
-            _cube.body.immovable = false;
-            _cube.setPushable(true);
-
+            _cube.setVelocityX(0);
+            _cube.setGravityY(0);
+            // _cube.body.immovable = false;
             //     // console.log("isCollide");
         }
-        // _cube.body.setVelocityX(0);
     }
 
     GameOver() {
-        if (this.isGameOver) {
+        if (this.gameUI.timedEvent.paused) {
+            // localStorage.setItem("super_bird_audio_on", 2);
             AudioManager.StopBGAudio();
             this.player.player.destroy();
             this.popUp.CreateGameOverPopUp();
