@@ -3,6 +3,7 @@ import Overlay from "./Overlay.js";
 import Buttons from "./Buttons.js";
 import PopUp from "./PopUp.js";
 import { AudioManager } from "./AudioManager.js";
+import GameScene from "./GameScene.js";
 class GameUI {
     constructor(scene) {
         this.scene = scene;
@@ -17,6 +18,7 @@ class GameUI {
         this.initialTime = 180;
         this.timerTxt = null;
         this.timedEvent = null;
+        this.sceneKey = null;
     }
     CreateInstructionScene() {
         // console.log("scene1", this.scene);
@@ -85,7 +87,7 @@ class GameUI {
 
     CreateGameScene() {
         // console.log("scene2", this.scene);
-        let sceneKey = this.scene;
+        this.sceneKey = this.scene;
         this.overlay.CreateGameControlsOverlay();
         this.buttons.CreateButtons();
         this.buttons.playBtn.setVisible(false);
@@ -94,7 +96,7 @@ class GameUI {
         this.buttons.backBtn.setPosition(game.config.width / 10.2, game.config.height / 17.08);
         this.buttons.backBtn.on('pointerup', () => {
             this.scene.scene.pause();
-            this.scene.scene.launch('PausedScene', { key: '1', sceneKeyManager: sceneKey });
+            this.scene.scene.launch('PausedScene', { sceneKeyManager: this.sceneKey });
         });
         this.buttons.soundBtn.setPosition(game.config.width / 1.11, game.config.height / 17.08).setVisible(true).setInteractive({ useHandCursor: true });
         if (localStorage.getItem("super_bird_audio_on") == null) {
@@ -137,7 +139,7 @@ class GameUI {
         // });
     }
     CreateTimer() {
-        this.timerTxt = this.scene.add.text(game.config.width / 2.11, game.config.height / 15, this.FormatTime(this.initialTime), { fontFamily: 'PoetsenOne-Regular', fontSize: 60, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
+        this.timerTxt = this.scene.add.text(game.config.width / 2.18, game.config.height / 15, this.FormatTime(this.initialTime), { fontFamily: 'PoetsenOne-Regular', fontSize: 60, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
         this.timedEvent = this.scene.time.addEvent({ delay: 1000, paused: false, callback: this.onEvent, callbackScope: this, loop: true });
     }
     FormatTime(seconds) {
@@ -155,8 +157,9 @@ class GameUI {
     onEvent() {
         this.initialTime -= 1; // One second
         this.timerTxt.setText(this.FormatTime(this.initialTime));
-        if (this.initialTime == 180) {
+        if (this.initialTime == 0) {
             this.timedEvent.paused = true;
+            this.scene.scene.GameOver();
         }
     }
 
