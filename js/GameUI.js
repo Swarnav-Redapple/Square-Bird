@@ -159,7 +159,7 @@ class GameUI {
         this.timerTxt.setText(this.FormatTime(this.initialTime));
         if (this.initialTime == 0) {
             this.timedEvent.paused = true;
-            this.scene.scene.GameOver();
+            this.scene.GameOver();
         }
     }
 

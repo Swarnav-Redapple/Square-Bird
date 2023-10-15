@@ -369,14 +369,14 @@ class Platform {
             }
             if (i >= 4) {
                 obsSix.x = game.config.width / 0.15 + ((i - 4) * game.config.width / 7.1);
-                obsSix.y = obsSix.y - obsSix.width;
+                obsSix.y = obsSix.y - obsSix.height;
             }
             obsSix.setVelocityX(-400);
             this.obsArraySix.push(obsSix);
         }
 
         for (let i = 0; i < 3; i++) {
-            let obsSeven = this.scene.physics.add.image(game.config.width / 0.135, game.config.height / 1.25 - (i * game.config.height / 12.467), 'ground_cubes');
+            let obsSeven = this.scene.physics.add.image(game.config.width / 0.135, game.config.height / 1.25 - (i * game.config.height / 12.467), 'ground_cubes').setFrictionX(0);
             obsSeven.setSize(obsSeven.width, obsSeven.height - 11, true);
             obsSeven.body.allowGravity = false;
             obsSeven.body.immovable = true;
@@ -385,17 +385,48 @@ class Platform {
         }
 
         for (let i = 0; i < 3; i++) {
-            let obsEight = this.scene.add.image(500, 1000, 'ground_cubes');
-            if (i > 0) {
-                obsEight.x = 500 + (i * 100);
-                obsEight.y = obsEight.y - (i * obsEight.width);
+            let obsEight = this.scene.physics.add.image(game.config.width / 0.121, game.config.height / 1.25, 'ground_cubes').setFrictionX(0);
+            obsEight.setSize(obsEight.width, obsEight.height - 11, true);
+            obsEight.body.allowGravity = false;
+            obsEight.body.immovable = true;
+            if (i == 1) {
+                obsEight.x = game.config.width / 0.121 - (i * game.config.width / 9.3);
+                obsEight.y = obsEight.y - obsEight.height;
             }
-            // obsSeven.setSize(obsSeven.width, obsSeven.height - 11, true);
-            // obsSeven.body.allowGravity = false;
-            // obsSeven.body.immovable = true;
-            // obsSeven.setVelocityX(-400);
-            // this.obsArraySeven.push(obsSeven);
+            if (i == 2) {
+                obsEight.x = game.config.width / 0.121 + ((i - 1) * game.config.width / 540);
+                obsEight.y = obsEight.y - (i * obsEight.height);
+            }
+            obsEight.setVelocityX(-400);
+            this.obsArrayEight.push(obsEight);
         }
+
+        for (let i = 0; i < 3; i++) {
+            let obsNine = this.scene.physics.add.image(game.config.width / 0.108, game.config.height / 1.25, 'ground_cubes').setFrictionX(0);
+            obsNine.setSize(obsNine.width, obsNine.height - 11, true);
+            obsNine.body.allowGravity = false;
+            obsNine.body.immovable = true;
+            if (i > 0) {
+                obsNine.x = game.config.width / 0.108 - (i * game.config.width / 9.3);
+                obsNine.y = obsNine.y - (i * obsNine.height);
+            }
+            obsNine.setVelocityX(-400);
+            this.obsArrayNine.push(obsNine);
+        }
+
+        for (let i = 0; i < 5; i++) {
+            let obsTen = this.scene.physics.add.image(500 + (i * 152), 1000, 'ground_cubes').setFrictionX(0);
+            obsTen.setSize(obsTen.width, obsTen.height - 11, true);
+            obsTen.body.allowGravity = false;
+            obsTen.body.immovable = true;
+            if (i >= 2) {
+                obsTen.x = 500 - ((2 - 1) * 152);
+                obsTen.y = obsTen.y - (obsTen.height);
+            }
+            // obsTen.setVelocityX(-400);
+            this.obsArrayTen.push(obsTen);
+        }
+
         this.scene.physics.world.syncToRender = true;
     }
 
