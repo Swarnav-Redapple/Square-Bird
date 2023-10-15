@@ -64,6 +64,7 @@ class Platform {
         this.obsArrayTen = [];
         this.obsArrayEleven = [];
         this.obsArrayTwelve = [];
+        this.obsArrayThirteen = [];
 
         this.bottomPosArray = [770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 799, 800, 710, 700, 701, 702, 703, 704, 711, 712, 713, 643, 640, 630, 631, 632, 633, 634, 705, 706, 707, 708, 709, 570, 560, 561, 562, 563, 564, 500, 499, 498, 565, 635, 636, 637, 638, 639, 566, 567, 568, 569, 573, 504, 574, 434, 364, 365, 366, 437, 436, 508, 507, 509, 510, 511, 512, 443, 444, 448, 445, 376, 377, 378, 447, 517, 588, 589, 590, 659, 729, 587, 797, 798, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 730, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 660, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 505, 506, 513, 514, 515, 516, 518, 435, 446];
 
@@ -351,7 +352,7 @@ class Platform {
             obsFive.body.allowGravity = false;
             obsFive.body.immovable = true;
             if (i >= 2) {
-                obsFive.x = game.config.width / 0.18 + ((2 - 1) * game.config.width / 7.1);
+                obsFive.x = game.config.width / 0.18 + game.config.width / 7.1;
                 obsFive.y = obsFive.y - ((i - 1) * obsFive.height);
             }
             obsFive.setVelocityX(-400);
@@ -414,18 +415,73 @@ class Platform {
             this.obsArrayNine.push(obsNine);
         }
 
-        for (let i = 0; i < 5; i++) {
-            let obsTen = this.scene.physics.add.image(500 + (i * 152), 1000, 'ground_cubes').setFrictionX(0);
+        for (let i = 0; i < 6; i++) {
+            let obsTen = this.scene.physics.add.image(game.config.width / 0.103 + (i * game.config.width / 7.1), game.config.height / 1.25, 'ground_cubes').setFrictionX(0);
             obsTen.setSize(obsTen.width, obsTen.height - 11, true);
             obsTen.body.allowGravity = false;
             obsTen.body.immovable = true;
             if (i >= 2) {
-                obsTen.x = 500 - ((2 - 1) * 152);
+                obsTen.x = game.config.width / 0.103 + ((i - 2) * game.config.width / 7.1);
                 obsTen.y = obsTen.y - (obsTen.height);
             }
-            // obsTen.setVelocityX(-400);
+            if (i >= 4) {
+                obsTen.x = game.config.width / 0.103 + game.config.width / 7.1;
+                obsTen.y = obsTen.y - ((i - 3) * obsTen.height);
+            }
+            obsTen.setVelocityX(-400);
             this.obsArrayTen.push(obsTen);
         }
+
+        // for (let i = 0; i < 4; i++) {
+        //     let obsEleven = this.scene.physics.add.image(500, 1000, 'ground_cubes').setFrictionX(0);
+        //     obsEleven.setSize(obsEleven.width, obsEleven.height - 11, true);
+        //     obsEleven.body.allowGravity = false;
+        //     obsEleven.body.immovable = true;
+        //     if (i == 1) {
+        //         obsEleven.x = 500 + (i * game.config.width / 9.3);
+        //         obsEleven.y = obsEleven.y - obsEleven.height;
+        //     }
+        //     if (i == 2) {
+        //         obsEleven.x = 500 +   game.config.width / 540;
+        //         obsEleven.y = obsEleven.y - (i * obsEleven.height);
+        //     }
+        //     if (i == 3) {
+        //         obsEleven.x = 500 + game.config.width / 9.3;
+        //         obsEleven.y = obsEleven.y - (i * obsEleven.height);
+        //     }
+        //     // obsEleven.setVelocityX(-400);
+        //     this.obsArrayEleven.push(obsEleven);
+        // }
+
+        // for (let i = 0; i < 4; i++) {
+        //     let obsTwelve = this.scene.physics.add.image(500, 1000, 'ground_cubes').setFrictionX(0);
+        //     obsTwelve.setSize(obsTwelve.width, obsTwelve.height - 11, true);
+        //     obsTwelve.body.allowGravity = false;
+        //     obsTwelve.body.immovable = true;
+        //     if (i >= 1) {
+        //         obsTwelve.x = 500 + game.config.width / 9.3;
+        //         obsTwelve.y = obsTwelve.y - i * obsTwelve.height;
+        //     }
+        //     if (i == 3) {
+        //         obsTwelve.x = 500 - game.config.width / 540;
+        //     }
+        //     // obsTwelve.setVelocityX(-400);
+        //     this.obsArrayTwelve.push(obsTwelve);
+        // }
+
+        for (let i = 0; i < 4; i++) {
+            let obsThirteen = this.scene.physics.add.image(500, 1000, 'ground_cubes').setFrictionX(0);
+            obsThirteen.setSize(obsThirteen.width, obsThirteen.height - 11, true);
+            obsThirteen.body.allowGravity = false;
+            obsThirteen.body.immovable = true;
+            if (i > 0) {
+                obsThirteen.x = 500 + (i * game.config.width / 9.3);
+                obsThirteen.y = obsThirteen.y - (i * obsThirteen.height);
+            }
+            // obsThirteen.setVelocityX(-400);
+            this.obsArrayThirteen.push(obsThirteen);
+        }
+
 
         this.scene.physics.world.syncToRender = true;
     }
