@@ -6,6 +6,7 @@ class Background {
         this.arrayBg = [];
         this.lastIndexBG = null;
         this.lastIndexCloud = null;
+        this.bgSpeed = 5;
     }
     CreateTutorialBG() {
         this.bg = this.scene.add.tileSprite(Math.round(game.config.width / 2), Math.round(game.config.height / 2), Math.round(game.config.width), Math.round(game.config.height), 'tutorial_bg');
@@ -30,7 +31,7 @@ class Background {
     MoveGameBG() {
         // this.gameBg.tilePositionX += 5;
         for (let i = 0; i < this.arrayBg.length; i++) {
-            this.arrayBg[i].x -= 5;
+            this.arrayBg[i].x -= this.bgSpeed;
             if (this.arrayBg[i].x <= -1000) {
                 this.arrayBg[i].x = this.arrayBg[this.lastIndexBG].x + this.arrayBg[this.lastIndexBG].width - 6;
                 this.lastIndexBG = i;
@@ -38,7 +39,7 @@ class Background {
         }
 
         for (let i = 0; i < this.cloudArray.length; i++) {
-            this.cloudArray[i].x -= 5;
+            this.cloudArray[i].x -= this.bgSpeed;
             if (this.cloudArray[i].x <= -290) {
                 let rndDist = Phaser.Math.Between(100, 500);
                 this.cloudArray[i].x = this.cloudArray[this.lastIndexCloud].x + this.cloudArray[this.lastIndexCloud].width + rndDist;

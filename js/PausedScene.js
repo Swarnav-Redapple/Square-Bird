@@ -1,4 +1,5 @@
 import PopUp from "./PopUp.js";
+import { AudioManager } from "./AudioManager.js";
 export default class PausedScene extends Phaser.Scene {
     constructor() {
         super('PausedScene');
@@ -28,6 +29,9 @@ export default class PausedScene extends Phaser.Scene {
         this.popUp.buttons.yesBtn.on('pointerup', () => {
             this.scene.stop();
             this.scene.stop(_sceneKey);
+            if (localStorage.getItem("super_bird_audio_on") == "1") {
+                AudioManager.StopBGAudio();
+            }
             this.scene.start('TutorialScene');
         });
         this.popUp.buttons.noBtn.on('pointerup', () => {
