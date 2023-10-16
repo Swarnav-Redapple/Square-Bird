@@ -39,6 +39,13 @@ class PopUp {
         let shadowOne = gameOverLine.setShadow(10, 15, '#000000', 0, true, true);
         let restartLine = this.scene.add.text(game.config.width / 4, game.config.height / 1.5, 'Tap To Start Over', { fontFamily: 'PoetsenOne-Regular', fontSize: 68, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
         restartLine.setShadow(10, 12, '#000000', 0, true, true);
+        let restartTween = this.scene.tweens.add({
+            targets: restartLine,
+            alpha: 0.2,
+            yoyo: true,
+            repeat: -1,
+            duration: 500,
+        });
     }
     OnPointerUp() {
         console.log("Enter Menu");

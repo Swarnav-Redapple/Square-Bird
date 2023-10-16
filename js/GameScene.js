@@ -48,12 +48,13 @@ export default class GameScene extends Phaser.Scene {
         }
         this.alignGrid = new AlignGrid(gridConfig);
         // this.alignGrid.showNumbers();
+        // console.log("this.alignGrid.ch", this.alignGrid.ch, this.alignGrid.cw);
         this.AddAudio();
         this.ShowBg();
         this.ShowPlatform();
         this.ShowObstacles();
         this.ShowGameUI();
-
+        console.log("isMobile", isMobile);
         this.CreateBird();
         this.ShowScore();
         // this.ShowDistanceCovered();

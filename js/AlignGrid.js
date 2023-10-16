@@ -26,6 +26,7 @@ class AlignGrid {
         this.cw = this.w / this.cols;
         //ch cell height is the scene height divided the number of rows
         this.ch = this.h / this.rows;
+        // console.log("width & height of cells:", this.ch, this.cw);
 
         // console.log(this.scene);
 

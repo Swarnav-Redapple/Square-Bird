@@ -98,6 +98,9 @@ class Platform {
         for (let i = 0; i < this.topPosArray.length; i++) {
             if (this.topPosArray[i] == 0 || this.topPosArray[i] == 92) {
                 let right_side = this.scene.physics.add.image(0, 0, this.key[3]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    right_side.setScale(1.2 * scaleFactor);
+                }
                 right_side.body.allowGravity = false;
                 right_side.body.immovable = true;
                 this.topPlatformArray.push(right_side);
@@ -105,6 +108,9 @@ class Platform {
             }
             else if (this.topPosArray[i] == 74 || this.topPosArray[i] == 96 || this.topPosArray[i] == 190 || this.topPosArray[i] == 127 || this.topPosArray[i] == 57) {
                 let left_side = this.scene.physics.add.image(0, 0, this.key[4]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    left_side.setScale(1.2 * scaleFactor);
+                }
                 left_side.body.allowGravity = false;
                 left_side.body.immovable = true;
                 this.topPlatformArray.push(left_side);
@@ -113,6 +119,9 @@ class Platform {
             }
             else if (this.topPosArray[i] == 70 || this.topPosArray[i] == 141 || this.topPosArray[i] == 79 || this.topPosArray[i] == 162 || this.topPosArray[i] == 98 || this.topPosArray[i] == 177 || this.topPosArray[i] == 254 || this.topPosArray[i] == 192) {
                 let right_corner_down = this.scene.physics.add.image(0, 0, this.key[8]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    right_corner_down.setScale(1.2 * scaleFactor);
+                }
                 right_corner_down.body.allowGravity = false;
                 right_corner_down.body.immovable = true;
                 this.topPlatformArray.push(right_corner_down);
@@ -121,6 +130,9 @@ class Platform {
             }
             else if (this.topPosArray[i] == 144 || this.topPosArray[i] == 81 || this.topPosArray[i] == 166 || this.topPosArray[i] == 260 || this.topPosArray[i] == 197) {
                 let left_corner_down = this.scene.physics.add.image(0, 0, this.key[9]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    left_corner_down.setScale(1.2 * scaleFactor);
+                }
                 left_corner_down.body.allowGravity = false;
                 left_corner_down.body.immovable = true;
                 this.topPlatformArray.push(left_corner_down);
@@ -129,6 +141,9 @@ class Platform {
             }
             else if (this.topPosArray[i] == 142 || this.topPosArray[i] == 143 || (this.topPosArray[i] >= 5 && this.topPosArray[i] <= 8) || this.topPosArray[i] == 80 || (this.topPosArray[i] >= 12 && this.topPosArray[i] <= 21) || (this.topPosArray[i] >= 163 && this.topPosArray[i] <= 165) || this.topPosArray[i] == 27 || (this.topPosArray[i] >= 99 && this.topPosArray[i] <= 106) || (this.topPosArray[i] >= 178 && this.topPosArray[i] <= 183) || (this.topPosArray[i] >= 255 && this.topPosArray[i] <= 259) || this.topPosArray[i] == 121 || (this.topPosArray[i] >= 193 && this.topPosArray[i] <= 196)) {
                 let bottom = this.scene.physics.add.image(0, 0, this.key[10]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    bottom.setScale(1.2 * scaleFactor);
+                }
                 bottom.body.allowGravity = false;
                 bottom.body.immovable = true;
                 this.topPlatformArray.push(bottom);
@@ -137,6 +152,9 @@ class Platform {
             }
             else if (this.topPosArray[i] == 4 || this.topPosArray[i] == 11 || this.topPosArray[i] == 26 || this.topPosArray[i] == 120) {
                 let left_corner_small_top = this.scene.physics.add.image(0, 0, this.key[11]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    left_corner_small_top.setScale(1.2 * scaleFactor);
+                }
                 left_corner_small_top.body.allowGravity = false;
                 left_corner_small_top.body.immovable = true;
                 this.topPlatformArray.push(left_corner_small_top);
@@ -145,6 +163,9 @@ class Platform {
             }
             else if (this.topPosArray[i] == 71 || this.topPosArray[i] == 9 || this.topPosArray[i] == 22 || this.topPosArray[i] == 28 || this.topPosArray[i] == 107 || this.topPosArray[i] == 184 || this.topPosArray[i] == 122) {
                 let right_corner_small_top = this.scene.physics.add.image(0, 0, this.key[12]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    right_corner_small_top.setScale(1.2 * scaleFactor);
+                }
                 right_corner_small_top.body.allowGravity = false;
                 right_corner_small_top.body.immovable = true;
                 this.topPlatformArray.push(right_corner_small_top);
@@ -153,6 +174,9 @@ class Platform {
             }
             else {
                 let center = this.scene.physics.add.image(0, 0, this.key[7]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    center.setScale(1.2 * scaleFactor);
+                }
                 center.body.allowGravity = false;
                 center.body.immovable = true;
                 this.topPlatformArray.push(center);
@@ -163,6 +187,9 @@ class Platform {
         for (let i = 0; i < this.topPosArray_Two.length; i++) {
             if (this.topPosArray_Two[i] == 59) {
                 let right_side = this.scene.physics.add.image(0, 0, this.key[3]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    right_side.setScale(1.2 * scaleFactor);
+                }
                 right_side.body.allowGravity = false;
                 right_side.body.immovable = true;
                 this.topPlatformArrayTwo.push(right_side);
@@ -170,6 +197,9 @@ class Platform {
             }
             else if (this.topPosArray_Two[i] == 69) {
                 let left_side = this.scene.physics.add.image(0, 0, this.key[4]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    left_side.setScale(1.2 * scaleFactor);
+                }
                 left_side.body.allowGravity = false;
                 left_side.body.immovable = true;
                 this.topPlatformArrayTwo.push(left_side);
@@ -177,6 +207,9 @@ class Platform {
             }
             else if (this.topPosArray_Two[i] == 129 || this.topPosArray_Two[i] == 204) {
                 let right_corner_down = this.scene.physics.add.image(0, 0, this.key[8]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    right_corner_down.setScale(1.2 * scaleFactor);
+                }
                 right_corner_down.body.allowGravity = false;
                 right_corner_down.body.immovable = true;
                 this.topPlatformArrayTwo.push(right_corner_down);
@@ -184,6 +217,9 @@ class Platform {
             }
             else if (this.topPosArray_Two[i] == 206 || this.topPosArray_Two[i] == 139) {
                 let left_corner_down = this.scene.physics.add.image(0, 0, this.key[9]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    left_corner_down.setScale(1.2 * scaleFactor);
+                }
                 left_corner_down.body.allowGravity = false;
                 left_corner_down.body.immovable = true;
                 this.topPlatformArrayTwo.push(left_corner_down);
@@ -191,6 +227,9 @@ class Platform {
             }
             else if ((this.topPosArray_Two[i] >= 130 && this.topPosArray_Two[i] <= 133) || this.topPosArray_Two[i] == 275 || this.topPosArray_Two[i] == 276 || (this.topPosArray_Two[i] >= 137 && this.topPosArray_Two[i] <= 138) || this.topPosArray_Two[i] == 205) {
                 let bottom = this.scene.physics.add.image(0, 0, this.key[10]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    bottom.setScale(1.2 * scaleFactor);
+                }
                 bottom.body.allowGravity = false;
                 bottom.body.immovable = true;
                 this.topPlatformArrayTwo.push(bottom);
@@ -198,6 +237,9 @@ class Platform {
             }
             else if (this.topPosArray_Two[i] == 136) {
                 let left_corner_small_top = this.scene.physics.add.image(0, 0, this.key[11]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    left_corner_small_top.setScale(1.2 * scaleFactor);
+                }
                 left_corner_small_top.body.allowGravity = false;
                 left_corner_small_top.body.immovable = true;
                 this.topPlatformArrayTwo.push(left_corner_small_top);
@@ -205,6 +247,9 @@ class Platform {
             }
             else if (this.topPosArray_Two[i] == 134) {
                 let right_corner_small_top = this.scene.physics.add.image(0, 0, this.key[12]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    right_corner_small_top.setScale(1.2 * scaleFactor);
+                }
                 right_corner_small_top.body.allowGravity = false;
                 right_corner_small_top.body.immovable = true;
                 this.topPlatformArrayTwo.push(right_corner_small_top);
@@ -212,6 +257,9 @@ class Platform {
             }
             else {
                 let center = this.scene.physics.add.image(0, 0, this.key[7]).setScale(1.05 * scaleFactor);
+                if (isMobile) {
+                    center.setScale(1.2 * scaleFactor);
+                }
                 center.body.allowGravity = false;
                 center.body.immovable = true;
                 this.topPlatformArrayTwo.push(center);
