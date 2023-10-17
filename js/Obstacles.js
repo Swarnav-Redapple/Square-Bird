@@ -36,6 +36,7 @@ class Obstacles {
             obsOne.setVelocityX(-this.obsSpeed);
             this.obsArrayOne.push(obsOne);
         }
+        this.scene.physics.world.syncToRender = true;
         this.totalObsArray.push(this.obsArrayOne);
 
         for (let i = 0; i < 8; i++) {
