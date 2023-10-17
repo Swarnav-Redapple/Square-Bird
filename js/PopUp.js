@@ -6,7 +6,10 @@ class PopUp {
         this.scene = scene;
         this.overlay = new Overlay(this.scene);
         this.buttons = new Buttons(this.scene);
+
+        this.gameOverContainer = null;
     }
+
     CreateQuitPopUp() {
         // this.buttons.settingsBtn.on('pointerup', () => {
         this.overlay.CreateOverlay();
@@ -16,12 +19,7 @@ class PopUp {
         this.buttons.CreateQuitPopupButtons();
         // });
     }
-    CreatePausePopUp() {
-        this.overlay.CreateOverlay();
-        this.gamePausedTxt = this.scene.add.text(game.config.width / 6, game.config.height / 5.7, 'GAME PAUSED !', { fontFamily: 'PoetsenOne-Regular', fontSize: 110, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
-        this.gamePausedTxt.setShadow(10, 15, '#000000', 0, true, true);
-        this.buttons.CreatePausePopupButtons();
-    }
+
     CreateGameOverPopUp() {
         this.overlay.CreateOverlay();
         this.overlay.overlay.setInteractive({ useHandCursor: true });
@@ -29,24 +27,57 @@ class PopUp {
             // localStorage.setItem("super_bird_audio_on", 1);
             this.scene.scene.restart();
         }); //TODO: add restart button functionality
-        let gameOverBox = this.scene.add.image(game.config.width / 2, game.config.height / 2, 'gameOver_box');
-        let gameOverPlayer = this.scene.add.image(0, 0, 'gameOver_player');
+
+        this.gameOverContainer = this.scene.add.container(game.config.width / 2, game.config.height / 2);
+        // console.log(this.gameOverContainer);
+        let gameOverBox = this.scene.add.image(0, 0, 'gameOver_box').setOrigin(0.5);
+        this.gameOverContainer.add(gameOverBox);
+
+        let gameOverPlayer = this.scene.add.image(0, 0, 'gameOver_player').setOrigin(0.5);
         gameOverPlayer.copyPosition(gameOverBox);
-        let gameOverTxt = this.scene.add.text(game.config.width / 20, game.config.height / 10, 'GAME OVER', { fontFamily: 'PoetsenOne-Regular', fontSize: 170, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
+        this.gameOverContainer.add(gameOverPlayer);
+
+        let gameOverTxt = this.scene.add.text(-486, -1500, 'GAME OVER', { fontFamily: 'PoetsenOne-Regular', fontSize: 170, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
         gameOverTxt.setAngle(-4);
-        let gameOverLine = this.scene.add.text(game.config.width / 4, game.config.height / 4.7, 'The Bird is \n no more !!!', { fontFamily: 'PoetsenOne-Regular', fontSize: 98, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
+        this.gameOverContainer.add(gameOverTxt);
+        this.ShowTweens(gameOverTxt, -486, -768, 1, false, 0, 700, 'bounce.out');
+
+        let gameOverLine = this.scene.add.text(-1500, -551.49, 'The Bird is \n no more !!!', { fontFamily: 'PoetsenOne-Regular', fontSize: 98, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
         gameOverLine.setAngle(-4);
-        let shadowOne = gameOverLine.setShadow(10, 15, '#000000', 0, true, true);
-        let restartLine = this.scene.add.text(game.config.width / 4, game.config.height / 1.5, 'Tap To Start Over', { fontFamily: 'PoetsenOne-Regular', fontSize: 68, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
+        gameOverLine.setShadow(10, 15, '#000000', 0, true, true);
+        this.gameOverContainer.add(gameOverLine);
+        this.ShowTweens(gameOverLine, -270, -551.49, 1, false, 0, 500, 'back.inout');
+
+        let restartLine = this.scene.add.text(-260, 650, 'Tap To Start Over', { fontFamily: 'PoetsenOne-Regular', fontSize: 68, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
         restartLine.setShadow(10, 12, '#000000', 0, true, true);
-        let restartTween = this.scene.tweens.add({
-            targets: restartLine,
-            alpha: 0.2,
-            yoyo: true,
-            repeat: -1,
-            duration: 500,
+        this.gameOverContainer.add(restartLine);
+        this.ShowTweens(restartLine, -260, 650, 0.2, true, -1, 500, 'linear');
+
+        let currentScoreTxt = this.scene.add.text(1500, 320, 'Score : ' + this.scene.score.distCovered, { fontFamily: 'PoetsenOne-Regular', fontSize: 68, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
+        currentScoreTxt.setShadow(10, 12, '#000000', 0, true, true);
+        this.gameOverContainer.add(currentScoreTxt);
+        this.ShowTweens(currentScoreTxt, -130, 320, 1, false, 0, 900, 'quad.inout');
+
+        this.scene.score.CalculateBestScore();
+
+        let bestScoreTxt = this.scene.add.text(-1500, 475, 'Best : ' + localStorage.getItem('super_bird_score'), { fontFamily: 'PoetsenOne-Regular', fontSize: 68, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
+        bestScoreTxt.setShadow(10, 12, '#000000', 0, true, true);
+        this.gameOverContainer.add(bestScoreTxt);
+        this.ShowTweens(bestScoreTxt, -110, 475, 1, false, 0, 1000, 'quad.in');
+    }
+    ShowTweens(_obj, _posX, _posY, _opacity, _swing, _redo, _time, _effect) {
+        this.scene.tweens.add({
+            targets: _obj,
+            x: _posX,
+            y: _posY,
+            alpha: _opacity,
+            yoyo: _swing,
+            repeat: _redo,
+            duration: _time,
+            ease: _effect
         });
     }
+
     OnPointerUp() {
         console.log("Enter Menu");
         this.scene.scene.start('TitleScene');

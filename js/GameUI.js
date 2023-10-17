@@ -29,23 +29,17 @@ class GameUI {
         let title = this.scene.add.image(game.config.width / 2.02, game.config.height / 5.6, 'title');//.setScale(0.6 * scaleFactor);
         this.buttons.CreateButtons();
         this.buttons.backBtn.setVisible(false);
-        this.buttons.homeBtn.setVisible(false);
-        // this.buttons.pauseBtn.setVisible(false);
-        // this.buttons.settingsBtn.on('pointerup', () => {
-        //     this.scene.scene.pause();
-        //     this.scene.scene.launch('PausedScene', { key: '1', sceneKeyManager: sceneKey });
-        // });
         this.pointerAnim = this.scene.add.spine(game.config.width / 1.5, game.config.height / 1.38, 'pointer');
         this.pointerAnim.setColor('0x0096FF');
         this.introAnim = this.scene.add.spine(game.config.width / 2.2, game.config.height / 1.5, 'intro').setVisible(false).setScale(0.17 * scaleFactor);
-        // if (isMobile) {
-        //     this.introAnim.y = game.config.height / 1.82;
-        // }
+        if (isMobile) {
+            this.introAnim.y = game.config.height / 1.477;
+        }
         this.PointerAnimation();
-
         let instructionTxt = this.scene.add.text(game.config.width / 3.1, game.config.height / 2.8, 'HOLD OR TAP TO \n FORM ICE CUBE', { fontFamily: 'PoetsenOne-Regular', fontSize: 50, fill: '#340158', align: 'Center', lineSpacing: 10 });
         this.buttons.InteractivePlayButton();
     }
+
     PointerAnimation() {
         // console.log("this.count0", this.counter);
         this.counter += 1;
@@ -91,8 +85,6 @@ class GameUI {
         this.overlay.CreateGameControlsOverlay();
         this.buttons.CreateButtons();
         this.buttons.playBtn.setVisible(false);
-        this.buttons.homeBtn.setVisible(false);
-        // this.buttons.achievementBtn.setVisible(false);
         this.buttons.backBtn.setPosition(game.config.width / 10.2, game.config.height / 17.08);
         this.buttons.backBtn.on('pointerup', () => {
             this.scene.scene.pause();
@@ -126,22 +118,13 @@ class GameUI {
         let distIcon = this.scene.add.image(game.config.width / 3.02, game.config.height / 25, 'distance_icon');
         let stopwatch = this.scene.add.image(game.config.width / 3.14, game.config.height / 11.8, 'stopwatch');
         this.CreateTimer();
-
-        // distIcon.copyPosition(base);
-        // distIcon.x=distIcon.x
-        // this.buttons.pauseBtn.on('pointerup', () => {
-        //     // this.popUp.CreatePausePopUp();
-        //     // // isResumed = false;
-        //     // isPaused = true;
-        //     // platformCanMove = false;
-        //     this.scene.scene.pause();
-        //     this.scene.scene.launch('PausedScene', { key: '0' });
-        // });
     }
+
     CreateTimer() {
         this.timerTxt = this.scene.add.text(game.config.width / 2.18, game.config.height / 15, this.FormatTime(this.initialTime), { fontFamily: 'PoetsenOne-Regular', fontSize: 60, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
         this.timedEvent = this.scene.time.addEvent({ delay: 1000, paused: false, callback: this.onEvent, callbackScope: this, loop: true });
     }
+
     FormatTime(seconds) {
         // Minutes
         let partInMinutes = Math.floor(seconds / 60);
@@ -154,6 +137,7 @@ class GameUI {
         // Returns formated time
         return `${partInMinutes}:${partInSeconds}`;
     }
+
     onEvent() {
         this.initialTime -= 1; // One second
         this.timerTxt.setText(this.FormatTime(this.initialTime));

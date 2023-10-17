@@ -11,19 +11,6 @@ export default class PausedScene extends Phaser.Scene {
     create(data) {
         this.ShowQuitPopUp(data.sceneKeyManager);
     }
-    ShowPausePopup() {
-        this.popUp.CreatePausePopUp();
-        this.popUp.buttons.continueBtn.on('pointerup', () => {
-            this.scene.stop();
-            this.scene.resume('GameScene');
-        });
-        this.popUp.buttons.backBtn.on('pointerup', () => {
-            // isPaused = false;
-            this.scene.stop();
-            this.scene.stop('GameScene');
-            this.scene.start('TutorialScene');
-        });
-    }
     ShowQuitPopUp(_sceneKey) {
         this.popUp.CreateQuitPopUp();
         this.popUp.buttons.yesBtn.on('pointerup', () => {

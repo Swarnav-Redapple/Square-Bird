@@ -5,6 +5,7 @@ class Score {
         this.sceneKey = this.scene;
         this.getScene = null;
         this.distCovered = 0;
+        this.bestScore = 0;
         this.scoreTxt = null;
         this.counter = 0;
         this.scoreEvent = null;
@@ -18,12 +19,22 @@ class Score {
         if (!this.scene.gameUI.timedEvent.paused) {
             this.distCovered += 1;
             this.scoreTxt.setText(this.distCovered);
-            if (this.distCovered % 5 == 0) {
-                this.scene.platform.platformSpeed += 0.05;
-                this.scene.bg.bgSpeed += 0.05;
-                this.scene.platform.obsSpeed += 0.05;
+            if (this.distCovered % 10 == 0) {
+                this.scene.platform.platformSpeed += 0.1;
+                this.scene.bg.bgSpeed += 0.1;
+                this.scene.obstacles.obsSpeed += 0.1;
                 // console.log(" this.platform.platformSpeed", this.scene.platform.platformSpeed, this.scene.bg.bgSpeed, this.scene.platform.obsSpeed);
             }
+        }
+    }
+    CalculateBestScore() {
+        this.bestScore = localStorage.getItem('super_bird_score');
+        if (this.bestScore == null) {
+            localStorage.setItem('super_bird_score', 0);
+        }
+        if (localStorage.getItem('super_bird_score') < this.distCovered) {
+            console.log("fix score");
+            localStorage.setItem('super_bird_score', this.distCovered);
         }
     }
 }

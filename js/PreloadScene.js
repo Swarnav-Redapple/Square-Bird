@@ -60,16 +60,9 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.setPath('assets/images/');
         // this.load.image('title_intro', 'Title_art.png');
         this.load.image('playButton', 'Play_button.png');
-        this.load.image('homeButton', 'Home_button.png');
         this.load.image('backButton', 'back_button.png');
-        this.load.image('achievementButton', 'Achievement_button.png');
-        this.load.image('continueButton', 'Continue_button.png');
-        this.load.image('backButton', 'Back_to_menu_button.png');
-        this.load.image('pauseButton', 'Pause_button.png');
-        this.load.image('closedButton', 'Close_button.png');
         this.load.image('yesButton', 'yes_button.png');
         this.load.image('noButton', 'no_button.png');
-        this.load.spritesheet('music_btns', 'Music button spritesheet.png', { frameWidth: 169, frameHeight: 169 });
         this.load.spritesheet('sound_btns', 'sound button spritesheet.png', { frameWidth: 169, frameHeight: 169 });
         this.load.image('tutorial_bg', 'Tutorial_bg.jpg');
         this.load.image('bgOne', 'bg_one.png');
@@ -97,16 +90,10 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image('bottom', 'bottom.png');
         this.load.image('right_corner_small', '10_Right_corner_small.png');
         this.load.image('center', 'center.png');
-        this.load.image('obstacle_One', 'Obstracle_01.png');
-        this.load.image('obstacle_Two', 'Obstracle_02.png');
-        this.load.image('obstacle_Three', 'Obstracle_03.png');
         this.load.image('platform', 'Platform.png');
         this.load.image('player', 'Penguin.png');
         this.load.image('cubes', '14_Ice_cube.png');
         this.load.tilemapTiledJSON('platformInstruction', 'platformTutorial.json');
-        this.load.tilemapTiledJSON('platformInBox', 'platformInBox.json');
-        this.load.tilemapTiledJSON('platform_map', 'BottomPlatform.json');
-        this.load.tilemapTiledJSON('mid_bottom_platform', 'BottomMidPlatform.json');
         this.load.image('tutorial_overlay', 'Overlay_box.png');
         this.load.image('instruction_box', 'Instruction_box.png');
         this.load.image('gameOver_box', 'game_over_box_bar.png');
@@ -132,6 +119,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.audio('create_audio', 'creation.mp3');
         this.load.audio('drop_audio', 'ground_drop.mp3');
         this.load.audio('hit_audio', 'hit.mp3');
+        this.load.audio('game_over', 'game_over.wav');
         this.load.start();
     }
     LoadProgress(percentage) {
