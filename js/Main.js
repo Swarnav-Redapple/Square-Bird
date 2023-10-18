@@ -18,11 +18,11 @@ window.onload = function () {
         config = {
             type: Phaser.AUTO,
             parent: 'super_bird',
-            // pixelArt: true,
+            pixelArt: true,
             antialias: true,
             // backgroundColor: '#34568b',
             scale: {
-                mode: Phaser.Scale.RESIZE,
+                mode: Phaser.Scale.FIT,
                 autoCenter: Phaser.Scale.CENTER_BOTH,
             },
             physics: {
@@ -30,9 +30,9 @@ window.onload = function () {
                 arcade: {
                     gravity: { y: 4000 },
                     // debug: true,
-                    fps: 300,
-                    fixedStep: false,
-                    OVERLAP_BIAS: 16,
+                    // fps: 300,
+                    // fixedStep: false,
+                    // OVERLAP_BIAS: 16,
                     // debugBodyColor: 0x000000,
                 },
             },
@@ -53,7 +53,7 @@ window.onload = function () {
         config = {
             type: Phaser.AUTO,
             parent: 'super_bird',
-            // pixelArt: true,
+            pixelArt: true,
             antialias: true,
             // backgroundColor: '#34568b',
             scale: {
@@ -66,10 +66,10 @@ window.onload = function () {
                     gravity: { y: 4000 },
                     // tileBias: 154,
                     // debug: true,
-                    fps: 300,
-                    fixedStep: false,
+                    // fps: 300,
+                    // fixedStep: false,
                     // timestep: 1 / 120,
-                    OVERLAP_BIAS: 32,
+                    // OVERLAP_BIAS: 32,
                     // forceX: false,
                     // debugBodyColor: 0x000000,
                 },
@@ -101,6 +101,9 @@ window.onload = function () {
         // scaleFactorY = config.height / 1920;
         scaleFactor = config.width / 1080;
     }
+    currentAspectRatio = (config.height / config.width);
+    originalAspectRatio = (1920 / 1080);
+    currentRatio = (currentAspectRatio / originalAspectRatio)
 
     window.focus();
 

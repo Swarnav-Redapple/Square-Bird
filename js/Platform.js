@@ -238,12 +238,18 @@ class Platform {
         this.topPlatformArray.map((block) => {
             if (block.x <= -game.config.width / 0.27) {
                 block.x = game.config.width / 0.15;
+                if (isMobile) {
+                    block.x = game.config.width / 0.133;
+                }
             }
         });
 
         this.topPlatformArrayTwo.map((block) => {
             if (block.x <= -game.config.width / 0.27) {
                 block.x = game.config.width / 0.15;
+                if (isMobile) {
+                    block.x = game.config.width / 0.133;
+                }
             }
         });
     }

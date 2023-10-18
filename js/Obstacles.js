@@ -20,9 +20,15 @@ class Obstacles {
     CreateObstacles() {
         let obsGapX = game.config.width / 6.9;
         let posY = game.config.height / 1.25;
-        if (isMobile) {
+        if (game.device.os.android) {
+            console.log("Android");
             obsGapX = game.config.width / 6.6;
-            posY = game.config.height / 1.28;
+            posY = game.config.height / 1.255;
+        }
+        else if (game.device.os.iPhone) {
+            console.log("Iphone");
+            obsGapX = game.config.width / 6.6;
+            posY = game.config.height / 1.27;
         }
         for (let i = 0; i < 4; i++) {
             let obsOne = this.scene.physics.add.image(game.config.width / 0.54 + (i * obsGapX), posY, 'ground_cubes').setFrictionX(0).setPushable(false);//.setDepth(2);
@@ -36,7 +42,6 @@ class Obstacles {
             obsOne.setVelocityX(-this.obsSpeed);
             this.obsArrayOne.push(obsOne);
         }
-        this.scene.physics.world.syncToRender = true;
         this.totalObsArray.push(this.obsArrayOne);
 
         for (let i = 0; i < 8; i++) {

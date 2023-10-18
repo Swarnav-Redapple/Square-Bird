@@ -37,21 +37,22 @@ class PopUp {
         gameOverPlayer.copyPosition(gameOverBox);
         this.gameOverContainer.add(gameOverPlayer);
 
-        let gameOverTxt = this.scene.add.text(-486, -1500, 'GAME OVER', { fontFamily: 'PoetsenOne-Regular', fontSize: 170, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
+        let gameOverTxt = this.scene.add.text(-420, -1500, 'GAME OVER', { fontFamily: 'PoetsenOne-Regular', fontSize: 150, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
         gameOverTxt.setAngle(-4);
         this.gameOverContainer.add(gameOverTxt);
-        this.ShowTweens(gameOverTxt, -486, -768, 1, false, 0, 700, 'bounce.out');
+        this.ShowTweens(gameOverTxt, -420, -768, 1, false, 0, 700, 'bounce.out');
 
         let gameOverLine = this.scene.add.text(-1500, -551.49, 'The Bird is \n no more !!!', { fontFamily: 'PoetsenOne-Regular', fontSize: 98, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
         gameOverLine.setAngle(-4);
         gameOverLine.setShadow(10, 15, '#000000', 0, true, true);
         this.gameOverContainer.add(gameOverLine);
         this.ShowTweens(gameOverLine, -270, -551.49, 1, false, 0, 500, 'back.inout');
-
-        let restartLine = this.scene.add.text(-260, 650, 'Tap To Start Over', { fontFamily: 'PoetsenOne-Regular', fontSize: 68, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
-        restartLine.setShadow(10, 12, '#000000', 0, true, true);
-        this.gameOverContainer.add(restartLine);
-        this.ShowTweens(restartLine, -260, 650, 0.2, true, -1, 500, 'linear');
+        setTimeout(() => {
+            let restartLine = this.scene.add.text(-260, 650, 'Tap To Start Over', { fontFamily: 'PoetsenOne-Regular', fontSize: 68, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
+            restartLine.setShadow(10, 12, '#000000', 0, true, true);
+            this.gameOverContainer.add(restartLine);
+            this.ShowTweens(restartLine, -260, 650, 0.2, true, -1, 500, 'linear');
+        }, 1010);
 
         let currentScoreTxt = this.scene.add.text(1500, 320, 'Score : ' + this.scene.score.distCovered, { fontFamily: 'PoetsenOne-Regular', fontSize: 68, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
         currentScoreTxt.setShadow(10, 12, '#000000', 0, true, true);

@@ -3,5 +3,6 @@ let scaleFactorX;
 let scaleFactorY;
 let game;
 let isMobile;
-let settingsPopup;
-let platformDetect;
+let currentAspectRatio;
+let originalAspectRatio;
+let currentRatio;

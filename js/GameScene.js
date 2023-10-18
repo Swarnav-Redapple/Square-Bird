@@ -26,6 +26,7 @@ export default class GameScene extends Phaser.Scene {
 
         this.distance = 0;
         this.isDown = false;
+        this.canCreateCubes = true;
         this.cubesArray = [];
         // this.count = 0;
         this.isGameOver = false;
@@ -38,6 +39,7 @@ export default class GameScene extends Phaser.Scene {
     create() {
         // this.cameras.main.setZoom(0.09);
         // console.log("totalobs", this.platform.totalObsArray);
+        console.log("OS", game.device.os);
         let gridConfig = {
             'scene': this,
             'cols': 70,
@@ -65,7 +67,7 @@ export default class GameScene extends Phaser.Scene {
 
     MoveBg() {
         // console.log("1Here");
-        if (this.isDown && !this.isGameOver) {
+        if (this.isDown) {
             this.bg.MoveGameBG();
         }
     }
@@ -73,7 +75,6 @@ export default class GameScene extends Phaser.Scene {
     ShowPlatform() {
         this.platform.CreateTopPlatform();
         this.platform.CreateBottomPlatform();
-
     }
 
     ShowObstacles() {
@@ -85,13 +86,17 @@ export default class GameScene extends Phaser.Scene {
     }
 
     MovePlatform() {
-        this.platform.MoveTopPlatform();
-        this.platform.MoveGroundPlatform();
+        if (this.isDown) {
+            this.platform.MoveTopPlatform();
+            this.platform.MoveGroundPlatform();
+        }
     }
 
     Reposition() {
-        this.obstacles.RepositionObstacles();
-        this.platform.RepositionTopPlatform();
+        if (this.isDown && !this.isGameOver) {
+            this.obstacles.RepositionObstacles();
+            this.platform.RepositionTopPlatform();
+        }
     }
 
     ShowGameUI() {
@@ -110,11 +115,15 @@ export default class GameScene extends Phaser.Scene {
         //-----Bird & Lower Platform Colliders-----------------------//
 
         this.physics.add.collider(this.player.player, this.platform.lowerPlatformArray, this.BirdOnTouchingLowerPlatform, null, this);
-        // this.physics.add.collider(this.player.player, this.platform.obsArray, this.BirdOnTouchingObstacles, null, this);
 
         //-----Bird & Obstacles Colliders-----------------------//
+
         this.obstacles.totalObsArray.map(obsArray => {
             this.physics.add.collider(this.player.player, obsArray, this.BirdOnTouchingObstacles, null, this);
+        });
+
+        this.obstacles.totalObsArray.map(obsArray => {
+            this.physics.add.overlap(this.player.sheath, obsArray, this.SheathTouchingObstacles, null, this);
         });
 
         //-----Bird & Top Platform Colliders-------------------------//
@@ -173,18 +182,26 @@ export default class GameScene extends Phaser.Scene {
         }
     }
 
+    SheathTouchingObstacles(_sheath, _obs) {
+        if (_sheath.body.touching.right) {
+            console.log("Touching");
+            this.canCreateCubes = false;
+        }
+    }
+
     ShowScore() {
         this.score.CalculateScore();
     }
 
     ShowCubes() {
-        if (this.isDown && !this.isGameOver) {
+        if (this.isDown && !this.isGameOver && this.canCreateCubes) {
             // this.clickCounter = 0;
             AudioManager.PlayCubeCreateAudio();
             this.iceCube.CreateIceCubes();
             // this.iceCube.cubes.setGravityY(10);
             this.iceCube.smoke.setPosition(this.player.player.x - game.config.width / 54, this.player.player.y);
             this.iceCube.cubes.setPosition(this.player.player.x, this.player.player.y - game.config.height / 19.2);
+            // this.player.sheath.setPosition(game.config.width / 2.19 * currentRatio, this.player.player.y - (this.iceCube.cubes.height * 1.5));
             if (isMobile) {
                 // console.log("Cubes on mobile");
                 this.iceCube.cubes.setPosition(this.player.player.x, this.player.player.y - game.config.height / 21.33);
@@ -298,7 +315,7 @@ export default class GameScene extends Phaser.Scene {
         // }
         // if (this.isDown) {
         //     this.player.player.x += 4;
-        this.physics.world.syncToRender = true;
+        // this.physics.world.syncToRender = true;
         this.MoveBg();
         this.MovePlatform();
         this.Reposition();
