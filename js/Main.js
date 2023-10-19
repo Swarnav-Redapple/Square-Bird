@@ -101,6 +101,11 @@ window.onload = function () {
         // scaleFactorY = config.height / 1920;
         scaleFactor = config.width / 1080;
     }
+    if (game.device.os.android) {
+        // console.log("Android!");
+        scaleFactorX = config.width / 1070;
+        scaleFactorY = config.height / 1910;
+    }
     currentAspectRatio = (config.height / config.width);
     originalAspectRatio = (1920 / 1080);
     currentRatio = (currentAspectRatio / originalAspectRatio)

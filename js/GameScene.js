@@ -38,8 +38,7 @@ export default class GameScene extends Phaser.Scene {
 
     create() {
         // this.cameras.main.setZoom(0.09);
-        // console.log("totalobs", this.platform.totalObsArray);
-        console.log("OS", game.device.os);
+        // console.log("OS", game.device.os);
         let gridConfig = {
             'scene': this,
             'cols': 70,
@@ -80,9 +79,9 @@ export default class GameScene extends Phaser.Scene {
     ShowObstacles() {
         this.obstacles.CreateObstacles();
         this.physics.world.syncToRender = true;
-        this.obstacles.totalObsArray.map(obsArray => {
-            this.physics.add.collider(this.platform.lowerPlatformArray, obsArray);
-        });
+        // this.obstacles.totalObsArray.map(obsArray => {
+        //     this.physics.add.collider(this.platform.lowerPlatformArray, obsArray);
+        // });
     }
 
     MovePlatform() {
@@ -94,7 +93,7 @@ export default class GameScene extends Phaser.Scene {
 
     Reposition() {
         if (this.isDown && !this.isGameOver) {
-            this.obstacles.RepositionObstacles();
+            // this.obstacles.RepositionObstacles();
             this.platform.RepositionTopPlatform();
         }
     }
@@ -107,6 +106,7 @@ export default class GameScene extends Phaser.Scene {
     CreateBird() {
 
         this.player.CreatePlayer();
+        // console.log("2");
         // this.cameras.main.startFollow(this.player.player);
         // this.player.player.body.setVelocityX(540);
 
@@ -115,6 +115,7 @@ export default class GameScene extends Phaser.Scene {
         //-----Bird & Lower Platform Colliders-----------------------//
 
         this.physics.add.collider(this.player.player, this.platform.lowerPlatformArray, this.BirdOnTouchingLowerPlatform, null, this);
+        this.physics.add.collider(this.player.sheath, this.platform.lowerPlatformArray);
 
         //-----Bird & Obstacles Colliders-----------------------//
 
@@ -123,7 +124,7 @@ export default class GameScene extends Phaser.Scene {
         });
 
         this.obstacles.totalObsArray.map(obsArray => {
-            this.physics.add.overlap(this.player.sheath, obsArray, this.SheathTouchingObstacles, null, this);
+            this.physics.add.collider(this.player.sheath, obsArray, this.SheathTouchingObstacles, null, this);
         });
 
         //-----Bird & Top Platform Colliders-------------------------//
@@ -184,8 +185,13 @@ export default class GameScene extends Phaser.Scene {
 
     SheathTouchingObstacles(_sheath, _obs) {
         if (_sheath.body.touching.right) {
-            console.log("Touching");
+            // console.log("Touching");
             this.canCreateCubes = false;
+            // console.log("this.canCreateCubes", this.canCreateCubes);
+        }
+        else {
+            this.canCreateCubes = true;
+            // console.log("this.canCreateCubes", this.canCreateCubes);
         }
     }
 
@@ -201,7 +207,7 @@ export default class GameScene extends Phaser.Scene {
             // this.iceCube.cubes.setGravityY(10);
             this.iceCube.smoke.setPosition(this.player.player.x - game.config.width / 54, this.player.player.y);
             this.iceCube.cubes.setPosition(this.player.player.x, this.player.player.y - game.config.height / 19.2);
-            // this.player.sheath.setPosition(game.config.width / 2.19 * currentRatio, this.player.player.y - (this.iceCube.cubes.height * 1.5));
+            this.player.sheath.setPosition(game.config.width / 2.19 * currentRatio, this.player.player.y - (this.iceCube.cubes.height * 1.5));
             if (isMobile) {
                 // console.log("Cubes on mobile");
                 this.iceCube.cubes.setPosition(this.player.player.x, this.player.player.y - game.config.height / 21.33);
@@ -211,6 +217,7 @@ export default class GameScene extends Phaser.Scene {
             //----Cubes with Player Colliders-------------------------//
 
             this.physics.add.collider(this.cubesArray, this.player.player);// this.CubesOnCollidingPlayer, null, this);
+            // this.physics.add.collider(this.cubesArray, this.player.sheath);
 
 
             //----Cubes with Cubes Colliders-------------------------//
@@ -243,6 +250,19 @@ export default class GameScene extends Phaser.Scene {
             }
         });
         this.physics.add.overlap(this.player.player, this.cubesArray, function (s1, s2) {
+            let b1 = s1.body;
+            let b2 = s2.body;
+
+            if (b1.y > b2.y) {
+                b2.y += (b1.top - b2.bottom);
+                b2.stop();
+            }
+            else {
+                b1.y += (b2.top - b1.bottom);
+                b1.stop();
+            }
+        });
+        this.physics.add.overlap(this.player.sheath, this.cubesArray, function (s1, s2) {
             let b1 = s1.body;
             let b2 = s2.body;
 
