@@ -7,7 +7,7 @@ class Obstacles {
     }
     CreateObstacles() {
 
-        let obsPatternOne = [{ x: 2000, y: 1500 },
+        let obsPatternOne = [{ x: 300, y: 100 },
         { x: 2156.52, y: 1500 },
         { x: 2313.04, y: 1500 },
         { x: 2156.52, y: 1382 }];
@@ -105,9 +105,9 @@ class Obstacles {
                 let obs = this.scene.physics.add.image(pos.x, pos.y, 'ground_cubes').setFrictionX(0).setPushable(false).setBounce(0)//.setOrigin(1, 1);
                 // console.log("obs", obs);
                 obs.setSize(obs.width, obs.height - game.config.height / 174.54, true);
-                obs.body.allowGravity = false;
+                obs.body.allowGravity = true;
                 obs.body.immovable = true;
-                obs.setVelocityX(-this.obsSpeed);
+                // obs.setVelocityX(-this.obsSpeed, 1);
                 obstaclesPatternContainer.add(obs);
             });
             this.totalObsArray.push(obstaclesPatternContainer);

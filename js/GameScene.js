@@ -84,7 +84,8 @@ export default class GameScene extends Phaser.Scene {
         // });
         this.obstacles.totalObsArray.map(obsContainers => {
             obsContainers.list.map(obs => {
-                this.physics.add.collider(this.platform.lowerPlatformArray, obs, this.xyz, null, this);
+                this.physics.add.collider(obs, this.platform.lowerPlatformArray, this.xyz, null, this);
+                // console.log(obs);
             });
         });
     }
@@ -96,7 +97,7 @@ export default class GameScene extends Phaser.Scene {
     MovePlatform() {
         if (this.isDown) {
             this.platform.MoveTopPlatform();
-            this.platform.MoveGroundPlatform();
+            // this.platform.MoveGroundPlatform();
         }
     }
 
@@ -356,7 +357,7 @@ export default class GameScene extends Phaser.Scene {
         //     this.player.player.x += 4;
         // this.physics.world.syncToRender = true;
         this.MoveBg();
-        this.MovePlatform();
-        this.Reposition();
+        // this.MovePlatform();
+        // this.Reposition();
     }
 }
