@@ -8,7 +8,7 @@ class IceCube {
         // this.cubes = this.scene.add.spine(0, 0, 'cube').setScale(0.2 * scaleFactor, 0.2 * scaleFactor);
         this.smoke = this.scene.add.spine(0, 0, 'smoke').setScale(0.2 * scaleFactor, 0.2 * scaleFactor);
         this.smoke.play('Smoke', false);
-        this.cubes = this.scene.physics.add.image(0, 0, 'cubes').setScale(0.2 * scaleFactor);
+        this.cubes = this.scene.physics.add.image(0, 0, 'cubes').setScale(0.2 * scaleFactor).setBounce(0);//.setPushable(false);
         //.setStatic(true).setIgnoreGravity(false);
         // this.cubes.body.setVelocity(-70, 0);
         // this.cubes.play('Ice_02', false, 1);

@@ -82,6 +82,15 @@ export default class GameScene extends Phaser.Scene {
         // this.obstacles.totalObsArray.map(obsArray => {
         //     this.physics.add.collider(this.platform.lowerPlatformArray, obsArray);
         // });
+        this.obstacles.totalObsArray.map(obsContainers => {
+            obsContainers.list.map(obs => {
+                this.physics.add.collider(this.platform.lowerPlatformArray, obs, this.xyz, null, this);
+            });
+        });
+    }
+
+    xyz() {
+        console.log("ndvnnviv");
     }
 
     MovePlatform() {
@@ -119,12 +128,18 @@ export default class GameScene extends Phaser.Scene {
 
         //-----Bird & Obstacles Colliders-----------------------//
 
-        this.obstacles.totalObsArray.map(obsArray => {
-            this.physics.add.collider(this.player.player, obsArray, this.BirdOnTouchingObstacles, null, this);
+        this.obstacles.totalObsArray.map(obsContainers => {
+            obsContainers.list.map(obs => {
+                this.physics.add.collider(this.player.player, obs, this.BirdOnTouchingObstacles, null, this);
+            });
+            // this.physics.add.collider(this.player.player, obsArray, this.BirdOnTouchingObstacles, null, this);
         });
 
-        this.obstacles.totalObsArray.map(obsArray => {
-            this.physics.add.collider(this.player.sheath, obsArray, this.SheathTouchingObstacles, null, this);
+        this.obstacles.totalObsArray.map(obsContainers => {
+            obsContainers.list.map(obs => {
+                this.physics.add.collider(this.player.sheath, obs, this.SheathTouchingObstacles, null, this);
+            });
+            // this.physics.add.collider(this.player.sheath, obsArray, this.SheathTouchingObstacles, null, this);
         });
 
         //-----Bird & Top Platform Colliders-------------------------//
@@ -227,9 +242,11 @@ export default class GameScene extends Phaser.Scene {
             //----Cubes & Platform Colliders-------------------------//
 
             // console.log("this.platform.obsArray", this.platform.obsArray);
-            this.obstacles.totalObsArray.map(obsArray => {
-                this.physics.add.collider(this.iceCube.cubes, obsArray, this.CubesOnCollsionWithObs, null, this);
-            })
+            this.obstacles.totalObsArray.map(obsContainers => {
+                obsContainers.list.map(obs => {
+                    this.physics.add.collider(this.iceCube.cubes, obs, this.CubesOnCollsionWithObs, null, this);
+                });
+            });
             this.PositioningCubes();
             // console.log("this.crateArray:", this.crateArray);
         }
@@ -302,9 +319,10 @@ export default class GameScene extends Phaser.Scene {
             // console.log("Collided");
             // this.cameras.main.shake(185, 0.02);
             _cube.isCollide = "true";
-            _cube.setPushable(false);
+            _cube.setPushable(true);
             _cube.setVelocityX(0);
             _cube.setVelocityY(0);
+            _cube.setBounce(0);
             _cube.setPosition(_cube.x, _cube.y);
             // _cube.body.enable = false;
             // console.log("isCollide");
@@ -330,6 +348,7 @@ export default class GameScene extends Phaser.Scene {
     }
 
     update() {
+        // this.physics.world.syncToRender = true;
         // if (this.player.player.x >= 10000) {
         //     this.player.player.body.setVelocityX(0);
         // }

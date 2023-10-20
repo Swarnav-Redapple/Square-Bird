@@ -3,27 +3,13 @@ class Obstacles {
         this.scene = scene;
         this.totalObsArray = [];
         this.obsPatternArray = [];
-        this.obsArrayOne = [];
-        this.obsArrayTwo = [];
-        this.obsArrayThree = [];
-        this.obsArrayFour = [];
-        this.obsArrayFive = [];
-        this.obsArraySix = [];
-        this.obsArraySeven = [];
-        this.obsArrayEight = [];
-        this.obsArrayNine = [];
-        this.obsArrayTen = [];
-        this.obsArrayEleven = [];
-        this.obsArrayTwelve = [];
-        this.obsArrayThirteen = [];
         this.obsSpeed = 400;
     }
     CreateObstacles() {
-        let obstaclesPatternContainer = this.scene.add.container();
 
-        let obsPatternOne = [{ x: 2000, y: 1536 },
-        { x: 2156.52, y: 1536 },
-        { x: 2313.04, y: 1536 },
+        let obsPatternOne = [{ x: 2000, y: 1500 },
+        { x: 2156.52, y: 1500 },
+        { x: 2313.04, y: 1500 },
         { x: 2156.52, y: 1382 }];
         this.obsPatternArray.push(obsPatternOne);
 
@@ -110,8 +96,14 @@ class Obstacles {
         this.obsPatternArray.push(obsPatternThirteen);
 
         this.obsPatternArray.map(patternArray => {
+            let obstaclesPatternContainer = this.scene.add.container();
+            // if (game.device.os.android) {
+            //     console.log("Android");
+            //     obstaclesPatternContainer.y = (obstaclesPatternContainer.y) - (game.config.height / 3.127);
+            // }
             patternArray.map(pos => {
-                let obs = this.scene.physics.add.image(pos.x, pos.y, 'ground_cubes').setFrictionX(0).setPushable(false);
+                let obs = this.scene.physics.add.image(pos.x, pos.y, 'ground_cubes').setFrictionX(0).setPushable(false).setBounce(0)//.setOrigin(1, 1);
+                // console.log("obs", obs);
                 obs.setSize(obs.width, obs.height - game.config.height / 174.54, true);
                 obs.body.allowGravity = false;
                 obs.body.immovable = true;
@@ -120,7 +112,8 @@ class Obstacles {
             });
             this.totalObsArray.push(obstaclesPatternContainer);
         });
-
+        this.scene.physics.world.syncToRender = true;
+        console.log(" totalObsArray", this.totalObsArray);
     }
     CreateObstaclesXXX() {
         let obsGapX = game.config.width / 6.9;

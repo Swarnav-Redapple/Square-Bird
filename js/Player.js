@@ -10,7 +10,7 @@ class Player {
         // console.log("1");
         this.player = this.scene.add.spine(game.config.width / 2.25 * currentRatio, game.config.height / 1.28 * currentRatio, 'penguin').setScale(0.17 * scaleFactor).setDepth(2);
         this.player.isCollide = "false";
-        this.sheath = this.scene.physics.add.image(game.config.width / 2.19 * currentRatio, game.config.height / 1.28 * currentRatio, 'sheath');
+        this.sheath = this.scene.physics.add.image(game.config.width / 2.19 * currentRatio, game.config.height / 1.28 * currentRatio, 'sheath').setAlpha(0.00001);
         this.sheath.body.allowGravity = true;
         this.sheath.body.immovable = false;
         // this.gameObjContainer.add(this.player);
