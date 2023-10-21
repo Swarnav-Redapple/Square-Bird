@@ -203,8 +203,8 @@ class Platform {
         }
     }
     CreateBottomPlatform() {
-        for (let i = 0; i < 10; i++) {
-            let ground = this.scene.physics.add.image(-game.config.width / 10 + (i * game.config.width / 7.1), game.config.height / 1, 'ground')//.setScale(1000, 1);
+        for (let i = 0; i < 80; i++) {
+            let ground = this.scene.physics.add.image(-game.config.width / 20 + (i * game.config.width / 7.1), game.config.height / 1, 'ground')//.setScale(1000, 1);
             // ground.setSize(ground.width * 100, ground.height * 2000);
             ground.body.allowGravity = false;
             ground.body.immovable = true;

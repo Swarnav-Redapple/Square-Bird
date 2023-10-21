@@ -83,27 +83,57 @@ export default class GameScene extends Phaser.Scene {
         //     this.physics.add.collider(this.platform.lowerPlatformArray, obsArray);
         // });
         this.obstacles.totalObsArray.map(obsContainers => {
+            // this.physics.add.collider(obsContainers.list, this.abc, null, this);
             obsContainers.list.map(obs => {
                 this.physics.add.collider(obs, this.platform.lowerPlatformArray, this.xyz, null, this);
-                // console.log(obs);
+                // this.physics.add.collider(obs, obs, this.abc, null, this);
+                //     this.physics.add.overlap(obs, obs, function (s1, s2) {
+                //         let b1 = s1.body;
+                //         let b2 = s2.body;
+
+                //         if (b1.y > b2.y) {
+                //             b2.y += (b1.top - b2.bottom);
+                //             b2.stop();
+                //         }
+                //         else {
+                //             b1.y += (b2.top - b1.bottom);
+                //             b1.stop();
+                //         }
+                //         // console.log("tikki");
+                //     });
             });
         });
+        // this.physics.add.collider(this.obstacles.obs, this.obstacles.obs, this.abc, null, this);
     }
 
-    xyz() {
-        console.log("ndvnnviv");
+
+    xyz(_obs, _platform) {
+        // console.log("ndvnnviv");
+        // _obs.body.immovable = true;
+        // _obs.body.allowGravity = false;
+        // this.obstacles.totalObsArray.map(obsContainers => {
+        //     obsContainers.list.map(obs => {
+        //         obs.body.immovable = true;
+        //         obs.body.allowGravity = false;
+        //     });
+        // });
+    }
+
+    abc(_obs) {
+        console.log("Rikki");
+        _obs.body.immovable = true;
     }
 
     MovePlatform() {
         if (this.isDown) {
             this.platform.MoveTopPlatform();
-            // this.platform.MoveGroundPlatform();
+            this.platform.MoveGroundPlatform();
         }
     }
 
     Reposition() {
         if (this.isDown && !this.isGameOver) {
-            // this.obstacles.RepositionObstacles();
+            this.obstacles.RepositionObstacles();
             this.platform.RepositionTopPlatform();
         }
     }
@@ -357,7 +387,7 @@ export default class GameScene extends Phaser.Scene {
         //     this.player.player.x += 4;
         // this.physics.world.syncToRender = true;
         this.MoveBg();
-        // this.MovePlatform();
-        // this.Reposition();
+        this.MovePlatform();
+        this.Reposition();
     }
 }

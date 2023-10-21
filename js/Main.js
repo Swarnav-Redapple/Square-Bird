@@ -63,7 +63,7 @@ window.onload = function () {
             physics: {
                 default: 'arcade',
                 arcade: {
-                    gravity: { y: 100 },
+                    gravity: { y: 4000 },
                     // tileBias: 154,
                     // debug: true,
                     // fps: 300,
