@@ -10,7 +10,7 @@ class Player {
         // console.log("1");
         this.player = this.scene.add.spine(game.config.width / 2.25 * currentRatio, game.config.height / 1.28 * currentRatio, 'penguin').setScale(0.17 * scaleFactor).setDepth(2);
         this.player.isCollide = "false";
-        this.sheath = this.scene.physics.add.image(game.config.width / 2.19 * currentRatio, game.config.height / 1.28 * currentRatio, 'sheath').setAlpha(0.00001);
+        this.sheath = this.scene.physics.add.image(game.config.width / 2.11 * currentRatio, game.config.height / 1.28 * currentRatio, 'sheath').setAlpha(0.00001);
         this.sheath.body.allowGravity = true;
         this.sheath.body.immovable = false;
         // this.gameObjContainer.add(this.player);
@@ -32,6 +32,7 @@ class Player {
         else if (game.device.os.android) {
             // console.log("Android");
             this.player.y = game.config.height / 1.48 * currentRatio;
+            this.sheath.y = game.config.height / 1.48 * currentRatio;
             this.player.setOffset(game.config.width / 10.58, -game.config.height / 2.88);
         }
         this.scene.physics.add.existing(this.player);

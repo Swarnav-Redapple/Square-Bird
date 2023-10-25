@@ -30,10 +30,10 @@ export default class GameScene extends Phaser.Scene {
         this.cubesArray = [];
         // this.count = 0;
         this.isGameOver = false;
-        this.platformCanMove = false;
+        this.canCreateObs = false;
         this.platformNumCheck = 0;
         this.gameObjContainer = null;
-
+        this.groundSurfaceY = null;
     }
 
     create() {
@@ -53,6 +53,7 @@ export default class GameScene extends Phaser.Scene {
         this.ShowGameUI();
         this.CreateBird();
         this.ShowScore();
+        // this.ShowObstacles(this.groundSurfaceY);
     }
     AddAudio() {
         AudioManager.CreateAudio();
@@ -77,7 +78,10 @@ export default class GameScene extends Phaser.Scene {
     }
 
     ShowObstacles() {
+        // if (this.isDown) {
+        // setTimeout(() => {
         this.obstacles.CreateObstacles();
+        // }, 5);
         this.physics.world.syncToRender = true;
         // this.obstacles.totalObsArray.map(obsArray => {
         //     this.physics.add.collider(this.platform.lowerPlatformArray, obsArray);
@@ -104,6 +108,7 @@ export default class GameScene extends Phaser.Scene {
             });
         });
         // this.physics.add.collider(this.obstacles.obs, this.obstacles.obs, this.abc, null, this);
+        // }
     }
 
 
@@ -183,9 +188,13 @@ export default class GameScene extends Phaser.Scene {
         if (_bird.body.touching.down) {
             AudioManager.PlayDropAudio();
             // console.log(this.isDown);
+            // console.log("Collision position", _bird.y);
+            this.groundSurfaceY = _bird.y;
+            console.log(this.groundSurfaceY);
             this.isDown = true;
-            this.platformCanMove = true;
+            // this.canCreateObs = true;
         }
+        // this.ShowObstacles();
     }
 
     BirdOnTouchingTopPlatform(_bird, _platform) {
@@ -253,7 +262,7 @@ export default class GameScene extends Phaser.Scene {
             // this.iceCube.cubes.setGravityY(10);
             this.iceCube.smoke.setPosition(this.player.player.x - game.config.width / 54, this.player.player.y);
             this.iceCube.cubes.setPosition(this.player.player.x, this.player.player.y - game.config.height / 19.2);
-            this.player.sheath.setPosition(game.config.width / 2.19 * currentRatio, this.player.player.y - (this.iceCube.cubes.height * 1.5));
+            this.player.sheath.setPosition(game.config.width / 2.11 * currentRatio, this.player.player.y - (this.iceCube.cubes.height * 1.5));
             if (isMobile) {
                 // console.log("Cubes on mobile");
                 this.iceCube.cubes.setPosition(this.player.player.x, this.player.player.y - game.config.height / 21.33);
@@ -373,6 +382,7 @@ export default class GameScene extends Phaser.Scene {
         if (this.gameUI.timedEvent.paused) {
             AudioManager.StopBGAudio();
             this.player.player.destroy();
+            this.player.sheath.destroy();
             this.popUp.CreateGameOverPopUp();
 
         }

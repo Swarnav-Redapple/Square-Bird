@@ -6,3 +6,4 @@ let isMobile;
 let currentAspectRatio;
 let originalAspectRatio;
 let currentRatio;
+let groundSurfaceY;
