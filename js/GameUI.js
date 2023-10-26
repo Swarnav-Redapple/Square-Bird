@@ -32,8 +32,11 @@ class GameUI {
         this.pointerAnim = this.scene.add.spine(game.config.width / 1.5, game.config.height / 1.38, 'pointer');
         this.pointerAnim.setColor('0x0096FF');
         this.introAnim = this.scene.add.spine(game.config.width / 2.2, game.config.height / 1.5, 'intro').setVisible(false).setScale(0.17 * scaleFactor);
-        if (isMobile) {
-            this.introAnim.y = game.config.height / 1.477;
+        if (game.device.os.android) {
+            this.introAnim.y = game.config.height / 1.484;
+        }
+        else if (game.device.os.iPhone) {
+            this.introAnim.y = game.config.height / 1.472;
         }
         this.PointerAnimation();
         let instructionTxt = this.scene.add.text(game.config.width / 3.1, game.config.height / 2.8, 'HOLD OR TAP TO \n FORM ICE CUBE', { fontFamily: 'PoetsenOne-Regular', fontSize: 50, fill: '#340158', align: 'Center', lineSpacing: 10 });

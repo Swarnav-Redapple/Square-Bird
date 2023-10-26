@@ -19,10 +19,11 @@ window.onload = function () {
             type: Phaser.AUTO,
             parent: 'super_bird',
             pixelArt: true,
-            antialias: true,
+            antialias: false,
+            powerPreference: "high-performance",
             // backgroundColor: '#34568b',
             scale: {
-                mode: Phaser.Scale.FIT,
+                mode: Phaser.Scale.ENVELOP,
                 autoCenter: Phaser.Scale.CENTER_BOTH,
             },
             physics: {

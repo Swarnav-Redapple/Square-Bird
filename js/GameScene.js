@@ -33,7 +33,7 @@ export default class GameScene extends Phaser.Scene {
         this.canCreateObs = false;
         this.platformNumCheck = 0;
         this.gameObjContainer = null;
-        this.groundSurfaceY = null;
+        // this.groundSurfaceY = null;
     }
 
     create() {
@@ -49,9 +49,8 @@ export default class GameScene extends Phaser.Scene {
         this.AddAudio();
         this.ShowBg();
         this.ShowPlatform();
-        this.ShowObstacles();
+        // this.ShowObstacles();
         this.ShowGameUI();
-        this.CreateBird();
         this.ShowScore();
         // this.ShowObstacles(this.groundSurfaceY);
     }
@@ -75,58 +74,42 @@ export default class GameScene extends Phaser.Scene {
     ShowPlatform() {
         this.platform.CreateTopPlatform();
         this.platform.CreateBottomPlatform();
+        let cubeY = this.physics.add.image(game.config.width / 2.16, 0, 'sheath').setBounce(0).setVisible(false);
+        cubeY.body.allowGravity = true;
+        cubeY.body.immovable = false;
+        this.physics.add.collider(this.platform.lowerPlatformArray, cubeY, this.GetWorkingYPos, null, this);
+    }
+
+    GetWorkingYPos(_surface, _cube) {
+        if (_cube.body.touching.down) {
+            this.groundSurfaceY = _cube.y;
+            // setTimeout(() => {
+            // _cube.on('destroy', this.ShowObstacles);
+            _cube.destroy();
+            // }, 1000);
+            // console.log(this.groundSurfaceY);
+        }
+
+        this.ShowObstacles();
+        this.CreateBird();
     }
 
     ShowObstacles() {
         // if (this.isDown) {
         // setTimeout(() => {
-        this.obstacles.CreateObstacles();
+        // console.log("_y", _y);
+        this.obstacles.CreateObstacles(this.groundSurfaceY);
         // }, 5);
         this.physics.world.syncToRender = true;
         // this.obstacles.totalObsArray.map(obsArray => {
         //     this.physics.add.collider(this.platform.lowerPlatformArray, obsArray);
         // });
-        this.obstacles.totalObsArray.map(obsContainers => {
+        this.obstacles.totalObsArray.forEach(obsContainers => {
             // this.physics.add.collider(obsContainers.list, this.abc, null, this);
-            obsContainers.list.map(obs => {
-                this.physics.add.collider(obs, this.platform.lowerPlatformArray, this.xyz, null, this);
-                // this.physics.add.collider(obs, obs, this.abc, null, this);
-                //     this.physics.add.overlap(obs, obs, function (s1, s2) {
-                //         let b1 = s1.body;
-                //         let b2 = s2.body;
-
-                //         if (b1.y > b2.y) {
-                //             b2.y += (b1.top - b2.bottom);
-                //             b2.stop();
-                //         }
-                //         else {
-                //             b1.y += (b2.top - b1.bottom);
-                //             b1.stop();
-                //         }
-                //         // console.log("tikki");
-                //     });
+            obsContainers.list.forEach(obs => {
+                this.physics.add.collider(obs, this.platform.lowerPlatformArray);
             });
         });
-        // this.physics.add.collider(this.obstacles.obs, this.obstacles.obs, this.abc, null, this);
-        // }
-    }
-
-
-    xyz(_obs, _platform) {
-        // console.log("ndvnnviv");
-        // _obs.body.immovable = true;
-        // _obs.body.allowGravity = false;
-        // this.obstacles.totalObsArray.map(obsContainers => {
-        //     obsContainers.list.map(obs => {
-        //         obs.body.immovable = true;
-        //         obs.body.allowGravity = false;
-        //     });
-        // });
-    }
-
-    abc(_obs) {
-        console.log("Rikki");
-        _obs.body.immovable = true;
     }
 
     MovePlatform() {
@@ -164,15 +147,15 @@ export default class GameScene extends Phaser.Scene {
 
         //-----Bird & Obstacles Colliders-----------------------//
 
-        this.obstacles.totalObsArray.map(obsContainers => {
-            obsContainers.list.map(obs => {
+        this.obstacles.totalObsArray.forEach(obsContainers => {
+            obsContainers.list.forEach(obs => {
                 this.physics.add.collider(this.player.player, obs, this.BirdOnTouchingObstacles, null, this);
             });
             // this.physics.add.collider(this.player.player, obsArray, this.BirdOnTouchingObstacles, null, this);
         });
 
-        this.obstacles.totalObsArray.map(obsContainers => {
-            obsContainers.list.map(obs => {
+        this.obstacles.totalObsArray.forEach(obsContainers => {
+            obsContainers.list.forEach(obs => {
                 this.physics.add.collider(this.player.sheath, obs, this.SheathTouchingObstacles, null, this);
             });
             // this.physics.add.collider(this.player.sheath, obsArray, this.SheathTouchingObstacles, null, this);
@@ -189,12 +172,11 @@ export default class GameScene extends Phaser.Scene {
             AudioManager.PlayDropAudio();
             // console.log(this.isDown);
             // console.log("Collision position", _bird.y);
-            this.groundSurfaceY = _bird.y;
-            console.log(this.groundSurfaceY);
+            // this.groundSurfaceY = _bird.y;
+            // console.log(this.groundSurfaceY);
             this.isDown = true;
             // this.canCreateObs = true;
         }
-        // this.ShowObstacles();
     }
 
     BirdOnTouchingTopPlatform(_bird, _platform) {
@@ -215,12 +197,6 @@ export default class GameScene extends Phaser.Scene {
     }
 
     BirdOnTouchingObstacles(_bird, _obs) {
-        // console.log("First Collision");
-
-        // if (this.platformCanMove) {
-        //     this.platformCanMove = false;
-        //     // this.MovePlatform();
-        // }
 
         if (_bird.body.touching.right && _bird.isCollide == "false") {
             _bird.isCollide = "true";
@@ -282,8 +258,8 @@ export default class GameScene extends Phaser.Scene {
             //----Cubes & Platform Colliders-------------------------//
 
             // console.log("this.platform.obsArray", this.platform.obsArray);
-            this.obstacles.totalObsArray.map(obsContainers => {
-                obsContainers.list.map(obs => {
+            this.obstacles.totalObsArray.forEach(obsContainers => {
+                obsContainers.list.forEach(obs => {
                     this.physics.add.collider(this.iceCube.cubes, obs, this.CubesOnCollsionWithObs, null, this);
                 });
             });
@@ -360,6 +336,7 @@ export default class GameScene extends Phaser.Scene {
             // this.cameras.main.shake(185, 0.02);
             _cube.isCollide = "true";
             _cube.setPushable(true);
+            _obs.setPushable(false);
             _cube.setVelocityX(0);
             _cube.setVelocityY(0);
             _cube.setBounce(0);

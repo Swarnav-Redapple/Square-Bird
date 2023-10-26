@@ -6,7 +6,7 @@ class Background {
         this.arrayBg = [];
         this.lastIndexBG = null;
         this.lastIndexCloud = null;
-        this.bgSpeed = 5;
+        this.bgSpeed = 6;
     }
     CreateTutorialBG() {
         this.bg = this.scene.add.tileSprite(Math.round(game.config.width / 2), Math.round(game.config.height / 2), Math.round(game.config.width), Math.round(game.config.height), 'tutorial_bg');
