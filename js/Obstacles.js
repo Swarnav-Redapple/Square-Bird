@@ -139,7 +139,7 @@ class Obstacles {
         this.obsPatternArray.forEach(patternArray => {
             let obstaclesPatternContainer = this.scene.add.container();
             patternArray.forEach(pos => {
-                let obs = this.scene.physics.add.image(pos.x, pos.y, 'ground_cubes').setFrictionX(0).setBounce(0)//.setOrigin(1, 1);
+                let obs = this.scene.physics.add.image(pos.x, pos.y, 'obstacle_cube').setFrictionX(0).setBounce(0)//.setOrigin(1, 1);
                 // console.log("obs", obs);
                 obs.setSize(obs.width, obs.height - game.config.height / 174.54, true);
                 obs.body.allowGravity = false;

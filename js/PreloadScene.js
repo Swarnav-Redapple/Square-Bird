@@ -101,7 +101,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image("gameOver_player", "pengiun_gameover.png");
         this.load.image('onepixel', 'onepixel.png');
         this.load.image('ground', 'ground_tiles.png');
-        this.load.image('ground_cubes', 'platform_cubes.png');
+        this.load.image('obstacle_cube', 'ice_block.png');
         this.load.image('sheath', 'protector.png');
         this.load.image('score_base', 'base.png');
         this.load.image('distance_icon', 'distance_icon.png');
