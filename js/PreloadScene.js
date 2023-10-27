@@ -112,7 +112,6 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.spine('intro', 'Intro.json', 'Intro.atlas');
         this.load.spine('smoke', 'Smoke.json', 'Smoke.atlas');
         this.load.spine('pointer', 'skeleton.json', 'skeleton.atlas');
-        // this.load.spine('thor', 'Thor_Animation.json', 'Thor_Animation.atlas');
 
         this.load.setPath('assets/audio/');
         this.load.audio('bg_audio', 'background.mp3');
