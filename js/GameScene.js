@@ -39,6 +39,14 @@ export default class GameScene extends Phaser.Scene {
     create() {
         // this.cameras.main.setZoom(0.09);
         // console.log("OS", game.device.os);
+        this.AddGrid();
+        this.ShowBg();
+        this.ShowPlatform();
+        this.ShowGameUI();
+        this.ShowScore();
+    }
+
+    AddGrid() {
         let gridConfig = {
             'scene': this,
             'cols': 70,
@@ -46,20 +54,12 @@ export default class GameScene extends Phaser.Scene {
         }
         this.alignGrid = new AlignGrid(gridConfig);
         // this.alignGrid.showNumbers();
-        this.AddAudio();
-        this.ShowBg();
-        this.ShowPlatform();
-        // this.ShowObstacles();
-        this.ShowGameUI();
-        this.ShowScore();
-        // this.ShowObstacles(this.groundSurfaceY);
     }
-    AddAudio() {
-        AudioManager.CreateAudio();
-    }
+
     PlayBgAudio() {
         AudioManager.PlayBGAudio();
     }
+
     ShowBg() {
         this.bg.CreateGameBG();
     }
@@ -138,7 +138,7 @@ export default class GameScene extends Phaser.Scene {
         // this.cameras.main.startFollow(this.player.player);
         // this.player.player.body.setVelocityX(540);
 
-        this.PlayBgAudio();
+        // this.PlayBgAudio();
 
         //-----Bird & Lower Platform Colliders-----------------------//
 

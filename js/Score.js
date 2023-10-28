@@ -13,7 +13,7 @@ class Score {
     CalculateScore() {
         this.scoreTxt = this.scene.add.text(game.config.width / 1.97, game.config.height / 46, this.distCovered, { fontFamily: 'PoetsenOne-Regular', fontSize: 60, fill: '#FFFFFF', align: 'Center', lineSpacing: 10 });
 
-        this.scoreEvent = this.scene.time.addEvent({ delay: 1500, paused: false, callback: this.UpdateScore, callbackScope: this, loop: true });
+        this.scoreEvent = this.scene.time.addEvent({ delay: 1600, paused: false, callback: this.UpdateScore, callbackScope: this, loop: true });
     }
     UpdateScore() {
         if (!this.scene.gameUI.timedEvent.paused) {

@@ -1,3 +1,4 @@
+import { AudioManager } from "./AudioManager.js";
 export default class PreloadScene extends Phaser.Scene {
     constructor() {
         super('PreloadScene');
@@ -49,6 +50,7 @@ export default class PreloadScene extends Phaser.Scene {
         if (isLast) {
             // console.log('this.load')
             this.LoadAssets();
+            // this.AddAudio();
         }
     };
     FontLoadError(fontName) { console.log('error------') };
@@ -107,26 +109,34 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image('distance_icon', 'distance_icon.png');
         this.load.image('stopwatch', 'stopwatch.png');
 
-        this.load.setPath('assets/spines/');
-        this.load.spine('penguin', 'Penguin Character.json', 'Penguin Character.atlas');
-        this.load.spine('intro', 'Intro.json', 'Intro.atlas');
-        this.load.spine('smoke', 'Smoke.json', 'Smoke.atlas');
-        this.load.spine('pointer', 'skeleton.json', 'skeleton.atlas');
-
         this.load.setPath('assets/audio/');
         this.load.audio('bg_audio', 'background.mp3');
         this.load.audio('create_audio', 'creation.mp3');
         this.load.audio('drop_audio', 'ground_drop.mp3');
         this.load.audio('hit_audio', 'hit.mp3');
         this.load.audio('game_over', 'game_over.wav');
+
+        this.load.setPath('assets/spines/');
+        this.load.spine('penguin', 'Penguin Character.json', 'Penguin Character.atlas');
+        this.load.spine('intro', 'Intro.json', 'Intro.atlas');
+        this.load.spine('smoke', 'Smoke.json', 'Smoke.atlas');
+        this.load.spine('pointer', 'skeleton.json', 'skeleton.atlas');
+
         this.load.start();
     }
+
+    AddAudio() {
+        AudioManager.CreateAudio();
+    }
+
     LoadProgress(percentage) {
         this.progressLine.setCrop(0, 0, this.progressLine.width * percentage, this.progressLine.height);
         percentage = percentage * 100;
     }
+
     OnComplete() {
         this.scene.stop('PreloadScene');
         this.scene.start('TutorialScene');
+        this.scene.scene.AddAudio();
     }
 }
