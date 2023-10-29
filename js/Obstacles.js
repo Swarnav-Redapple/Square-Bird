@@ -6,12 +6,13 @@ class Obstacles {
         this.obsSpeed = 600;
     }
     CreateObstacles(_posY) {
+        let round = Math.round;
         // console.log("_posY", _posY);
         let yPos = _posY + game.config.height / 278.26;
         let obsWidth = game.config.height / 12.88;
         if (game.device.os.android) {
             // console.log("Android");
-            yPos = _posY + game.config.height / 38.4;
+            yPos = _posY + game.config.height / 40.85;
         }
 
         else if (game.device.os.iPhone) {
@@ -126,7 +127,10 @@ class Obstacles {
             let obstaclesPatternContainer = this.scene.add.container();
             // console.log("Containers", i);
             for (let j = 0; j < this.obsPatternArray[i].length; j++) {
-                let obs = this.scene.physics.add.image(Math.floor(this.obsPatternArray[i][j].x), Math.floor(this.obsPatternArray[i][j].y), 'obstacle_cube').setFrictionX(0).setBounce(0).setScale(0.97 * scaleFactor);
+                let obs = this.scene.physics.add.image(round(this.obsPatternArray[i][j].x), round(this.obsPatternArray[i][j].y), 'obstacle_cube').setFrictionX(0).setBounce(0);
+                if (!isMobile) {
+                    obs.setScale(0.97 * scaleFactor);
+                }
                 // obs.setSize(obs.width, obs.height - game.config.height / 174.54, true);
                 obs.body.allowGravity = false;
                 obs.body.immovable = true;
@@ -139,7 +143,7 @@ class Obstacles {
         // this.obsPatternArray.forEach(patternArray => {
         //     let obstaclesPatternContainer = this.scene.add.container();
         //     patternArray.forEach(pos => {
-        //         let obs = this.scene.physics.add.image(pos.x, pos.y, 'obstacle_cube').setFrictionX(0).setBounce(0).setScale(0.97 * scaleFactor);//.setOrigin(1, 1);
+        //         let obs = this.scene.physics.add.image(round(pos.x), round(pos.y), 'obstacle_cube').setFrictionX(0).setBounce(0).setScale(0.97 * scaleFactor);//.setOrigin(1, 1);
         //         // console.log("obs", obs);
         //         // obs.setSize(obs.width, obs.height - game.config.height / 174.54, true);
         //         obs.body.allowGravity = false;
