@@ -31,8 +31,6 @@ export default class GameScene extends Phaser.Scene {
         // this.count = 0;
         this.isGameOver = false;
         this.canCreateObs = false;
-        this.platformNumCheck = 0;
-        this.gameObjContainer = null;
         // this.groundSurfaceY = null;
     }
 
