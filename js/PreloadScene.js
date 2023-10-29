@@ -60,7 +60,6 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.on('complete', this.OnComplete, { scene: this.scene });
 
         this.load.setPath('assets/images/');
-        // this.load.image('title_intro', 'Title_art.png');
         this.load.image('playButton', 'Play_button.png');
         this.load.image('backButton', 'back_button.png');
         this.load.image('yesButton', 'yes_button.png');

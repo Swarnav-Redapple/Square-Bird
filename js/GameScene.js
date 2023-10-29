@@ -237,7 +237,7 @@ export default class GameScene extends Phaser.Scene {
             this.iceCube.CreateIceCubes();
             // this.iceCube.cubes.setGravityY(10);
             this.iceCube.smoke.setPosition(this.player.player.x - game.config.width / 54, this.player.player.y);
-            this.iceCube.cubes.setPosition(this.player.player.x, this.player.player.y - game.config.height / 19.2);
+            this.iceCube.cubes.setPosition(this.player.player.x, this.player.player.y - game.config.height / 21.33);
             this.player.sheath.setPosition(game.config.width / 2.11 * currentRatio, this.player.player.y - (this.iceCube.cubes.height * 1.5));
             if (isMobile) {
                 // console.log("Cubes on mobile");

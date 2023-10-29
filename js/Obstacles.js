@@ -12,7 +12,7 @@ class Obstacles {
         let obsWidth = game.config.height / 12.88;
         if (game.device.os.android) {
             // console.log("Android");
-            yPos = _posY + game.config.height / 40.85;
+            yPos = _posY + game.config.height / 41.74;
         }
 
         else if (game.device.os.iPhone) {
@@ -123,36 +123,39 @@ class Obstacles {
         this.obsPatternArray.push(obsPatternThirteen);
 
 
-        for (let i = 0; i < this.obsPatternArray.length; i++) {
-            let obstaclesPatternContainer = this.scene.add.container();
-            // console.log("Containers", i);
-            for (let j = 0; j < this.obsPatternArray[i].length; j++) {
-                let obs = this.scene.physics.add.image(round(this.obsPatternArray[i][j].x), round(this.obsPatternArray[i][j].y), 'obstacle_cube').setFrictionX(0).setBounce(0);
-                if (!isMobile) {
-                    obs.setScale(0.97 * scaleFactor);
-                }
-                // obs.setSize(obs.width, obs.height - game.config.height / 174.54, true);
-                obs.body.allowGravity = false;
-                obs.body.immovable = true;
-                obs.setVelocityX(-this.obsSpeed);
-                obstaclesPatternContainer.add(obs);
-            }
-            this.totalObsArray.push(obstaclesPatternContainer);
-        }
-
-        // this.obsPatternArray.forEach(patternArray => {
+        // for (let i = 0; i < this.obsPatternArray.length; i++) {
         //     let obstaclesPatternContainer = this.scene.add.container();
-        //     patternArray.forEach(pos => {
-        //         let obs = this.scene.physics.add.image(round(pos.x), round(pos.y), 'obstacle_cube').setFrictionX(0).setBounce(0).setScale(0.97 * scaleFactor);//.setOrigin(1, 1);
-        //         // console.log("obs", obs);
+        //     // console.log("Containers", i);
+        //     for (let j = 0; j < this.obsPatternArray[i].length; j++) {
+        //         let obs = this.scene.physics.add.image(round(this.obsPatternArray[i][j].x), round(this.obsPatternArray[i][j].y), 'obstacle_cube').setFrictionX(0).setBounce(0);
+        //         if (!isMobile) {
+        //             obs.setScale(0.97 * scaleFactor);
+        //         }
         //         // obs.setSize(obs.width, obs.height - game.config.height / 174.54, true);
         //         obs.body.allowGravity = false;
         //         obs.body.immovable = true;
         //         obs.setVelocityX(-this.obsSpeed);
         //         obstaclesPatternContainer.add(obs);
-        //     });
+        //     }
         //     this.totalObsArray.push(obstaclesPatternContainer);
-        // });
+        // }
+
+        this.obsPatternArray.forEach(patternArray => {
+            let obstaclesPatternContainer = this.scene.add.container();
+            patternArray.forEach(pos => {
+                let obs = this.scene.physics.add.image(round(pos.x), round(pos.y), 'obstacle_cube').setFrictionX(0).setBounce(0);//.setOrigin(1, 1);
+                if (!isMobile) {
+                    obs.setScale(0.97 * scaleFactor);
+                }
+                // console.log("obs", obs);
+                // obs.setSize(obs.width, obs.height - game.config.height / 174.54, true);
+                obs.body.allowGravity = false;
+                obs.body.immovable = true;
+                obs.setVelocityX(-this.obsSpeed);
+                obstaclesPatternContainer.add(obs);
+            });
+            this.totalObsArray.push(obstaclesPatternContainer);
+        });
 
         this.scene.physics.world.syncToRender = true;
         this.scene.physics.world.fixedStep = false;
