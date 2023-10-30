@@ -25,8 +25,8 @@ export default class PreloadScene extends Phaser.Scene {
         let iceCube = this.add.image(game.config.width / 1.7, game.config.height / 1.361, 'ice_cube');
         let effects = this.add.image(0, 0, 'effects');
         effects.copyPosition(iceCube);
-        effects.x -= 210;
-        effects.y -= 47;
+        effects.x -= Math.round(game.config.width / 5.14);
+        effects.y -= Math.round(game.config.height / 40.85);
         let title = this.add.image(game.config.width / 2.02, game.config.height / 3.77, 'title');
         let bird = this.add.image(game.config.width / 1.99, game.config.height / 1.8, 'bird');
         this.progressBase = this.add.image(Math.round(game.config.width / 2), Math.round(game.config.height / 1.08), "progressBase").setOrigin(0.5, 0.5) //.setScale(1 * scaleFactorX, 1 * scaleFactorY);
